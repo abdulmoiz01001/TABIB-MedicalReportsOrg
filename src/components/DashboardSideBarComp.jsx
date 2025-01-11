@@ -41,14 +41,14 @@ const DashboardSideBarComp = () => {
       <div
         className={`h-[450px] rounded-[15px] absolute top-[20%] ${
           hide ? "-translate-x-[100%]" : "translate-x-0"
-        } transition-transform duration-300 my-auto w-[100px] bg-[#313131] flex flex-col justify-between gap-8 items-center py-4 shadow-lg`}
+        } transition-transform duration-300 my-auto w-[81px] bg-[#313131] flex flex-col justify-between gap-8 items-center py-4 shadow-lg`}
       >
         <div className="flex w-full justify-center items-center flex-col gap-4">
           {/* Dynamic Navigation Links */}
           {navLinks.map((link) => (
             <NavLink key={link.name} to={link.path} className={linkClasses}>
               <img src={link.icon} alt={link.name} className="w-[30px] h-[30px]" />
-              <span className="hidden md:block">{link.name}</span>
+              <span className="hidden text-[12px] md:block">{link.name}</span>
             </NavLink>
           ))}
         </div>
