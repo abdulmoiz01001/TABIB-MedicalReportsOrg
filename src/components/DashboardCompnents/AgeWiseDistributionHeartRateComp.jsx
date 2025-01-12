@@ -7,7 +7,7 @@ const AgeWiseDistributionHeartRateComp = () => {
   
     return (
         <>
-            <div className='w-full h-[40%] p-4 bg-[#FAFAFA] flex  shadow-[0_4px_4px_3px_#FA6E6E40] rounded-[15px] ' >
+            <div className='w-full h-[152px]  bg-[#FAFAFA] flex  shadow-[0_4px_4px_3px_#FA6E6E40] rounded-[15px] ' >
             <LineChartComp ageData={ageData} heartRateData={heartRateData} />
             </div>
         </>

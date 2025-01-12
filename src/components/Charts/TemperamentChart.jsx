@@ -24,42 +24,49 @@ ChartJS.register(
 
 const TemperamentChart = ({label}) => {
   const data = {
-    labels: ["Sanguine", "Choleric", "Melancholic", "Phlegmatic"],
+    labels: ["Sanguine" , "Choleric" , "Melancholic" , "Phlegmatic"],
+    
     datasets: [
       {
         label: "1",
         data: [4.895, 5.702, 7.895, 4.263],
-        backgroundColor: "#D32F2F",
+        backgroundColor: "#CC0001",
       },
       {
-        label: "H",
-        data: [7.213, 5.263, 5.702, 6.263],
-        backgroundColor: "#FFCDD2",
+        label: "1",
+        data: [4.895, 5.702, 7.895, 4.263],
+        backgroundColor: "#FF6464",
       },
       {
-        label: "M",
-        data: [2.213, 5.263, 1.702, 6.263],
-        backgroundColor: "#FFCDD2",
+        label: "1",
+        data: [4.895, 5.702, 7.895, 4.263],
+        backgroundColor: "#F9B9B4",
       },
+      
     ],
   };
 
   const options = {
     responsive: true,
+    maintainAspectRatio: false, // Prevents cutting off the top values
+    style:{
+
+    },
     plugins: {
       legend: {
+        display: false,
         font:{
-            size: 10,
+            size: 20,
         },
         position: "top",
       },
-      title: {
-        display: true,
-        text: "Temperament with Dominant Qualities",
-        font:{
-            size: 10,
-        }
-      },
+      // title: {
+      //   display: true,
+      //   text: "Temperament with Dominant Qualities",
+      //   font:{
+      //       size: 10,
+      //   }
+      // },
       datalabels: {
         display: true,
         color: "black",
@@ -67,13 +74,15 @@ const TemperamentChart = ({label}) => {
         anchor: "end",
         formatter: (value) => `${value}%`, // Format values with percentage
         rotation: -90, // Rotate the labels by -45 degrees
+        offset: 10, // Adds spacing to prevent cut-off
       },
     },
     scales: {
       x: {
-        
+       
       },
       y: {
+        display: false,
         ticks: {
           display: false, // Hide Y-axis ticks
         },
@@ -83,9 +92,15 @@ const TemperamentChart = ({label}) => {
         },
       },
     },
+    layout: {
+      padding: {
+        top: 60, // Adds padding to prevent top overflow
+      },
+    },
   };
 
-  return <Bar data={data} options={options}  plugins={[ChartDataLabels]} />;
+  return <Bar data={data}  options={options} plugins={[ChartDataLabels]} />;
+ 
 };
 
 export default TemperamentChart;

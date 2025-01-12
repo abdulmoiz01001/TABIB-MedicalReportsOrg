@@ -66,7 +66,7 @@ const RadarChart = () => {
         Temperament Graph
       </h1>
       {chartData ? (
-        <Radar data={chartData} options={chartOptions} width={300} height={300} />
+        <Radar data={chartData} options={chartOptions} width={200} height={200} />
       ) : (
         <p>Loading chart...</p>
       )}

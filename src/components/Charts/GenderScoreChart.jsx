@@ -11,7 +11,7 @@ import { Bar } from "react-chartjs-2";
 // Register required Chart.js components
 ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip);
 
-const GenderScoreChart = ({ maleScore, femaleScore }) => {
+const GenderScoreChart = ({ maleScore, femaleScore, maleImage, femaleImage }) => {
   // Chart Data
   const data = {
     labels: ["Males", "Females"],
@@ -25,6 +25,30 @@ const GenderScoreChart = ({ maleScore, femaleScore }) => {
         borderRadius: 10, // Rounded bar edges
       },
     ],
+  };
+
+  // Custom plugin to replace bars with images
+  const imagePlugin = {
+    id: 'imagePlugin',
+    afterDatasetsDraw(chart) {
+      const ctx = chart.ctx;
+      const dataset = chart.data.datasets[0]; // Assuming there's only one dataset
+      const maleBarImage = maleImage; // Image for Male bar
+      const femaleBarImage = femaleImage; // Image for Female bar
+      const images = [maleBarImage, femaleBarImage];
+
+      chart.getDatasetMeta(0).data.forEach((bar, index) => {
+        const image = new Image();
+        image.src = images[index];
+
+        // Wait until the image is loaded before drawing it on the chart
+        image.onload = () => {
+          const { x, y, width, height } = bar.getProps(["x", "y", "width", "height"]);
+
+          ctx.drawImage(image, x - width / 2, y - height, width, height);
+        };
+      });
+    },
   };
 
   // Chart Options
@@ -58,8 +82,8 @@ const GenderScoreChart = ({ maleScore, femaleScore }) => {
   };
 
   return (
-    <div style={{ width: "50%", margin: "0 auto" }}>
-      <Bar data={data} options={options} />
+    <div style={{ width: "100%", height: "100%", margin: "0 auto" }}>
+      <Bar data={data} options={options} plugins={[imagePlugin]} />
     </div>
   );
 };

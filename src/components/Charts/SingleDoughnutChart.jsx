@@ -214,7 +214,7 @@ const DynamicDoughnutChart = ({ value, showCenterValue = true, showSegmentLines 
   // };
 
   const options = {
-    responsive: false,
+    responsive: true,
     maintainAspectRatio: true, // Disable aspect ratio lock
     cutout: '60%',
     plugins: {
@@ -240,8 +240,9 @@ const DynamicDoughnutChart = ({ value, showCenterValue = true, showSegmentLines 
       data={data}
       options={options}
       plugins={[centerTextPlugin, segmentLinePlugin]}
-      width={100}
-      height={100}
+      // width={100}
+      className='p-4 mb-2'
+      // height={100}
       />
       </>
   );

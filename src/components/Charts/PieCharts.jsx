@@ -13,7 +13,7 @@ const PieCharts = ({ firstValue = 60.3, firstColor = '#FF0000', secondColor = '#
   return (
     <>
       <div className=" w-[70px] flex flex-col justify-center items-center ">
-        <h1 className='text-[8px] text-[#CC0001]' >{title}</h1> 
+        <h1 className='text-[12px] text-[#CC0001]' >{title}</h1> 
         <PieChart
           data={data}
           startAngle={0}

@@ -25,7 +25,6 @@ const ReportFiltersBarComp = () => {
         setSortDropdownOpen(false); // Close the dropdown
     };
 
-
     const options = [
         "High Blood Pressure",
         "Low Blood Pressure",
@@ -48,6 +47,30 @@ const ReportFiltersBarComp = () => {
         setShowCalendar(false);
     };
 
+    const toggleDropdown = (type) => {
+        if (type === 'calendar') {
+            setShowCalendar(!showCalendar);
+            setTimePickerVisible(false);  // Close time picker when calendar is open
+            setDropdownOpen(false); // Close option dropdown when calendar is opened
+            setSortDropdownOpen(false); // Close sort dropdown when calendar is opened
+        } else if (type === 'time') {
+            setTimePickerVisible(!isTimePickerVisible);
+            setShowCalendar(false);  // Close calendar when time picker is open
+            setDropdownOpen(false); // Close option dropdown when time picker is opened
+            setSortDropdownOpen(false); // Close sort dropdown when time picker is opened
+        } else if (type === 'filter') {
+            setDropdownOpen(!isDropdownOpen);
+            setShowCalendar(false); // Close calendar when filter dropdown is open
+            setTimePickerVisible(false); // Close time picker when filter dropdown is open
+            setSortDropdownOpen(false); // Close sort dropdown when filter dropdown is opened
+        } else if (type === 'sort') {
+            setSortDropdownOpen(!isSortDropdownOpen);
+            setShowCalendar(false); // Close calendar when sort dropdown is open
+            setTimePickerVisible(false); // Close time picker when sort dropdown is open
+            setDropdownOpen(false); // Close filter dropdown when sort dropdown is opened
+        }
+    };
+
     return (
         <>
             <div className='w-full flex justify-evenly px-2 items-center gap-4 ' >
@@ -63,19 +86,11 @@ const ReportFiltersBarComp = () => {
                         className="absolute top-1/2 right-4 transform -translate-y-1/2 w-[20px] h-[20px] pointer-events-none"
                     />
                 </div>
-                {/* <div  className='w-[152px] shadow-[0_4px_4px_3px_#00000040] rounded-[15px] shadow-[0_4px_4px_3px_#00000040 ] h-[62px] flex justify-evenly items-center bg-[#FAFAFA]' >
-                    <p className='text-[18px]  font-bold text-black' >Filter By</p>
-                    <img
-                        src="calendar.svg"
-                        alt="searchIcon"
-                        className="  w-[20px] h-[20px] pointer-events-none"
-                    />
 
-                </div> */}
-                <div className='relative'>
+                <div className='relative w-[12%]'>
                     <div
-                        className='w-[152px] shadow-[0_4px_4px_3px_#00000040] rounded-[15px] h-[62px] flex justify-evenly items-center bg-[#FAFAFA] cursor-pointer'
-                        onClick={() => setShowCalendar(!showCalendar)}
+                        className='w-full shadow-[0_4px_4px_3px_#00000040] rounded-[15px] h-[62px] flex justify-evenly items-center bg-[#FAFAFA] cursor-pointer'
+                        onClick={() => toggleDropdown('calendar')}
                     >
                         <p className='text-[18px] font-bold text-black'>Filter By</p>
                         <img
@@ -99,20 +114,12 @@ const ReportFiltersBarComp = () => {
                         </div>
                     )}
                 </div>
-                {/* <div className='w-[152px] rounded-[15px] shadow-[0_4px_4px_3px_#00000040] h-[62px] flex justify-evenly items-center bg-[#FAFAFA]' >
-                    <p className='text-[18px]  font-bold text-black' >Filter By</p>
-                    <img
-                        src="clock.svg"
-                        alt="searchIcon"
-                        className="  w-[20px] h-[20px] pointer-events-none"
-                    />
 
-                </div> */}
-                <div className=" flex flex-col items-center">
+                <div className=" flex w-[12%] flex-col items-center">
                     {/* Button to open time picker */}
                     <div
-                        className="w-[152px] rounded-[15px] shadow-[0_4px_4px_3px_#00000040] h-[62px] flex justify-evenly items-center bg-[#FAFAFA] cursor-pointer"
-                        onClick={() => setTimePickerVisible(!isTimePickerVisible)}
+                        className="w-full rounded-[15px] shadow-[0_4px_4px_3px_#00000040] h-[62px] flex justify-evenly items-center bg-[#FAFAFA] cursor-pointer"
+                        onClick={() => toggleDropdown('time')}
                     >
                         <p className="text-[18px] font-bold text-black">Filter By</p>
                         <img
@@ -148,20 +155,12 @@ const ReportFiltersBarComp = () => {
                         </div>
                     )}
                 </div>
-                {/* <div className='w-[227px] rounded-[15px] shadow-[0_4px_4px_3px_#00000040] h-[62px] flex justify-evenly items-center bg-[#FAFAFA]' >
-                    <p className='text-[18px]  font-bold text-black' >Filter by High BP</p>
-                    <img
-                        src="bp.svg"
-                        alt="searchIcon"
-                        className="  w-[20px] h-[20px] pointer-events-none"
-                    />
 
-                </div> */}
-                <div className=" flex flex-col items-center">
+                <div className=" flex w-[12%] flex-col items-center">
                     {/* Filter Button */}
                     <div
-                        className="w-[227px] rounded-[15px] shadow-[0_4px_4px_3px_#00000040] h-[62px] flex justify-between items-center bg-[#FAFAFA] cursor-pointer px-4"
-                        onClick={() => setDropdownOpen(!isDropdownOpen)}
+                        className="w-full rounded-[15px] shadow-[0_4px_4px_3px_#00000040] h-[62px] flex justify-between items-center bg-[#FAFAFA] cursor-pointer px-4"
+                        onClick={() => toggleDropdown('filter')}
                     >
                         <p className="text-[18px] font-bold text-black">{selectedOption}</p>
                         <img
@@ -187,20 +186,12 @@ const ReportFiltersBarComp = () => {
                         </div>
                     )}
                 </div>
-                {/* <div className='w-[152px] rounded-[15px] shadow-[0_4px_4px_3px_#00000040] h-[62px] flex justify-evenly items-center bg-[#FAFAFA]' >
-                    <p className='text-[18px]  font-bold text-black' >Filter By</p>
-                    <img
-                        src="short.svg"
-                        alt="searchIcon"
-                        className="  w-[20px] h-[20px] pointer-events-none"
-                    />
 
-                </div> */}
-                <div className=" flex flex-col items-center">
+                <div className=" flex w-[12%] flex-col items-center">
                     {/* Sort Button */}
                     <div
-                        className="w-[152px] rounded-[15px] shadow-[0_4px_4px_3px_#00000040] h-[62px] flex justify-between items-center bg-[#FAFAFA] cursor-pointer px-4"
-                        onClick={() => setSortDropdownOpen(!isSortDropdownOpen)}
+                        className="w-full rounded-[15px] shadow-[0_4px_4px_3px_#00000040] h-[62px] flex justify-between items-center bg-[#FAFAFA] cursor-pointer px-4"
+                        onClick={() => toggleDropdown('sort')}
                     >
                         <p className="text-[18px] font-bold text-black">{selectedSortOption}</p>
                         <img
@@ -226,11 +217,9 @@ const ReportFiltersBarComp = () => {
                         </div>
                     )}
                 </div>
-
-
             </div>
         </>
-    )
-}
+    );
+};
 
-export default ReportFiltersBarComp
+export default ReportFiltersBarComp;

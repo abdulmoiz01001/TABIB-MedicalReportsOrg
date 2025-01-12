@@ -34,7 +34,7 @@ const ReportListPaginationComp = () => {
         </div>
       </div>
       <div className='w-[98%] mx-auto h-[80%] flex justify-center items-start'>
-        <table className='w-full text-left'>
+        <table className='w-full  p-3 text-left'>
           <thead className='w-full bg-[#F9B9B4] h-[72px] rounded-[8px]'>
             <tr>
               <th className='text-[20px] font-medium capitalize pl-4'>Patients Name</th>
@@ -46,7 +46,7 @@ const ReportListPaginationComp = () => {
               <th className='text-[20px] font-medium capitalize'>Report</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody className='h-full border-2' >
             {currentReports.map((report, index) => (
               <tr key={index} className='bg-[#FFEFEF] cursor-pointer h-[62px] rounded-[8px] shadow-[0_4px_4px_3px_#CC000140]'>
                 <td className='pl-4'>{report.name}</td>

@@ -5,9 +5,9 @@ import PieCharts from '../Charts/PieCharts'
 const PrevalenceOfHypertensionComp = () => {
     return (
         <>
-            <div className='w-full h-[40%] p-4 bg-[#FAFAFA] flex  shadow-[0_4px_4px_3px_#FA6E6E40] rounded-[15px] ' >
+            <div className='w-full h-[193px]  bg-[#FAFAFA] flex  shadow-[0_4px_4px_3px_#FA6E6E40] rounded-[15px] ' >
                 <div className='w-[50%] flex-col flex justify-center gap-4 items-center h-full ' >
-                    <h1 className='text-[0.625rem] font-bold' >Prevalence of Hypertension</h1>
+                    <h1 className='text-[0.625rem] mt-4 font-bold' >Prevalence of Hypertension</h1>
                     <DynamicDoughnutChart
                         value={88.79}
                         showCenterValue={false}

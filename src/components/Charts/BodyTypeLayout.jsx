@@ -34,7 +34,7 @@ const BodyTypeLayout = () => {
                 </div>
                 <div id="div8" className='flex flex-col justify-center items-center' >
                     <h1 className='text-[12px] text-[#00000] font-bold'> Phlegmatic </h1>
-                    <p className='text-[#000000] text-[10px] font-bold'> The Endomorph </p>
+                    <p className='text-[#000000] text-center text-[10px] font-bold'> The Endomorph </p>
                 </div>
                 <div id="div9" className='flex flex-col justify-center items-center' >
                     <h1 className='text-[12px] text-[#00000] font-bold'> Thin Lean </h1>
@@ -46,7 +46,7 @@ const BodyTypeLayout = () => {
                 </div>
                 <div id="div11" className='flex flex-col justify-center items-center' >
                     <h1 className='text-[12px] text-[#00000] font-bold'> Melancholic </h1>
-                    <p className='text-[#000000] text-[10px] font-bold'> The Ectomorph </p>
+                    <p className='text-[#000000] text-[10px] text-center font-bold'> The Ectomorph </p>
                 </div>
 
 

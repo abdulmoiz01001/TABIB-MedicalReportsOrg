@@ -5,7 +5,7 @@ import DynamicDoughnutChart from '../Charts/SingleDoughnutChart'
 const TABIATScoreComp = () => {
     return (
         <>
-            <div className='w-full flex justify-center border-2 items-center h-[20%] pb-4 bg-[#FAFAFA] shadow-[0_4px_4px_3px_#FA6E6E40] rounded-[15px] ' >
+            <div className='w-full flex justify-center border-2 items-center h-[138px]  bg-[#FAFAFA] shadow-[0_4px_4px_3px_#FA6E6E40] rounded-[15px] ' >
                 <div className='w-[50%] h-full flex-col  justify-center py-4 items-center  border-blue-900' >
                     <h1 className='text-[13px] text-center font-bold text-black'>Avg. TABIAT Score </h1>
                     <div className='w-full flex my-2 justify-evenly items-center' >

@@ -48,23 +48,23 @@ const DoughnutChart = () => {
 
 
       }}
-      className=' flex flex-col justify-center  p-2 items-center'
+      className=' flex flex-col justify-center gap-8 py-6 items-center'
     >
       <h3
 
-        className="text-[0.625rem] mb-2 font-bold text-[#000000]"
+        className="text-[0.625rem]  font-bold text-[#000000]"
       >
         Hypertension By BMI Classification
       </h3>
-      <Doughnut data={data} options={options} className=' flex justify-center items-center' />
+      <Doughnut data={data}  options={options} className=' flex justify-center items-center' />
 
       {/* Custom Legend */}
-      <div className='w-full flex  justify-center border-2 items-center gap-2 flex-wrap' >
+      <div className='w-full flex  justify-center  items-center gap-2 flex-wrap' >
         <div style={{ display: 'flex', alignItems: "center", justifyContent: "start", gap: "10px", width: '40%',  textAlign: 'center' }}>
           <div
             style={{
-              width: '12px',
-              height: '12px',
+              width: '25px',
+              height: '25px',
               backgroundColor: '#FF4D4D',
               borderRadius: '50%',
               // margin: '0 auto 5px',
@@ -75,8 +75,8 @@ const DoughnutChart = () => {
         <div  style={{ display: 'flex', alignItems: "center", justifyContent: "start", gap: "10px", width: '40%',  textAlign: 'center' }}>
           <div
             style={{
-              width: '12px',
-              height: '12px',
+              width: '25px',
+              height: '25px',
               backgroundColor: '#FF6666',
               borderRadius: '50%',
               // margin: '0 auto 5px',
@@ -89,8 +89,8 @@ const DoughnutChart = () => {
         <div style={{ display: 'flex', alignItems: "center", justifyContent: "start", gap: "10px", width: '40%',  textAlign: 'center' }}>
           <div
             style={{
-              width: '12px',
-              height: '12px',
+              width: '25px',
+              height: '25px',
               backgroundColor: '#FFCCCC',
               borderRadius: '50%',
               // margin: '0 auto 5px',
@@ -101,8 +101,8 @@ const DoughnutChart = () => {
         <div style={{ display: 'flex', alignItems: "center", justifyContent: "start", gap: "10px", width: '40%',  textAlign: 'center' }}>
           <div
             style={{
-              width: '12px',
-              height: '12px',
+              width: '25px',
+              height: '25px',
               backgroundColor: '#FF9999',
               borderRadius: '50%',
               // margin: '0 auto 5px',

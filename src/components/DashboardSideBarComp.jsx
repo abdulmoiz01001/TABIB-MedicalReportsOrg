@@ -40,7 +40,7 @@ const DashboardSideBarComp = () => {
       {/* Sidebar */}
       <div
         className={`h-[450px] rounded-[15px] absolute top-[20%] ${
-          hide ? "-translate-x-[100%]" : "translate-x-0"
+          hide ? "-translate-x-[85%]" : "translate-x-0"
         } transition-transform duration-300 my-auto w-[81px] bg-[#313131] flex flex-col justify-between gap-8 items-center py-4 shadow-lg`}
       >
         <div className="flex w-full justify-center items-center flex-col gap-4">

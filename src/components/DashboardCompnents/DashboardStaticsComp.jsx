@@ -16,34 +16,34 @@ import AgeWiseDistributionHeartRateComp from './AgeWiseDistributionHeartRateComp
 const DashboardStaticsComp = () => {
   return (
     <>
-    <div className='w-full flex flex-row justify-start p-2 items-start min-h-full  border-blue-900' >
-      <div className='w-[75%] flex flex-col min-h-full gap-2 justify-center items-center  border-red-900 ' >
-         <div className='w-full flex px-1 justify-evenly items-center h-[20%]  border-red-900' >
+    <div className='w-full flex flex-row justify-start p-2 items-start h-full ' >
+      <div className='w-[75%] flex flex-col h-full gap-2 justify-center items-center   ' >
+         <div className='w-full  flex px-1 justify-evenly items-center h-[20%] ' >
            <ReportBoxComp title={"Hypertensive"} count={"2091"} female={"1123"} male={"800"} /> 
            <ReportBoxComp title={"Total Test Reports"} count={"3942"}  /> 
            <PulseRateAndBloodPresureComp  />
            <ReportBoxComp title={"Test Report Year 2025"} count={"7042"}  /> 
            <ReportBoxComp title={"Test Report Month Jan"} count={"403"}  /> 
          </div>
-         <div className='w-full border-2 px-3 flex flex-row justify-center items-start gap-2   border-yellow-300 ' >
-           <div className='w-[28%] h-[800px]  flex flex-col gap-3    border-red-900' >
+         <div className='w-full px-3  flex flex-row justify-center items-start gap-2   ' >
+           <div className='w-[28%]   flex flex-col gap-3    ' >
             <HypertensionComp />
             <OtherTemperamentIndicesComp />
 
            </div>
-           <div className='w-[35.5%] h-[800px] px-1  flex gap-3 flex-col justify-start items-start   border-red-900' >
+           <div className='w-[35.5%]  px-1  flex gap-3 flex-col justify-start items-start  ' >
             <NoOfPatientsVsAgeComp />
             <TrendOfHypertensionComp />
             <TemperamentChartComp />
            </div>
-           <div className='w-[36.5%] h-[800px] flex flex-col gap-3 justify-start items-start   border-red-900' >
+           <div className='w-[36.5%]  flex flex-col gap-3 justify-start items-start  ' >
             <PrevalenceOfHypertensionComp />
             <AgeWiseDistributionHeartRateComp />
             <AverageTABIATScoreMalesvsFemalesComp />
            </div>
          </div>
       </div>
-      <div className='w-[24%] h-[800px] border-2  flex flex-col justify-start items-center gap-2 border-green-900' >
+      <div className='w-[24%]  flex flex-col justify-start items-center gap-2 ' >
           <TemperamentCommunityComp />
           <DominantBodyCommunityComp />
           <TABIATScoreComp />
