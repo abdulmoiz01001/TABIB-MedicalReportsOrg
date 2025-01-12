@@ -66,3 +66,19 @@ body{
 	grid-area: 3 / 1 / 5 / 2;
 	background-color: #f9d3c6;
 }
+
+.custom-time-input {
+	position: relative;
+	-webkit-appearance: none; /* For Safari and Chrome */
+	-moz-appearance: none;    /* For Firefox */
+	appearance: none;         /* Standard */
+  }
+  
+  /* Add a custom clock icon for WebKit browsers */
+  .custom-time-input::-webkit-calendar-picker-indicator {
+	background: url('clockby.svg') no-repeat center;
+	background-size: 18px 18px;
+	color: white; /* Fallback for some browsers */
+	border: none;
+	cursor: pointer;
+  }
