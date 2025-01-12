@@ -2,7 +2,7 @@ import React from "react";
 
 const ReportBoxComp = ({ title, count, male, female }) => {
   return (
-    <div className="w-[144px] bg-[#FAFAFA] flex flex-col justify-center items-center  rounded-[15px] h-[115px] shadow-[0_4px_4px_3px_#FA6E6E40]">
+    <div className="w-[14%] bg-[#FAFAFA] flex flex-col justify-center items-center  rounded-[15px] h-[115px] shadow-[0_4px_4px_3px_#FA6E6E40]">
       {/* Title */}
       <h1 className="text-[#000000] text-[0.938rem] text-center font-bold">{title}</h1>
 

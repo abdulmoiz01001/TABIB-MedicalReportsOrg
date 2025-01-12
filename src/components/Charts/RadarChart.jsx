@@ -29,7 +29,7 @@ const RadarChart = () => {
   }, []);
 
   const chartOptions = {
-    responsive: true,
+    responsive: false,
     maintainAspectRatio: false,
     plugins: {
       legend: {
@@ -66,7 +66,7 @@ const RadarChart = () => {
         Temperament Graph
       </h1>
       {chartData ? (
-        <Radar data={chartData} options={chartOptions} />
+        <Radar data={chartData} options={chartOptions} width={300} height={300} />
       ) : (
         <p>Loading chart...</p>
       )}
