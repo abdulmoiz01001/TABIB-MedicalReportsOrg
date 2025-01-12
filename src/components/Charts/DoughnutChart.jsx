@@ -44,31 +44,23 @@ const DoughnutChart = () => {
     <div
       style={{
         width: '100%',
-        height : '150px',
-        margin: '0 auto',
-        // background: 'linear-gradient(145deg, #f7d9d9, #ffffff)', // Gradient background
-        // borderRadius: '20px',
-        padding: '20px',
-        // boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)', // Subtle shadow
-        textAlign: 'center',
+        height: '150px',
+
+
       }}
-      className=' flex flex-col justify-center items-center'
+      className=' flex flex-col justify-center  p-2 items-center'
     >
       <h3
-        style={{
-          fontSize: '12px',
-          color: '#333',
-          fontWeight: 'bold',
-          // marginBottom: '20px',
-        }}
+
+        className="text-[0.625rem] mb-2 font-bold text-[#000000]"
       >
         Hypertension By BMI Classification
       </h3>
       <Doughnut data={data} options={options} className=' flex justify-center items-center' />
-      
-        {/* Custom Legend */}
-        <div className='w-full flex  justify-start items-center flex-wrap' >
-        <div style={{ display:'flex', alignItems:"center", justifyContent:"start",  gap:"10px" , width:'50%',  textAlign: 'center' }}>
+
+      {/* Custom Legend */}
+      <div className='w-full flex  justify-center border-2 items-center gap-2 flex-wrap' >
+        <div style={{ display: 'flex', alignItems: "center", justifyContent: "start", gap: "10px", width: '40%',  textAlign: 'center' }}>
           <div
             style={{
               width: '12px',
@@ -80,7 +72,7 @@ const DoughnutChart = () => {
           ></div>
           <span style={{ fontSize: '10px', color: '#333' }}>Overweight</span>
         </div>
-        <div className='border-2' style={{ display:'flex', alignItems:"center", justifyContent:"start",  gap:"10px" ,   width:'50%', textAlign: 'center' }}>
+        <div  style={{ display: 'flex', alignItems: "center", justifyContent: "start", gap: "10px", width: '40%',  textAlign: 'center' }}>
           <div
             style={{
               width: '12px',
@@ -92,9 +84,9 @@ const DoughnutChart = () => {
           ></div>
           <span style={{ fontSize: '10px', color: '#333' }}>Obese</span>
         </div>
-  
-     
-        <div style={{ display:'flex', alignItems:"center", justifyContent:"start",  gap:"10px" ,  width:'50%', textAlign: 'center' }}>
+
+
+        <div style={{ display: 'flex', alignItems: "center", justifyContent: "start", gap: "10px", width: '40%',  textAlign: 'center' }}>
           <div
             style={{
               width: '12px',
@@ -106,7 +98,7 @@ const DoughnutChart = () => {
           ></div>
           <span style={{ fontSize: '10px', color: '#333' }}>Underweight</span>
         </div>
-        <div style={{ display:'flex', alignItems:"center", justifyContent:"start", gap:"10px" , width:'50%', textAlign: 'center' }}>
+        <div style={{ display: 'flex', alignItems: "center", justifyContent: "start", gap: "10px", width: '40%',  textAlign: 'center' }}>
           <div
             style={{
               width: '12px',
@@ -118,8 +110,8 @@ const DoughnutChart = () => {
           ></div>
           <span style={{ fontSize: '10px', color: '#333' }}>Normal</span>
         </div>
-        </div>
-   
+      </div>
+
     </div>
   );
 };

@@ -4,7 +4,7 @@ import LineBarReact from '../Charts/LineBarReact'
 const TrendOfHypertensionComp = () => {
   return (
     <>
-    <div className='w-full h-[143px] bg-[#FAFAFA] shadow-[0_4px_4px_3px_#FA6E6E40] rounded-[15px] ' >
+    <div className='w-full h-[40%] bg-[#FAFAFA] shadow-[0_4px_4px_3px_#FA6E6E40] rounded-[15px] ' >
        <LineBarReact />
 
     </div>

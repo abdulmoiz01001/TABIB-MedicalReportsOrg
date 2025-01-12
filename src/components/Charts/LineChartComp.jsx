@@ -1,0 +1,89 @@
+// ChartComponent.jsx
+import React from "react";
+import { Line } from "react-chartjs-2";
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend,
+} from "chart.js";
+import ChartDataLabels from "chartjs-plugin-datalabels";
+
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend,
+  
+);
+
+const LineChartComp = ({ ageData, heartRateData }) => {
+  const data = {
+    labels: ageData, // Dynamic X-axis values
+    datasets: [
+      {
+        label: "Max Heart Rate",
+        data: heartRateData, // Dynamic Y-axis values
+        borderColor: "red",
+        backgroundColor: "rgba(255, 99, 132, 0.5)",
+        tension: 0, // No curve, sharp edges
+        borderWidth: 2,
+        pointRadius: 0, // No visible points on the line
+        pointHoverRadius: 0, // No hover effect on points
+      },
+    ],
+  };
+
+  const options = {
+    responsive: true,
+    plugins: {
+      legend: {
+        display: false, // Hide legend
+      },
+      title: {
+        display: true,
+        text: "Age-wise Distribution of Heart Rate",
+        font: {
+          size: 10,
+          weight: "bold",
+        },
+      },
+      datalabels: {
+        display: true, // Enable labels
+        color: "black", // Label color
+        align: "top", // Align labels on top of points
+        font: {
+          size: 12,
+          weight: "bold",
+        },
+      },
+    },
+    scales: {
+      x: {
+        title: {
+          display: true,
+          text: "Age",
+        },
+      },
+      y: {
+        title: {
+          display: true,
+          text: "Max Heart Rate",
+        },
+        beginAtZero: true,
+        suggestedMax: 120,
+      },
+    },
+  };
+
+  return <Line data={data} options={options} plugins={[ChartDataLabels]} />;
+};
+
+export default LineChartComp;

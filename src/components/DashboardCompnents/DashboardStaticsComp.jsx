@@ -9,6 +9,9 @@ import TemperamentChartComp from './TemperamentChartComp'
 import TemperamentCommunityComp from './TemperamentCommunityComp'
 import DominantBodyCommunityComp from './DominantBodyCommunityComp'
 import TABIATScoreComp from './TABIATScoreComp'
+import PrevalenceOfHypertensionComp from './PrevalenceOfHypertensionComp'
+import AverageTABIATScoreMalesvsFemalesComp from './AverageTABIATScoreMalesvsFemalesComp'
+import AgeWiseDistributionHeartRateComp from './AgeWiseDistributionHeartRateComp'
 
 const DashboardStaticsComp = () => {
   return (
@@ -33,8 +36,10 @@ const DashboardStaticsComp = () => {
             <TrendOfHypertensionComp />
             <TemperamentChartComp />
            </div>
-           <div className='w-[37.5%] flex flex-col justify-center items-start h-full  border-red-900' >
-
+           <div className='w-[37.5%] flex flex-col justify-start gap-1 items-start h-full  border-red-900' >
+            <PrevalenceOfHypertensionComp />
+            <AgeWiseDistributionHeartRateComp />
+            <AverageTABIATScoreMalesvsFemalesComp />
            </div>
          </div>
       </div>
