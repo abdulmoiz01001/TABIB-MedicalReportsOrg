@@ -3,7 +3,7 @@ import React from 'react'
 const BodyTypeLayout = () => {
     return (
         <>
-            <div id="cssportal-grid" className=' pt-3 px-2  border-red-900' >
+            <div id="cssportal-grid" className=' px-2  border-red-900' >
 
                 <div id="div1" className='flex flex-col justify-center items-center' >
                     <h1 className='text-[12px] text-[#00000] font-bold'> Choleric </h1>

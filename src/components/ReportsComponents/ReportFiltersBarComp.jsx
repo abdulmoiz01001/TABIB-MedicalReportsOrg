@@ -40,10 +40,18 @@ const ReportFiltersBarComp = () => {
 
     const handleTimeChange = (e, setTime) => {
         setTime(e.target.value);
+        console.log(e.target.value);
+        const time = e.target.value;
+const today = new Date();
+const isoDateString = `${today.toISOString().split('T')[0]}T${time}:00Z`;
+
+console.log(isoDateString); 
+
     };
 
     const handleDateChange = (date) => {
         setSelectedDate(date);
+        console.log(date);
         setShowCalendar(false);
     };
 
@@ -115,7 +123,7 @@ const ReportFiltersBarComp = () => {
                     )}
                 </div>
 
-                <div className=" flex w-[12%] flex-col items-center">
+                <div className=" flex w-[12%] border-2 border-red-900 flex-col items-center">
                     {/* Button to open time picker */}
                     <div
                         className="w-full rounded-[15px] shadow-[0_4px_4px_3px_#00000040] h-[62px] flex justify-evenly items-center bg-[#FAFAFA] cursor-pointer"

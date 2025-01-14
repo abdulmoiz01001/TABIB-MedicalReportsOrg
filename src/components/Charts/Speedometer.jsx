@@ -13,12 +13,12 @@ const SpeedoMeter = ({
   needleBaseWidth = 6       // Needle thickness
 }) => {
   return (
-    <div className='flex flex-col justify-center h-20  items-center  rounded-lg'>
+    <div className='flex flex-col w-[30%] justify-center h-20  pb-4 items-center  rounded-lg'>
       <ReactSpeedometer
         ringWidth={15}
         maxSegmentLabels={0}
         segments={3}
-        width={110}
+        width={120}
         height={55}
         needleColor={needleColor}
         segmentColors={segmentColors}

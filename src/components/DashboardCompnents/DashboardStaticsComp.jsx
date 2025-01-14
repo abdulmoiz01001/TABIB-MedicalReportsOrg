@@ -20,10 +20,10 @@ const DashboardStaticsComp = () => {
       <div className='w-[75%] flex flex-col h-full gap-2 justify-center items-center   ' >
          <div className='w-full  flex px-1 justify-evenly items-center h-[20%] ' >
            <ReportBoxComp title={"Hypertensive"} count={"2091"} female={"1123"} male={"800"} /> 
-           <ReportBoxComp title={"Total Test Reports"} count={"3942"}  /> 
+           <ReportBoxComp title={"Total Test"} title2={"Reports"} count={"3942"}  /> 
            <PulseRateAndBloodPresureComp  />
-           <ReportBoxComp title={"Test Report Year 2025"} count={"7042"}  /> 
-           <ReportBoxComp title={"Test Report Month Jan"} count={"403"}  /> 
+           <ReportBoxComp title={"Test Report "} title2={"Year 2025"} count={"7042"}  /> 
+           <ReportBoxComp title={"Test Report "} title2={"Month Jan"} count={"403"}  /> 
          </div>
          <div className='w-full px-3  flex flex-row justify-center items-start gap-2   ' >
            <div className='w-[28%]   flex flex-col gap-3    ' >
@@ -33,12 +33,12 @@ const DashboardStaticsComp = () => {
            </div>
            <div className='w-[35.5%]  px-1  flex gap-3 flex-col justify-start items-start  ' >
             <NoOfPatientsVsAgeComp />
-            <TrendOfHypertensionComp />
+            <AgeWiseDistributionHeartRateComp />
             <TemperamentChartComp />
            </div>
            <div className='w-[36.5%]  flex flex-col gap-3 justify-start items-start  ' >
             <PrevalenceOfHypertensionComp />
-            <AgeWiseDistributionHeartRateComp />
+             <TrendOfHypertensionComp />
             <AverageTABIATScoreMalesvsFemalesComp />
            </div>
          </div>

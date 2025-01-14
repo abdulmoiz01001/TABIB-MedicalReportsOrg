@@ -16,7 +16,7 @@ const RadarChart = () => {
           data: [75, 65, 90, 50, 60, 85, 70, 80], // Replace with your data
           backgroundColor: 'rgba(255, 99, 132, 0.2)', // Light red
           borderColor: 'rgba(255, 99, 132, 1)', // Dark red
-          // borderWidth: 2,
+          borderWidth: 2,
           pointBackgroundColor: 'rgba(255, 99, 132, 1)',
           pointBorderColor: '#fff',
           pointHoverBackgroundColor: '#fff',
@@ -70,7 +70,7 @@ const RadarChart = () => {
       ) : (
         <p>Loading chart...</p>
       )}
-    '</>
+    </>
 
   );
 };

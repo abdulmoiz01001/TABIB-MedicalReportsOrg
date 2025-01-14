@@ -34,6 +34,7 @@ const BarComp = () => {
     responsive: true,
     plugins: {
       legend: {
+        display: false,
         position: "top",
         labels: {
           color: "#000",
@@ -121,8 +122,8 @@ const BarComp = () => {
   }, []);
 
   return (
-    <div className="flex justify-center w-full h-full items-center p-4 rounded-lg shadow-md">
-      <Bar ref={chartRef} data={data} options={options} />
+    <div className="flex justify-center w-full h-full items-center  rounded-lg shadow-md">
+      <Bar className=" border-red-900 w-full " ref={chartRef} data={data} options={options} />
     </div>
   );
 };

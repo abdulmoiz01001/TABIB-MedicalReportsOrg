@@ -29,7 +29,7 @@ const TemperamentChart = ({label}) => {
     datasets: [
       {
         label: "1",
-        data: [4.895, 5.702, 7.895, 4.263],
+        data: [4.895, 2.702, 3.895, 6.263],
         backgroundColor: "#CC0001",
       },
       {
@@ -39,7 +39,7 @@ const TemperamentChart = ({label}) => {
       },
       {
         label: "1",
-        data: [4.895, 5.702, 7.895, 4.263],
+        data: [2.895, 3.702, 5.895, 7.263],
         backgroundColor: "#F9B9B4",
       },
       
@@ -48,7 +48,7 @@ const TemperamentChart = ({label}) => {
 
   const options = {
     responsive: true,
-    maintainAspectRatio: false, // Prevents cutting off the top values
+    // maintainAspectRatio: false, // Prevents cutting off the top values
     style:{
 
     },
@@ -99,7 +99,7 @@ const TemperamentChart = ({label}) => {
     },
   };
 
-  return <Bar data={data}  options={options} plugins={[ChartDataLabels]} />;
+  return <Bar data={data} className="" options={options} plugins={[ChartDataLabels]} />;
  
 };
 

@@ -29,6 +29,7 @@ const LineBarReact = () => {
             "Jan", "Feb", "Mar", "Apr", "May", "Jun",
             "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
         ],
+        color: "black",
         datasets: [
             {
                 label: "Monthly Trend Of Hypertension",
@@ -56,6 +57,7 @@ const LineBarReact = () => {
             title: {
                 display: true,
                 text: "Monthly Trend of Hypertension",
+                color: "black",
                 font: {
                     size: 10,
                 },
@@ -91,9 +93,11 @@ const LineBarReact = () => {
                 }
             },
             x: {
+                color: "black",
                 font: {
                     weight: 'bold',
                     size: 5,
+                    color: "black"
                 },
                 grid: {
                     drawOnChartArea: false, // Remove grid lines on the chart area
@@ -119,7 +123,7 @@ const LineBarReact = () => {
     };
 
     return (
-        <div className=" h-full w-full" >
+        <div className=" h-full flex justify-center w-full" >
             <Line data={data} options={options} />
         </div>
     );

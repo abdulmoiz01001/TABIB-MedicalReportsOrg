@@ -1,77 +1,10 @@
-// import React from 'react';
-// import { Doughnut } from 'react-chartjs-2';
-// import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
-
-// ChartJS.register(ArcElement, Tooltip, Legend);
-
-// const SingleDoughnutChart = () => {
-//   const value = 60;  // Filled value
-//   const remaining = 100 - value;  // Unfilled value
-
-//   const data = {
-//     labels: ['Covered', 'Remaining'],
-//     datasets: [
-//       {
-//         data: [value, remaining],
-//         backgroundColor: ['#CC0001', '#E0E0E0'], // Red for covered, Grey for uncovered
-//         hoverBackgroundColor: ['#FF3333', '#B0B0B0'],
-//         borderColor: '#FFFFFF',
-//         hoverOffset: 10,
-//       },
-//     ],
-//   };
-
-//   const centerTextPlugin = {
-//     id: 'centerText',
-//     afterDraw: (chart) => {
-//       const { ctx, width, height } = chart;
-//       ctx.save();
-//       ctx.font = 'bold 24px Arial';
-//       ctx.fillStyle = '#000000';  // Changed to black
-//       ctx.textAlign = 'center';
-//       ctx.textBaseline = 'middle';
-//       const percentage = `${value}`;
-//       ctx.fillText(percentage, width / 2, height / 2);
-//       ctx.restore();
-//     },
-//   };
-
-//   const options = {
-//     responsive: true,
-//     cutout: '60%',
-//     plugins: {
-//       legend: {
-//         display: false,
-//       },
-//       tooltip: {
-//         callbacks: {
-//           label: (context) => {
-//             const total = context.dataset.data.reduce((a, b) => a + b, 0);
-//             const value = context.raw;
-//             const percentage = ((value / total) * 100).toFixed(2);
-//             return `${value} (${percentage}%)`;
-//           },
-//         },
-//       },
-//     },
-//   };
-
-//   return (
-//     <>
-//       <Doughnut data={data} options={options} plugins={[centerTextPlugin]} />
-//     </>
-//   );
-// };
-
-// export default SingleDoughnutChart;
-
 import React from 'react';
 import { Doughnut } from 'react-chartjs-2';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-const DynamicDoughnutChart = ({ value, showCenterValue = true, showSegmentLines = true }) => {
+const DynamicDoughnutChart = ({ value, showCenterValue = true, showSegmentLines = true , lay , transalte = false }) => {
   const remaining = 100 - value;
 
   const data = {
@@ -112,9 +45,9 @@ const DynamicDoughnutChart = ({ value, showCenterValue = true, showSegmentLines 
   
       meta.data.forEach((arc, index) => {
         const angle = (arc.startAngle + arc.endAngle) / 2;
-        const outerRadius = arc.outerRadius;
-        const centerX = width / 2;
-        const centerY = height / 2;
+        const outerRadius = arc.outerRadius ;
+        const centerX = (width ) / 2;
+        const centerY = (height) / 2;
   
         // Starting point at the edge of the segment
         const startX = centerX + Math.cos(angle) * outerRadius;
@@ -139,7 +72,7 @@ const DynamicDoughnutChart = ({ value, showCenterValue = true, showSegmentLines 
         ctx.stroke();
   
         // Draw the value at the end of the line
-        ctx.font = '12px Arial';
+        ctx.font = '15px Arial';
         ctx.fillStyle = '#000';
         ctx.textAlign = angle > Math.PI ? 'right' : 'left';
         ctx.fillText(`${data.datasets[0].data[index]}%`, endX + (angle > Math.PI ? -5 : 5), endY - 2);
@@ -216,6 +149,10 @@ const DynamicDoughnutChart = ({ value, showCenterValue = true, showSegmentLines 
   const options = {
     responsive: true,
     maintainAspectRatio: true, // Disable aspect ratio lock
+    layout: {
+      padding: lay,
+    },
+  
     cutout: '60%',
     plugins: {
       legend: {
@@ -232,6 +169,11 @@ const DynamicDoughnutChart = ({ value, showCenterValue = true, showSegmentLines 
         },
       },
     },
+    datasets: {
+      doughnut: {
+        clip: false, // Prevents cutting off custom drawings
+      },
+    },
   };
 
   return (
@@ -241,7 +183,7 @@ const DynamicDoughnutChart = ({ value, showCenterValue = true, showSegmentLines 
       options={options}
       plugins={[centerTextPlugin, segmentLinePlugin]}
       // width={100}
-      className='p-4 mb-2'
+      className={` ${transalte ? "translate-y-1" : ""} `}
       // height={100}
       />
       </>

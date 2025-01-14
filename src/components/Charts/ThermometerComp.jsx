@@ -1,6 +1,5 @@
 // ThermometerComp.js
 import React from "react";
-import Thermometer from "react-thermometer-component";
 
 const ThermometerComp = ({
   theme = "light",

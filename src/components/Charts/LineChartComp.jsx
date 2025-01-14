@@ -50,6 +50,7 @@ const LineChartComp = ({ ageData, heartRateData }) => {
       title: {
         display: true,
         text: "Age-wise Distribution of Heart Rate",
+        color: "#000",
         font: {
           size: 10,
           weight: "bold",
@@ -70,15 +71,23 @@ const LineChartComp = ({ ageData, heartRateData }) => {
         title: {
           display: true,
           text: "Age",
+          color: "#000",
         },
       },
       y: {
         title: {
           display: true,
           text: "Max Heart Rate",
+          color: "#000",
+        },
+        font:{
+          size: 10,
+          weight: "bold",
         },
         beginAtZero: true,
         suggestedMax: 120,
+        suggestedMin: 0,
+        stepSize: 20,
       },
     },
   };
