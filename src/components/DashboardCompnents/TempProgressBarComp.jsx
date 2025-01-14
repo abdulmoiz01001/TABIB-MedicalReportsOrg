@@ -1,5 +1,4 @@
 import React from 'react'
-import ThermometerComp from '../DashboardCompnents/ThermometerComp'
 
 const TempProgressBarComp = () => {
   return (

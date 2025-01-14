@@ -21,7 +21,6 @@
     "react-minimal-pie-chart": "^9.1.0",
     "react-redux": "^9.2.0",
     "react-router-dom": "^7.1.1",
-    "react-thermometer-chart": "^1.0.3",
     "react-thermometer-component": "^1.0.1"
   },
   "devDependencies": {
