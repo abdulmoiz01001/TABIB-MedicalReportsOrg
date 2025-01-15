@@ -13,13 +13,13 @@ const SpeedoMeter = ({
   needleBaseWidth = 6       // Needle thickness
 }) => {
   return (
-    <div className='flex flex-col w-[30%] justify-center h-20  pb-4 items-center  rounded-lg'>
+    <div className='flex flex-col w-[30%] justify-center h-20  pb-8 items-center  rounded-lg'>
       <ReactSpeedometer
         ringWidth={15}
         maxSegmentLabels={0}
         segments={3}
-        width={120}
-        height={55}
+        width={130}
+        height={75}
         needleColor={needleColor}
         segmentColors={segmentColors}
         value={value}
@@ -33,8 +33,8 @@ const SpeedoMeter = ({
       />
 
       <div className='w-full flex flex-col  justify-center items-center'>
-        <p className='text-[12px] text-center font-medium text-[#CC0001]'>{value} {unit}</p>
-        <p className='text-[15px] text-center font-semibold text-[#000000]'>{label}</p>
+        <p className='text-[1rem] text-center font-medium text-[#CC0001]'>{value} {unit}</p>
+        <p className='text-[1.2rem] text-center font-semibold text-[#000000]'>{label}</p>
       </div>
     </div>
   );

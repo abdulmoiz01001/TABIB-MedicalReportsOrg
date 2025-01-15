@@ -52,7 +52,7 @@ const LineChartComp = ({ ageData, heartRateData }) => {
         text: "Age-wise Distribution of Heart Rate",
         color: "#000",
         font: {
-          size: 10,
+          size: 16,
           weight: "bold",
         },
       },
@@ -61,24 +61,47 @@ const LineChartComp = ({ ageData, heartRateData }) => {
         color: "black", // Label color
         align: "top", // Align labels on top of points
         font: {
-          size: 12,
+          size: 14,
           weight: "bold",
         },
       },
     },
     scales: {
       x: {
+        ticks:{
+          font: {
+            size: 13,      // Larger font size
+            // weight: "bold", // Bold text
+          },
+          color: "#000",   // Black color for better visibility
+        },
         title: {
           display: true,
           text: "Age",
           color: "#000",
+          font: {
+            size: 14,
+            weight: "bold",
+            color:"#000"
+          },
         },
       },
       y: {
+        ticks:{
+          font: {
+            size: 15,      // Larger font size
+            // weight: "bold", // Bold text
+          },
+          color: "#000",   // Black color for better visibility
+        },
         title: {
           display: true,
           text: "Max Heart Rate",
           color: "#000",
+          font: {
+            size: 14,
+            weight: "bold",
+          },
         },
         font:{
           size: 10,
@@ -87,7 +110,7 @@ const LineChartComp = ({ ageData, heartRateData }) => {
         beginAtZero: true,
         suggestedMax: 120,
         suggestedMin: 0,
-        stepSize: 20,
+        stepSize: 20, 
       },
     },
   };

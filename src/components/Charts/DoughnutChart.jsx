@@ -9,7 +9,7 @@ const DoughnutChart = () => {
     labels: ['Overweight', 'Obese', 'Normal', 'Underweight'],
     datasets: [
       {
-        data: [431, 956, 181, 70],
+        data: [31, 56, 11, 70],
         backgroundColor: ['#FF4D4D', '#FF6666', '#FF9999', '#FFCCCC'],
         hoverBackgroundColor: ['#FF3333', '#FF5050', '#FF8080', '#FFB3B3'],
         borderColor: '#FFFFFF',
@@ -49,11 +49,11 @@ const DoughnutChart = () => {
         ctx.lineTo(midX, midY);
         ctx.lineTo(endX, endY);
         ctx.strokeStyle = '#000';
-        ctx.lineWidth = 1.5;
+        ctx.lineWidth = 2;
         ctx.stroke();
 
         // Draw data value
-        ctx.font = '12px Arial';
+        ctx.font = '18px Arial';
         ctx.fillStyle = '#000';
         ctx.textAlign = angle > Math.PI ? 'right' : 'left';
         ctx.fillText(`${data.datasets[0].data[index]}`, endX + (angle > Math.PI ? -5 : 5), endY - 2);
@@ -65,10 +65,10 @@ const DoughnutChart = () => {
     responsive: true,
     layout: {
       padding: {
-        top: 30,
-        bottom: 30,
-        left: 30,
-        right: 30,
+        top: 50,
+        bottom: 50,
+        left: 50,
+        right: 50,
       },
     },
     maintainAspectRatio: true,
@@ -89,11 +89,14 @@ const DoughnutChart = () => {
   };
 
   return (
-    <div style={{ width: '100%', height: '90%' }} className='flex flex-col  justify-center items-center'>
-      <h3 className="text-[0.625rem] font-bold text-[#000000]">Hypertension By BMI Classification</h3>
+    <div style={{ width: '100%', height: '100%' }} className='flex flex-col  justify-center items-center'>
+      <h3 className="text-[1.2rem] font-bold text-[#000000]">Hypertension By BMI Classification</h3>
+      <div className='w-full h-[70%] flex justify-center items-center ' >
+
       <Doughnut data={data} options={options} plugins={[zigzagLinePlugin]} />
+      </div>
         {/* Custom Legend */}
-        <div className='w-full flex  justify-center  items-center gap-2 flex-wrap' >
+        <div className='w-full flex h-[20%]  justify-center  items-center gap-2 flex-wrap' >
         <div style={{ display: 'flex', alignItems: "center", justifyContent: "start", gap: "10px", width: '40%',  textAlign: 'center' }}>
           <div
             style={{
@@ -104,7 +107,7 @@ const DoughnutChart = () => {
               // margin: '0 auto 5px',
             }}
           ></div>
-          <span style={{ fontSize: '10px', color: '#333' }}>Overweight</span>
+          <span style={{ fontSize: '15px', color: '#333' }}>Overweight</span>
         </div>
         <div  style={{ display: 'flex', alignItems: "center", justifyContent: "start", gap: "10px", width: '40%',  textAlign: 'center' }}>
           <div
@@ -116,7 +119,7 @@ const DoughnutChart = () => {
               // margin: '0 auto 5px',
             }}
           ></div>
-          <span style={{ fontSize: '10px', color: '#333' }}>Obese</span>
+          <span style={{ fontSize: '15px', color: '#333' }}>Obese</span>
         </div>
 
 
@@ -130,7 +133,7 @@ const DoughnutChart = () => {
               // margin: '0 auto 5px',
             }}
           ></div>
-          <span style={{ fontSize: '10px', color: '#333' }}>Underweight</span>
+          <span style={{ fontSize: '15px', color: '#333' }}>Underweight</span>
         </div>
         <div style={{ display: 'flex', alignItems: "center", justifyContent: "start", gap: "10px", width: '40%',  textAlign: 'center' }}>
           <div
@@ -142,7 +145,7 @@ const DoughnutChart = () => {
               // margin: '0 auto 5px',
             }}
           ></div>
-          <span style={{ fontSize: '10px', color: '#333' }}>Normal</span>
+          <span style={{ fontSize: '15px', color: '#333' }}>Normal</span>
         </div>
       </div>
     </div>

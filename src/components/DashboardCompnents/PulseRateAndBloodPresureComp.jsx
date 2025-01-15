@@ -4,8 +4,8 @@ import SpeedoMeter from '../Charts/Speedometer'
 const PulseRateAndBloodPresureComp = () => {
     return (
         <>
-            <div className='w-[39%]  shadow-[0_4px_4px_3px_#FA6E6E40] bg-[#FAFAFA] h-[115px] border-2 rounded-[15px] flex flex-col justify-center items-center ' >
-                    <h1 className='text-[#000000] text-[15px] text-center font-bold'>Average Pulse Rate and Blood Pressure</h1>
+            <div className='w-[39%] h-[90%] shadow-[0_4px_4px_3px_#FA6E6E40] bg-[#FAFAFA]  border-2 rounded-[15px] flex flex-col justify-around items-center ' >
+                    <h1 className='text-[#000000] text-[1.2rem] text-center font-bold'>Average Pulse Rate and Blood Pressure</h1>
                  <div className='flex w-full justify-center items-center  ' >
 
                 {/* Pulse Rate Speedometer */}

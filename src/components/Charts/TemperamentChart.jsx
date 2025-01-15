@@ -19,13 +19,13 @@ ChartJS.register(
   Title,
   Tooltip,
   Legend,
-//   ChartDataLabels // Register the plugin
+  //   ChartDataLabels // Register the plugin
 );
 
-const TemperamentChart = ({label}) => {
+const TemperamentChart = ({ label }) => {
   const data = {
-    labels: ["Sanguine" , "Choleric" , "Melancholic" , "Phlegmatic"],
-    
+    labels: ["Sanguine", "Choleric", "Melancholic", "Phlegmatic"],
+
     datasets: [
       {
         label: "1",
@@ -42,21 +42,27 @@ const TemperamentChart = ({label}) => {
         data: [2.895, 3.702, 5.895, 7.263],
         backgroundColor: "#F9B9B4",
       },
-      
+
     ],
   };
 
   const options = {
     responsive: true,
+    labels: {
+      font: {
+        size: 20,
+        weight: "bold",
+      }
+    },
     // maintainAspectRatio: false, // Prevents cutting off the top values
-    style:{
+    style: {
 
     },
     plugins: {
       legend: {
         display: false,
-        font:{
-            size: 20,
+        font: {
+          size: 20,
         },
         position: "top",
       },
@@ -70,6 +76,7 @@ const TemperamentChart = ({label}) => {
       datalabels: {
         display: true,
         color: "black",
+        size: 16,
         align: "end",
         anchor: "end",
         formatter: (value) => `${value}%`, // Format values with percentage
@@ -79,7 +86,13 @@ const TemperamentChart = ({label}) => {
     },
     scales: {
       x: {
-       
+        ticks: {
+          font: {
+            size: 16,      // Larger font size
+            // weight: "bold", // Bold text
+          },
+          color: "#000",   // Black color for better visibility
+        },
       },
       y: {
         display: false,
@@ -87,7 +100,7 @@ const TemperamentChart = ({label}) => {
           display: false, // Hide Y-axis ticks
         },
         grid: {
-        //   drawBorder: false,
+          //   drawBorder: false,
           display: false, // Hide grid lines
         },
       },
@@ -95,12 +108,14 @@ const TemperamentChart = ({label}) => {
     layout: {
       padding: {
         top: 60, // Adds padding to prevent top overflow
+        left: 0,
+        right: 0,
       },
     },
   };
 
-  return <Bar data={data} className="" options={options} plugins={[ChartDataLabels]} />;
- 
+  return <Bar data={data} options={options} plugins={[ChartDataLabels]} />;
+
 };
 
 export default TemperamentChart;

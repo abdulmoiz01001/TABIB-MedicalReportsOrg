@@ -38,15 +38,24 @@ const BarComp = () => {
         position: "top",
         labels: {
           color: "#000",
+        
         },
       },
     },
     scales: {
       x: {
+        font:{
+          size:20,
+        },
         title: {
           display: true,
           text: "Age",
           color: "#000",
+          font: {
+            size: 13,
+            weight: "bold",
+          },
+          // size: 20,
         },
         ticks: {
           color: "#000",
@@ -57,6 +66,10 @@ const BarComp = () => {
           display: true,
           text: "Number of patients",
           color: "#000",
+          font: {
+            size: 13,
+            weight: "bold",
+          },
         },
         ticks: {
           color: "#000",
@@ -122,8 +135,8 @@ const BarComp = () => {
   }, []);
 
   return (
-    <div className="flex justify-center w-full h-full items-center  rounded-lg shadow-md">
-      <Bar className=" border-red-900 w-full " ref={chartRef} data={data} options={options} />
+    <div className="flex h-[90%] justify-center w-full  items-center  rounded-lg shadow-md">
+      <Bar className=" w-full " ref={chartRef} data={data} options={options} />
     </div>
   );
 };

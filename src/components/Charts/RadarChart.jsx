@@ -29,7 +29,7 @@ const RadarChart = () => {
   }, []);
 
   const chartOptions = {
-    responsive: false,
+    responsive: true,
     maintainAspectRatio: false,
     plugins: {
       legend: {
@@ -50,7 +50,7 @@ const RadarChart = () => {
         pointLabels: {
           color: 'black',
           font: {
-            size: 10,
+            size: 15,
           },
         },
         ticks: {
@@ -62,11 +62,14 @@ const RadarChart = () => {
 
   return (
     <>
-      <h1 className='text-[10px] text-center font-semibold text-black ' >
+      <h1 className='text-[1rem] text-center font-semibold text-black ' >
         Temperament Graph
       </h1>
       {chartData ? (
-        <Radar data={chartData} options={chartOptions} width={200} height={200} />
+        <div className='w-full h-[80%]' >
+
+        <Radar data={chartData} options={chartOptions}  />
+        </div>
       ) : (
         <p>Loading chart...</p>
       )}

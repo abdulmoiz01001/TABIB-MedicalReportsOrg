@@ -38,7 +38,6 @@ const LineBarReact = () => {
                 backgroundColor: "red",
                 pointBackgroundColor: "red",
                 pointBorderColor: "red",
-                pointStyle: "diamond",
                 pointStyle: "rect",
                 // pointRadius: 6,
                 pointHoverRadius: 8,
@@ -59,7 +58,7 @@ const LineBarReact = () => {
                 text: "Monthly Trend of Hypertension",
                 color: "black",
                 font: {
-                    size: 10,
+                    size: 16,
                 },
             },
         },
@@ -84,6 +83,13 @@ const LineBarReact = () => {
                     stepSize: 10,
                     color: 'black',
                     width: 2,
+                    ticks: {
+                        font: {
+                          size: 15,      // Larger font size
+                        //   weight: "bold", // Bold text
+                        },
+                        color: "#000",   // Black color for better visibility
+                      },
                 },
                 border: {
 
@@ -109,8 +115,13 @@ const LineBarReact = () => {
                 ticks: {
                     maxRotation: 90, // Rotate labels to a maximum of 90 degrees
                     minRotation: 45, // Minimum rotation angle for labels
-
+                    font: {
+                        size: 15,      // Larger font size
+                        // weight: "bold", // Bold text
+                      },
+                      color: "#000",   // Black color for better visibility
                 },
+               
                 border: {
 
                     width: 3,

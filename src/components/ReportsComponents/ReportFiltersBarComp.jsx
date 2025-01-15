@@ -42,10 +42,10 @@ const ReportFiltersBarComp = () => {
         setTime(e.target.value);
         console.log(e.target.value);
         const time = e.target.value;
-const today = new Date();
-const isoDateString = `${today.toISOString().split('T')[0]}T${time}:00Z`;
+        const today = new Date();
+        const isoDateString = `${today.toISOString().split('T')[0]}T${time}:00Z`;
 
-console.log(isoDateString); 
+        console.log(isoDateString);
 
     };
 
@@ -81,12 +81,12 @@ console.log(isoDateString);
 
     return (
         <>
-            <div className='w-full flex justify-evenly px-2 items-center gap-4 ' >
+            <div className='w-full mx-auto flex justify-evenly  items-center gap-4 ' >
                 <div className="relative  w-[40%]">
                     <input
                         type="text"
                         placeholder="Search Reports ( i.e  Name, Mobile, CNIC )"
-                        className="bg-[#FAFAFA] shadow-[0_4px_4px_3px_#00000040] w-full h-[62px] pl-4 pr-12 rounded-[15px] border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        className="bg-[#FAFAFA] shadow-[0_4px_4px_3px_#00000040] w-full h-[62px] pl-4 pr-12 rounded-[15px]  border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
                     />
                     <img
                         src="search.svg"
@@ -123,7 +123,7 @@ console.log(isoDateString);
                     )}
                 </div>
 
-                <div className=" flex w-[12%] border-2 border-red-900 flex-col items-center">
+                <div className=" flex w-[12%] flex-col items-center">
                     {/* Button to open time picker */}
                     <div
                         className="w-full rounded-[15px] shadow-[0_4px_4px_3px_#00000040] h-[62px] flex justify-evenly items-center bg-[#FAFAFA] cursor-pointer"

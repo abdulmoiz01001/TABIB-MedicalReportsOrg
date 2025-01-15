@@ -6,18 +6,18 @@ const ProgressBarComp = ({ title, percentage, min = 0, max = 100 , firstState ,s
 
     return (
         <>
-            <div className='flex w-full h-[36px] my-1 justify-start items-center ' >
-                <div className='w-[41.5px] bg-[#F9B9B4] h-[46px] flex justify-center items-center rounded-[15px] border border-[#CC0001]' >
+            <div className='flex w-full h-[20%]  my-1 justify-between items-center ' >
+                <div className='w-[17%] bg-[#F9B9B4] h-full flex justify-center items-center rounded-[15px] border border-[#CC0001]' >
 
                     <img src="temperature.svg" alt="logo" className='w-[61px] h-[30px] ' />
                 </div>
-                <div className="w-[90%]   px-2">
+                <div className="w-[82%]  px-2">
                     {/* Title Section */}
                     <div className="flex justify-between items-center ">
-                        <span className="text-[12px] font-semibold text-gray-700">{title}</span>
+                        <span className="text-[1rem] font-semibold text-gray-700">{title}</span>
                       {
                       title === 'SpO2' &&
-                       <span className="text-[9px] font-semibold text-red-500">{percentage}%</span>
+                       <span className="text-[1rem] font-semibold text-red-500">{percentage}%</span>
                       } 
                     </div>
                     {/* Progress Bar Container */}
@@ -31,7 +31,7 @@ const ProgressBarComp = ({ title, percentage, min = 0, max = 100 , firstState ,s
                     {/* Range Section (Optional Display) */}
                     {
                       title === 'SpO2' ?<> <div className="flex justify-start text-sm text-gray-600 mt-1">
-                        <div className="flex justify-start text-[7px] w-full">
+                        <div className="flex justify-start text-[0.9rem] w-full">
 
                             <span>{min}</span>~
                             <span>{max}</span>
@@ -40,9 +40,9 @@ const ProgressBarComp = ({ title, percentage, min = 0, max = 100 , firstState ,s
                     <div className="flex justify-between text-sm text-gray-600 mt-1">
                         {/* <div className="flex justify-start text-[7px] w-full"> */}
 
-                            <span className='text-[7px] text-black' >{firstState}</span>
-                            <span className='text-[7px] text-black' >{secondState}</span>
-                            <span className='text-[7px] text-black' >{thiredState}</span>
+                            <span className='text-[0.9rem] text-black' >{firstState}</span>
+                            <span className='text-[0.9rem] text-black' >{secondState}</span>
+                            <span className='text-[0.9rem] text-black' >{thiredState}</span>
                         {/* </div> */}
                     </div>
                     
