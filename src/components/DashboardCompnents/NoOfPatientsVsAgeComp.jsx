@@ -3,7 +3,7 @@ import BarChart from '../Charts/BarChart'
 
 const NoOfPatientsVsAgeComp = () => {
   return (
-    <div className='w-full h-[30%]   flex flex-col justify-center items-center bg-[#FAFAFA] shadow-[0_4px_4px_3px_#FA6E6E40] rounded-[15px] ' >
+    <div className='w-full h-[30%]   flex flex-col justify-center items-center bg-[#FAFAFA] border border-[#CC0001] rounded-[15px] ' >
       <div className='w-[95%] h-[10%] px-2 flex justify-between items-center' >
         <div className='w-[30%] flex justify-center gap-1 items-center h-full ' >
           <div className='bg-[#CC0001] w-[21px] h-[10px]' >

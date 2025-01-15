@@ -32,6 +32,12 @@ const BarComp = () => {
 
   const options = {
     responsive: true,
+    layout:{
+      padding:{
+        right:0,
+        left:0
+      }
+    },
     plugins: {
       legend: {
         display: false,

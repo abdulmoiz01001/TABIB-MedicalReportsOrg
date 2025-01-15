@@ -6,7 +6,7 @@ const AverageTABIATScoreMalesvsFemalesComp = () => {
 
     return (
         <>
-            <div className='w-full h-[40%] flex-col justify-center items-center p-4 bg-[#FAFAFA] flex  shadow-[0_4px_4px_3px_#FA6E6E40] rounded-[15px] ' >
+            <div className='w-full h-[40%] flex-col justify-center items-center p-4 bg-[#FAFAFA] flex  border border-[#CC0001] rounded-[15px] ' >
                 <h1 className='text-[1rem] font-bold text-black ' >Average TABIAT Score of Males vs Females</h1>
                 <div className='flex h-[90%] w-full justify-evenly items-center' >
                     <div className='h-full w-[20px] flex flex-col-reverse justify-center gap-[1px] items-center' >

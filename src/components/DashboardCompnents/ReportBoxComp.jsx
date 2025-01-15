@@ -2,10 +2,10 @@ import React from "react";
 
 const ReportBoxComp = ({ title, title2 , count, male, female }) => {
   return (
-    <div className="w-[14%]  bg-[#FAFAFA] px-2 flex flex-col justify-center items-center  rounded-[15px] h-[90%] shadow-[0_4px_4px_3px_#FA6E6E40]">
+    <div className="w-[14%]  bg-[#FAFAFA] px-2 flex flex-col justify-around items-center  rounded-[15px] h-[90%] border border-[#CC0001]">
       {/* Title */}
-      <h1 className="text-[#000000] text-[1.5rem] text-center font-bold">{title}</h1>
-      <h1 className="text-[#000000] text-[1.5rem] text-center font-bold">{title2}</h1>
+      <h1 className="text-[#000000] text-[1.5rem] leading-7 text-center font-bold">{title} <br /> {title2}</h1>
+      {/* <h1 className="text-[#000000] text-[1.5rem] text-center font-bold"></h1> */}
 
       {/* Conditionally Show Male/Female Counts */}
       {male !== undefined && female !== undefined && (
@@ -16,7 +16,7 @@ const ReportBoxComp = ({ title, title2 , count, male, female }) => {
       )}
 
       {/* Total Count */}
-      <p className="text-[#CC0001] text-[2rem] font-bold">{count}</p>
+      <p className="text-[#CC0001] text-[2.7rem] font-bold">{count}</p>
     </div>
   );
 };

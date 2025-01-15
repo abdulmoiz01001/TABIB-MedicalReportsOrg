@@ -16,7 +16,7 @@ const TempProgressBarComp = () => {
 
             </div>
             <div className="relative w-[80%] mb-2 h-[9px] bg-gray-200 rounded-none overflow-hidden">
-              {/* Progress Bar Fill */}
+
               <div
                 className="h-full bg-red-500 transition-all duration-300 ease-in-out"
                 style={{ width: 80 + "%" }}

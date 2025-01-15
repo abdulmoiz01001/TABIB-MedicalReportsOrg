@@ -235,3 +235,27 @@ body {
 	height: 100%;
   }
   
+
+  /* Style the entire scrollbar */
+::-webkit-scrollbar {
+	width: 6px;  /* Thin scrollbar */
+	height: 6px; /* Thin horizontal scrollbar */
+  }
+  
+  /* Style the scrollbar track (background area) */
+  ::-webkit-scrollbar-track {
+	background: #f0f0f0;  /* Light grey background */
+	border-radius: 10px;   /* Rounded corners */
+  }
+  
+  /* Style the scrollbar handle (the part you drag) */
+  ::-webkit-scrollbar-thumb {
+	background: #FF6F6F;  /* Light red color */
+	border-radius: 10px;   /* Rounded corners */
+  }
+  
+  /* Style the scrollbar handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+	background: #FF4C4C;  /* Darker red on hover */
+  }
+  

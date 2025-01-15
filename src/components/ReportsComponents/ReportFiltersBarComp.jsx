@@ -1,10 +1,28 @@
-import React, { useState } from 'react';
-import DatePicker from 'react-datepicker';
+import React, { useEffect, useState } from 'react';
+import { DateRangePicker } from 'react-date-range';
+import 'react-date-range/dist/styles.css';
+import 'react-date-range/dist/theme/default.css';
 import 'react-datepicker/dist/react-datepicker.css';
+import useSortData from '../../hooks/useSortData';
+import useBloodPressureFilter from '../../hooks/useBloodPressureFilter';
+import { useDispatch } from 'react-redux';
+import { setItems } from '../../store/features/sortedReportsSlice';
+import { setBpFilteredData } from '../../store/features/bloodPressureSlice';
+import { setFilteredData } from  '../../store/features/searchFilter';
+import useSearchFilter from '../../hooks/useSearchFilter';
 
-const ReportFiltersBarComp = () => {
-    const [selectedDate, setSelectedDate] = useState(new Date());
-    const [showCalendar, setShowCalendar] = useState(false);
+
+const ReportFiltersBarComp = ({ reports }) => {
+
+    useEffect(()=>{
+    console.log(reports)
+    },[reports])
+
+    const dispatch = useDispatch();
+    const [sortOption, setSortOption] = useState("");
+    const [searchTerm, setSearchTerm] = useState('');
+    const [bPOption, setBPOption] = useState("")
+    const [sortedData, setSortedData] = useState()
     const [startTime, setStartTime] = useState("12:00 AM");
     const [endTime, setEndTime] = useState("12:00 AM");
     const [isTimePickerVisible, setTimePickerVisible] = useState(false);
@@ -12,6 +30,55 @@ const ReportFiltersBarComp = () => {
     const [isDropdownOpen, setDropdownOpen] = useState(false);
     const [selectedSortOption, setSelectedSortOption] = useState("Name"); // Current selected option
     const [isSortDropdownOpen, setSortDropdownOpen] = useState(false); // Tracks if dropdown is open
+    const [showCalendar, setShowCalendar] = useState(false);
+    const [selectionRange, setSelectionRange] = useState({
+        startDate: new Date(),
+        endDate: new Date(),
+        key: 'selection',
+        token: false
+    });
+
+
+
+    useEffect(() => {
+        console.log(sortedData)
+    }, [sortedData])
+
+    // Use the sorting hook
+    const sortedReports = useSortData(reports, sortOption);
+    const sortedBP = useBloodPressureFilter(reports, bPOption);
+    console.log(sortedBP)
+
+    // Use the custom hook for searching the reports
+    const filteredReports = useSearchFilter(reports, searchTerm);
+
+    
+    //   setSortedData(sortedReports)
+    if( sortedReports.length > 0){
+        console.log(sortedReports)
+
+        dispatch(setItems(sortedReports));
+    }
+    if(sortedBP.length > 0){
+        console.log(sortedBP.length)
+    dispatch(setBpFilteredData(sortedBP));
+    }
+    if(filteredReports.length > 0){
+        console.log(filteredReports.length)
+    dispatch(setFilteredData(filteredReports));
+    }
+
+    const handleSelect = (ranges) => {
+        setSelectionRange({
+            startDate: ranges.selection.startDate,
+            endDate: ranges.selection.endDate,
+            key: 'selection',
+            token: true
+        });
+        console.log(ranges);
+    };
+
+
 
     const sortOptions = [
         "Name (Ascending)",
@@ -20,7 +87,20 @@ const ReportFiltersBarComp = () => {
         "Age (Descending)",
     ];
 
+    const handleBPOptionSelect = (option) => {
+        setBPOption(option)
+        setSelectedOption(option); // Update selected option
+        setDropdownOpen(false); // Close the dropdown
+    }
+
     const handleSortOptionSelect = (option) => {
+        setSortOption(option)
+
+
+
+
+
+
         setSelectedSortOption(option); // Update selected sort option
         setSortDropdownOpen(false); // Close the dropdown
     };
@@ -33,10 +113,7 @@ const ReportFiltersBarComp = () => {
         "Female",
     ];
 
-    const handleSelectOption = (option) => {
-        setSelectedOption(option);
-        setDropdownOpen(false); // Close dropdown after selection
-    };
+
 
     const handleTimeChange = (e, setTime) => {
         setTime(e.target.value);
@@ -49,11 +126,7 @@ const ReportFiltersBarComp = () => {
 
     };
 
-    const handleDateChange = (date) => {
-        setSelectedDate(date);
-        console.log(date);
-        setShowCalendar(false);
-    };
+
 
     const toggleDropdown = (type) => {
         if (type === 'calendar') {
@@ -61,7 +134,8 @@ const ReportFiltersBarComp = () => {
             setTimePickerVisible(false);  // Close time picker when calendar is open
             setDropdownOpen(false); // Close option dropdown when calendar is opened
             setSortDropdownOpen(false); // Close sort dropdown when calendar is opened
-        } else if (type === 'time') {
+        } else if (type === 'time' && selectionRange.token == true) {
+
             setTimePickerVisible(!isTimePickerVisible);
             setShowCalendar(false);  // Close calendar when time picker is open
             setDropdownOpen(false); // Close option dropdown when time picker is opened
@@ -82,11 +156,12 @@ const ReportFiltersBarComp = () => {
     return (
         <>
             <div className='w-full mx-auto flex justify-evenly  items-center gap-4 ' >
-                <div className="relative  w-[40%]">
+                <div className="relative select-none  w-[40%]">
                     <input
                         type="text"
                         placeholder="Search Reports ( i.e  Name, Mobile, CNIC )"
                         className="bg-[#FAFAFA] shadow-[0_4px_4px_3px_#00000040] w-full h-[62px] pl-4 pr-12 rounded-[15px]  border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        onChange={(e) => setSearchTerm(e.target.value)}
                     />
                     <img
                         src="search.svg"
@@ -95,7 +170,7 @@ const ReportFiltersBarComp = () => {
                     />
                 </div>
 
-                <div className='relative w-[12%]'>
+                {/* <div className='relative select-none w-[12%]'>
                     <div
                         className='w-full shadow-[0_4px_4px_3px_#00000040] rounded-[15px] h-[62px] flex justify-evenly items-center bg-[#FAFAFA] cursor-pointer'
                         onClick={() => toggleDropdown('calendar')}
@@ -121,13 +196,43 @@ const ReportFiltersBarComp = () => {
                             />
                         </div>
                     )}
+                </div> */}
+
+                <div className='relative select-none w-[12%]'>
+                    <div
+                        className='w-full shadow-[0_4px_4px_3px_#00000040] rounded-[15px] h-[62px] flex justify-evenly items-center bg-[#FAFAFA] cursor-pointer'
+                        onClick={() => toggleDropdown("calendar")}
+                    >
+                        <p className='text-[18px] font-bold text-black'>Filter By</p>
+                        <img
+                            src='calendar.svg'
+                            alt='calendarIcon'
+                            className='w-[20px] h-[20px] pointer-events-none'
+                        />
+                    </div>
+
+                    {showCalendar && (
+                        <div className='absolute mt-2 shadow-[0_4px_4px_3px_#00000040] rounded-[15px] bg-white p-2 z-10'>
+                            <DateRangePicker
+                                ranges={[selectionRange]}
+                                onChange={handleSelect}
+                                moveRangeOnFirstSelection={false}
+                                editableDateInputs={true}
+                                rangeColors={["#CC0001"]}
+
+                            />
+                        </div>
+                    )}
                 </div>
 
-                <div className=" flex w-[12%] flex-col items-center">
+
+                <div className={` ${selectionRange.token ? "" : "opacity-50  cursor-not-allowed"} flex w-[12%] flex-col items-center`}>
                     {/* Button to open time picker */}
                     <div
                         className="w-full rounded-[15px] shadow-[0_4px_4px_3px_#00000040] h-[62px] flex justify-evenly items-center bg-[#FAFAFA] cursor-pointer"
+
                         onClick={() => toggleDropdown('time')}
+
                     >
                         <p className="text-[18px] font-bold text-black">Filter By</p>
                         <img
@@ -139,7 +244,7 @@ const ReportFiltersBarComp = () => {
 
                     {/* Time Picker Modal */}
                     {isTimePickerVisible && (
-                        <div className="absolute top-28 bg-white p-4 shadow-lg rounded-lg mt-4">
+                        <div className="absolute  top-28 bg-white p-4 shadow-lg rounded-lg mt-4">
                             <div className="flex flex-row justify-center gap-4 items-center">
                                 <div className="flex flex-col justify-center items-start ">
                                     <label className="mr-2 text-[#313131] text-[15px]  font-normal">Start Time:</label>
@@ -164,13 +269,13 @@ const ReportFiltersBarComp = () => {
                     )}
                 </div>
 
-                <div className=" flex w-[12%] flex-col items-center">
+                <div className=" flex w-[12%]  flex-col items-center">
                     {/* Filter Button */}
                     <div
                         className="w-full rounded-[15px] shadow-[0_4px_4px_3px_#00000040] h-[62px] flex justify-between items-center bg-[#FAFAFA] cursor-pointer px-4"
                         onClick={() => toggleDropdown('filter')}
                     >
-                        <p className="text-[18px] font-bold text-black">{selectedOption}</p>
+                        <p className="text-[15px] font-bold text-black">{selectedOption}</p>
                         <img
                             src="bp.svg"
                             alt="BP Icon"
@@ -186,7 +291,7 @@ const ReportFiltersBarComp = () => {
                                     key={index}
                                     className={`p-3 text-black text-[16px] cursor-pointer hover:bg-red-100 ${option === selectedOption ? "bg-[#FFF3F3] font-bold" : ""
                                         }`}
-                                    onClick={() => handleSelectOption(option)}
+                                    onClick={() => handleBPOptionSelect(option)}
                                 >
                                     {option}
                                 </div>
@@ -195,13 +300,13 @@ const ReportFiltersBarComp = () => {
                     )}
                 </div>
 
-                <div className=" flex w-[12%] flex-col items-center">
+                <div className=" flex w-[12%]  flex-col items-center">
                     {/* Sort Button */}
                     <div
                         className="w-full rounded-[15px] shadow-[0_4px_4px_3px_#00000040] h-[62px] flex justify-between items-center bg-[#FAFAFA] cursor-pointer px-4"
                         onClick={() => toggleDropdown('sort')}
                     >
-                        <p className="text-[18px] font-bold text-black">{selectedSortOption}</p>
+                        <p className="text-[15px] font-bold text-black">{selectedSortOption}</p>
                         <img
                             src="short.svg"
                             alt="Sort Icon"
@@ -211,7 +316,7 @@ const ReportFiltersBarComp = () => {
 
                     {/* Dropdown Menu */}
                     {isSortDropdownOpen && (
-                        <div className="mt-2 absolute top-28 w-[152px] bg-[#FAFAFA] shadow-[0_4px_4px_3px_#00000040] rounded-[15px]">
+                        <div className="mt-2 absolute top-28 w-[227px] bg-[#FAFAFA] shadow-[0_4px_4px_3px_#00000040] rounded-[15px]">
                             {sortOptions.map((option, index) => (
                                 <div
                                     key={index}

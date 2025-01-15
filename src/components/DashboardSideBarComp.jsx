@@ -39,9 +39,9 @@ const DashboardSideBarComp = () => {
     >
       {/* Sidebar */}
       <div
-        className={`h-[450px] rounded-[15px] absolute top-[20%] ${
+        className={`h-[450px] rounded-[15px] absolute top-1/2 -translate-y-1/2 ${
           hide ? "-translate-x-[91%]" : "translate-x-0"
-        } transition-transform duration-300 my-auto w-[81px] bg-[#313131] flex flex-col justify-between gap-8 items-center py-4 shadow-lg`}
+        } transition-transform duration-300  w-[81px] bg-[#313131] flex flex-col justify-between gap-8 items-center py-4 shadow-lg`}
       >
         <div className="flex w-full justify-center items-center flex-col gap-4">
           {/* Dynamic Navigation Links */}

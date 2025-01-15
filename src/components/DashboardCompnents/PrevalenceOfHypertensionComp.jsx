@@ -5,7 +5,7 @@ import PieCharts from '../Charts/PieCharts'
 const PrevalenceOfHypertensionComp = () => {
     return (
         <>
-            <div className='w-full h-[30%]  bg-[#FAFAFA] flex  shadow-[0_4px_4px_3px_#FA6E6E40] rounded-[15px] ' >
+            <div className='w-full h-[30%]  bg-[#FAFAFA] flex  border border-[#CC0001] rounded-[15px] ' >
                 <div className='w-[50%] flex-col flex  border-red-900 justify-center  items-center h-full ' >
                     <h1 className='text-[1rem]  font-bold' >Prevalence of Hypertension</h1>
                     <div className='w-full flex justify-center items-center h-[85%]' >

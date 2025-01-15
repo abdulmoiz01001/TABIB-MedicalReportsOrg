@@ -43,6 +43,12 @@ const LineChartComp = ({ ageData, heartRateData }) => {
 
   const options = {
     responsive: true,
+    layout:{
+    padding:{
+      right:20,
+      left:10
+    }
+    },
     plugins: {
       legend: {
         display: false, // Hide legend
