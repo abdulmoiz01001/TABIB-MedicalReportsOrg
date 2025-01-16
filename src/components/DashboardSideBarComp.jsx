@@ -39,16 +39,16 @@ const DashboardSideBarComp = () => {
     >
       {/* Sidebar */}
       <div
-        className={`h-[450px] rounded-[15px] absolute top-1/2 -translate-y-1/2 ${
+        className={`desktop:h-[450px] large-desktop:h-[50%] large-desktop:w-[220px] rounded-[15px] absolute top-1/2 -translate-y-1/2 ${
           hide ? "-translate-x-[91%]" : "translate-x-0"
-        } transition-transform duration-300  w-[81px] bg-[#313131] flex flex-col justify-between gap-8 items-center py-4 shadow-lg`}
+        } transition-transform duration-300  desktop:w-[81px] bg-[#313131] flex flex-col justify-between gap-8 items-center py-4 shadow-lg`}
       >
-        <div className="flex w-full justify-center items-center flex-col gap-4">
+        <div className="flex w-full justify-center items-center large-desktop:pt-4 flex-col gap-4">
           {/* Dynamic Navigation Links */}
           {navLinks.map((link) => (
             <NavLink key={link.name} to={link.path} className={linkClasses}>
-              <img src={link.icon} alt={link.name} className="w-[30px] h-[30px]" />
-              <span className="hidden text-[12px] md:block">{link.name}</span>
+              <img src={link.icon} alt={link.name} className="desktop:w-[30px] large-desktop:w-[70px] desktop:h-[30px] large-desktop:h-[70px]" />
+              <span className="hidden desktop:text-[12px] large-desktop:text-[2rem] md:block">{link.name}</span>
             </NavLink>
           ))}
         </div>
@@ -58,7 +58,7 @@ const DashboardSideBarComp = () => {
           onClick={() => navigate("/login")}
           className="flex items-center gap-2 p-4 text-white"
         >
-          <img src="logout.svg" alt="Logout" className="w-[30px] h-[30px]" />
+          <img src="logout.svg" alt="Logout" className="desktop:w-[30px] large-desktop:w-[70px] desktop:h-[30px] large-desktop:h-[70px]" />
         </button>
       </div>
     </div>

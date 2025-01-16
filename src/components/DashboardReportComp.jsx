@@ -31,7 +31,7 @@ const DashboardReportComp = () => {
   ];
   return (
     <>
-      <div className='w-full h-screen' >
+      <div className='w-full gap-4 flex flex-col  h-screen' >
         <ReportsHeadingComp />
         {
           items.success && <>

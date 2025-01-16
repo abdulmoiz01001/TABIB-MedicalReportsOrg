@@ -155,24 +155,24 @@ const ReportFiltersBarComp = ({ reports }) => {
 
     return (
         <>
-            <div className='w-full mx-auto flex justify-evenly  items-center gap-4 ' >
-                <div className="relative select-none  w-[40%]">
+            <div className='w-[99%] large-desktop:h-[5%] mx-auto flex justify-between large-desktop:justify-between  items-center gap-4 ' >
+                <div className="relative select-none large-desktop:h-full flex justify-between items-center  w-[40%]">
                     <input
                         type="text"
                         placeholder="Search Reports ( i.e  Name, Mobile, CNIC )"
-                        className="bg-[#FAFAFA] shadow-[0_4px_4px_3px_#00000040] w-full h-[62px] pl-4 pr-12 rounded-[15px]  border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        className="bg-[#FAFAFA] shadow-[0_4px_4px_3px_#00000040] w-full desktop:h-[62px] large-desktop:h-full large-desktop:placeholder:text-[2rem] large-desktop:text-[2rem] pl-4 pr-12 rounded-[15px]  border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
                         onChange={(e) => setSearchTerm(e.target.value)}
                     />
                     <img
                         src="search.svg"
                         alt="searchIcon"
-                        className="absolute top-1/2 right-4 transform -translate-y-1/2 w-[20px] h-[20px] pointer-events-none"
+                        className="absolute top-1/2 right-4 transform -translate-y-1/2 large-desktop:w-[50px] large-desktop:h-[40px] w-[20px] h-[20px] pointer-events-none"
                     />
                 </div>
 
-                {/* <div className='relative select-none w-[12%]'>
+                {/* <div className='relative large-desktop:h-full select-none w-[12%]'>
                     <div
-                        className='w-full shadow-[0_4px_4px_3px_#00000040] rounded-[15px] h-[62px] flex justify-evenly items-center bg-[#FAFAFA] cursor-pointer'
+                        className='w-full shadow-[0_4px_4px_3px_#00000040] rounded-[15px] desktop:h-[62px] large-desktop:h-full flex justify-evenly items-center bg-[#FAFAFA] cursor-pointer'
                         onClick={() => toggleDropdown('calendar')}
                     >
                         <p className='text-[18px] font-bold text-black'>Filter By</p>
@@ -198,16 +198,16 @@ const ReportFiltersBarComp = ({ reports }) => {
                     )}
                 </div> */}
 
-                <div className='relative select-none w-[12%]'>
+                <div className='relative large-desktop:h-full select-none  w-[12%]'>
                     <div
-                        className='w-full shadow-[0_4px_4px_3px_#00000040] rounded-[15px] h-[62px] flex justify-evenly items-center bg-[#FAFAFA] cursor-pointer'
+                        className='w-full shadow-[0_4px_4px_3px_#00000040] rounded-[15px] desktop:h-[62px] large-desktop:h-full flex justify-around items-center bg-[#FAFAFA] cursor-pointer'
                         onClick={() => toggleDropdown("calendar")}
                     >
-                        <p className='text-[18px] font-bold text-black'>Filter By</p>
+                        <p className='desktop:text-[18px] large-desktop:text-[2rem] font-bold text-black'>Filter By</p>
                         <img
                             src='calendar.svg'
                             alt='calendarIcon'
-                            className='w-[20px] h-[20px] pointer-events-none'
+                            className='desktop:w-[20px] large-desktop:w-[40px] desktop:h-[20px] large-desktop:h-[40px] pointer-events-none'
                         />
                     </div>
 
@@ -226,19 +226,19 @@ const ReportFiltersBarComp = ({ reports }) => {
                 </div>
 
 
-                <div className={` ${selectionRange.token ? "" : "opacity-50  cursor-not-allowed"} flex w-[12%] flex-col items-center`}>
+                <div className={` ${selectionRange.token ? "" : "opacity-50  cursor-not-allowed"} flex w-[12%] large-desktop:h-full flex-col items-center`}>
                     {/* Button to open time picker */}
                     <div
-                        className="w-full rounded-[15px] shadow-[0_4px_4px_3px_#00000040] h-[62px] flex justify-evenly items-center bg-[#FAFAFA] cursor-pointer"
+                        className="w-full rounded-[15px] shadow-[0_4px_4px_3px_#00000040] desktop:h-[62px] large-desktop:h-full flex justify-around items-center bg-[#FAFAFA] cursor-pointer"
 
                         onClick={() => toggleDropdown('time')}
 
                     >
-                        <p className="text-[18px] font-bold text-black">Filter By</p>
+                        <p className="desktop:text-[18px] large-desktop:text-[2rem] font-bold text-black">Filter By</p>
                         <img
                             src="clock.svg"
                             alt="Clock Icon"
-                            className="w-[20px] h-[20px] pointer-events-none"
+                            className="desktop:w-[20px] large-desktop:w-[40px] desktop:h-[20px] large-desktop:h-[40px] pointer-events-none"
                         />
                     </div>
 
@@ -269,17 +269,17 @@ const ReportFiltersBarComp = ({ reports }) => {
                     )}
                 </div>
 
-                <div className=" flex w-[12%]  flex-col items-center">
+                <div className=" flex w-[12%] large-desktop:h-full flex-col items-center">
                     {/* Filter Button */}
                     <div
-                        className="w-full rounded-[15px] shadow-[0_4px_4px_3px_#00000040] h-[62px] flex justify-between items-center bg-[#FAFAFA] cursor-pointer px-4"
+                        className="w-full rounded-[15px] shadow-[0_4px_4px_3px_#00000040] desktop:h-[62px] large-desktop:h-full flex justify-around items-center bg-[#FAFAFA] cursor-pointer px-4"
                         onClick={() => toggleDropdown('filter')}
                     >
-                        <p className="text-[15px] font-bold text-black">{selectedOption}</p>
+                        <p className="desktop:text-[18px] large-desktop:text-[2rem] font-bold text-black">{selectedOption}</p>
                         <img
                             src="bp.svg"
                             alt="BP Icon"
-                            className="w-[20px] h-[20px] pointer-events-none"
+                            className="desktop:w-[20px] large-desktop:w-[40px] desktop:h-[20px] large-desktop:h-[40px] pointer-events-none"
                         />
                     </div>
 
@@ -300,17 +300,17 @@ const ReportFiltersBarComp = ({ reports }) => {
                     )}
                 </div>
 
-                <div className=" flex w-[12%]  flex-col items-center">
+                <div className=" flex w-[12%] large-desktop:h-full flex-col items-center">
                     {/* Sort Button */}
                     <div
-                        className="w-full rounded-[15px] shadow-[0_4px_4px_3px_#00000040] h-[62px] flex justify-between items-center bg-[#FAFAFA] cursor-pointer px-4"
+                        className="w-full rounded-[15px] shadow-[0_4px_4px_3px_#00000040] desktop:h-[62px] large-desktop:h-full flex justify-around items-center bg-[#FAFAFA] cursor-pointer px-4"
                         onClick={() => toggleDropdown('sort')}
                     >
-                        <p className="text-[15px] font-bold text-black">{selectedSortOption}</p>
+                        <p className="desktop:text-[18px] large-desktop:text-[2rem] font-bold text-black">{selectedSortOption}</p>
                         <img
                             src="short.svg"
                             alt="Sort Icon"
-                            className="w-[20px] h-[20px] pointer-events-none"
+                            className="desktop:w-[20px] large-desktop:w-[40px] desktop:h-[20px] large-desktop:h-[40px] pointer-events-none"
                         />
                     </div>
 
