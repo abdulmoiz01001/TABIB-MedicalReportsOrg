@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { Chart as ChartJS, registerables } from 'chart.js';
 import { Radar } from 'react-chartjs-2';
+import { useMediaQuery } from 'react-responsive';
 
 ChartJS.register(...registerables);
 
 const RadarChart = () => {
+  const isLargeDesktop = useMediaQuery({ minWidth: 2560 });      // 2xl
   const [chartData, setChartData] = useState(null);
 
   useEffect(() => {
@@ -50,7 +52,7 @@ const RadarChart = () => {
         pointLabels: {
           color: 'black',
           font: {
-            size: 15,
+            size: isLargeDesktop ? 25 : 15,
           },
         },
         ticks: {
@@ -62,7 +64,7 @@ const RadarChart = () => {
 
   return (
     <>
-      <h1 className='text-[1rem] text-center font-semibold text-black ' >
+      <h1 className='desktop:text-[1rem] large-desktop:text-[2.5rem] text-center font-semibold text-black ' >
         Temperament Graph
       </h1>
       {chartData ? (

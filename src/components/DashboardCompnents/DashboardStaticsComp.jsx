@@ -18,14 +18,14 @@ const DashboardStaticsComp = () => {
     <>
     <div className='w-full flex flex-row justify-start items-start  h-[94%] ' >
       <div className='w-[80%]  flex flex-col h-full gap-2 justify-start items-center   ' >
-         <div className='w-full  border-red-900 flex px-1 justify-evenly items-center h-[20%] ' >
+         <div className='desktop:w-[98%] large-desktop:w-[99%]  border-red-900 flex  justify-between items-center h-[20%] ' >
            <ReportBoxComp title={"Hypertensive"} count={"2091"} female={"1123"} male={"800"} /> 
            <ReportBoxComp title={"Total Test"} title2={"Reports"} count={"3942"}  /> 
            <PulseRateAndBloodPresureComp  />
            <ReportBoxComp title={"Test Report "} title2={"Year 2025"} count={"7042"}  /> 
            <ReportBoxComp title={"Test Report "} title2={"Month Jan"} count={"403"}  /> 
          </div>
-         <div className='w-full px-3 h-[80%]  border-red-900 flex flex-row justify-center items-start gap-2   ' >
+         <div className='desktop:w-[98%] large-desktop:w-[99%]  h-[80%]  border-red-900 flex flex-row justify-center items-start gap-2   ' >
            <div className='w-[28%] h-full  flex flex-col gap-3    ' >
             <HypertensionComp />
             <OtherTemperamentIndicesComp />

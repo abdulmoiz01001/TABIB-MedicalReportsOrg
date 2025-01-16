@@ -1,13 +1,15 @@
 import React from 'react'
 import DynamicDoughnutChart from '../Charts/SingleDoughnutChart'
 import PieCharts from '../Charts/PieCharts'
+import { useMediaQuery } from 'react-responsive';
 
 const PrevalenceOfHypertensionComp = () => {
+    const isLargeDesktop = useMediaQuery({ minWidth: 2560 });      // 2xl
     return (
         <>
             <div className='w-full h-[30%]  bg-[#FAFAFA] flex  border border-[#CC0001] rounded-[15px] ' >
                 <div className='w-[50%] flex-col flex  border-red-900 justify-center  items-center h-full ' >
-                    <h1 className='text-[1rem]  font-bold' >Prevalence of Hypertension</h1>
+                    <h1 className='desktop:text-[1rem] large-desktop:text-[2.5rem] font-bold' >Prevalence of Hypertension</h1>
                     <div className='w-full flex justify-center items-center h-[85%]' >
 
 
@@ -18,8 +20,8 @@ const PrevalenceOfHypertensionComp = () => {
                         lay={{
                             top: 30,
                             bottom: 30,
-                            left: 40,
-                            right: 45,
+                            left: isLargeDesktop ? 70 : 40 ,
+                            right: isLargeDesktop ? 70 : 40,
                         }}
                         
                         />

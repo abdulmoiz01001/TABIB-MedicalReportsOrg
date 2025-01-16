@@ -1,10 +1,15 @@
 import React from 'react';
 import { Doughnut } from 'react-chartjs-2';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
+import { useMediaQuery } from 'react-responsive';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 const DoughnutChart = () => {
+  const isLargeDesktop = useMediaQuery({ minWidth: 2560 });
+  const isDesktop = useMediaQuery({ minWidth: 1480, maxWidth: 2559 });
+  const isLaptop = useMediaQuery({ minWidth: 824, maxWidth: 1479 });
+
   const data = {
     labels: ['Overweight', 'Obese', 'Normal', 'Underweight'],
     datasets: [
@@ -30,20 +35,16 @@ const DoughnutChart = () => {
         const centerX = width / 2;
         const centerY = height / 2;
 
-        // Start point at arc edge
         const startX = centerX + Math.cos(angle) * outerRadius;
         const startY = centerY + Math.sin(angle) * outerRadius;
 
-        // Midpoint for the zigzag
         const midX = centerX + Math.cos(angle) * (outerRadius + 10);
         const midY = centerY + Math.sin(angle) * (outerRadius + 10);
 
-        // Zigzag horizontal line
         const zigzagLength = 10;
         const endX = midX + (angle > Math.PI ? -zigzagLength : zigzagLength);
         const endY = midY;
 
-        // Draw zigzag line
         ctx.beginPath();
         ctx.moveTo(startX, startY);
         ctx.lineTo(midX, midY);
@@ -52,8 +53,7 @@ const DoughnutChart = () => {
         ctx.lineWidth = 2;
         ctx.stroke();
 
-        // Draw data value
-        ctx.font = '18px Arial';
+        ctx.font = !isLargeDesktop ?'18px Arial' : '40px Arial';
         ctx.fillStyle = '#000';
         ctx.textAlign = angle > Math.PI ? 'right' : 'left';
         ctx.fillText(`${data.datasets[0].data[index]}`, endX + (angle > Math.PI ? -5 : 5), endY - 2);
@@ -63,15 +63,15 @@ const DoughnutChart = () => {
 
   const options = {
     responsive: true,
-    layout: {
-      padding: {
-        top: 50,
-        bottom: 50,
-        left: 50,
-        right: 50,
-      },
+    layout:{
+      padding:{
+        right:20,
+        left:10,
+        top:20,
+        bottom:20
+      }
     },
-    maintainAspectRatio: true,
+    maintainAspectRatio: false,
     cutout: '60%',
     plugins: {
       legend: { display: false },
@@ -88,65 +88,61 @@ const DoughnutChart = () => {
     },
   };
 
+  // Dynamic size based on screen size
+  const chartSize = isLargeDesktop
+    ? { width: '60px', height: '60px' }  // Large Desktop
+    : isDesktop
+    ? { width: '25px', height: '25px' }  // Desktop
+    : { width: '20px', height: '20px' }; // Laptop/Tablet
+
   return (
-    <div style={{ width: '100%', height: '100%' }} className='flex flex-col  justify-center items-center'>
-      <h3 className="text-[1.2rem] font-bold text-[#000000]">Hypertension By BMI Classification</h3>
-      <div className='w-full h-[70%] flex justify-center items-center ' >
+    <div style={{ width: '100%', height: '100%' }} className='flex flex-col justify-center border border-red-900 items-center'>
+      <h3 className="desktop:text-[1.2rem] large-desktop:text-[2.5rem] font-bold text-[#000000]">
+        Hypertension By BMI Classification
+      </h3>
 
-      <Doughnut data={data} options={options} plugins={[zigzagLinePlugin]} />
+      <div
+        style={{
+          width: "100%",
+          height: "70%",
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}
+      >
+        <Doughnut data={data} options={options} plugins={[zigzagLinePlugin]} />
       </div>
-        {/* Custom Legend */}
-        <div className='w-full flex h-[20%]  justify-center  items-center gap-2 flex-wrap' >
-        <div style={{ display: 'flex', alignItems: "center", justifyContent: "start", gap: "10px", width: '40%',  textAlign: 'center' }}>
-          <div
-            style={{
-              width: '25px',
-              height: '25px',
-              backgroundColor: '#FF4D4D',
-              borderRadius: '50%',
-              // margin: '0 auto 5px',
-            }}
-          ></div>
-          <span style={{ fontSize: '15px', color: '#333' }}>Overweight</span>
-        </div>
-        <div  style={{ display: 'flex', alignItems: "center", justifyContent: "start", gap: "10px", width: '40%',  textAlign: 'center' }}>
-          <div
-            style={{
-              width: '25px',
-              height: '25px',
-              backgroundColor: '#FF6666',
-              borderRadius: '50%',
-              // margin: '0 auto 5px',
-            }}
-          ></div>
-          <span style={{ fontSize: '15px', color: '#333' }}>Obese</span>
-        </div>
 
-
-        <div style={{ display: 'flex', alignItems: "center", justifyContent: "start", gap: "10px", width: '40%',  textAlign: 'center' }}>
+      {/* Custom Legend */}
+      <div className='w-full flex h-[20%] justify-center items-center gap-2 flex-wrap'>
+        {[
+          { color: '#FF4D4D', label: 'Overweight' },
+          { color: '#FF6666', label: 'Obese' },
+          { color: '#FFCCCC', label: 'Underweight' },
+          { color: '#FF9999', label: 'Normal' },
+        ].map((item, idx) => (
           <div
+            key={idx}
             style={{
-              width: '25px',
-              height: '25px',
-              backgroundColor: '#FFCCCC',
-              borderRadius: '50%',
-              // margin: '0 auto 5px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'start',
+              gap: '10px',
+              width: '40%',
+              textAlign: 'center',
             }}
-          ></div>
-          <span style={{ fontSize: '15px', color: '#333' }}>Underweight</span>
-        </div>
-        <div style={{ display: 'flex', alignItems: "center", justifyContent: "start", gap: "10px", width: '40%',  textAlign: 'center' }}>
-          <div
-            style={{
-              width: '25px',
-              height: '25px',
-              backgroundColor: '#FF9999',
-              borderRadius: '50%',
-              // margin: '0 auto 5px',
-            }}
-          ></div>
-          <span style={{ fontSize: '15px', color: '#333' }}>Normal</span>
-        </div>
+          >
+            <div
+              style={{
+                width: chartSize.width,
+                height:chartSize.height,
+                backgroundColor: item.color,
+                borderRadius: '50%',
+              }}
+            ></div>
+            <span className='large-desktop:text-[2rem] large-desktop:font-bold desktop:text-[15px]' style={{  color: '#333' }}>{item.label}</span>
+          </div>
+        ))}
       </div>
     </div>
   );

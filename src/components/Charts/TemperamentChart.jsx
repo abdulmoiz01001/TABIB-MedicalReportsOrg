@@ -1,4 +1,3 @@
-// TemperamentChart.js
 import React from "react";
 import { Bar } from "react-chartjs-2";
 import {
@@ -11,6 +10,7 @@ import {
   Legend,
 } from "chart.js";
 import ChartDataLabels from "chartjs-plugin-datalabels"; // Import data labels plugin
+import { useMediaQuery } from "react-responsive";
 
 ChartJS.register(
   BarElement,
@@ -18,14 +18,60 @@ ChartJS.register(
   LinearScale,
   Title,
   Tooltip,
-  Legend,
-  //   ChartDataLabels // Register the plugin
+  Legend
 );
 
 const TemperamentChart = ({ label }) => {
+  // 📱 Tailwind Custom Breakpoints
+  const isLargeDesktop = useMediaQuery({ minWidth: 2560 });      // 2xl
+  const isDesktop = useMediaQuery({ minWidth: 1480, maxWidth: 2559 }); // xl
+  const isLaptop = useMediaQuery({ minWidth: 824, maxWidth: 1479 });   // lg
+  const isTablet = useMediaQuery({ minWidth: 640, maxWidth: 823 });    // md
+  const isMobile = useMediaQuery({ maxWidth: 639 });             // sm and below
+
+  // 🎨 Dynamic Styles Based on Screen Size
+  const labelFontSize = isLargeDesktop
+    ? 25
+    : isDesktop
+    ? 18
+    : isLaptop
+    ? 16
+    : isTablet
+    ? 14
+    : 12;
+
+  const dataLabelFontSize = isLargeDesktop
+    ? 30
+    : isDesktop
+    ? 16
+    : isLaptop
+    ? 14
+    : isTablet
+    ? 12
+    : 10;
+
+  const titleFontSize = isLargeDesktop
+    ? 30
+    : isDesktop
+    ? 18
+    : isLaptop
+    ? 20
+    : isTablet
+    ? 18
+    : 16;
+
+  const xAxisFontSize = isLargeDesktop
+    ? 18
+    : isDesktop
+    ? 16
+    : isLaptop
+    ? 14
+    : isTablet
+    ? 12
+    : 10;
+
   const data = {
     labels: ["Sanguine", "Choleric", "Melancholic", "Phlegmatic"],
-
     datasets: [
       {
         label: "1",
@@ -33,54 +79,39 @@ const TemperamentChart = ({ label }) => {
         backgroundColor: "#CC0001",
       },
       {
-        label: "1",
+        label: "2",
         data: [4.895, 5.702, 7.895, 4.263],
         backgroundColor: "#FF6464",
       },
       {
-        label: "1",
+        label: "3",
         data: [2.895, 3.702, 5.895, 7.263],
         backgroundColor: "#F9B9B4",
       },
-
     ],
   };
 
   const options = {
     responsive: true,
-    labels: {
-      font: {
-        size: 20,
-        weight: "bold",
-      }
-    },
-    // maintainAspectRatio: false, // Prevents cutting off the top values
-    style: {
-
-    },
     plugins: {
       legend: {
         display: false,
         font: {
-          size: 20,
+          size: 30,
         },
         position: "top",
       },
-      // title: {
-      //   display: true,
-      //   text: "Temperament with Dominant Qualities",
-      //   font:{
-      //       size: 10,
-      //   }
-      // },
       datalabels: {
         display: true,
         color: "black",
-        size: 16,
+        font:{
+         size: isLargeDesktop ? 28 : 18,
+        },
+        // size: isLargeDesktop ? 80 : 60,  // ✅ Dynamic Font Size
         align: "end",
         anchor: "end",
         formatter: (value) => `${value}%`, // Format values with percentage
-        rotation: -90, // Rotate the labels by -45 degrees
+        rotation: -90,
         offset: 10, // Adds spacing to prevent cut-off
       },
     },
@@ -88,8 +119,7 @@ const TemperamentChart = ({ label }) => {
       x: {
         ticks: {
           font: {
-            size: 16,      // Larger font size
-            // weight: "bold", // Bold text
+            size: isLargeDesktop ? 40 : 20,  // ✅ Dynamic Font Size for X-axis
           },
           color: "#000",   // Black color for better visibility
         },
@@ -100,22 +130,28 @@ const TemperamentChart = ({ label }) => {
           display: false, // Hide Y-axis ticks
         },
         grid: {
-          //   drawBorder: false,
           display: false, // Hide grid lines
         },
       },
     },
     layout: {
       padding: {
-        top: 60, // Adds padding to prevent top overflow
+        top: isLargeDesktop ? 80 : 60,  // Dynamic Padding
         left: 0,
         right: 0,
+      },
+    },
+    title: {
+      display: false,
+      text: "Temperament with Dominant Qualities",
+      font: {
+        size: isLargeDesktop ? 80 : 60,  // ✅ Dynamic Title Font Size
+        weight: "bold",
       },
     },
   };
 
   return <Bar data={data} options={options} plugins={[ChartDataLabels]} />;
-
 };
 
 export default TemperamentChart;

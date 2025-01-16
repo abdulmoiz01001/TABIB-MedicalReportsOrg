@@ -8,10 +8,16 @@ import {
   Legend,
   Tooltip,
 } from "chart.js";
+import { useMediaQuery } from "react-responsive";
 
 ChartJS.register(BarElement, CategoryScale, LinearScale, Legend, Tooltip);
 
 const BarComp = () => {
+  // Define media queries for responsive font size
+  const isLargeDesktop = useMediaQuery({ minWidth: 2560 });
+  const isDesktop = useMediaQuery({ minWidth: 1480, maxWidth: 2559 });
+  const isLaptop = useMediaQuery({ minWidth: 824, maxWidth: 1479 });
+
   const chartRef = useRef(null);
 
   const data = {
@@ -30,13 +36,22 @@ const BarComp = () => {
     ],
   };
 
+  // Dynamically set font size based on screen size
+  const titleFontSize = isLargeDesktop
+    ? 30  // Large Desktop
+    : isDesktop
+    ? 17  // Desktop
+    : isLaptop
+    ? 14  // Laptop
+    : 12; // Smaller screens
+
   const options = {
     responsive: true,
-    layout:{
-      padding:{
-        right:0,
-        left:0
-      }
+    layout: {
+      padding: {
+        right: 0,
+        left: 0,
+      },
     },
     plugins: {
       legend: {
@@ -44,24 +59,19 @@ const BarComp = () => {
         position: "top",
         labels: {
           color: "#000",
-        
         },
       },
     },
     scales: {
       x: {
-        font:{
-          size:20,
-        },
         title: {
           display: true,
           text: "Age",
           color: "#000",
           font: {
-            size: 13,
+            size: titleFontSize, // Dynamically change font size
             weight: "bold",
           },
-          // size: 20,
         },
         ticks: {
           color: "#000",
@@ -73,7 +83,7 @@ const BarComp = () => {
           text: "Number of patients",
           color: "#000",
           font: {
-            size: 13,
+            size: titleFontSize, // Dynamically change font size
             weight: "bold",
           },
         },
@@ -141,8 +151,8 @@ const BarComp = () => {
   }, []);
 
   return (
-    <div className="flex h-[90%] justify-center w-full  items-center  rounded-lg shadow-md">
-      <Bar className=" w-full " ref={chartRef} data={data} options={options} />
+    <div className="flex h-[90%] justify-center w-full items-center rounded-lg shadow-md">
+      <Bar className="w-full" ref={chartRef} data={data} options={options} />
     </div>
   );
 };

@@ -1,10 +1,15 @@
 import React from 'react';
 import { Doughnut } from 'react-chartjs-2';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
+import { useMediaQuery } from 'react-responsive';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 const DynamicDoughnutChart = ({ value, showCenterValue = true, showSegmentLines = true , lay , transalte = false }) => {
+  const isLargeDesktop = useMediaQuery({ minWidth: 2560 });      // 2xl
+  const isDesktop = useMediaQuery({ minWidth: 1480, maxWidth: 2559 }); // xl
+  const isLaptop = useMediaQuery({ minWidth: 824, maxWidth: 1479 });   // lg
+  const isTablet = useMediaQuery({ minWidth: 640, maxWidth: 823 });    // md
   const remaining = 100 - value;
 
   const data = {
@@ -72,7 +77,7 @@ const DynamicDoughnutChart = ({ value, showCenterValue = true, showSegmentLines 
         ctx.stroke();
   
         // Draw the value at the end of the line
-        ctx.font = '15px Arial';
+        ctx.font = isLargeDesktop ? '30px Arial' : '15px Arial';
         ctx.fillStyle = '#000';
         ctx.textAlign = angle > Math.PI ? 'right' : 'left';
         ctx.fillText(`${data.datasets[0].data[index]}%`, endX + (angle > Math.PI ? -5 : 5), endY - 2);

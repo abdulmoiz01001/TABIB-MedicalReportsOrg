@@ -12,8 +12,8 @@ const PieCharts = ({ firstValue = 60.3, firstColor = '#FF0000', secondColor = '#
 
   return (
     <>
-      <div className=" w-[90px] h-[50%] flex flex-col justify-center items-center ">
-        <h1 className='text-[0.9rem] text-[#CC0001]' >{title}</h1> 
+      <div className=" desktop:w-[90px] desktop:h-[50%] large-desktop:w-[170px] large-desktop:h-[50%] flex flex-col justify-center items-center ">
+        <h1 className='desktop:text-[0.9rem] large-desktop:text-[2rem] text-[#CC0001]' >{title}</h1> 
         <PieChart
           data={data}
           startAngle={0}

@@ -10,6 +10,7 @@ import {
     Tooltip,
     Legend,
 } from "chart.js";
+import { useMediaQuery } from "react-responsive";  // Import the hook
 
 // Register required Chart.js components
 ChartJS.register(
@@ -23,13 +24,49 @@ ChartJS.register(
 );
 
 const LineBarReact = () => {
-    // Data for the chart
+    // 📱 Tailwind Custom Breakpoints
+    const isLargeDesktop = useMediaQuery({ minWidth: 2560 });      // 2xl
+    const isDesktop = useMediaQuery({ minWidth: 1480, maxWidth: 2559 }); // xl
+    const isLaptop = useMediaQuery({ minWidth: 824, maxWidth: 1479 });   // lg
+    const isTablet = useMediaQuery({ minWidth: 640, maxWidth: 823 });    // md
+    const isMobile = useMediaQuery({ maxWidth: 639 });             // sm and below
+
+    // 🎨 Dynamic Styles Based on Screen Size
+    const titleFontSize = isLargeDesktop
+        ? 30
+        : isDesktop
+        ? 22
+        : isLaptop
+        ? 20
+        : isTablet
+        ? 18
+        : 16;
+
+    const xAxisFontSize = isLargeDesktop
+        ? 25
+        : isDesktop
+        ? 16
+        : isLaptop
+        ? 14
+        : isTablet
+        ? 12
+        : 10;
+
+    const yAxisFontSize = isLargeDesktop
+        ? 25
+        : isDesktop
+        ? 14
+        : isLaptop
+        ? 12
+        : isTablet
+        ? 10
+        : 8;
+
     const data = {
         labels: [
             "Jan", "Feb", "Mar", "Apr", "May", "Jun",
             "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
         ],
-        color: "black",
         datasets: [
             {
                 label: "Monthly Trend Of Hypertension",
@@ -39,14 +76,12 @@ const LineBarReact = () => {
                 pointBackgroundColor: "red",
                 pointBorderColor: "red",
                 pointStyle: "rect",
-                // pointRadius: 6,
                 pointHoverRadius: 8,
                 borderWidth: 2,
             },
         ],
     };
 
-    // Chart options
     const options = {
         responsive: true,
         plugins: {
@@ -58,22 +93,21 @@ const LineBarReact = () => {
                 text: "Monthly Trend of Hypertension",
                 color: "black",
                 font: {
-                    size: 16,
+                    size: titleFontSize, // Dynamic Font Size for Title
                 },
             },
         },
         scales: {
             y: {
-                 font:{
+                font: {
+                    size: yAxisFontSize,  // Dynamic Font Size for Y-axis
                     weight: 'bold',
-                    size: 8,
-                 },
+                },
                 grid: {
-                    // drawOnChartArea: false, // Remove grid lines on the chart area
-                    drawTicks: true,        // Keep tick marks
-                    drawBorder: true,       // Keep the axis line (divider)
-                    borderColor: 'black',   // Color of the axis line
-                    borderWidth: 3,         // Width of the axis line
+                    drawTicks: true,
+                    drawBorder: true,
+                    borderColor: 'black',
+                    borderWidth: 3,
                     color: 'rgba(0, 0, 0, 0.1)', // Color of the grid lines (faint)
                 },
                 beginAtZero: false,
@@ -82,59 +116,36 @@ const LineBarReact = () => {
                 ticks: {
                     stepSize: 10,
                     color: 'black',
-                    width: 2,
-                    ticks: {
-                        font: {
-                          size: 15,      // Larger font size
-                        //   weight: "bold", // Bold text
-                        },
-                        color: "#000",   // Black color for better visibility
-                      },
+                    font: {
+                        size: yAxisFontSize,  // Dynamic Font Size for Y-axis ticks
+                    },
                 },
-                border: {
-
-                    width: 3,
-                    color: 'black',
-
-                }
             },
             x: {
-                color: "black",
                 font: {
+                    size: xAxisFontSize,  // Dynamic Font Size for X-axis
                     weight: 'bold',
-                    size: 5,
-                    color: "black"
+                    color: "black",
                 },
                 grid: {
-                    drawOnChartArea: false, // Remove grid lines on the chart area
-                    drawTicks: true,        // Keep tick marks
-                    drawBorder: true,       // Keep the axis line (divider)
-                    // borderWidth: 30,         // Make the X-axis line bold
-                    // borderColor: 'black',   // Set the X-axis line color
+                    drawOnChartArea: false,
+                    drawTicks: true,
+                    drawBorder: true,
                 },
                 ticks: {
-                    maxRotation: 90, // Rotate labels to a maximum of 90 degrees
-                    minRotation: 45, // Minimum rotation angle for labels
+                    maxRotation: 90,
+                    minRotation: 45,
                     font: {
-                        size: 15,      // Larger font size
-                        // weight: "bold", // Bold text
-                      },
-                      color: "#000",   // Black color for better visibility
+                        size: xAxisFontSize,  // Dynamic Font Size for X-axis ticks
+                    },
+                    color: "#000",
                 },
-               
-                border: {
-
-                    width: 3,
-                    color: 'black',
-
-                }
-
-            }
+            },
         },
     };
 
     return (
-        <div className=" h-full flex justify-center w-full" >
+        <div className="h-full flex justify-center w-full">
             <Line data={data} options={options} />
         </div>
     );
