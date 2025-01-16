@@ -2,10 +2,10 @@ import React from 'react'
 import ProgressBarComp from './ProgressBarComp'
 import TempProgressBarComp from "../DashboardCompnents/TempProgressBarComp"
 
-const OtherTemperamentIndicesComp = () => {
+const   OtherTemperamentIndicesComp = () => {
   return (
     <>
-    <div className='w-full flex flex-col desktop:gap-1 large-desktop:gap-2 justify-start items-center h-[60%] rounded-[15px] bg-[#FAFAFA] px-2 border border-[#CC0001]' >
+    <div className='w-full flex flex-col desktop:gap-1 py-2  large-desktop:gap-2 justify-start items-center h-[60%] rounded-[15px] bg-[#FAFAFA] px-2 border border-[#CC0001]' >
       <h1 className='text-[#000000]  desktop:text-[1.2rem] large-desktop:text-[2.5rem] text-center  font-bold'>Other Temperament Indices</h1>
       <TempProgressBarComp />
      <ProgressBarComp imgSrc="temperature.svg" title="SpO2" percentage={97} min={95} max={100} />

@@ -43,7 +43,7 @@ const LineChartComp = ({ ageData, heartRateData }) => {
     : 16;
 
   const axisTitleSize = isLargeDesktop
-    ? 25
+    ? 30
     : isDesktop
     ? 20
     : isLaptop
@@ -110,15 +110,7 @@ const LineChartComp = ({ ageData, heartRateData }) => {
       legend: {
         display: false,
       },
-      title: {
-        display: true,
-        text: "Age-wise Distribution of Heart Rate",
-        color: "#000",
-        font: {
-          size: mainTitleSize,
-          weight: "bold",
-        },
-      },
+
       datalabels: {
         display: true,
         color: "black",

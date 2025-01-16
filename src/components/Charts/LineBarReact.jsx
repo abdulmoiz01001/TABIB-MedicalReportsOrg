@@ -33,34 +33,12 @@ const LineBarReact = () => {
 
     // 🎨 Dynamic Styles Based on Screen Size
     const titleFontSize = isLargeDesktop
-        ? 30
-        : isDesktop
-        ? 22
-        : isLaptop
-        ? 20
-        : isTablet
-        ? 18
-        : 16;
-
-    const xAxisFontSize = isLargeDesktop
-        ? 25
-        : isDesktop
-        ? 16
-        : isLaptop
-        ? 14
-        : isTablet
-        ? 12
-        : 10;
-
-    const yAxisFontSize = isLargeDesktop
-        ? 25
-        : isDesktop
-        ? 14
-        : isLaptop
-        ? 12
-        : isTablet
-        ? 10
-        : 8;
+    ? 25
+    : isDesktop
+    ? 20
+    : isLaptop
+    ? 18
+    : 14;
 
     const data = {
         labels: [
@@ -88,19 +66,19 @@ const LineBarReact = () => {
             legend: {
                 display: false,
             },
-            title: {
-                display: true,
-                text: "Monthly Trend of Hypertension",
-                color: "black",
-                font: {
-                    size: titleFontSize, // Dynamic Font Size for Title
-                },
-            },
+            // title: {
+            //     display: true,
+            //     text: "Monthly Trend of Hypertension",
+            //     color: "black",
+            //     font: {
+            //         size: 16, // Dynamic Font Size for Title
+            //     },
+            // },
         },
         scales: {
             y: {
                 font: {
-                    size: yAxisFontSize,  // Dynamic Font Size for Y-axis
+                    size: titleFontSize,  // Dynamic Font Size for Y-axis
                     weight: 'bold',
                 },
                 grid: {
@@ -117,13 +95,13 @@ const LineBarReact = () => {
                     stepSize: 10,
                     color: 'black',
                     font: {
-                        size: yAxisFontSize,  // Dynamic Font Size for Y-axis ticks
+                        size: titleFontSize,  // Dynamic Font Size for Y-axis ticks
                     },
                 },
             },
             x: {
                 font: {
-                    size: xAxisFontSize,  // Dynamic Font Size for X-axis
+                    size: titleFontSize,  // Dynamic Font Size for X-axis
                     weight: 'bold',
                     color: "black",
                 },
@@ -136,7 +114,7 @@ const LineBarReact = () => {
                     maxRotation: 90,
                     minRotation: 45,
                     font: {
-                        size: xAxisFontSize,  // Dynamic Font Size for X-axis ticks
+                        size: titleFontSize,  // Dynamic Font Size for X-axis ticks
                     },
                     color: "#000",
                 },
@@ -145,9 +123,9 @@ const LineBarReact = () => {
     };
 
     return (
-        <div className="h-full flex justify-center w-full">
+        // <div className="h-[85%] flex justify-center w-full">
             <Line data={data} options={options} />
-        </div>
+        // </div>
     );
 };
 

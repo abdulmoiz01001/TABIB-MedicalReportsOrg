@@ -5,7 +5,7 @@ import { useMediaQuery } from 'react-responsive';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-const DoughnutChart = () => {
+const DoughnutChart = ({details}) => {
   const isLargeDesktop = useMediaQuery({ minWidth: 2560 });
   const isDesktop = useMediaQuery({ minWidth: 1480, maxWidth: 2559 });
   const isLaptop = useMediaQuery({ minWidth: 824, maxWidth: 1479 });
@@ -14,7 +14,7 @@ const DoughnutChart = () => {
     labels: ['Overweight', 'Obese', 'Normal', 'Underweight'],
     datasets: [
       {
-        data: [31, 56, 11, 70],
+        data: [details.overweight, details.obese, details.normal, details.underweight],
         backgroundColor: ['#FF4D4D', '#FF6666', '#FF9999', '#FFCCCC'],
         hoverBackgroundColor: ['#FF3333', '#FF5050', '#FF8080', '#FFB3B3'],
         borderColor: '#FFFFFF',
@@ -67,8 +67,8 @@ const DoughnutChart = () => {
       padding:{
         right:20,
         left:10,
-        top:20,
-        bottom:20
+        top:40,
+        bottom:40
       }
     },
     maintainAspectRatio: false,
@@ -96,15 +96,16 @@ const DoughnutChart = () => {
     : { width: '20px', height: '20px' }; // Laptop/Tablet
 
   return (
-    <div style={{ width: '100%', height: '100%' }} className='flex flex-col justify-center border border-red-900 items-center'>
+    <div  className='flex flex-col h-[100%] py-2 justify-center  items-center'>
       <h3 className="desktop:text-[1.2rem] large-desktop:text-[2.5rem] font-bold text-[#000000]">
         Hypertension By BMI Classification
       </h3>
 
       <div
+      className='desktop:w-full desktop:h-full large-desktop:w-[80%] large-desktop:h-[80%]'
         style={{
-          width: "100%",
-          height: "70%",
+          // width: "100%",
+          // height: "100%",
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',

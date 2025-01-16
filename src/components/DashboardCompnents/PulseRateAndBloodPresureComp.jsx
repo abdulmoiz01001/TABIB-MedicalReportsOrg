@@ -1,16 +1,22 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import SpeedoMeter from '../Charts/Speedometer'
 
-const PulseRateAndBloodPresureComp = () => {
+const PulseRateAndBloodPresureComp = ({data}) => {
+    useEffect(() => {
+        if (data) {
+            console.log(data)
+        }
+    },[data])
     return (
         <>
-            <div className='w-[39%] h-[90%] border border-[#CC0001] bg-[#FAFAFA]  rounded-[15px] flex flex-col justify-around items-center ' >
+            <div className='w-[39%] h-[90%] border  border-[#CC0001] bg-[#FAFAFA]  rounded-[15px] flex flex-col justify-around items-center ' >
                     <h1 className='text-[#000000] large-desktop:text-[2.5rem]  desktop:text-[1.2rem] text-center font-bold'>Average Pulse Rate and Blood Pressure</h1>
                  <div className='flex w-full desktop:justify-center large-desktop:justify-evenly items-center  large-desktop:mb-3' >
 
                 {/* Pulse Rate Speedometer */}
                 <SpeedoMeter
-                    value={72}
+                    
+                    value={data?.pluse}
                     maxValue={180}
                     label="Pulse Rate"
                     unit="BPM"
@@ -20,7 +26,7 @@ const PulseRateAndBloodPresureComp = () => {
 
                 {/* Systolic Speedometer */}
                 <SpeedoMeter
-                    value={120}
+                    value={data?.systolic}
                     maxValue={180}
                     label="Systolic"
                     unit="mmHg"
@@ -30,7 +36,7 @@ const PulseRateAndBloodPresureComp = () => {
 
                 {/* Diastolic Speedometer */}
                 <SpeedoMeter
-                    value={80}
+                    value={data?.diastolic}
                     maxValue={120}
                     label="Diastolic"
                     unit="mmHg"

@@ -5,7 +5,7 @@ import DashboardStaticsComp from './DashboardCompnents/DashboardStaticsComp'
 const DashboardComp = () => {
   return (
     <>
-    <div className='w-full h-screen  flex flex-col justify-start items-cente' >
+    <div className='w-full min-h-screen  flex flex-col justify-start items-cente' >
       <HeadingComp />
       <DashboardStaticsComp />
 

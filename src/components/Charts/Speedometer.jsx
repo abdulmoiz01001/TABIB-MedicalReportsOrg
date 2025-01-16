@@ -41,14 +41,11 @@ const SpeedoMeter = ({
         20 : 15;
 
   return (
-    <div className='
-      flex flex-col justify-center items-center rounded-lg border-2
-      w-[80%] h-[150px] 
-      tablet:w-[60%] tablet:h-[180px]
-      laptop:w-[40%] laptop:h-[200px]
-      desktop:w-[30%] desktop:h-[120px]
-      large-desktop:w-[25%] large-desktop:h-[250px]
-    '>
+    <>
+     <div className='
+       flex flex-col justify-center items-center rounded-lg
+     
+     '>
       <ReactSpeedometer
         ringWidth={ringWidth}
         maxSegmentLabels={0}
@@ -71,7 +68,8 @@ const SpeedoMeter = ({
         <p className='desktop:text-[1rem] large-desktop:text-[2.5rem] text-center large-desktop: font-medium text-[#CC0001]'>{value} {unit}</p>
         <p className='desktop:text-[1.2rem] large-desktop:text-[3rem] text-center font-semibold text-[#000000]'>{label}</p>
       </div>
-    </div>
+     </div>
+        </>
   );
 };
 

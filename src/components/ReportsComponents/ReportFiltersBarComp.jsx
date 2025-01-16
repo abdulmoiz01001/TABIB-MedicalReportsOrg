@@ -8,15 +8,17 @@ import useBloodPressureFilter from '../../hooks/useBloodPressureFilter';
 import { useDispatch } from 'react-redux';
 import { setItems } from '../../store/features/sortedReportsSlice';
 import { setBpFilteredData } from '../../store/features/bloodPressureSlice';
-import { setFilteredData } from  '../../store/features/searchFilter';
+import { setFilteredData } from '../../store/features/searchFilter';
 import useSearchFilter from '../../hooks/useSearchFilter';
+
+import { format } from 'date-fns';
 
 
 const ReportFiltersBarComp = ({ reports }) => {
 
-    useEffect(()=>{
-    console.log(reports)
-    },[reports])
+    useEffect(() => {
+        console.log(reports)
+    }, [reports])
 
     const dispatch = useDispatch();
     const [sortOption, setSortOption] = useState("");
@@ -39,6 +41,13 @@ const ReportFiltersBarComp = ({ reports }) => {
     });
 
 
+    // Inside the component:
+    const formatDateRange = (start, end) => {
+        return `${format(start, 'MMM d, yyyy')} - ${format(end, 'MMM d, yyyy')}`;
+    };
+
+
+
 
     useEffect(() => {
         console.log(sortedData)
@@ -52,23 +61,26 @@ const ReportFiltersBarComp = ({ reports }) => {
     // Use the custom hook for searching the reports
     const filteredReports = useSearchFilter(reports, searchTerm);
 
-    
+
     //   setSortedData(sortedReports)
-    if( sortedReports.length > 0){
+    if (sortedReports.length > 0) {
         console.log(sortedReports)
 
         dispatch(setItems(sortedReports));
     }
-    if(sortedBP.length > 0){
+    if (sortedBP.length > 0) {
         console.log(sortedBP.length)
-    dispatch(setBpFilteredData(sortedBP));
+        dispatch(setBpFilteredData(sortedBP));
     }
-    if(filteredReports.length > 0){
+    if (filteredReports.length > 0) {
         console.log(filteredReports.length)
-    dispatch(setFilteredData(filteredReports));
+        dispatch(setFilteredData(filteredReports));
     }
 
     const handleSelect = (ranges) => {
+
+        
+        
         setSelectionRange({
             startDate: ranges.selection.startDate,
             endDate: ranges.selection.endDate,
@@ -153,9 +165,27 @@ const ReportFiltersBarComp = ({ reports }) => {
         }
     };
 
+    const formatTime = (time) => {
+        if (!time) return "";
+        const [hour, minute] = time.split(":");
+        const period = hour >= 12 ? "PM" : "AM";
+        const formattedHour = hour % 12 || 12;
+        return `${formattedHour}:${minute} ${period}`;
+    };
+
+    const offAll = () => {
+        setShowCalendar(false);
+        setTimePickerVisible(false);
+        setDropdownOpen(false);
+        setSortDropdownOpen(false);
+    }
+
+    
+    
+
     return (
         <>
-            <div className='w-[99%] large-desktop:h-[5%] mx-auto flex justify-between large-desktop:justify-between  items-center gap-4 ' >
+            <div  className='w-[99%] large-desktop:h-[5%] mx-auto flex justify-between large-desktop:justify-between  items-center gap-4 ' >
                 <div className="relative select-none large-desktop:h-full flex justify-between items-center  w-[40%]">
                     <input
                         type="text"
@@ -170,36 +200,25 @@ const ReportFiltersBarComp = ({ reports }) => {
                     />
                 </div>
 
-                {/* <div className='relative large-desktop:h-full select-none w-[12%]'>
-                    <div
-                        className='w-full shadow-[0_4px_4px_3px_#00000040] rounded-[15px] desktop:h-[62px] large-desktop:h-full flex justify-evenly items-center bg-[#FAFAFA] cursor-pointer'
-                        onClick={() => toggleDropdown('calendar')}
-                    >
-                        <p className='text-[18px] font-bold text-black'>Filter By</p>
-                        <img
-                            src='calendar.svg'
-                            alt='calendarIcon'
-                            className='w-[20px] h-[20px] pointer-events-none'
-                        />
-                    </div>
-
-                    {showCalendar && (
-                        <div className='absolute mt-2 shadow-[0_4px_4px_3px_#00000040] rounded-[15px] bg-white p-2 z-10'>
-                            <DatePicker
-                                selected={selectedDate}
-                                onChange={handleDateChange}
-                                inline
-                                dateFormat='MMMM d, yyyy'
-                                showMonthDropdown
-                                showYearDropdown
-                                dropdownMode='select'
-                            />
-                        </div>
-                    )}
-                </div> */}
 
                 <div className='relative large-desktop:h-full select-none  w-[12%]'>
                     <div
+                        className='w-full shadow-[0_4px_4px_3px_#00000040] px-8 rounded-[15px] desktop:h-[62px] large-desktop:h-full flex justify-around items-center bg-[#FAFAFA] cursor-pointer'
+                        onClick={() => toggleDropdown("calendar")}
+                    >
+                        <p className='desktop:text-[18px] large-desktop:text-[2rem] font-bold text-black'>
+                            {selectionRange.token
+                                ? formatDateRange(selectionRange.startDate, selectionRange.endDate)
+                                : 'Filter By'}
+                        </p>
+                        <img
+                            src='calendar.svg'
+                            alt='calendarIcon'
+                            className='desktop:w-[20px] large-desktop:w-[40px] desktop:h-[20px] large-desktop:h-[40px] pointer-events-none'
+                        />
+                    </div>
+
+                    {/* <div
                         className='w-full shadow-[0_4px_4px_3px_#00000040] rounded-[15px] desktop:h-[62px] large-desktop:h-full flex justify-around items-center bg-[#FAFAFA] cursor-pointer'
                         onClick={() => toggleDropdown("calendar")}
                     >
@@ -209,7 +228,7 @@ const ReportFiltersBarComp = ({ reports }) => {
                             alt='calendarIcon'
                             className='desktop:w-[20px] large-desktop:w-[40px] desktop:h-[20px] large-desktop:h-[40px] pointer-events-none'
                         />
-                    </div>
+                    </div> */}
 
                     {showCalendar && (
                         <div className='absolute mt-2 shadow-[0_4px_4px_3px_#00000040] rounded-[15px] bg-white p-2 z-10'>
@@ -225,9 +244,50 @@ const ReportFiltersBarComp = ({ reports }) => {
                     )}
                 </div>
 
-
-                <div className={` ${selectionRange.token ? "" : "opacity-50  cursor-not-allowed"} flex w-[12%] large-desktop:h-full flex-col items-center`}>
+                <div className={`${selectionRange.token ? "" : "opacity-50 cursor-not-allowed"} flex w-[12%] large-desktop:h-full flex-col items-center`}>
                     {/* Button to open time picker */}
+                    <div
+                        className="w-full rounded-[15px] px-8 shadow-[0_4px_4px_3px_#00000040] desktop:h-[62px] large-desktop:h-full flex justify-around items-center bg-[#FAFAFA] cursor-pointer"
+                        onClick={() => toggleDropdown('time')}
+                    >
+                        <p className="desktop:text-[18px] large-desktop:text-[2rem] font-bold text-black">
+                            {startTime && endTime ? `${formatTime(startTime)} - ${formatTime(endTime)}` : "Filter By"}
+                        </p>
+                        <img
+                            src="clock.svg"
+                            alt="Clock Icon"
+                            className="desktop:w-[20px] large-desktop:w-[40px] desktop:h-[20px] large-desktop:h-[40px] pointer-events-none"
+                        />
+                    </div>
+
+                    {/* Time Picker Modal */}
+                    {isTimePickerVisible && (
+                        <div className="absolute top-28 bg-white p-4 shadow-lg rounded-lg mt-4">
+                            <div className="flex flex-row justify-center gap-4 items-center">
+                                <div className="flex flex-col justify-center items-start">
+                                    <label className="mr-2 text-[#313131] text-[15px] font-normal">Start Time:</label>
+                                    <input
+                                        type="time"
+                                        value={startTime}
+                                        onChange={(e) => handleTimeChange(e, setStartTime)}
+                                        className="text-center text-[#FFFFFF] text-[15px] appearance-none custom-time-input font-normal bg-[#CC0001] rounded-md p-2"
+                                    />
+                                </div>
+                                <div className="flex flex-col justify-center items-start">
+                                    <label className="mr-2 text-[#313131] text-[15px] font-normal">End Time:</label>
+                                    <input
+                                        type="time"
+                                        value={endTime}
+                                        onChange={(e) => handleTimeChange(e, setEndTime)}
+                                        className="text-center text-[#FFFFFF] text-[15px] appearance-none custom-time-input font-normal bg-[#CC0001] rounded-md p-2"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                    )}
+                </div>
+
+                {/* <div className={` ${selectionRange.token ? "" : "opacity-50  cursor-not-allowed"} flex w-[12%] large-desktop:h-full flex-col items-center`}>
                     <div
                         className="w-full rounded-[15px] shadow-[0_4px_4px_3px_#00000040] desktop:h-[62px] large-desktop:h-full flex justify-around items-center bg-[#FAFAFA] cursor-pointer"
 
@@ -242,7 +302,6 @@ const ReportFiltersBarComp = ({ reports }) => {
                         />
                     </div>
 
-                    {/* Time Picker Modal */}
                     {isTimePickerVisible && (
                         <div className="absolute  top-28 bg-white p-4 shadow-lg rounded-lg mt-4">
                             <div className="flex flex-row justify-center gap-4 items-center">
@@ -267,10 +326,10 @@ const ReportFiltersBarComp = ({ reports }) => {
                             </div>
                         </div>
                     )}
-                </div>
+                </div> */}
 
                 <div className=" flex w-[12%] large-desktop:h-full flex-col items-center">
-                    {/* Filter Button */}
+
                     <div
                         className="w-full rounded-[15px] shadow-[0_4px_4px_3px_#00000040] desktop:h-[62px] large-desktop:h-full flex justify-around items-center bg-[#FAFAFA] cursor-pointer px-4"
                         onClick={() => toggleDropdown('filter')}

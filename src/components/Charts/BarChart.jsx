@@ -20,6 +20,23 @@ const BarComp = () => {
 
   const chartRef = useRef(null);
 
+  // const data = {
+  //   labels: ["20", "30", "40", "50", "60", "70", "80", "90"],
+   
+  //   datasets: [
+  //     {
+  //       label: "Hypertension",
+  //       data: [40, 50, 50, 10, 30, 20, 40, 20],
+  //       backgroundColor: "rgba(255, 0, 0, 0.8)",
+  //     },
+  //     {
+  //       label: "Normotensive",
+  //       data: [30, 60, 50, 5, 20, 40, 50, 80],
+  //       backgroundColor: "rgba(255, 182, 193, 0.8)",
+  //     },
+  //   ],
+  // };
+
   const data = {
     labels: ["20", "30", "40", "50", "60", "70", "80", "90"],
     datasets: [
@@ -27,23 +44,26 @@ const BarComp = () => {
         label: "Hypertension",
         data: [40, 50, 50, 10, 30, 20, 40, 20],
         backgroundColor: "rgba(255, 0, 0, 0.8)",
+        // barThickness: 30,      // ✅ Controlled Bar Width
+        // maxBarThickness: 50,   // ✅ Prevent Overly Thick Bars
       },
       {
         label: "Normotensive",
         data: [30, 60, 50, 5, 20, 40, 50, 80],
         backgroundColor: "rgba(255, 182, 193, 0.8)",
+        // barThickness: 30,
+        // maxBarThickness: 50,
       },
     ],
   };
-
   // Dynamically set font size based on screen size
   const titleFontSize = isLargeDesktop
-    ? 30  // Large Desktop
-    : isDesktop
-    ? 17  // Desktop
-    : isLaptop
-    ? 14  // Laptop
-    : 12; // Smaller screens
+  ? 30
+  : isDesktop
+  ? 20
+  : isLaptop
+  ? 18
+  : 14;
 
   const options = {
     responsive: true,
@@ -75,6 +95,9 @@ const BarComp = () => {
         },
         ticks: {
           color: "#000",
+          font:{
+            size: titleFontSize, // Dynamically change font size
+          }
         },
       },
       y: {
@@ -89,6 +112,9 @@ const BarComp = () => {
         },
         ticks: {
           color: "#000",
+          font:{
+            size: titleFontSize, // Dynamically change font size
+          }
         },
         beginAtZero: true,
         max: 90,
@@ -151,7 +177,7 @@ const BarComp = () => {
   }, []);
 
   return (
-    <div className="flex h-[90%] justify-center w-full items-center rounded-lg shadow-md">
+    <div className="flex h-[90%] justify-center px-2 w-full items-center rounded-lg shadow-md">
       <Bar className="w-full" ref={chartRef} data={data} options={options} />
     </div>
   );
