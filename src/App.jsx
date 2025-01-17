@@ -13,10 +13,7 @@ function App() {
   const dispatch = useDispatch();
   const { items, loading, error } = useSelector((state) => state.patientsReports); // when ever i want data it will be in items
 
-  useEffect(() => {
-    console.log('App component mounted');
-    console.log(items)
-  },[items])
+
 
   useEffect(() => {
     // Fetch data when the component mounts

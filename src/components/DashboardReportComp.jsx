@@ -5,10 +5,7 @@ import ReportListPaginationComp from './ReportsComponents/ReportListPaginationCo
 import { useSelector } from "react-redux"
 const DashboardReportComp = () => {
   const { items, loading, error } = useSelector((state) => state.patientsReports); // when ever i want data it will be in items
-  useEffect(() => {
-    console.log('App component mounted');
-    console.log(items)
-  }, [items])
+
 
   const reports = [
     { name: 'John Doe', age: 30, phone: '123-456-7890', cnic: '12345-6789012-3', nationality: 'American', created: '2023-01-01', report: 'download.svg' },

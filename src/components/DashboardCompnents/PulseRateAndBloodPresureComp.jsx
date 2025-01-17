@@ -2,11 +2,7 @@ import React, { useEffect } from 'react'
 import SpeedoMeter from '../Charts/Speedometer'
 
 const PulseRateAndBloodPresureComp = ({data}) => {
-    useEffect(() => {
-        if (data) {
-            console.log(data)
-        }
-    },[data])
+ 
     return (
         <>
             <div className='w-[39%] h-[90%] border  border-[#CC0001] bg-[#FAFAFA]  rounded-[15px] flex flex-col justify-around items-center ' >

@@ -5,20 +5,30 @@ import 'react-date-range/dist/theme/default.css';
 import 'react-datepicker/dist/react-datepicker.css';
 import useSortData from '../../hooks/useSortData';
 import useBloodPressureFilter from '../../hooks/useBloodPressureFilter';
-import { useDispatch } from 'react-redux';
+import { useDispatch , useSelector } from 'react-redux';
 import { setItems } from '../../store/features/sortedReportsSlice';
 import { setBpFilteredData } from '../../store/features/bloodPressureSlice';
 import { setFilteredData } from '../../store/features/searchFilter';
-import useSearchFilter from '../../hooks/useSearchFilter';
+import useSearchFilter from '../../hooks/useSearchFilter';import {
+    setShowCalendar,
+    setTimePickerVisible,
+    setDropdownOpen,
+    setSortDropdownOpen,
+    offAll
+  } from '../../store/features/filtersUISlice';
+  
 
 import { format } from 'date-fns';
+import useFilterByDateRange from '../../hooks/useFilterByDateRange';
+import useFilteredPatientsByTime from '../../hooks/useFilteredPatientsByTime';
 
 
 const ReportFiltersBarComp = ({ reports }) => {
 
-    useEffect(() => {
-        console.log(reports)
-    }, [reports])
+    const { showCalendar ,isTimePickerVisible , isSortDropdownOpen , isDropdownOpen  } = useSelector((state) => state.filtersUI);
+
+  
+
 
     const dispatch = useDispatch();
     const [sortOption, setSortOption] = useState("");
@@ -27,12 +37,13 @@ const ReportFiltersBarComp = ({ reports }) => {
     const [sortedData, setSortedData] = useState()
     const [startTime, setStartTime] = useState("12:00 AM");
     const [endTime, setEndTime] = useState("12:00 AM");
-    const [isTimePickerVisible, setTimePickerVisible] = useState(false);
+ 
+    // const [isTimePickerVisible, setTimePickerVisible] = useState(false);
     const [selectedOption, setSelectedOption] = useState("Filter by BP");
-    const [isDropdownOpen, setDropdownOpen] = useState(false);
+    // const [isDropdownOpen, setDropdownOpen] = useState(false);
     const [selectedSortOption, setSelectedSortOption] = useState("Name"); // Current selected option
-    const [isSortDropdownOpen, setSortDropdownOpen] = useState(false); // Tracks if dropdown is open
-    const [showCalendar, setShowCalendar] = useState(false);
+    // const [isSortDropdownOpen, setSortDropdownOpen] = useState(false); // Tracks if dropdown is open
+    // const [showCalendar, setShowCalendar] = useState(false);
     const [selectionRange, setSelectionRange] = useState({
         startDate: new Date(),
         endDate: new Date(),
@@ -49,31 +60,31 @@ const ReportFiltersBarComp = ({ reports }) => {
 
 
 
-    useEffect(() => {
-        console.log(sortedData)
-    }, [sortedData])
+ 
 
     // Use the sorting hook
     const sortedReports = useSortData(reports, sortOption);
     const sortedBP = useBloodPressureFilter(reports, bPOption);
-    console.log(sortedBP)
+
 
     // Use the custom hook for searching the reports
     const filteredReports = useSearchFilter(reports, searchTerm);
+     // Call the hook in the component, not inside handleSelect
+    const filteredReportsByRange = useFilterByDateRange(reports, selectionRange);
+
+    const filteredReportsByTime = useFilteredPatientsByTime(reports, startTime, endTime);
+
 
 
     //   setSortedData(sortedReports)
     if (sortedReports.length > 0) {
-        console.log(sortedReports)
 
         dispatch(setItems(sortedReports));
     }
     if (sortedBP.length > 0) {
-        console.log(sortedBP.length)
         dispatch(setBpFilteredData(sortedBP));
     }
     if (filteredReports.length > 0) {
-        console.log(filteredReports.length)
         dispatch(setFilteredData(filteredReports));
     }
 
@@ -87,7 +98,6 @@ const ReportFiltersBarComp = ({ reports }) => {
             key: 'selection',
             token: true
         });
-        console.log(ranges);
     };
 
 
@@ -107,12 +117,6 @@ const ReportFiltersBarComp = ({ reports }) => {
 
     const handleSortOptionSelect = (option) => {
         setSortOption(option)
-
-
-
-
-
-
         setSelectedSortOption(option); // Update selected sort option
         setSortDropdownOpen(false); // Close the dropdown
     };
@@ -127,41 +131,53 @@ const ReportFiltersBarComp = ({ reports }) => {
 
 
 
-    const handleTimeChange = (e, setTime) => {
-        setTime(e.target.value);
-        console.log(e.target.value);
-        const time = e.target.value;
+    const handleTimeChange = (e, setTime , type) => {
+        const time = e.target.value;  // The time input from the user (e.g., "16:30")
+        
+        // Ensure time has seconds (e.g., "16:30" becomes "16:30:00")
+        const formattedTime = `${time}:00`;
+      
+        // Set the formatted time to the state
+        setTime(formattedTime);
+
+        if(type == "start"){
+            setStartTime(formattedTime)
+        }else{
+            setEndTime(formattedTime)
+        }
+      
+      
         const today = new Date();
-        const isoDateString = `${today.toISOString().split('T')[0]}T${time}:00Z`;
-
-        console.log(isoDateString);
-
-    };
-
+        // Construct an ISO string with the current date and the selected time
+        const isoDateString = `${today.toISOString().split('T')[0]}T${formattedTime}Z`;
+      
+      };
+      
 
 
     const toggleDropdown = (type) => {
+
         if (type === 'calendar') {
-            setShowCalendar(!showCalendar);
-            setTimePickerVisible(false);  // Close time picker when calendar is open
-            setDropdownOpen(false); // Close option dropdown when calendar is opened
-            setSortDropdownOpen(false); // Close sort dropdown when calendar is opened
+           dispatch( setShowCalendar(!showCalendar))
+           dispatch( setTimePickerVisible(false))  // Close time picker when calendar is open
+           dispatch( setDropdownOpen(false)) // Close option dropdown when calendar is opened
+           dispatch( setSortDropdownOpen(false)) // Close sort dropdown when calendar is opened
         } else if (type === 'time' && selectionRange.token == true) {
 
-            setTimePickerVisible(!isTimePickerVisible);
-            setShowCalendar(false);  // Close calendar when time picker is open
-            setDropdownOpen(false); // Close option dropdown when time picker is opened
-            setSortDropdownOpen(false); // Close sort dropdown when time picker is opened
+            dispatch(setTimePickerVisible(!isTimePickerVisible))
+            dispatch(setShowCalendar(false))  // Close calendar when time picker is open
+            dispatch(setDropdownOpen(false)) // Close option dropdown when time picker is opened
+            dispatch(setSortDropdownOpen(false)) // Close sort dropdown when time picker is opened
         } else if (type === 'filter') {
-            setDropdownOpen(!isDropdownOpen);
-            setShowCalendar(false); // Close calendar when filter dropdown is open
-            setTimePickerVisible(false); // Close time picker when filter dropdown is open
-            setSortDropdownOpen(false); // Close sort dropdown when filter dropdown is opened
+           dispatch( setDropdownOpen(!isDropdownOpen))
+           dispatch( setShowCalendar(false)) // Close calendar when filter dropdown is open
+           dispatch( setTimePickerVisible(false)) // Close time picker when filter dropdown is open
+           dispatch( setSortDropdownOpen(false)) // Close sort dropdown when filter dropdown is opened
         } else if (type === 'sort') {
-            setSortDropdownOpen(!isSortDropdownOpen);
-            setShowCalendar(false); // Close calendar when sort dropdown is open
-            setTimePickerVisible(false); // Close time picker when sort dropdown is open
-            setDropdownOpen(false); // Close filter dropdown when sort dropdown is opened
+           dispatch( setSortDropdownOpen(!isSortDropdownOpen))
+           dispatch( setShowCalendar(false)) // Close calendar when sort dropdown is open
+           dispatch( setTimePickerVisible(false)) // Close time picker when sort dropdown is open
+           dispatch( setDropdownOpen(false)) // Close filter dropdown when sort dropdown is opened
         }
     };
 
@@ -173,12 +189,7 @@ const ReportFiltersBarComp = ({ reports }) => {
         return `${formattedHour}:${minute} ${period}`;
     };
 
-    const offAll = () => {
-        setShowCalendar(false);
-        setTimePickerVisible(false);
-        setDropdownOpen(false);
-        setSortDropdownOpen(false);
-    }
+
 
     
     
@@ -206,7 +217,7 @@ const ReportFiltersBarComp = ({ reports }) => {
                         className='w-full shadow-[0_4px_4px_3px_#00000040] px-8 rounded-[15px] desktop:h-[62px] large-desktop:h-full flex justify-around items-center bg-[#FAFAFA] cursor-pointer'
                         onClick={() => toggleDropdown("calendar")}
                     >
-                        <p className='desktop:text-[18px] large-desktop:text-[2rem] font-bold text-black'>
+                        <p className='desktop:text-[18px] select-none large-desktop:text-[2rem] font-bold text-black'>
                             {selectionRange.token
                                 ? formatDateRange(selectionRange.startDate, selectionRange.endDate)
                                 : 'Filter By'}
@@ -269,7 +280,7 @@ const ReportFiltersBarComp = ({ reports }) => {
                                     <input
                                         type="time"
                                         value={startTime}
-                                        onChange={(e) => handleTimeChange(e, setStartTime)}
+                                        onChange={(e) => handleTimeChange(e, setStartTime , "start")}
                                         className="text-center text-[#FFFFFF] text-[15px] appearance-none custom-time-input font-normal bg-[#CC0001] rounded-md p-2"
                                     />
                                 </div>
@@ -278,7 +289,7 @@ const ReportFiltersBarComp = ({ reports }) => {
                                     <input
                                         type="time"
                                         value={endTime}
-                                        onChange={(e) => handleTimeChange(e, setEndTime)}
+                                        onChange={(e) => handleTimeChange(e, setEndTime , "end")}
                                         className="text-center text-[#FFFFFF] text-[15px] appearance-none custom-time-input font-normal bg-[#CC0001] rounded-md p-2"
                                     />
                                 </div>
@@ -344,7 +355,7 @@ const ReportFiltersBarComp = ({ reports }) => {
 
                     {/* Dropdown Menu */}
                     {isDropdownOpen && (
-                        <div className="mt-2 absolute top-28 w-[227px] bg-[#FAFAFA] shadow-[0_4px_4px_3px_#00000040] rounded-[15px]">
+                        <div className="mt-2 absolute top-32 w-[227px] bg-[#FAFAFA] shadow-[0_4px_4px_3px_#00000040] rounded-[15px]">
                             {options.map((option, index) => (
                                 <div
                                     key={index}
@@ -375,7 +386,7 @@ const ReportFiltersBarComp = ({ reports }) => {
 
                     {/* Dropdown Menu */}
                     {isSortDropdownOpen && (
-                        <div className="mt-2 absolute top-28 w-[227px] bg-[#FAFAFA] shadow-[0_4px_4px_3px_#00000040] rounded-[15px]">
+                        <div className="mt-2 absolute top-32 w-[227px] bg-[#FAFAFA] shadow-[0_4px_4px_3px_#00000040] rounded-[15px]">
                             {sortOptions.map((option, index) => (
                                 <div
                                     key={index}

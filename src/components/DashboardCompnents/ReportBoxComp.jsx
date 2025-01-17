@@ -1,12 +1,7 @@
 import React, { useEffect } from "react";
 
 const ReportBoxComp = ({ data, title, title2, count, male, female }) => {
-  useEffect(() => {
-    if (data) {
-
-      console.log(data);
-    }
-  }, [data]);
+  
   return (
     <div className="w-[14.5%] desktop:py-2 large-desktop:py-5 bg-[#FAFAFA] px-2 flex flex-col justify-end items-center  rounded-[15px] h-[90%] border border-[#CC0001]">
       {/* Title */}
