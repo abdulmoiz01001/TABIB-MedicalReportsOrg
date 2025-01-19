@@ -1,15 +1,16 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import axios from 'axios';
+// import axios from 'axios';
 import { DateRangePicker } from 'react-date-range';
 import 'react-date-range/dist/styles.css';
 import 'react-date-range/dist/theme/default.css';
 import 'react-datepicker/dist/react-datepicker.css';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { format } from 'date-fns';
-import { HOST } from '../../utils/constants';
-import useSortData from '../../hooks/useSortData';
-import { setFilteredReports } from '../../store/features/PatientReportByTimeRange';
-import { setBpData } from '../../store/features/bloodPressureSlice';
+// import { HOST } from '../../utils/constants';
+// import useSortData from '../../hooks/useSortData';
+// import { setFilteredReports } from '../../store/features/PatientReportByTimeRange';
+// import { setBpData } from '../../store/features/bloodPressureSlice';
+import { setFilteredReports, clearFilteredReports } from '../../store/features/FiltersSlice';
 
 
 const ReportFiltersBarComp = ({ reports }) => {
@@ -26,7 +27,6 @@ const ReportFiltersBarComp = ({ reports }) => {
     const [sortedData, setSortedData] = useState()
     const [startTime, setStartTime] = useState("12:00 AM");
     const [endTime, setEndTime] = useState("12:00 AM");
-
     const [isTimePickerVisible, setTimePickerVisible] = useState(false);
     const [selectedOption, setSelectedOption] = useState("Filter by BP");
     const [isDropdownOpen, setDropdownOpen] = useState(false);
@@ -48,7 +48,7 @@ const ReportFiltersBarComp = ({ reports }) => {
     }, [sortOption])
 
     const fetchSortedReports = () =>{
-        useSortData(reports, sortOption)
+        // useSortData(reports, sortOption)
     }
 
 
@@ -94,10 +94,13 @@ const ReportFiltersBarComp = ({ reports }) => {
     }, [bPOption])
 
     const handleSortOptionSelect = (option) => {
-        setSortOption(option)
+        console.log(option)
+        // setSortOption(option)
         setSelectedSortOption(option); // Update selected sort option
         setSortDropdownOpen(false); // Close the dropdown
     };
+
+    // useSortData(sortOption)
 
     const options = [
         "High Blood Pressure",
@@ -178,43 +181,23 @@ const ReportFiltersBarComp = ({ reports }) => {
         setSelectionRange({ startDate: null, endDate: null, key: "selection" });
     };
 
-    // const fetchSearchTermReports = async (searchTerm) =>{
-    //   try{
-    //     const response = await axios.get(`${HOST}/dev/reports`, {
-    //         "api-key": " tabbib-dev-api-key: 0qNs7fXFGB6OXqRwgSGVH1wCBBhnhBVf4hj65ONL",
-    //         params: {
-    //           keyword: searchTerm,
-    //         },
-    //         });
-
-    //         console.log(response.data)
-    //   }catch(e){
-
-    //   }
-    // }
-
+   
 
     const fetchSearchTermReports = async (searchTerm) => {
         try {
-            //   const response = await axios.get(`${HOST}/dev/reports/${searchTerm}`, {
-            //     headers: {
-            //       " tabbib-dev-api-key": "0qNs7fXFGB6OXqRwgSGVH1wCBBhnhBVf4hj65ONL",
-            //     },
-            //     params: {
-            //       keyword: searchTerm,
-            //     },
-            //   });
-            console.log(searchTerm);
-            const response = await fetch(`https://nole90yyzc.execute-api.us-east-1.amazonaws.com/dev/reports?keyword=${searchTerm}`, {
-                method: 'GET',
-                headers: {
-                    'x-api-key': '0qNs7fXFGB6OXqRwgSGVH1wCBBhnhBVf4hj65ONL',
-                    'Content-Type': 'application/json',
-                },
-            });
-            const data = await response.json();
-            console.log(data.data);
-            dispatch(setSearchTerm(data.data));
+                console.log(searchTerm);
+                const response = await fetch(`https://nole90yyzc.execute-api.us-east-1.amazonaws.com/dev/reports?keyword=${searchTerm}`, {
+                    method: 'GET',
+                    headers: {
+                        'x-api-key': '0qNs7fXFGB6OXqRwgSGVH1wCBBhnhBVf4hj65ONL',
+                        'Content-Type': 'application/json',
+                    },
+                });
+                const data = await response.json();
+                console.log(data.data);
+                dispatch(clearFilteredReports())
+            dispatch(setFilteredReports(data.data));
+            // dispatch(setSearchTerm(data.data));
         } catch (e) {
             console.error("Error fetching search term reports", e);
         }
@@ -232,6 +215,8 @@ const ReportFiltersBarComp = ({ reports }) => {
             });
             const data = await response.json();
             console.log(data.data);
+            dispatch(clearFilteredReports())
+            dispatch(setFilteredReports(data.data));
             // dispatch(setFilteredData(data.data));
         }catch(e){
             console.error("Error fetching date range reports", e);
@@ -250,7 +235,9 @@ const ReportFiltersBarComp = ({ reports }) => {
             });
             const data = await response.json();
             console.log(data.data);
+            dispatch(clearFilteredReports())
             dispatch(setFilteredReports(data.data));
+            // dispatch(setFilteredReports(data.data));
         }catch(e){
             console.error("Error fetching time range reports", e);
         }
@@ -267,7 +254,9 @@ const ReportFiltersBarComp = ({ reports }) => {
             });
             const data = await response.json();
             console.log(data.data);
-            dispatch(setBpData(data.data));
+            dispatch(clearFilteredReports())
+            dispatch(setFilteredReports(data.data));
+            // dispatch(setBpData(data.data));
         }catch(e){
             console.error("Error fetching BP reports", e);
         }

@@ -1,13 +1,16 @@
 import { useMemo } from 'react';
-import { setItems } from '../store/features/sortedReportsSlice';
-import { useDispatch } from 'react-redux';
+// import { setItems } from '../store/features/sortedReportsSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { setFilteredReports } from '../store/features/FiltersSlice';
 
-const useSortData = (data, sortOption) => {
+const useSortData = (sortOption) => {
   const dispatch = useDispatch();
+  
+  const { filteredReports } = useSelector((state) => state.PatientReportFilters);
   const sortedData = useMemo(() => {
-    if (!data) return [];
+    if (!filteredReports) return [];
 
-    const sorted = [...data];
+    const sorted = [...filteredReports.Items];
 
     switch (sortOption) {
       case "Name (Ascending)":
@@ -21,8 +24,9 @@ const useSortData = (data, sortOption) => {
       default:
         return sorted; // Return unsorted data if no valid option
     }
-  }, [data, sortOption]);
-    dispatch(setItems(sortedData));
+  }, [ sortOption]);
+  console.log("sortedData", sortedData)
+    dispatch(setFilteredReports(sortedData));
 
   return sortedData;
 };

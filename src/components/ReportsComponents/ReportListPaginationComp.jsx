@@ -1,53 +1,32 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from "react-router-dom"
-import {
-  offAll
-} from '../../store/features/filtersUISlice';
+// import {
+//   offAll
+// } from '../../store/features/filtersUISlice';
 // import { IoInformationCircle } from "react-icons/io5";
 const ReportListPaginationComp = ({ reports }) => {
+  let data = reports
   const dispatch = useDispatch();
-
-  const { items } = useSelector((state) => state.sortedReports);
-  const { filteredData } = useSelector((state) => state.searchReports);
-  const { bpFilteredData } = useSelector((state) => state.sortedReportsBP);
-  const { filteredReports } = useSelector((state) => state.PatientReportByDateRange);
-  const { filteredReportsByTime } = useSelector((state) => state.PatientReportByTimeRange);
-  useEffect(() => {
-      console.log('items', items)
-      console.log('filteredData', filteredData)
-      console.log('bpFilteredData', bpFilteredData)
-      console.log('filteredReports', filteredReports)
-      console.log('filteredReportsByTime', filteredReportsByTime)
-      
-  },[items , filteredData , bpFilteredData , filteredReports , filteredReportsByTime])
-  const [currentPage, setCurrentPage] = useState(1);
-  const [reportsPerPage] = useState(10);
-  const [activeFilter, setActiveFilter] = useState('');
-
-  const getFilteredReports = () => {
-    if (activeFilter === 'search') return filteredData;
-    if (activeFilter === 'bp') return bpFilteredData;
-    if (activeFilter === 'dateRange') return filteredReports;
-    if (activeFilter === 'timeRange') return filteredReportsByTime;
-    return reports;
-  };
+  const { filteredReports } = useSelector((state) => state.PatientReportFilters);
 
   useEffect(() => {
-    if (filteredData.length) setActiveFilter('search');
-    else if (bpFilteredData.length) setActiveFilter('bp');
-    else if (filteredReports.length) setActiveFilter('dateRange');
-    else if (filteredReportsByTime.length) setActiveFilter('timeRange');
-    else setActiveFilter('');
-  }, [filteredData, bpFilteredData, filteredReports, filteredReportsByTime]);
+    console.log("filteredReports" , filteredReports)
+    if(filteredReports.count > 0){
+      // dispatch(offAll())
+      console.log("donee")
+      reports = filteredReports.Items
+    }
+  },[filteredReports])
+ 
 
-  const filteredReportsToShow = getFilteredReports();
+  
+  if(filteredReports.count > 0){
+    // dispatch(offAll())
+    console.log("donee")
+    data = filteredReports.Items
+  }
 
-  const indexOfLastReport = currentPage * reportsPerPage;
-  const indexOfFirstReport = indexOfLastReport - reportsPerPage;
-  const currentReports = filteredReportsToShow.slice(indexOfFirstReport, indexOfLastReport);
-
-  const paginate = (pageNumber) => setCurrentPage(pageNumber);
   
   return (
     <>
@@ -76,7 +55,7 @@ const ReportListPaginationComp = ({ reports }) => {
               </tr>
             </thead>
             <tbody className='h-full' >
-              {currentReports.map((report, index) => (
+              {data.map((report, index) => (
                 <tr key={index} className='bg-[#FFEFEF] large-desktop:h-[100px] cursor-pointer h-[62px] rounded-[8px] '>
                   <td className='desktop:text-[20px] large-desktop:text-[3rem] pl-4'>{report.Name}</td>
                   <td className='desktop:text-[20px] large-desktop:text-[3rem]' >{report.Member.Age}</td>
