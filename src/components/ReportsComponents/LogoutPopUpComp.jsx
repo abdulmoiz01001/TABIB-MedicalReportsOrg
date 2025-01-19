@@ -10,19 +10,19 @@ const LogoutPopUpComp = ({ show, setShow }) => {
         } transition-all duration-300 fixed inset-0 flex justify-center items-center bg-black bg-opacity-50 z-50`}
       >
         {/* Pop-up */}
-        <div className="w-[353px] h-[202px] bg-[#FFDDDA] rounded-[15px] flex flex-col justify-center items-center p-6 gap-6">
-          <h1 className="text-[#FF0000] text-center text-[24px] font-bold">
-            Are you sure <br /> you want to logout?
+        <div className="desktop:w-[353px] desktop:h-[202px] large-desktop:w-[700px] large-desktop:h-[404px] bg-[#FFDDDA] rounded-[15px] flex flex-col justify-center items-center p-6 gap-6">
+          <h1 className="text-[#FF0000] text-center desktop:text-[24px] large-desktop:text-[36px] font-bold">
+            Are you sure <br /> You want to logout?
           </h1>
-          <div className="w-full flex justify-center items-center gap-4">
+          <div className="w-full flex justify-center items-center desktop:gap-4 large-desktop:gap-16">
             <button
-              className="w-[123px] h-[40px] bg-[#FFFFFF] rounded-[15px] text-[#CC0001] font-medium"
+              className="desktop:w-[123px] desktop:h-[40px] large-desktop:w-[246px] large-desktop:h-[80px] bg-[#FFFFFF] rounded-[15px] large-desktop:text-[30px] active:scale-90 text-[#CC0001] font-medium"
               onClick={() => setShow(false)} // Close the pop-up on cancel
             >
               Cancel
             </button>
             <button
-              className="w-[123px] h-[40px] bg-[#CC0001] rounded-[15px] text-[#FFFFFF] font-medium"
+              className="desktop:w-[123px] desktop:h-[40px] large-desktop:w-[246px] large-desktop:h-[80px] bg-[#CC0001] rounded-[15px] large-desktop:text-[30px] active:scale-90 text-[#FFFFFF] font-medium"
             //   onClick={onLogout}
             >
               Logout

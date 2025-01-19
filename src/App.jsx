@@ -7,6 +7,7 @@ import DashboardAboutPage from "./pages/DashboardAboutPage";
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchData } from "./store/features/patientsReportSlice"
 import SinglePatientReportPage from "./pages/SinglePatientReportPage";
+import DashboardLoginPage from "./pages/DashboardLoginPage";
 
 function App() {
 
@@ -28,6 +29,7 @@ function App() {
           <Route path="/" element={<Layout />} >
            <Route index element={<DashboardPage />} />
            <Route path="report" element={<DashboardReportPage />} />
+           <Route path="login" element={<DashboardLoginPage />} />
            <Route path="patient-report/:patientID" element={<SinglePatientReportPage />} />
            <Route path="about" element={<DashboardAboutPage />} />
           </Route>
