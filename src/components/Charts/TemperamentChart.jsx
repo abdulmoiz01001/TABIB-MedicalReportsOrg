@@ -77,16 +77,19 @@ const TemperamentChart = ({ label }) => {
         label: "1",
         data: [4.895, 2.702, 3.895, 6.263],
         backgroundColor: "#CC0001",
+        barThickness: isLargeDesktop ? 45 : 25,
       },
       {
         label: "2",
         data: [4.895, 5.702, 7.895, 4.263],
         backgroundColor: "#FF6464",
+        barThickness: isLargeDesktop ? 45 : 25,
       },
       {
         label: "3",
         data: [2.895, 3.702, 5.895, 7.263],
         backgroundColor: "#F9B9B4",
+        barThickness: isLargeDesktop ? 45 : 25,
       },
     ],
   };
@@ -122,6 +125,9 @@ const TemperamentChart = ({ label }) => {
             size: isLargeDesktop ? 40 : 20,  // ✅ Dynamic Font Size for X-axis
           },
           color: "#000",   // Black color for better visibility
+          maxRotation: 0, // Prevent rotation
+          minRotation: 0, // Prevent rotation
+          autoSkip: false, // Prevent skipping of labels
         },
       },
       y: {

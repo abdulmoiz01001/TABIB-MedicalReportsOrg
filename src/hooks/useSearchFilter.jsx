@@ -1,7 +1,10 @@
 // useSearchFilter.js
 import { useState, useEffect } from 'react';
+import { setBpFilteredData } from '../store/features/bloodPressureSlice';
+import { useDispatch } from 'react-redux';
 
 const useSearchFilter = (data, searchTerm) => {
+  const dispatch = useDispatch();
   const [filteredData, setFilteredData] = useState(data);
 
   useEffect(() => {
@@ -15,6 +18,7 @@ const useSearchFilter = (data, searchTerm) => {
         )
       );
       setFilteredData(filtered);
+       dispatch(setBpFilteredData(filtered));
     }
   }, [data, searchTerm]); // Dependency on data and searchTerm to update when either changes
 

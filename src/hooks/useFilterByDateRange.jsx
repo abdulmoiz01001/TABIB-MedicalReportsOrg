@@ -17,6 +17,7 @@ const useFilterByDateRange = (reports, selectionRange) => {
         );
       });
       setFilteredData(filtered);
+      console.log('Date filtered', filtered);
       dispatch(setFilteredReports(filtered));
     }
   }, [reports, selectionRange, dispatch]);

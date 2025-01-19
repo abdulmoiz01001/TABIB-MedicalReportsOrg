@@ -37,15 +37,15 @@ const AverageTABIATScoreMalesvsFemalesComp = () => {
                             </style> */}
                         </defs>
                         <g id="Layer_1-2" data-name="Layer 1">
-                            <circle   className="stroke-black stroke-[22px] fill-none" class="cls-1" cx="163" cy="81" r="70" />
-                            <path class="cls-1" d="m63.11,191h198.78c28.76,0,52.11,23.35,52.11,52.11v221.89H11v-221.89c0-28.76,23.35-52.11,52.11-52.11Z" />
-                            <path class="cls-2" d="m230.5,272.08c13.24,8.51,22,23.36,22,40.27v421.15H74.5v-421.15c0-16.48,8.33-31.01,21-39.62" />
-                            <line class="cls-1" x1="162.5" y1="505.5" x2="162.5" y2="737.5" />
+                            <circle className="stroke-black stroke-[22px] fill-none" class="cls-1" cx="163" cy="81" r="70" />
+                            <path className="stroke-black stroke-[22px] fill-none" class="cls-1" d="m63.11,191h198.78c28.76,0,52.11,23.35,52.11,52.11v221.89H11v-221.89c0-28.76,23.35-52.11,52.11-52.11Z" />
+                            <path className="stroke-black stroke-[22px] fill-none" class="cls-2" d="m230.5,272.08c13.24,8.51,22,23.36,22,40.27v421.15H74.5v-421.15c0-16.48,8.33-31.01,21-39.62" />
+                            <line className="stroke-black stroke-[22px] fill-none" class="cls-1" x1="162.5" y1="505.5" x2="162.5" y2="737.5" />
                         </g>
                     </svg>
                     {/* <img src='male.svg' alt='image' className='large-desktop:w-[200px]'  /> */}
                     <img src='line.svg' alt='image' className='large-desktop:h-[300px]' />
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 358.68 744.5" className="desktop:w-[100px] large-desktop:w-[200px] h-auto">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 358.68 744.5" className="desktop:w-[110px] large-desktop:w-[200px] h-auto">
                         <g>
                             {/* Rectangle */}
                             <rect

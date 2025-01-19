@@ -1,6 +1,9 @@
 import { useMemo } from 'react';
+import { setItems } from '../store/features/sortedReportsSlice';
+import { useDispatch } from 'react-redux';
 
 const useSortData = (data, sortOption) => {
+  const dispatch = useDispatch();
   const sortedData = useMemo(() => {
     if (!data) return [];
 
@@ -19,6 +22,7 @@ const useSortData = (data, sortOption) => {
         return sorted; // Return unsorted data if no valid option
     }
   }, [data, sortOption]);
+    dispatch(setItems(sortedData));
 
   return sortedData;
 };

@@ -41,7 +41,7 @@ const DoughnutChart = ({details}) => {
         const midX = centerX + Math.cos(angle) * (outerRadius + 10);
         const midY = centerY + Math.sin(angle) * (outerRadius + 10);
 
-        const zigzagLength = 10;
+        const zigzagLength = 20;
         const endX = midX + (angle > Math.PI ? -zigzagLength : zigzagLength);
         const endY = midY;
 
@@ -97,7 +97,7 @@ const DoughnutChart = ({details}) => {
 
   return (
     <div  className='flex flex-col h-[100%] py-2 justify-center  items-center'>
-      <h3 className="desktop:text-[1.2rem] large-desktop:text-[2.5rem] font-bold text-[#000000]">
+      <h3 className="desktop:text-[1rem] large-desktop:text-[2rem] font-bold text-[#000000]">
         Hypertension By BMI Classification
       </h3>
 

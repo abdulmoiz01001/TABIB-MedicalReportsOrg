@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
+import LogoutPopUpComp from "./ReportsComponents/LogoutPopUpComp";
+
 
 // Sidebar Links Array
 const navLinks = [
@@ -21,6 +23,7 @@ const navLinks = [
 ];
 
 const DashboardSideBarComp = () => {
+  const [logoutPopuUpShow, setLogoutPopuUpShow] = useState(false);
   const navigate = useNavigate();
   const [hide, setHide] = useState(true); // Sidebar initially hidden
 
@@ -32,11 +35,13 @@ const DashboardSideBarComp = () => {
 
   return (
     // Wrapper div to detect mouse hover on the left edge
+
     <div
       onMouseEnter={() => setHide(false)}  // Show sidebar when hovered
       onMouseLeave={() => setHide(true)}   // Hide sidebar when cursor leaves
       className="fixed top-0 left-0 h-screen w-[20px] z-50"
     >
+      <LogoutPopUpComp show={logoutPopuUpShow} setShow={setLogoutPopuUpShow} />
       {/* Sidebar */}
       <div
         className={`desktop:h-[450px] large-desktop:h-[50%] large-desktop:w-[220px] rounded-[15px] absolute top-1/2 -translate-y-1/2 ${
@@ -55,7 +60,7 @@ const DashboardSideBarComp = () => {
 
         {/* Logout Button */}
         <button
-          onClick={() => navigate("/login")}
+          onClick={() => setLogoutPopuUpShow(!logoutPopuUpShow)}
           className="flex items-center gap-2 p-4 text-white"
         >
           <img src="logout.svg" alt="Logout" className="desktop:w-[30px] large-desktop:w-[70px] desktop:h-[30px] large-desktop:h-[70px]" />

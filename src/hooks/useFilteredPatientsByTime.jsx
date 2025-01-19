@@ -14,6 +14,8 @@ const useFilteredPatientsByTime = (reports, startTime, endTime) => {
     const start = startTime;
     const end = endTime;
 
+    console.log('Time range', start, end);
+
    
 
     // Filter reports based on measureTime being within the given range
@@ -23,6 +25,8 @@ const useFilteredPatientsByTime = (reports, startTime, endTime) => {
     });
 
     setFilteredPatients(filtered);
+    
+    console.log('Time filtered', filteredPatients);
     dispatch(setFilteredReports(filtered));
   }, [reports, startTime, endTime]);
 

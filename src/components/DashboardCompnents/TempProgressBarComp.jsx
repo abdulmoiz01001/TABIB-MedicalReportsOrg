@@ -6,9 +6,9 @@ const TempProgressBarComp = () => {
   const isLargeDesktop = useMediaQuery({ minWidth: 2560 });  
   return (
     <>
-      <div className='flex w-full h-[20%] border-red-900   justify-between items-center'>
-        <div className='desktop:w-[17%] large-desktop:w-[17%]  large-desktop:h-[150px] desktop:h-[80px] bg-[#F9B9B4] flex justify-center items-center rounded-[15px] border border-[#CC0001]'>
-          <img src="temperature.svg" alt="logo" className='desktop:w-[61px] large-desktop:w-[100px]  desktop:h-[30px] large-desktop:h-[100px] ' />
+      <div className='flex w-full h-[18%] border-red-900   justify-between items-center'>
+        <div className='desktop:w-[82px] large-desktop:w-[17%]  large-desktop:h-[150px] desktop:h-[80px] bg-[#F9B9B4] flex justify-center items-center rounded-[15px] border border-[#CC0001]'>
+          <img src="temperature.svg" alt="logo" className='desktop:w-[50px] large-desktop:w-[100px]  desktop:h-[50px] large-desktop:h-[100px] ' />
         </div>
         <div className="w-[82%] h-full  flex flex-col justify-evenly py-4 px-2">
           <h1 className="desktop:text-[1.2rem] large-desktop:text-[2.2rem] font-semibold text-gray-700">Temperature</h1>

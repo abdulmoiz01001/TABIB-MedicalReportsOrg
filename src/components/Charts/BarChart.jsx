@@ -44,14 +44,14 @@ const BarComp = () => {
         label: "Hypertension",
         data: [40, 50, 50, 10, 30, 20, 40, 20],
         backgroundColor: "rgba(255, 0, 0, 0.8)",
-        // barThickness: 30,      // ✅ Controlled Bar Width
+        barThickness: isLargeDesktop ? 45 : 25,      // ✅ Controlled Bar Width
         // maxBarThickness: 50,   // ✅ Prevent Overly Thick Bars
       },
       {
         label: "Normotensive",
         data: [30, 60, 50, 5, 20, 40, 50, 80],
         backgroundColor: "rgba(255, 182, 193, 0.8)",
-        // barThickness: 30,
+        barThickness: isLargeDesktop ? 45 : 25,
         // maxBarThickness: 50,
       },
     ],
