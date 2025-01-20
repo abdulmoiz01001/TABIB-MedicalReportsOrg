@@ -205,6 +205,7 @@ const ReportFiltersBarComp = ({ reports }) => {
 
     const fetchSearchTermReports = async (searchTerm) => {
         try {
+            console.log(searchTerm)
                 const response = await fetch(`https://nole90yyzc.execute-api.us-east-1.amazonaws.com/dev/reports?keyword=${searchTerm}`, {
                     method: 'GET',
                     headers: {
@@ -213,8 +214,16 @@ const ReportFiltersBarComp = ({ reports }) => {
                     },
                 });
                 const data = await response.json();
-                dispatch(clearFilteredReports())
-            dispatch(setFilteredReports(data.data));
+                if(data.count > 0){
+
+                
+                    dispatch(clearFilteredReports())
+                    dispatch(setFilteredReports(data.data));
+                    console.log(data.data)
+                    console.log("donee")
+                }else{
+                    dispatch(clearFilteredReports())
+                }
             // dispatch(setSearchTerm(data.data));
         } catch (e) {
             console.error("Error fetching search term reports", e);
@@ -231,8 +240,16 @@ const ReportFiltersBarComp = ({ reports }) => {
             },
             });
             const data = await response.json();
-            dispatch(clearFilteredReports())
-            dispatch(setFilteredReports(data.data));
+            if(data.count > 0){
+
+                
+                dispatch(clearFilteredReports())
+                dispatch(setFilteredReports(data.data));
+                console.log(data.data)
+                console.log("donee")
+            }else{
+                dispatch(clearFilteredReports())
+            }
             // dispatch(setFilteredData(data.data));
         }catch(e){
             console.error("Error fetching date range reports", e);
@@ -249,8 +266,16 @@ const ReportFiltersBarComp = ({ reports }) => {
             },
             });
             const data = await response.json();
-            dispatch(clearFilteredReports())
-            dispatch(setFilteredReports(data.data));
+            if(data.count > 0){
+
+                
+                dispatch(clearFilteredReports())
+                dispatch(setFilteredReports(data.data));
+                console.log(data.data)
+                console.log("donee")
+            }else{
+                dispatch(clearFilteredReports())
+            }
             // dispatch(setFilteredReports(data.data));
         }catch(e){
             console.error("Error fetching time range reports", e);
@@ -268,10 +293,16 @@ const ReportFiltersBarComp = ({ reports }) => {
             });
             const data = await response.json();
             
-            dispatch(clearFilteredReports())
-            dispatch(setFilteredReports(data.data));
-            console.log(data.data)
-            console.log("donee")
+            if(data.count > 0){
+
+                
+                dispatch(clearFilteredReports())
+                dispatch(setFilteredReports(data.data));
+                console.log(data.data)
+                console.log("donee")
+            }else{
+                dispatch(clearFilteredReports())
+            }
             // dispatch(setBpData(data.data));
         }catch(e){
             console.error("Error fetching BP reports", e);
@@ -293,6 +324,8 @@ const ReportFiltersBarComp = ({ reports }) => {
         debounce((term) => {
             if (term.trim() !== "") {
                 fetchSearchTermReports(term);
+            } else {
+                fetchSearchTermReports(""); // Hit API with an empty term
             }
         }, 500),
         []
