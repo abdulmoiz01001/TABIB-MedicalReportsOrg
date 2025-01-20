@@ -27,57 +27,56 @@ body {
 
 #div1 {
 	grid-area: 1 / 1 / 2 / 3;
-	background-color: #f9d3c6;
+	/* background-color: #f9d3c6; */
 }
 
 #div2 {
 	grid-area: 1/3/2/4;
-	background-color: #f9d3c6;
+	
 }
 
 #div3 {
 	grid-area: 1/4/2/5;
-	background-color: #f36c62;
+	
 }
 
 #div4 {
 	grid-area: 2/1/3/2;
-	background-color: #f9d3c6;
+	
 }
 
 #div5 {
 	grid-area: 2/2/3/3;
-	background-color: #f9d3c6;
+	
 }
 
 #div6 {
 	grid-area: 2 / 3 / 4 / 4;
-	background-color: #f9d3c6;
+	
 }
 
 #div7 {
 	grid-area: 2/4/3/5;
-	background-color: #f9d3c6;
+	
 }
 
 #div8 {
 	grid-area: 3 / 4 / 5 / 5;
-	background-color: #f9d3c6;
+	
 }
 
 #div9 {
 	grid-area: 4 / 2 / 5 / 4;
-	background-color: #f9d3c6
-}
+	}
 
 #div10 {
 	grid-area: 3/2/4/3;
-	background-color: #f9d3c6;
+	
 }
 
 #div11 {
 	grid-area: 3 / 1 / 5 / 2;
-	background-color: #f9d3c6;
+	
 }
 
 .custom-time-input {

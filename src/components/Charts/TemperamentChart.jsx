@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Bar } from "react-chartjs-2";
 import {
   Chart as ChartJS,
@@ -21,7 +21,10 @@ ChartJS.register(
   Legend
 );
 
-const TemperamentChart = ({ label }) => {
+const TemperamentChart = ({ details }) => {
+  useEffect(() => {
+  console.log(details)
+  },[details])
   // 📱 Tailwind Custom Breakpoints
   const isLargeDesktop = useMediaQuery({ minWidth: 2560 });      // 2xl
   const isDesktop = useMediaQuery({ minWidth: 1480, maxWidth: 2559 }); // xl

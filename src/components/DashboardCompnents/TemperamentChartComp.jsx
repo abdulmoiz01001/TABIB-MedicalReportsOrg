@@ -1,7 +1,7 @@
 import React from 'react'
 import TemperamentChart from '../Charts/TemperamentChart'
 
-const TemperamentChartComp = () => {
+const TemperamentChartComp = ({data}) => {
   return (
     <>
    <div className='w-full flex h-[35%] flex-col justify-end items-center  bg-[#FAFAFA]  border border-[#CC0001] rounded-[15px] ' >
@@ -21,7 +21,7 @@ const TemperamentChartComp = () => {
     </div>
     <div className='h-[90%]  w-[90%] flex flex-col justify-end items-center' >
 
-    <TemperamentChart  />
+    <TemperamentChart details={data}  />
     </div>
     {/* </div> */}
     {/* <div className='h-full flex justify-end items-end border-2 w-[30%]' >

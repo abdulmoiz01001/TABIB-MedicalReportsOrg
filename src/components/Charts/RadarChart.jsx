@@ -5,7 +5,7 @@ import { useMediaQuery } from 'react-responsive';
 
 ChartJS.register(...registerables);
 
-const RadarChart = () => {
+const RadarChart = ({details}) => {
   const isLargeDesktop = useMediaQuery({ minWidth: 2560 });      // 2xl
   const [chartData, setChartData] = useState(null);
 

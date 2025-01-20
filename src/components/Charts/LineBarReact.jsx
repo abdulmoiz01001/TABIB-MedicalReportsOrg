@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Line } from "react-chartjs-2";
 import {
     Chart as ChartJS,
@@ -23,13 +23,16 @@ ChartJS.register(
     Legend
 );
 
-const LineBarReact = () => {
+const LineBarReact = ({details}) => {
+    useEffect(() => {
+     console.log(details)
+    },[details])
     // 📱 Tailwind Custom Breakpoints
     const isLargeDesktop = useMediaQuery({ minWidth: 2560 });      // 2xl
     const isDesktop = useMediaQuery({ minWidth: 1480, maxWidth: 2559 }); // xl
     const isLaptop = useMediaQuery({ minWidth: 824, maxWidth: 1479 });   // lg
-    const isTablet = useMediaQuery({ minWidth: 640, maxWidth: 823 });    // md
-    const isMobile = useMediaQuery({ maxWidth: 639 });             // sm and below
+    // const isTablet = useMediaQuery({ minWidth: 640, maxWidth: 823 });    // md
+    // const isMobile = useMediaQuery({ maxWidth: 639 });             // sm and below
 
     // 🎨 Dynamic Styles Based on Screen Size
     const titleFontSize = isLargeDesktop
@@ -48,7 +51,12 @@ const LineBarReact = () => {
         datasets: [
             {
                 label: "Monthly Trend Of Hypertension",
-                data: [70, 3070, 1170, 1071, 2072, 4073, 3075, 6077, 1080, 3083, 2087, 4090],
+                data: [
+                    details.Jan || 0, details.Feb || 0, details.Mar || 0,
+                    details.Apr || 0, details.May || 0, details.Jun || 0,
+                    details.Jul || 0, details.Aug || 0, details.Sep || 0,
+                    details.Oct || 0, details.Nov || 0, details.Dec || 0
+                ],
                 borderColor: "red",
                 backgroundColor: "red",
                 pointBackgroundColor: "red",

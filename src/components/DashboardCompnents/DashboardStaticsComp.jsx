@@ -45,20 +45,20 @@ const DashboardStaticsComp = () => {
               {[...Array(5)].map((_, i) => (
                 <div
                   key={i}
-                  className="bg-gray-900 w-[18%] h-full rounded-lg"
+                  className="bg-gray-400 w-[18%] h-full rounded-lg"
                 ></div>
               ))}
             </div>
             <div className="desktop:w-[98%] large-desktop:w-[99%] h-screen flex flex-row justify-center items-start gap-2">
               <div className="w-[28%] h-full flex flex-col gap-3">
-                <div className="bg-gray-900 h-[45%] rounded-lg"></div>
-                <div className="bg-gray-900 h-[45%] rounded-lg"></div>
+                <div className="bg-gray-400 h-[45%] rounded-lg"></div>
+                <div className="bg-gray-400 h-[45%] rounded-lg"></div>
               </div>
               <div className="w-[35.5%] h-full flex flex-col gap-3">
                 {[...Array(3)].map((_, i) => (
                   <div
                     key={i}
-                    className="bg-gray-900 h-[30%] rounded-lg"
+                    className="bg-gray-400 h-[30%] rounded-lg"
                   ></div>
                 ))}
               </div>
@@ -66,7 +66,7 @@ const DashboardStaticsComp = () => {
                 {[...Array(3)].map((_, i) => (
                   <div
                     key={i}
-                    className="bg-gray-900 h-[30%] rounded-lg"
+                    className="bg-gray-400 h-[30%] rounded-lg"
                   ></div>
                 ))}
               </div>
@@ -76,7 +76,7 @@ const DashboardStaticsComp = () => {
             {[...Array(3)].map((_, i) => (
               <div
                 key={i}
-                className="bg-gray-900 w-full h-[30%] rounded-lg"
+                className="bg-gray-400 w-full h-[30%] rounded-lg"
               ></div>
             ))}
           </div>
@@ -97,21 +97,21 @@ const DashboardStaticsComp = () => {
                 <OtherTemperamentIndicesComp data={analyticsData.data.otherTemperamentIndices} />
               </div>
               <div className="w-[35.5%] h-full px-1 flex gap-3 flex-col justify-start items-start">
-                <NoOfPatientsVsAgeComp />
-                <AgeWiseDistributionHeartRateComp />
-                <TemperamentChartComp />
+                <NoOfPatientsVsAgeComp  />
+                <AgeWiseDistributionHeartRateComp data={analyticsData.data.ageWiseDistributionOfHeartRate} />
+                <TemperamentChartComp data={analyticsData.data.temperamentWithDominantQualities} />
               </div>
               <div className="w-[36.5%] h-full flex flex-col gap-3 justify-start items-start">
                 <PrevalenceOfHypertensionComp data={analyticsData.data.prevalenceOfHypertension} />
-                <TrendOfHypertensionComp />
+                <TrendOfHypertensionComp data={analyticsData.data.monthlyTrendOfHypertension} />
                 <AverageTABIATScoreMalesvsFemalesComp />
               </div>
             </div>
           </div>
           <div className="w-[22%] h-[96vh] sticky desktop:top-2 large-desktop:top-2 pr-2 flex flex-col justify-start items-center gap-2">
-            <TemperamentCommunityComp />
-            <DominantBodyCommunityComp />
-            <TABIATScoreComp />
+            <TemperamentCommunityComp  />
+            <DominantBodyCommunityComp data={analyticsData.data.dominantBodyCompositionInCommunity} />
+            <TABIATScoreComp data={analyticsData.data.averageTabiatScore} />
           </div>
         </>
       )}
