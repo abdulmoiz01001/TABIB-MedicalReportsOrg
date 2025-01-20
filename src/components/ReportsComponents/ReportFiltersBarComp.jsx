@@ -81,8 +81,26 @@ const ReportFiltersBarComp = ({ reports }) => {
     ];
 
     const handleBPOptionSelect = (option) => {
+       
+        if( option == "High Blood Pressure" ){
+            setSelectedOption(option); // Update selected option
+            option = "high"
+        }else if( option == "Low Blood Pressure" ){
+            setSelectedOption(option); // Update selected option
+            option = "low"
+        }else if( option == "Normal Blood Pressure" ){
+            setSelectedOption(option); // Update selected option
+            option = "normal"
+        }else if( option == "Male" ){
+            setSelectedOption(option); // Update selected option
+            option = "male"
+        }else if ( option == "Female"){
+            setSelectedOption(option); // Update selected option
+            option = "female"
+        }
         setBPOption(option)
-        setSelectedOption(option); // Update selected option
+        console.log(option)
+     
         setDropdownOpen(false); // Close the dropdown
     }
 
@@ -252,6 +270,8 @@ const ReportFiltersBarComp = ({ reports }) => {
             
             dispatch(clearFilteredReports())
             dispatch(setFilteredReports(data.data));
+            console.log(data.data)
+            console.log("donee")
             // dispatch(setBpData(data.data));
         }catch(e){
             console.error("Error fetching BP reports", e);
