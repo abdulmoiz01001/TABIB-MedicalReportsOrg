@@ -33,7 +33,7 @@ const DashboardStaticsComp = () => {
 
   useEffect(() => {
     console.log(analyticsData);
-  }, [analyticsData]);
+  },[analyticsData])
 
   return (
     <div className="w-full flex flex-row justify-start items-start h-[94%]">
@@ -94,7 +94,7 @@ const DashboardStaticsComp = () => {
             <div className="desktop:w-[98%] large-desktop:w-[99%] h-screen flex flex-row justify-center items-start gap-2">
               <div className="w-[28%] h-full flex flex-col gap-3">
                 <HypertensionComp data={analyticsData.data.bmiClassification} />
-                <OtherTemperamentIndicesComp />
+                <OtherTemperamentIndicesComp data={analyticsData.data.otherTemperamentIndices} />
               </div>
               <div className="w-[35.5%] h-full px-1 flex gap-3 flex-col justify-start items-start">
                 <NoOfPatientsVsAgeComp />

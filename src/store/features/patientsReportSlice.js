@@ -1,12 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
-// Async thunk to fetch data
-// export const fetchData = createAsyncThunk('patientsReport/fetchData', async (url) => {
-//   const response = await fetch(url);
-//   const data = await response.json();
-//   return data;
-// });
-
 export const fetchData = createAsyncThunk('patientsReport/fetchData', async () => {
   const response = await fetch('https://nole90yyzc.execute-api.us-east-1.amazonaws.com/dev/reports', {
     method: 'GET',

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Doughnut } from 'react-chartjs-2';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { useMediaQuery } from 'react-responsive';
@@ -6,6 +6,9 @@ import { useMediaQuery } from 'react-responsive';
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 const DoughnutChart = ({details}) => {
+  useEffect(() =>{
+  console.log(details)
+  },[details])
   const isLargeDesktop = useMediaQuery({ minWidth: 2560 });
   const isDesktop = useMediaQuery({ minWidth: 1480, maxWidth: 2559 });
   const isLaptop = useMediaQuery({ minWidth: 824, maxWidth: 1479 });

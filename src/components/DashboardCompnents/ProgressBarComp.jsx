@@ -1,8 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
-const ProgressBarComp = ({ title, percentage, min = 0, max = 100 , firstState ,secondState, thiredState , imgSrc  }) => {
+const ProgressBarComp = ({ details, title, percentage, min = 0, max = 100 , firstState ,secondState, thiredState , imgSrc  }) => {
     // Calculate the width of the progress bar dynamically
     const progressWidth = `${(percentage / max) * 100}%`;
+
+    useEffect(() => {
+        console.log("Progress Bar Component: ", details);
+    }, [details]);
 
     return (
         <>
@@ -25,7 +29,7 @@ const ProgressBarComp = ({ title, percentage, min = 0, max = 100 , firstState ,s
                         {/* Progress Bar Fill */}
                         <div
                             className="h-full bg-red-500 transition-all duration-300 ease-in-out"
-                            style={{ width: progressWidth }}
+                            style={{ width: details }}
                         ></div>
                     </div>
                     {/* Range Section (Optional Display) */}

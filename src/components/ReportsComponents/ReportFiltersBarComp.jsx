@@ -1,30 +1,19 @@
 import React, { useCallback, useEffect, useState } from 'react';
-// import axios from 'axios';
 import { DateRangePicker } from 'react-date-range';
 import 'react-date-range/dist/styles.css';
 import 'react-date-range/dist/theme/default.css';
 import 'react-datepicker/dist/react-datepicker.css';
-import { useDispatch } from 'react-redux';
-import { format } from 'date-fns';
-// import { HOST } from '../../utils/constants';
-// import useSortData from '../../hooks/useSortData';
-// import { setFilteredReports } from '../../store/features/PatientReportByTimeRange';
-// import { setBpData } from '../../store/features/bloodPressureSlice';
+import { useDispatch , useSelector} from 'react-redux';
 import { setFilteredReports, clearFilteredReports } from '../../store/features/FiltersSlice';
+import { format } from 'date-fns';
 
 
 const ReportFiltersBarComp = ({ reports }) => {
 
-    // const { showCalendar, isTimePickerVisible, isSortDropdownOpen, isDropdownOpen } = useSelector((state) => state.filtersUI);
-
-
-
 
     const dispatch = useDispatch();
     const [sortOption, setSortOption] = useState("");
-    // const [searchTerm, setSearchTerm] = useState('');
     const [bPOption, setBPOption] = useState("")
-    const [sortedData, setSortedData] = useState()
     const [startTime, setStartTime] = useState("12:00 AM");
     const [endTime, setEndTime] = useState("12:00 AM");
     const [isTimePickerVisible, setTimePickerVisible] = useState(false);
@@ -48,7 +37,6 @@ const ReportFiltersBarComp = ({ reports }) => {
     }, [sortOption])
 
     const fetchSortedReports = () =>{
-        // useSortData(reports, sortOption)
     }
 
 
@@ -62,14 +50,25 @@ const ReportFiltersBarComp = ({ reports }) => {
         );
     };
 
-    const handleSelect = (ranges) => {
+    const handleSelect = async (ranges) => {
+
+        console.log(ranges.selection.startDate)
+
+        if( ranges.selection.startDate !== ranges.selection.endDate){
+            const formattedStartDate = format(ranges.selection.startDate, 'yyyy-MM-dd');
+            const formattedEndDate = format(ranges.selection.endDate, 'yyyy-MM-dd');
+            
+            console.log(formattedStartDate);
+            console.log(formattedEndDate);
+           await fetchDateRangeReports(formattedStartDate, formattedEndDate);        
+        }
+        
         setSelectionRange({
             startDate: ranges.selection.startDate,
             endDate: ranges.selection.endDate,
             key: 'selection',
             token: true
         });
-        console.log(ranges.selection.startDate, ranges.selection.endDate)
     };
 
 
@@ -94,11 +93,15 @@ const ReportFiltersBarComp = ({ reports }) => {
     }, [bPOption])
 
     const handleSortOptionSelect = (option) => {
-        console.log(option)
-        // setSortOption(option)
+        setSortOption(option)
         setSelectedSortOption(option); // Update selected sort option
         setSortDropdownOpen(false); // Close the dropdown
     };
+
+
+
+
+
 
     // useSortData(sortOption)
 
@@ -136,9 +139,7 @@ const ReportFiltersBarComp = ({ reports }) => {
 
 
         const today = new Date();
-        // Construct an ISO string with the current date and the selected time
-        const isoDateString = `${today.toISOString().split('T')[0]}T${formattedTime}Z`;
-
+    
     };
 
 
@@ -179,13 +180,13 @@ const ReportFiltersBarComp = ({ reports }) => {
 
     const handleClear = () => {
         setSelectionRange({ startDate: null, endDate: null, key: "selection" });
+        // dispatch(setShowCalendar(false));
     };
 
    
 
     const fetchSearchTermReports = async (searchTerm) => {
         try {
-                console.log(searchTerm);
                 const response = await fetch(`https://nole90yyzc.execute-api.us-east-1.amazonaws.com/dev/reports?keyword=${searchTerm}`, {
                     method: 'GET',
                     headers: {
@@ -194,7 +195,6 @@ const ReportFiltersBarComp = ({ reports }) => {
                     },
                 });
                 const data = await response.json();
-                console.log(data.data);
                 dispatch(clearFilteredReports())
             dispatch(setFilteredReports(data.data));
             // dispatch(setSearchTerm(data.data));
@@ -205,7 +205,6 @@ const ReportFiltersBarComp = ({ reports }) => {
 
     const fetchDateRangeReports = async (startDate, endDate) => {
         try{
-            console.log(startDate, endDate);
           const response = await fetch(`https://nole90yyzc.execute-api.us-east-1.amazonaws.com/dev/reports?startDate=${startDate}&endDate=${endDate}`, {
             method: 'GET',
             headers: {
@@ -214,7 +213,6 @@ const ReportFiltersBarComp = ({ reports }) => {
             },
             });
             const data = await response.json();
-            console.log(data.data);
             dispatch(clearFilteredReports())
             dispatch(setFilteredReports(data.data));
             // dispatch(setFilteredData(data.data));
@@ -225,7 +223,6 @@ const ReportFiltersBarComp = ({ reports }) => {
 
     const fetchTimeRangeReports = async (startTime, endTime) => {
         try{
-            console.log(startTime, endTime);
           const response = await fetch(`https://nole90yyzc.execute-api.us-east-1.amazonaws.com/dev/reports?startTime=${startTime}&endTime=${endTime}`, {
             method: 'GET',
             headers: {
@@ -234,7 +231,6 @@ const ReportFiltersBarComp = ({ reports }) => {
             },
             });
             const data = await response.json();
-            console.log(data.data);
             dispatch(clearFilteredReports())
             dispatch(setFilteredReports(data.data));
             // dispatch(setFilteredReports(data.data));
@@ -253,7 +249,7 @@ const ReportFiltersBarComp = ({ reports }) => {
             },
             });
             const data = await response.json();
-            console.log(data.data);
+            
             dispatch(clearFilteredReports())
             dispatch(setFilteredReports(data.data));
             // dispatch(setBpData(data.data));
