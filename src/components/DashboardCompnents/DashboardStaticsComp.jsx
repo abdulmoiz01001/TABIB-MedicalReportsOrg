@@ -22,6 +22,14 @@ const DashboardStaticsComp = () => {
     (state) => state.dashboardPatientsAnalytics
   );
 
+  function getCurrentYear() {
+    return new Date().getFullYear();
+  }
+  function getCurrentMonthName() {
+    const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    return monthNames[new Date().getMonth()];
+}
+
   useEffect(() => {
     dispatch(fetchDashboardAnalytics());
 
@@ -86,10 +94,10 @@ const DashboardStaticsComp = () => {
           <div className="w-[77%] flex flex-col h-full gap-3 desktop:pr-3 justify-start items-end large-desktop:pr-4 ">
             <div className="desktop:w-[98%] large-desktop:w-[99%] flex justify-between items-center  h-[20%]">
               <ReportBoxComp data={analyticsData.data.hypertensive} title={"Hypertensive"} count={"2091"} female={"1123"} male={"800"} />
-              <ReportBoxComp title={"Total Test"} title2={"Reports"} count={analyticsData.data.totalReportsCount} />
+              <ReportBoxComp title={"Total Test"} title2={"Reports"} data={analyticsData.data.totalReportsCount} />
               <PulseRateAndBloodPresureComp data={analyticsData.data.pluseAndBpAverage} />
-              <ReportBoxComp title={"Test Report "} title2={"Year 2025"} count={"7042"} />
-              <ReportBoxComp title={"Test Report "} title2={"Month Jan"} count={"403"} />
+              <ReportBoxComp title={"Test Report "} title2={`Year ${getCurrentYear()}`} data={analyticsData.data.currentYearReportsCount} />
+              <ReportBoxComp title={"Test Report "} title2={`Month ${getCurrentMonthName()}`} data={analyticsData.data.currentMonthReportsCount} />
             </div>
             <div className="desktop:w-[98%]  large-desktop:w-[99%] h-screen flex flex-row justify-center items-start gap-2">
               <div className="w-[28%] h-full flex flex-col gap-3">
@@ -104,14 +112,14 @@ const DashboardStaticsComp = () => {
               <div className="w-[36.5%] h-full flex flex-col gap-3 justify-start items-start">
                 <PrevalenceOfHypertensionComp data={analyticsData.data.prevalenceOfHypertension} />
                 <TrendOfHypertensionComp data={analyticsData.data.monthlyTrendOfHypertension} />
-                <AverageTABIATScoreMalesvsFemalesComp />
+                <AverageTABIATScoreMalesvsFemalesComp data={analyticsData.data.averageTabiatScore} />
               </div>
             </div>
           </div>
           <div className="w-[22%] h-[96vh] sticky desktop:top-2 large-desktop:top-2 pr-2 flex flex-col justify-start items-center gap-3">
             <TemperamentCommunityComp  />
             <DominantBodyCommunityComp data={analyticsData.data.dominantBodyCompositionInCommunity} />
-            <TABIATScoreComp data={analyticsData.data.averageTabiatScore} />
+            <TABIATScoreComp data={analyticsData.data.averageTabiatScore.total} />
           </div>
         </>
       )}

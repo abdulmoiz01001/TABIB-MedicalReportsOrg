@@ -23,7 +23,7 @@ ChartJS.register(
 
 const TemperamentChart = ({ details }) => {
   useEffect(() => {
-  console.log(details)
+  console.log("temperatent patakha",details)
   },[details])
   // 📱 Tailwind Custom Breakpoints
   const isLargeDesktop = useMediaQuery({ minWidth: 2560 });      // 2xl
@@ -78,19 +78,19 @@ const TemperamentChart = ({ details }) => {
     datasets: [
       {
         label: "1",
-        data: [0,0,0,0],
+        data: [details.sanguine.one,details.choleric.two,details.melanCholic.three,details.phlegmatic.four],
         backgroundColor: "#CC0001",
         barThickness: isLargeDesktop ? 45 : 25,
       },
       {
         label: "2",
-        data: [4.895, 5.702, 7.895, 4.263],
+        data: [details.sanguine.h, details.choleric.h, details.melanCholic.c, details.phlegmatic.c],
         backgroundColor: "#FF6464",
         barThickness: isLargeDesktop ? 45 : 25,
       },
       {
         label: "3",
-        data: [2.895, 3.702, 5.895, 7.263],
+        data: [details.sanguine.m, details.choleric.d, details.melanCholic.d, details.phlegmatic.m],
         backgroundColor: "#F9B9B4",
         barThickness: isLargeDesktop ? 45 : 25,
       },

@@ -45,16 +45,9 @@ const ReportListPaginationComp = ({ reports }) => {
   
   return (
     <>
-
-
       <div  className='w-[99%] mx-auto mt-2 flex large-desktop:py-6 large-desktop:gap-8 flex-col justify-start items-center h-[78%]   bg-[#FAFAFA] shadow-[0_4px_4px_3px_#00000040] rounded-[15px]'>
         <div className='desktop:w-full flex large-desktop:w-[98%]  justify-between items-center '>
           <p className='desktop:text-[16px] large-desktop:text-[2rem] text-[#827F7F] p-4'>Total Reports : {reports.length}</p>
-          {/* <div className='desktop:w-[96px] large-desktop:w-[200px] mr-2 bg-[#FFFFFF] shadow-[0_1px_2px_2px_#00000040] rounded-[8px] flex justify-evenly items-center large-desktop:h-[64px] desktop:h-[32px]'>
-            <span className='cursor-pointer active:scale-95'><img src='menu.svg' alt='menu' /></span>
-            |
-            <span className='cursor-pointer active:scale-95'><img src='boxmenu.svg' alt='menu' /></span>
-          </div> */}
         </div>
         <div className='desktop:w-[98%] large-desktop:w-[98%] mx-auto  border-green-900 h-[90%] flex justify-center items-start'>
           <table className='w-full  p-3 text-left'>

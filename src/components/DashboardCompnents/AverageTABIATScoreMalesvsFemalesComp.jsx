@@ -1,8 +1,8 @@
 import React from 'react'
 
-const AverageTABIATScoreMalesvsFemalesComp = () => {
-    const maleScore = 70; // Replace with dynamic values
-    const femaleScore = 80; // Replace with dynamic values
+const AverageTABIATScoreMalesvsFemalesComp = ({data}) => {
+    const maleScore = data.male // Replace with dynamic values
+    const femaleScore = data.female; // Replace with dynamic values
 
     return (
         <>

@@ -1,7 +1,7 @@
 import React from 'react'
 import DynamicDoughnutChart from '../Charts/SingleDoughnutChart'
 
-const TABIATScoreComp = () => {
+const TABIATScoreComp = ({data}) => {
     return (
         <>
             <div className='w-full flex justify-between  items-center h-[20%]  bg-[#FAFAFA] border border-[#CC0001] rounded-[15px] ' >
@@ -21,7 +21,7 @@ const TABIATScoreComp = () => {
                 </div>
                 <div className='w-[40%]  h-full flex-col flex  justify-center items-center  border-blue-900' >
                     <DynamicDoughnutChart
-                        value={61}
+                        value={data}
                         showCenterValue={true}
                         showSegmentLines={false}
                         lay={{
