@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from "react-router-dom"
-import { executeOffAll  } from "../../store/features/filtersUISlice"
+// import { executeOffAll  } from "../../store/features/filtersUISlice"
 import { FaEye } from "react-icons/fa";
 
 const ReportListPaginationComp = ({ reports }) => {
@@ -17,7 +17,7 @@ const ReportListPaginationComp = ({ reports }) => {
    console.log(noReportsFound)
   }, [noReportsFound])
  
-  console.log(executeOffAll())
+  // console.log(executeOffAll())
   
 
   // useEffect(() => {
@@ -34,9 +34,12 @@ const ReportListPaginationComp = ({ reports }) => {
     console.log(filteredReports)
   },[filteredReports])
   
-  if(filteredReports){
+  if(filteredReports.length > 0){
     // ("donee")
     data = filteredReports
+  }
+  if( filteredReports.count > 0){
+    data = filteredReports.Items
   }
 
   
@@ -44,7 +47,7 @@ const ReportListPaginationComp = ({ reports }) => {
     <>
 
 
-      <div onClick={() => dispatch(executeOffAll())} className='w-[99%] mx-auto mt-2 flex large-desktop:py-6 large-desktop:gap-8 flex-col justify-start items-center h-[78%]   bg-[#FAFAFA] shadow-[0_4px_4px_3px_#00000040] rounded-[15px]'>
+      <div  className='w-[99%] mx-auto mt-2 flex large-desktop:py-6 large-desktop:gap-8 flex-col justify-start items-center h-[78%]   bg-[#FAFAFA] shadow-[0_4px_4px_3px_#00000040] rounded-[15px]'>
         <div className='desktop:w-full flex large-desktop:w-[98%]  justify-between items-center '>
           <p className='desktop:text-[16px] large-desktop:text-[2rem] text-[#827F7F] p-4'>Total Reports : {reports.length}</p>
           {/* <div className='desktop:w-[96px] large-desktop:w-[200px] mr-2 bg-[#FFFFFF] shadow-[0_1px_2px_2px_#00000040] rounded-[8px] flex justify-evenly items-center large-desktop:h-[64px] desktop:h-[32px]'>
@@ -66,7 +69,8 @@ const ReportListPaginationComp = ({ reports }) => {
                 <th className='desktop:text-[20px] large-desktop:text-[3rem] font-medium capitalize'>Action</th>
               </tr>
             </thead>
-            { noReportsFound ? <>No found</> : <tbody className='h-full' >
+            { noReportsFound ? <> <tr  className='bg-[#FFEFEF] large-desktop:h-[100px] cursor-pointer h-[62px] rounded-[8px] '>
+            <td className='desktop:text-[20px] large-desktop:text-[3rem] pl-4'>Not Found</td></tr></> : <tbody className='h-full' >
               {data.map((report, index) => (
                 <tr key={index} className='bg-[#FFEFEF] large-desktop:h-[100px] cursor-pointer h-[62px] rounded-[8px] '>
                   <td className='desktop:text-[20px] large-desktop:text-[3rem] pl-4'>{report.Name}</td>

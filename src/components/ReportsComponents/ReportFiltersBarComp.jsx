@@ -3,7 +3,7 @@ import { DateRangePicker } from 'react-date-range';
 import 'react-date-range/dist/styles.css';
 import 'react-date-range/dist/theme/default.css';
 import 'react-datepicker/dist/react-datepicker.css';
-import { useDispatch , useSelector} from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setFilteredReports, clearFilteredReports } from '../../store/features/FiltersSlice';
 import { format } from 'date-fns';
 import { setOffAllFunction } from '../../store/features/filtersUISlice';
@@ -34,12 +34,26 @@ const ReportFiltersBarComp = ({ reports }) => {
 
     useEffect(() => {
         if (sortOption) {
-            fetchSortedReports(sortOption)
+            // console.log(sortOption)
+            let sortBy = ""
+            let sortOrder = ""
+            if (sortOption == "Name (Ascending)") {
+                sortBy = "name"
+                sortOrder = "asc"
+            } else if (sortOption == "Name (Descending)") {
+                sortBy = "name"
+                sortOrder = "desc"
+            } else if (sortOption == "Age (Ascending)") {
+                sortBy = "age"
+                sortOrder = "asc"
+            } else if (sortOption == "Age (Descending)") {
+                sortBy = "age"
+                sortOrder = "desc"
+            }
+            fetchSortReports(sortBy, sortOrder)
         }
     }, [sortOption])
 
-    const fetchSortedReports = () =>{
-    }
 
 
     // Inside the component:
@@ -56,15 +70,15 @@ const ReportFiltersBarComp = ({ reports }) => {
 
         console.log(ranges.selection.startDate)
 
-        if( ranges.selection.startDate !== ranges.selection.endDate){
+        if (ranges.selection.startDate !== ranges.selection.endDate) {
             const formattedStartDate = format(ranges.selection.startDate, 'yyyy-MM-dd');
             const formattedEndDate = format(ranges.selection.endDate, 'yyyy-MM-dd');
-            
+
             console.log(formattedStartDate);
             console.log(formattedEndDate);
-           await fetchDateRangeReports(formattedStartDate, formattedEndDate);        
+            await fetchDateRangeReports(formattedStartDate, formattedEndDate);
         }
-        
+
         setSelectionRange({
             startDate: ranges.selection.startDate,
             endDate: ranges.selection.endDate,
@@ -83,26 +97,26 @@ const ReportFiltersBarComp = ({ reports }) => {
     ];
 
     const handleBPOptionSelect = (option) => {
-       
-        if( option == "High Blood Pressure" ){
+
+        if (option == "High Blood Pressure") {
             setSelectedOption(option); // Update selected option
             option = "high"
-        }else if( option == "Low Blood Pressure" ){
+        } else if (option == "Low Blood Pressure") {
             setSelectedOption(option); // Update selected option
             option = "low"
-        }else if( option == "Normal Blood Pressure" ){
+        } else if (option == "Normal Blood Pressure") {
             setSelectedOption(option); // Update selected option
             option = "normal"
-        }else if( option == "Male" ){
+        } else if (option == "Male") {
             setSelectedOption(option); // Update selected option
             option = "male"
-        }else if ( option == "Female"){
+        } else if (option == "Female") {
             setSelectedOption(option); // Update selected option
             option = "female"
         }
         setBPOption(option)
         console.log(option)
-     
+
         setDropdownOpen(false); // Close the dropdown
     }
 
@@ -113,6 +127,8 @@ const ReportFiltersBarComp = ({ reports }) => {
     }, [bPOption])
 
     const handleSortOptionSelect = (option) => {
+
+
         setSortOption(option)
         setSelectedSortOption(option); // Update selected sort option
         setSortDropdownOpen(false); // Close the dropdown
@@ -150,16 +166,16 @@ const ReportFiltersBarComp = ({ reports }) => {
             setEndTime(formattedTime)
         }
 
-         // If both times are set, fetch the reports
-    if (type === "start" && endTime != "12:00 AM") {
-        fetchTimeRangeReports(startTime, endTime);
-      } else if (type === "end" && startTime != "12:00 AM") {
-        fetchTimeRangeReports(startTime, endTime);
-      }
+        // If both times are set, fetch the reports
+        if (type === "start" && endTime != "12:00 AM") {
+            fetchTimeRangeReports(startTime, endTime);
+        } else if (type === "end" && startTime != "12:00 AM") {
+            fetchTimeRangeReports(startTime, endTime);
+        }
 
 
         const today = new Date();
-    
+
     };
 
 
@@ -203,30 +219,30 @@ const ReportFiltersBarComp = ({ reports }) => {
         // dispatch(setShowCalendar(false));
     };
 
-   
+
 
     const fetchSearchTermReports = async (searchTerm) => {
         try {
             console.log(searchTerm)
-                const response = await fetch(`https://nole90yyzc.execute-api.us-east-1.amazonaws.com/dev/reports?keyword=${searchTerm}`, {
-                    method: 'GET',
-                    headers: {
-                        'x-api-key': '0qNs7fXFGB6OXqRwgSGVH1wCBBhnhBVf4hj65ONL',
-                        'Content-Type': 'application/json',
-                    },
-                });
-                const data = await response.json();
-                console.log("search term data" ,data)
-                if(data.success){
+            const response = await fetch(`https://nole90yyzc.execute-api.us-east-1.amazonaws.com/dev/reports?keyword=${searchTerm}`, {
+                method: 'GET',
+                headers: {
+                    'x-api-key': '0qNs7fXFGB6OXqRwgSGVH1wCBBhnhBVf4hj65ONL',
+                    'Content-Type': 'application/json',
+                },
+            });
+            const data = await response.json();
+            console.log("search term data", data)
+            if (data.success) {
 
-                
-                    dispatch(clearFilteredReports())
-                    dispatch(setFilteredReports(data.data));
-                    console.log(data.data)
-                    console.log("donee")
-                }else{
-                    dispatch(clearFilteredReports())
-                }
+
+                dispatch(clearFilteredReports())
+                dispatch(setFilteredReports(data.data));
+                console.log(data.data)
+                console.log("donee")
+            } else {
+                dispatch(clearFilteredReports())
+            }
             // dispatch(setSearchTerm(data.data));
         } catch (e) {
             console.error("Error fetching search term reports", e);
@@ -234,89 +250,117 @@ const ReportFiltersBarComp = ({ reports }) => {
     };
 
     const fetchDateRangeReports = async (startDate, endDate) => {
-        try{
-          const response = await fetch(`https://nole90yyzc.execute-api.us-east-1.amazonaws.com/dev/reports?startDate=${startDate}&endDate=${endDate}`, {
-            method: 'GET',
-            headers: {
-              'x-api-key': '0qNs7fXFGB6OXqRwgSGVH1wCBBhnhBVf4hj65ONL',
-                'Content-Type': 'application/json',
-            },
+        try {
+            const response = await fetch(`https://nole90yyzc.execute-api.us-east-1.amazonaws.com/dev/reports?startDate=${startDate}&endDate=${endDate}`, {
+                method: 'GET',
+                headers: {
+                    'x-api-key': '0qNs7fXFGB6OXqRwgSGVH1wCBBhnhBVf4hj65ONL',
+                    'Content-Type': 'application/json',
+                },
             });
             const data = await response.json();
-            const { Items } = data.data
+            console.log("date range data", data)
 
-            const { count  } = data.data
-            if(data.success){
-                if( count > 0){
+            if (data.success) {
+                const { Items } = data.data
+
+                const { count } = data.data
+                if (count > 0) {
                     dispatch(clearFilteredReports())
                     dispatch(setFilteredReports(Items));
                     console.log(Items)
                     console.log("donee")
-                }else {
+                } else {
                     dispatch(clearFilteredReports())
                 }
-                
-               
-            }else{
+
+
+            } else {
                 dispatch(clearFilteredReports())
             }
             // dispatch(setFilteredData(data.data));
-        }catch(e){
+        } catch (e) {
             console.error("Error fetching date range reports", e);
         }
     }
 
     const fetchTimeRangeReports = async (startTime, endTime) => {
-        try{
-          const response = await fetch(`https://nole90yyzc.execute-api.us-east-1.amazonaws.com/dev/reports?startTime=${startTime}&endTime=${endTime}`, {
-            method: 'GET',
-            headers: {
-              'x-api-key': '0qNs7fXFGB6OXqRwgSGVH1wCBBhnhBVf4hj65ONL',
-                'Content-Type': 'application/json',
-            },
+        try {
+            const response = await fetch(`https://nole90yyzc.execute-api.us-east-1.amazonaws.com/dev/reports?startTime=${startTime}&endTime=${endTime}`, {
+                method: 'GET',
+                headers: {
+                    'x-api-key': '0qNs7fXFGB6OXqRwgSGVH1wCBBhnhBVf4hj65ONL',
+                    'Content-Type': 'application/json',
+                },
             });
             const data = await response.json();
-            if(data.success){
+            if (data.success) {
 
-                
+
                 dispatch(clearFilteredReports())
                 dispatch(setFilteredReports(data.data));
                 console.log(data.data)
-                
-            }else{
+
+            } else {
                 dispatch(clearFilteredReports())
             }
             // dispatch(setFilteredReports(data.data));
-        }catch(e){
+        } catch (e) {
             console.error("Error fetching time range reports", e);
         }
     }
 
     const fetchBPReports = async (bPOption) => {
-        try{
+        try {
             const response = await fetch(`https://nole90yyzc.execute-api.us-east-1.amazonaws.com/dev/reports?bp=${bPOption}`, {
-            method: 'GET',
-            headers: {
-                'x-api-key': '0qNs7fXFGB6OXqRwgSGVH1wCBBhnhBVf4hj65ONL',
-                'Content-Type': 'application/json',
-            },
+                method: 'GET',
+                headers: {
+                    'x-api-key': '0qNs7fXFGB6OXqRwgSGVH1wCBBhnhBVf4hj65ONL',
+                    'Content-Type': 'application/json',
+                },
             });
             const data = await response.json();
-             
-            console.log(" blood presure data ", data.data)
-            if(data.success){
 
-                
+            console.log(" blood presure data ", data.data)
+            if (data.success) {
+
+
                 dispatch(clearFilteredReports())
                 dispatch(setFilteredReports(data.data));
                 console.log(data.data)
                 console.log("donee")
-            }else{
+            } else {
                 dispatch(clearFilteredReports())
             }
             // dispatch(setBpData(data.data));
-        }catch(e){
+        } catch (e) {
             console.error("Error fetching BP reports", e);
+        }
+    }
+
+    const fetchSortReports = async (sortBy , sortOrder) => {
+        try {
+            const response = await fetch(`https://nole90yyzc.execute-api.us-east-1.amazonaws.com/dev/reports?sortBy=${sortBy}&sortOrder=${sortOrder}`, {
+                method: 'GET',
+                headers: {
+                    "x-api-key": "0qNs7fXFGB6OXqRwgSGVH1wCBBhnhBVf4hj65ONL",
+                    "Content-Type": "application/json",
+                },
+            });
+
+            const data = await response.json();
+            console.log("sort data", data)
+            if (data.success) {
+                dispatch(clearFilteredReports())
+                dispatch(setFilteredReports(data.data));
+                console.log(data.data)
+                console.log("donee")
+            } else {
+                dispatch(clearFilteredReports())
+            }
+
+        } catch (e) {
+            console.error("Error fetching sort reports", e);
         }
     }
 
