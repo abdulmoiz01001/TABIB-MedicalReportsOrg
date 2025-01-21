@@ -23,10 +23,10 @@ function App() {
   }, [dispatch]);
 
   // PrivateRoute component for protecting routes
-  const PrivateRoute = ({ children }) => {
+  // const PrivateRoute = ({ children }) => {
  
-    return isAuthenticated ? children : <Navigate to="/login" />;
-  };
+  //   return isAuthenticated ? children : <Navigate to="/login" />;
+  // };
 
   return (
     <Router>
@@ -39,9 +39,9 @@ function App() {
         <Route
           path="/"
           element={
-            <PrivateRoute>
+            // <PrivateRoute>
               <Layout />
-            </PrivateRoute>
+            // {/* </PrivateRoute> */}
           }
         >
           <Route index element={<DashboardPage />} />

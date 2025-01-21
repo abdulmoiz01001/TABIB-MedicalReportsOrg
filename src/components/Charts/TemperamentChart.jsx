@@ -78,7 +78,7 @@ const TemperamentChart = ({ details }) => {
     datasets: [
       {
         label: "1",
-        data: [4.895, 2.702, 3.895, 6.263],
+        data: [0,0,0,0],
         backgroundColor: "#CC0001",
         barThickness: isLargeDesktop ? 45 : 25,
       },

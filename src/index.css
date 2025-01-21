@@ -263,3 +263,37 @@ body {
   }
   
   
+
+  @keyframes fillEffect {
+    0% {
+      fill: transparent;
+    }
+    50% {
+      fill: rgba(204, 0, 1, 0.5);
+    }
+    100% {
+      fill: rgba(204, 0, 1, 1);
+    }
+  }
+
+  @keyframes lineGrow {
+    0% {
+      stroke-dasharray: 0, 1000;
+    }
+    100% {
+      stroke-dasharray: 1000, 0;
+    }
+  }
+
+  .animate-fill-circle {
+    animation: fillEffect 3s ease-in-out forwards;
+  }
+
+  .animate-fill-path {
+    animation: fillEffect 3s ease-in-out forwards 1s;
+  }
+
+  .animate-line {
+    stroke-dasharray: 1000;
+    animation: lineGrow 3s ease-in-out forwards 2s;
+  }

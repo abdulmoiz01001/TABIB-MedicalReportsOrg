@@ -93,7 +93,7 @@ const ForgotPasswordComp = () => {
 
                 <p onClick={() => navigate("/login")} className="text-[#313131] cursor-pointer desktop:text-[15px] large-desktop:text-[30px] font-normal">Back to Login </p>
               </div>
-              <div className="w-[40%] flex flex-col justify-center items-center desktop:gap-8 large-desktop:gap-16 h-full">
+              <div className="w-[40%] flex flex-col justify-center items-center desktop:gap-2 large-desktop:gap-16 h-full">
                 <h1 className="text-[#313131] text-center desktop:text-[45px] large-desktop:text-[95px] font-bold">
                   Forgot Password
                 </h1>
@@ -102,7 +102,7 @@ const ForgotPasswordComp = () => {
                   type="email"
                   name="email"
                   placeholder="Email"
-                  className="w-[80%] pr-5 desktop:pl-6 large-desktop:pl-10 desktop:text-[20px] large-desktop:text-[50px] desktop:h-[80px] large-desktop:h-[130px] border-2 bg-transparent desktop:placeholder:text-[20px] large-desktop:placeholder:text-[40px] border-red-900 rounded-[15px] font-normal"
+                  className="w-[80%] pr-5 desktop:pl-6 mb-3 large-desktop:pl-10 desktop:text-[20px] large-desktop:text-[50px] desktop:h-[80px] large-desktop:h-[130px] border-2 bg-transparent desktop:placeholder:text-[20px] large-desktop:placeholder:text-[40px] border-red-900 rounded-[15px] font-normal"
                   onBlur={() => {
                     setFieldTouched('email', true);
                     clearTimeout(errorTimeout);
@@ -118,7 +118,7 @@ const ForgotPasswordComp = () => {
                   type="password"
                   name="currentPassword"
                   placeholder="Current Password"
-                  className="w-[80%] pr-5 desktop:pl-6 large-desktop:pl-10 desktop:text-[20px] large-desktop:text-[50px] desktop:h-[80px] large-desktop:h-[130px] border-2 bg-transparent desktop:placeholder:text-[20px] large-desktop:placeholder:text-[40px] border-red-900 rounded-[15px] font-normal"
+                  className="w-[80%] pr-5 desktop:pl-6 mb-3 large-desktop:pl-10 desktop:text-[20px] large-desktop:text-[50px] desktop:h-[80px] large-desktop:h-[130px] border-2 bg-transparent desktop:placeholder:text-[20px] large-desktop:placeholder:text-[40px] border-red-900 rounded-[15px] font-normal"
                   onBlur={() => {
                     setFieldTouched('currentPassword', true);
                     clearTimeout(errorTimeout);
@@ -134,7 +134,7 @@ const ForgotPasswordComp = () => {
                   type="password"
                   name="newPassword"
                   placeholder="New Password"
-                  className="w-[80%] pr-5 desktop:pl-6 large-desktop:pl-10 desktop:text-[20px] large-desktop:text-[50px] desktop:h-[80px] large-desktop:h-[130px] border-2 bg-transparent desktop:placeholder:text-[20px] large-desktop:placeholder:text-[40px] border-red-900 rounded-[15px] font-normal"
+                  className="w-[80%] pr-5 desktop:pl-6 mb-3 large-desktop:pl-10 desktop:text-[20px] large-desktop:text-[50px] desktop:h-[80px] large-desktop:h-[130px] border-2 bg-transparent desktop:placeholder:text-[20px] large-desktop:placeholder:text-[40px] border-red-900 rounded-[15px] font-normal"
                   onBlur={() => {
                     setFieldTouched('newPassword', true);
                     clearTimeout(errorTimeout);
@@ -150,7 +150,7 @@ const ForgotPasswordComp = () => {
                   type="password"
                   name="confirmPassword"
                   placeholder="Confirm Password"
-                  className="w-[80%] pr-5 desktop:pl-6 large-desktop:pl-10 desktop:text-[20px] large-desktop:text-[50px] desktop:h-[80px] large-desktop:h-[130px] border-2 bg-transparent desktop:placeholder:text-[20px] large-desktop:placeholder:text-[40px] border-red-900 rounded-[15px] font-normal"
+                  className="w-[80%] pr-5 desktop:pl-6 mb-3 large-desktop:pl-10 desktop:text-[20px] large-desktop:text-[50px] desktop:h-[80px] large-desktop:h-[130px] border-2 bg-transparent desktop:placeholder:text-[20px] large-desktop:placeholder:text-[40px] border-red-900 rounded-[15px] font-normal"
                   onBlur={() => {
                     setFieldTouched('confirmPassword', true);
                     clearTimeout(errorTimeout);

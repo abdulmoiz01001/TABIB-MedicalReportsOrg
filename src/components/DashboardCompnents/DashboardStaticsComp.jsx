@@ -83,15 +83,15 @@ const DashboardStaticsComp = () => {
         </div>
       ) : (
         <>
-          <div className="w-[77%] flex flex-col h-full gap-2 desktop:pr-2 justify-start items-end large-desktop:pr-4 ">
+          <div className="w-[77%] flex flex-col h-full gap-3 desktop:pr-3 justify-start items-end large-desktop:pr-4 ">
             <div className="desktop:w-[98%] large-desktop:w-[99%] flex justify-between items-center  h-[20%]">
               <ReportBoxComp data={analyticsData.data.hypertensive} title={"Hypertensive"} count={"2091"} female={"1123"} male={"800"} />
-              <ReportBoxComp title={"Total Test"} title2={"Reports"} count={"3942"} />
+              <ReportBoxComp title={"Total Test"} title2={"Reports"} count={analyticsData.data.totalReportsCount} />
               <PulseRateAndBloodPresureComp data={analyticsData.data.pluseAndBpAverage} />
               <ReportBoxComp title={"Test Report "} title2={"Year 2025"} count={"7042"} />
               <ReportBoxComp title={"Test Report "} title2={"Month Jan"} count={"403"} />
             </div>
-            <div className="desktop:w-[98%] large-desktop:w-[99%] h-screen flex flex-row justify-center items-start gap-2">
+            <div className="desktop:w-[98%]  large-desktop:w-[99%] h-screen flex flex-row justify-center items-start gap-2">
               <div className="w-[28%] h-full flex flex-col gap-3">
                 <HypertensionComp data={analyticsData.data.bmiClassification} />
                 <OtherTemperamentIndicesComp data={analyticsData.data.otherTemperamentIndices} />
@@ -108,7 +108,7 @@ const DashboardStaticsComp = () => {
               </div>
             </div>
           </div>
-          <div className="w-[22%] h-[96vh] sticky desktop:top-2 large-desktop:top-2 pr-2 flex flex-col justify-start items-center gap-2">
+          <div className="w-[22%] h-[96vh] sticky desktop:top-2 large-desktop:top-2 pr-2 flex flex-col justify-start items-center gap-3">
             <TemperamentCommunityComp  />
             <DominantBodyCommunityComp data={analyticsData.data.dominantBodyCompositionInCommunity} />
             <TABIATScoreComp data={analyticsData.data.averageTabiatScore} />

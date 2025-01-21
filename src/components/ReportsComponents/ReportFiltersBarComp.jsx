@@ -6,6 +6,8 @@ import 'react-datepicker/dist/react-datepicker.css';
 import { useDispatch , useSelector} from 'react-redux';
 import { setFilteredReports, clearFilteredReports } from '../../store/features/FiltersSlice';
 import { format } from 'date-fns';
+import { setOffAllFunction } from '../../store/features/filtersUISlice';
+
 
 
 const ReportFiltersBarComp = ({ reports }) => {
@@ -214,7 +216,8 @@ const ReportFiltersBarComp = ({ reports }) => {
                     },
                 });
                 const data = await response.json();
-                if(data.count > 0){
+                console.log("search term data" ,data)
+                if(data.success){
 
                 
                     dispatch(clearFilteredReports())
@@ -240,13 +243,20 @@ const ReportFiltersBarComp = ({ reports }) => {
             },
             });
             const data = await response.json();
-            if(data.count > 0){
+            const { Items } = data.data
 
+            const { count  } = data.data
+            if(data.success){
+                if( count > 0){
+                    dispatch(clearFilteredReports())
+                    dispatch(setFilteredReports(Items));
+                    console.log(Items)
+                    console.log("donee")
+                }else {
+                    dispatch(clearFilteredReports())
+                }
                 
-                dispatch(clearFilteredReports())
-                dispatch(setFilteredReports(data.data));
-                console.log(data.data)
-                console.log("donee")
+               
             }else{
                 dispatch(clearFilteredReports())
             }
@@ -266,13 +276,13 @@ const ReportFiltersBarComp = ({ reports }) => {
             },
             });
             const data = await response.json();
-            if(data.count > 0){
+            if(data.success){
 
                 
                 dispatch(clearFilteredReports())
                 dispatch(setFilteredReports(data.data));
                 console.log(data.data)
-                console.log("donee")
+                
             }else{
                 dispatch(clearFilteredReports())
             }
@@ -292,8 +302,9 @@ const ReportFiltersBarComp = ({ reports }) => {
             },
             });
             const data = await response.json();
-            
-            if(data.count > 0){
+             
+            console.log(" blood presure data ", data.data)
+            if(data.success){
 
                 
                 dispatch(clearFilteredReports())
@@ -336,6 +347,15 @@ const ReportFiltersBarComp = ({ reports }) => {
         setSearchTerm(value);
         handleSearch(value);
     };
+
+    const offAll = () => {
+        setShowCalendar(false)
+        setTimePickerVisible(false)
+        setDropdownOpen(false)
+        setSortDropdownOpen(false)
+    }
+
+    dispatch(setOffAllFunction(offAll))
 
 
 

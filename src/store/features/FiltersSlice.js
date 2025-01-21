@@ -3,6 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   filteredReports: [],
+  noReportsFound: false,
 };
 
 const FiltersSlice = createSlice({
@@ -11,9 +12,11 @@ const FiltersSlice = createSlice({
   reducers: {
     setFilteredReports: (state, action) => {
       state.filteredReports = action.payload;
+      state.noReportsFound = false
     },
     clearFilteredReports: (state) => {
       state.filteredReports = [];
+      state.noReportsFound = true;
     },
   },
 });

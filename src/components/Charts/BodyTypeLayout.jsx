@@ -23,8 +23,8 @@ const BodyTypeLayout = ({ details }) => {
                     const bgColor = isMax ? 'bg-[#CC0001]' : 'bg-[#f9d3c6]'; // Darker for max value, lighter otherwise
                     
                     return (
-                        <div key={index} id={`div${index+1}`} className={`flex flex-col px-2 cursor-default justify-center items-center ${bgColor}`}>
-                            <h1 className='desktop:text-[12px] large-desktop:text-[1.7rem] text-[#00000] font-bold'>
+                        <div key={index} id={`div${index+1}`} className={`flex flex-col  cursor-default justify-center items-center ${bgColor}`}>
+                            <h1 className='desktop:text-[12px]  large-desktop:text-[1.7rem] text-[#00000] font-bold'>
                                 {key}
                             </h1>
                             <p className='text-[#000000] desktop:text-[10px] large-desktop:text-[1.5rem] font-bold'>

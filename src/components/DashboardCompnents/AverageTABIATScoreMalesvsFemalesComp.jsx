@@ -21,28 +21,48 @@ const AverageTABIATScoreMalesvsFemalesComp = () => {
                         <span className="desktop:text-[0.8rem] large-desktop:text-[2rem] " >9</span>
                         <span className="desktop:text-[0.8rem] large-desktop:text-[2rem] " >10</span>
                     </div>
-                    <svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" className="desktop:w-[100px] large-desktop:w-[200px] h-auto" viewBox="0 0 325 744.5">
+                    {/* <svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" className="desktop:w-[100px] large-desktop:w-[200px] h-auto" viewBox="0 0 325 744.5">
                         <defs>
-                            {/* <style>
-                                .cls-1, .cls-2 {
-                                    fill: none;
-                                stroke: #000;
-                                stroke-miterlimit: 10;
-                                stroke-width: 22px;
-      }
-
-                                .cls-2 {
-                                    stroke - linecap: round;
-      }
-                            </style> */}
+                           
                         </defs>
                         <g id="Layer_1-2" data-name="Layer 1">
-                            <circle className="stroke-black stroke-[22px] fill-none" class="cls-1" cx="163" cy="81" r="70" />
-                            <path className="stroke-black stroke-[22px] fill-none" class="cls-1" d="m63.11,191h198.78c28.76,0,52.11,23.35,52.11,52.11v221.89H11v-221.89c0-28.76,23.35-52.11,52.11-52.11Z" />
-                            <path className="stroke-black stroke-[22px] fill-none" class="cls-2" d="m230.5,272.08c13.24,8.51,22,23.36,22,40.27v421.15H74.5v-421.15c0-16.48,8.33-31.01,21-39.62" />
-                            <line className="stroke-black stroke-[22px] fill-none" class="cls-1" x1="162.5" y1="505.5" x2="162.5" y2="737.5" />
+                            <circle className="stroke-black  stroke-[10px]  fill-[#CC0001]" class="cls-1" cx="163" cy="81" r="70" />
+                            <path className="stroke-black  stroke-[10px] fill-none" class="cls-1" d="m63.11,191h198.78c28.76,0,52.11,23.35,52.11,52.11v221.89H11v-221.89c0-28.76,23.35-52.11,52.11-52.11Z" />
+                            <path className="stroke-black  stroke-[10px] fill-none" class="cls-2" d="m230.5,272.08c13.24,8.51,22,23.36,22,40.27v421.15H74.5v-421.15c0-16.48,8.33-31.01,21-39.62" />
+                            <line className="stroke-black  stroke-[10px] fill-none" class="cls-1" x1="162.5" y1="505.5" x2="162.5" y2="737.5" />
                         </g>
-                    </svg>
+                    </svg> */}
+                    <svg
+  id="Layer_2"
+  data-name="Layer 2"
+  xmlns="http://www.w3.org/2000/svg"
+  className="desktop:w-[100px] large-desktop:w-[200px] h-auto dynamic-fill"
+  viewBox="0 0 325 744.5"
+>
+  <g id="Layer_1-2" data-name="Layer 1">
+    <circle
+      className="stroke-black stroke-[10px] fill-[#CC0001] animate-fill-circle"
+      cx="163"
+      cy="81"
+      r="70"
+    />
+    <path
+      className="stroke-black stroke-[10px] fill-none animate-fill-path"
+      d="m63.11,191h198.78c28.76,0,52.11,23.35,52.11,52.11v221.89H11v-221.89c0-28.76,23.35-52.11,52.11-52.11Z"
+    />
+    <path
+      className="stroke-black stroke-[10px] fill-none animate-fill-path"
+      d="m230.5,272.08c13.24,8.51,22,23.36,22,40.27v421.15H74.5v-421.15c0-16.48,8.33-31.01,21-39.62"
+    />
+    <line
+      className="stroke-black stroke-[10px] fill-none animate-line"
+      x1="162.5"
+      y1="505.5"
+      x2="162.5"
+      y2="737.5"
+    />
+  </g>
+</svg>
                     {/* <img src='male.svg' alt='image' className='large-desktop:w-[200px]'  /> */}
                     <img src='line.svg' alt='image' className='large-desktop:h-[300px]' />
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 358.68 744.5" className="desktop:w-[110px] large-desktop:w-[200px] h-auto">

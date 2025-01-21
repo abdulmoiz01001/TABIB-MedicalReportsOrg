@@ -2,43 +2,24 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  showCalendar: false,
-  isTimePickerVisible: false,
-  isDropdownOpen: false,
-  isSortDropdownOpen: false,
+  offAllFunction: null, // Placeholder for the function
 };
 
 const filtersUISlice = createSlice({
   name: 'ui',
   initialState,
   reducers: {
-    offAll: (state) => {
-      state.showCalendar = false;
-      state.isTimePickerVisible = false;
-      state.isSortDropdownOpen = false;
-      state.isDropdownOpen = false;
+    setOffAllFunction: (state, action) => {
+      state.offAllFunction = action.payload; // Save the function in state
     },
-    setShowCalendar: (state, action) => {
-      state.showCalendar = action.payload;
-    },
-    setTimePickerVisible: (state, action) => {
-      state.isTimePickerVisible = action.payload;
-    },
-    setDropdownOpen: (state, action) => {
-      state.isDropdownOpen = action.payload;
-    },
-    setSortDropdownOpen: (state, action) => {
-      state.isSortDropdownOpen = action.payload;
+    executeOffAll: (state) => {
+      // if (state.offAllFunction) {
+        state.offAllFunction(); // Call the function if it exists
+      // }
     },
   },
 });
 
-export const {
-  offAll,
-  setShowCalendar,
-  setTimePickerVisible,
-  setDropdownOpen,
-  setSortDropdownOpen,
-} = filtersUISlice.actions;
+export const { setOffAllFunction, executeOffAll } = filtersUISlice.actions;
 
 export default filtersUISlice.reducer;
