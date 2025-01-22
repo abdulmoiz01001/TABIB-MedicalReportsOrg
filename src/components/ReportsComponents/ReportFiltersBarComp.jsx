@@ -192,8 +192,8 @@ const ReportFiltersBarComp = ({ reports }) => {
 
     const clearTimeRange = async () => {
         // Reset times to 00:00:00
-        setStartTime("00:00:00");
-        setEndTime("00:00:00");
+        setStartTime("12:00 AM");
+        setEndTime("12:00 AM");
 
         // Trigger API call
        await fetchTimeRangeReports("","");
@@ -494,7 +494,7 @@ const ReportFiltersBarComp = ({ reports }) => {
                         onClick={() => toggleDropdown('time')}
                     >
                         <p className="desktop:text-[15px] desktop:leading-5 large-desktop:text-[2rem] text-black">
-                            {startTime && endTime ? `${formatTime(startTime)} - ${formatTime(endTime)}` : "Filter By"}
+                            {startTime != "12:00 AM" && endTime != "12:00 AM" ? `${formatTime(startTime)} - ${formatTime(endTime)}` : "Filter By"}
                         </p>
                         <img
                             src="clock.svg"
