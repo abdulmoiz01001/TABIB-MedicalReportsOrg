@@ -6,7 +6,8 @@ import 'react-datepicker/dist/react-datepicker.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { setFilteredReports, clearFilteredReports } from '../../store/features/FiltersSlice';
 import { format } from 'date-fns';
-import { setOffAllFunction } from '../../store/features/filtersUISlice';
+import useStore from '../../zustandStore/useStore';
+// import { setOffAllFunction } from '../../store/features/filtersUISlice';
 
 
 
@@ -30,6 +31,17 @@ const ReportFiltersBarComp = ({ reports }) => {
         key: 'selection',
         token: false
     });
+
+    const offAll = () => {
+        setShowCalendar(false)
+        setTimePickerVisible(false)
+        setDropdownOpen(false)
+        setSortDropdownOpen(false)
+    }
+
+    
+    const setCustomFunction = useStore((state) => state.setCustomFunction);
+    setCustomFunction(offAll)
 
 
     useEffect(() => {
@@ -183,26 +195,26 @@ const ReportFiltersBarComp = ({ reports }) => {
     const toggleDropdown = (type) => {
 
         if (type === 'calendar') {
-            dispatch(setShowCalendar(!showCalendar))
-            dispatch(setTimePickerVisible(false))  // Close time picker when calendar is open
-            dispatch(setDropdownOpen(false)) // Close option dropdown when calendar is opened
-            dispatch(setSortDropdownOpen(false)) // Close sort dropdown when calendar is opened
+            setShowCalendar(!showCalendar)
+            setTimePickerVisible(false)  // Close time picker when calendar is open
+            setDropdownOpen(false) // Close option dropdown when calendar is opened
+            setSortDropdownOpen(false) // Close sort dropdown when calendar is opened
         } else if (type === 'time' && selectionRange.token == true) {
 
-            dispatch(setTimePickerVisible(!isTimePickerVisible))
-            dispatch(setShowCalendar(false))  // Close calendar when time picker is open
-            dispatch(setDropdownOpen(false)) // Close option dropdown when time picker is opened
-            dispatch(setSortDropdownOpen(false)) // Close sort dropdown when time picker is opened
+            setTimePickerVisible(!isTimePickerVisible)
+            setShowCalendar(false)  // Close calendar when time picker is open
+            setDropdownOpen(false) // Close option dropdown when time picker is opened
+            setSortDropdownOpen(false) // Close sort dropdown when time picker is opened
         } else if (type === 'filter') {
-            dispatch(setDropdownOpen(!isDropdownOpen))
-            dispatch(setShowCalendar(false)) // Close calendar when filter dropdown is open
-            dispatch(setTimePickerVisible(false)) // Close time picker when filter dropdown is open
-            dispatch(setSortDropdownOpen(false)) // Close sort dropdown when filter dropdown is opened
+            setDropdownOpen(!isDropdownOpen)
+            setShowCalendar(false) // Close calendar when filter dropdown is open
+            setTimePickerVisible(false) // Close time picker when filter dropdown is open
+            setSortDropdownOpen(false) // Close sort dropdown when filter dropdown is opened
         } else if (type === 'sort') {
-            dispatch(setSortDropdownOpen(!isSortDropdownOpen))
-            dispatch(setShowCalendar(false)) // Close calendar when sort dropdown is open
-            dispatch(setTimePickerVisible(false)) // Close time picker when sort dropdown is open
-            dispatch(setDropdownOpen(false)) // Close filter dropdown when sort dropdown is opened
+            setSortDropdownOpen(!isSortDropdownOpen)
+            setShowCalendar(false) // Close calendar when sort dropdown is open
+            setTimePickerVisible(false) // Close time picker when sort dropdown is open
+            setDropdownOpen(false) // Close filter dropdown when sort dropdown is opened
         }
     };
 
@@ -215,7 +227,9 @@ const ReportFiltersBarComp = ({ reports }) => {
     };
 
     const handleClear = () => {
+
         setSelectionRange({ startDate: null, endDate: null, key: "selection" });
+        fetchDateRangeReports("", "");
         // dispatch(setShowCalendar(false));
     };
 
@@ -392,33 +406,17 @@ const ReportFiltersBarComp = ({ reports }) => {
         handleSearch(value);
     };
 
-    const offAll = () => {
-        setShowCalendar(false)
-        setTimePickerVisible(false)
-        setDropdownOpen(false)
-        setSortDropdownOpen(false)
-    }
 
-    dispatch(setOffAllFunction(offAll))
+    
+
+    // dispatch(setOffAllFunction(offAll))
 
 
 
     return (
         <>
             <div className='w-[99%] large-desktop:h-[5%] mx-auto flex justify-between large-desktop:justify-between  items-center gap-4 ' >
-                {/* <div className="relative select-none large-desktop:h-full flex justify-between items-center  w-[40%]">
-                    <input
-                        type="text"
-                        placeholder="Search Reports ( i.e  Name, Mobile, CNIC )"
-                        className="bg-[#FAFAFA] shadow-[0_4px_4px_3px_#00000040] w-full desktop:h-[62px] large-desktop:h-full large-desktop:placeholder:text-[2rem] large-desktop:text-[2rem] pl-4 pr-12 rounded-[15px]  border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                        onChange={(e) => setSearchTerm(e.target.value)}
-                    />
-                    <img
-                        src="search.svg"
-                        alt="searchIcon"
-                        className="absolute top-1/2 right-4 transform -translate-y-1/2 large-desktop:w-[50px] large-desktop:h-[40px] w-[20px] h-[20px] pointer-events-none"
-                    />
-                </div> */}
+               
                 <div className="relative select-none large-desktop:h-full flex justify-between items-center w-[40%]">
                     <input
                         type="text"

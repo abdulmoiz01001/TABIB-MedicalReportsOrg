@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Link } from "react-router-dom"
 // import { executeOffAll  } from "../../store/features/filtersUISlice"
 import { FaEye } from "react-icons/fa";
+import useStore from '../../zustandStore/useStore'
 
 const ReportListPaginationComp = ({ reports }) => {
   let data = reports
@@ -16,6 +17,9 @@ const ReportListPaginationComp = ({ reports }) => {
   useEffect(() => {
    console.log(noReportsFound)
   }, [noReportsFound])
+
+  const customFunction = useStore((state) => state.customFunction);
+
  
   // console.log(executeOffAll())
   
@@ -45,7 +49,7 @@ const ReportListPaginationComp = ({ reports }) => {
   
   return (
     <>
-      <div  className='w-[99%] mx-auto mt-2 flex large-desktop:py-6 large-desktop:gap-8 flex-col justify-start items-center h-[78%]   bg-[#FAFAFA] shadow-[0_4px_4px_3px_#00000040] rounded-[15px]'>
+      <div onClick={() => customFunction()} className='w-[99%] mx-auto mt-2 flex large-desktop:py-6 large-desktop:gap-8 flex-col justify-start items-center h-[78%]   bg-[#FAFAFA] shadow-[0_4px_4px_3px_#00000040] rounded-[15px]'>
         <div className='desktop:w-full flex large-desktop:w-[98%]  justify-between items-center '>
           <p className='desktop:text-[16px] large-desktop:text-[2rem] text-[#827F7F] p-4'>Total Reports : {reports.length}</p>
         </div>
