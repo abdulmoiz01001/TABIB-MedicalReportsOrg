@@ -105,7 +105,7 @@ const DashboardStaticsComp = () => {
                 <OtherTemperamentIndicesComp data={analyticsData.data.otherTemperamentIndices} />
               </div>
               <div className="w-[35.5%] h-full px-1 flex gap-3 flex-col justify-start items-start">
-                <NoOfPatientsVsAgeComp  />
+                <NoOfPatientsVsAgeComp data={analyticsData.data.ageWiseDistributionOfHypertensiveAndNormotensivePatients}  />
                 <AgeWiseDistributionHeartRateComp data={analyticsData.data.ageWiseDistributionOfHeartRate} />
                 <TemperamentChartComp data={analyticsData.data.temperamentWithDominantQualities} />
               </div>
@@ -117,7 +117,7 @@ const DashboardStaticsComp = () => {
             </div>
           </div>
           <div className="w-[22%] h-[96vh] sticky desktop:top-2 large-desktop:top-2 pr-2 flex flex-col justify-start items-center gap-3">
-            <TemperamentCommunityComp  />
+            <TemperamentCommunityComp data={analyticsData.data.temperamentOfTheCommunity}  />
             <DominantBodyCommunityComp data={analyticsData.data.dominantBodyCompositionInCommunity} />
             <TABIATScoreComp data={analyticsData?.data?.averageTabiatScoreOfrMaleAndFemale?.total} />
           </div>
