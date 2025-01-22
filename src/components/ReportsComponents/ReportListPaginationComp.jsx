@@ -66,7 +66,7 @@ const ReportListPaginationComp = ({ reports }) => {
                 <th className='desktop:text-[20px] large-desktop:text-[3rem] font-medium capitalize'>CNIC</th>
                 <th className='desktop:text-[20px] large-desktop:text-[3rem] font-medium capitalize'>Nationality</th>
                 <th className='desktop:text-[20px] large-desktop:text-[3rem] font-medium capitalize'>Created Date</th>
-                <th className='desktop:text-[20px] large-desktop:text-[3rem] font-medium capitalize'>Created TIme</th>
+                {/* <th className='desktop:text-[20px] large-desktop:text-[3rem] font-medium capitalize'>Created TIme</th> */}
                 <th className='desktop:text-[20px] large-desktop:text-[3rem] font-medium capitalize'>Action</th>
               </tr>
             </thead>
@@ -84,8 +84,8 @@ const ReportListPaginationComp = ({ reports }) => {
                   <td className='desktop:text-[20px] large-desktop:text-[3rem]' >{`${report.Mobile}`}</td>
                   <td className='desktop:text-[20px] large-desktop:text-[3rem]' >{`${report?.cnic || "-"}`}</td>
                   <td className='desktop:text-[20px] large-desktop:text-[3rem]' >{report?.Nation || "-" }</td>
-                  <td className='desktop:text-[20px] large-desktop:text-[3rem]' >{report?.measureDate}</td>
-                  <td className='desktop:text-[20px] large-desktop:text-[3rem]' >{report?.measureTime}</td>
+                  <td className='desktop:text-[20px] large-desktop:text-[3rem]' >{report?.measureDate} - {report?.measureTime}</td>
+                  {/* <td className='desktop:text-[20px] large-desktop:text-[3rem]' >{report?.measureTime}</td> */}
                   <td className=' desktop:w-[70px]   desktop:h-[55px] large-desktop:h-[100px]   flex justify-between items-center ' ><img src="download.svg" alt='download' className='large-desktop:w-16 large-desktop:h-16' />
                     <Link className='w-[50%] desktop:mt-2 h-[50%]' to={`/patient-report/${report.sk}`} >
                       {/* <img src='info.png' alt='menu' className='desktop:w-6 large-desktop:w-26 large-desktop:h-16 cursor-pointer desktop:h-4  ' /> */}
