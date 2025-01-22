@@ -37,8 +37,8 @@
 import React from 'react';
 
 const AverageTABIATScoreMalesvsFemalesComp = ({ data }) => {
-    const maleScore = data.male; // Dynamic male score
-    const femaleScore = data.female; // Dynamic female score
+    const maleScore = data.male || 10; // Dynamic male score
+    const femaleScore = data.female || 10; // Dynamic female score
   
     // Calculate male score percentage and round to nearest 5
     const totalScore = maleScore + femaleScore;

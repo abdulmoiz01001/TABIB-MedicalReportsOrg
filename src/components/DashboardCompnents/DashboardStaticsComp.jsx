@@ -112,14 +112,14 @@ const DashboardStaticsComp = () => {
               <div className="w-[36.5%] h-full flex flex-col gap-3 justify-start items-start">
                 <PrevalenceOfHypertensionComp data={analyticsData.data.prevalenceOfHypertension} />
                 <TrendOfHypertensionComp data={analyticsData.data.monthlyTrendOfHypertension} />
-                <AverageTABIATScoreMalesvsFemalesComp data={analyticsData.data.averageTabiatScore} />
+                <AverageTABIATScoreMalesvsFemalesComp data={analyticsData?.data?.averageTabiatScoreOfrMaleAndFemale} />
               </div>
             </div>
           </div>
           <div className="w-[22%] h-[96vh] sticky desktop:top-2 large-desktop:top-2 pr-2 flex flex-col justify-start items-center gap-3">
             <TemperamentCommunityComp  />
             <DominantBodyCommunityComp data={analyticsData.data.dominantBodyCompositionInCommunity} />
-            <TABIATScoreComp data={analyticsData.data.averageTabiatScore.total} />
+            <TABIATScoreComp data={analyticsData?.data?.averageTabiatScoreOfrMaleAndFemale?.total} />
           </div>
         </>
       )}
