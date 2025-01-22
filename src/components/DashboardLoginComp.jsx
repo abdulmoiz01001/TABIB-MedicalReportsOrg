@@ -109,7 +109,7 @@ const DashboardLoginComp = () => {
                 )}
 
                 <div className='flex justify-end items-center w-[80%]'>
-                  <p onClick={() => navigate("/forget-password")} className="text-[#313131] font-semibold cursor-pointer desktop:text-[18px] large-desktop:text-[30px]">Forgot Password?</p>
+                  <p onClick={() => navigate("/forget-password")} className="text-[#CC0001] font-semibold cursor-pointer desktop:text-[18px] large-desktop:text-[30px]">Forgot Password?</p>
                 </div>
 
                 {/* Error message */}
