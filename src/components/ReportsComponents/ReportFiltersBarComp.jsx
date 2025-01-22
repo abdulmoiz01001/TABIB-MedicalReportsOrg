@@ -39,7 +39,7 @@ const ReportFiltersBarComp = ({ reports }) => {
         setSortDropdownOpen(false)
     }
 
-    
+
     const setCustomFunction = useStore((state) => state.setCustomFunction);
     setCustomFunction(offAll)
 
@@ -190,28 +190,41 @@ const ReportFiltersBarComp = ({ reports }) => {
 
     };
 
+    const clearTimeRange = async () => {
+        // Reset times to 00:00:00
+        setStartTime("00:00:00");
+        setEndTime("00:00:00");
 
+        // Trigger API call
+       await fetchTimeRangeReports("","");
+    };
+
+    const [arrowRotate, setArrowRotate] = useState(false)
 
     const toggleDropdown = (type) => {
 
         if (type === 'calendar') {
             setShowCalendar(!showCalendar)
+            setArrowRotate(false)
             setTimePickerVisible(false)  // Close time picker when calendar is open
             setDropdownOpen(false) // Close option dropdown when calendar is opened
             setSortDropdownOpen(false) // Close sort dropdown when calendar is opened
         } else if (type === 'time' && selectionRange.token == true) {
 
             setTimePickerVisible(!isTimePickerVisible)
+            setArrowRotate(false)
             setShowCalendar(false)  // Close calendar when time picker is open
             setDropdownOpen(false) // Close option dropdown when time picker is opened
             setSortDropdownOpen(false) // Close sort dropdown when time picker is opened
         } else if (type === 'filter') {
             setDropdownOpen(!isDropdownOpen)
+            setArrowRotate(!arrowRotate)
             setShowCalendar(false) // Close calendar when filter dropdown is open
             setTimePickerVisible(false) // Close time picker when filter dropdown is open
             setSortDropdownOpen(false) // Close sort dropdown when filter dropdown is opened
         } else if (type === 'sort') {
             setSortDropdownOpen(!isSortDropdownOpen)
+            setArrowRotate(false)
             setShowCalendar(false) // Close calendar when sort dropdown is open
             setTimePickerVisible(false) // Close time picker when sort dropdown is open
             setDropdownOpen(false) // Close filter dropdown when sort dropdown is opened
@@ -352,7 +365,7 @@ const ReportFiltersBarComp = ({ reports }) => {
         }
     }
 
-    const fetchSortReports = async (sortBy , sortOrder) => {
+    const fetchSortReports = async (sortBy, sortOrder) => {
         try {
             const response = await fetch(`https://nole90yyzc.execute-api.us-east-1.amazonaws.com/dev/reports?sortBy=${sortBy}&sortOrder=${sortOrder}`, {
                 method: 'GET',
@@ -407,7 +420,7 @@ const ReportFiltersBarComp = ({ reports }) => {
     };
 
 
-    
+
 
     // dispatch(setOffAllFunction(offAll))
 
@@ -416,7 +429,7 @@ const ReportFiltersBarComp = ({ reports }) => {
     return (
         <>
             <div className='w-[99%] large-desktop:h-[5%] mx-auto flex justify-between large-desktop:justify-between  items-center gap-4 ' >
-               
+
                 <div className="relative select-none large-desktop:h-full flex justify-between items-center w-[40%]">
                     <input
                         type="text"
@@ -512,6 +525,15 @@ const ReportFiltersBarComp = ({ reports }) => {
                                         className="text-center text-[#FFFFFF] text-[15px] appearance-none custom-time-input font-normal bg-[#CC0001] rounded-md p-2"
                                     />
                                 </div>
+
+                            </div>
+                            <div className="flex justify-end mt-4">
+                                <button
+                                    onClick={() => clearTimeRange()}
+                                    className="px-4 py-2 bg-[#CC0001] text-white text-[15px] rounded-md shadow-md hover:bg-red-700"
+                                >
+                                    Clear
+                                </button>
                             </div>
                         </div>
                     )}
@@ -529,7 +551,7 @@ const ReportFiltersBarComp = ({ reports }) => {
                         <img
                             src="bp.svg"
                             alt="BP Icon"
-                            className="desktop:w-[20px] large-desktop:w-[40px] desktop:h-[20px] large-desktop:h-[40px] pointer-events-none"
+                            className={`desktop:w-[20px] ${arrowRotate ? "rotate-180" : "rotate-0"} duration-300 transition-all large-desktop:w-[40px] desktop:h-[20px] large-desktop:h-[40px] pointer-events-none`}
                         />
                     </div>
 
