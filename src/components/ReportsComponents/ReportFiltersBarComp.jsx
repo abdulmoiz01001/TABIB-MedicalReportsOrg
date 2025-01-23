@@ -7,6 +7,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setFilteredReports, clearFilteredReports } from '../../store/features/FiltersSlice';
 import { format } from 'date-fns';
 import useStore from '../../zustandStore/useStore';
+import SearchTerm from './ReportFilterbarComponents/searchTerm';
+import FilterbyDateRange from './ReportFilterbarComponents/FilterbyDateRange';
+import FilterbyTimeRange from './ReportFilterbarComponents/FilterbyTimeRange';
+import FilterbyBP from './ReportFilterbarComponents/FilterbyBP';
+import FilterbySort from './ReportFilterbarComponents/FilterbySort';
 // import { setOffAllFunction } from '../../store/features/filtersUISlice';
 
 
@@ -196,7 +201,7 @@ const ReportFiltersBarComp = ({ reports }) => {
         setEndTime("12:00 AM");
 
         // Trigger API call
-       await fetchTimeRangeReports("","");
+        await fetchTimeRangeReports("", "");
     };
 
     const [arrowRotate, setArrowRotate] = useState(false)
@@ -429,179 +434,11 @@ const ReportFiltersBarComp = ({ reports }) => {
     return (
         <>
             <div className='w-[99%] large-desktop:h-[5%] mx-auto flex justify-between large-desktop:justify-between  items-center gap-4 ' >
-
-                <div className="relative select-none large-desktop:h-full flex justify-between items-center w-[40%]">
-                    <input
-                        type="text"
-                        placeholder="Search Reports ( i.e Name, Mobile, CNIC )"
-                        className="bg-[#FAFAFA] shadow-[0_4px_4px_3px_#00000040] w-full desktop:h-[62px] large-desktop:h-full large-desktop:placeholder:text-[2rem] large-desktop:text-[2rem] pl-4 pr-12 rounded-[15px] border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                        value={searchTerm}
-                        onChange={onInputChange}
-                    />
-                    <img
-                        src="search.svg"
-                        alt="searchIcon"
-                        className="absolute top-1/2 right-4 transform -translate-y-1/2 large-desktop:w-[50px] large-desktop:h-[40px] w-[20px] h-[20px] pointer-events-none"
-                    />
-                </div>
-
-
-                <div className='relative large-desktop:h-full select-none  w-[12%]'>
-                    <div
-                        className='w-full shadow-[0_4px_4px_3px_#00000040] px-8 rounded-[15px] desktop:h-[62px] large-desktop:h-full flex justify-around items-center bg-[#FAFAFA] cursor-pointer'
-                        onClick={() => toggleDropdown("calendar")}
-                    >
-                        <p className='desktop:text-[15px] desktop:leading-5 select-none large-desktop:text-[2rem] text-black'>
-                            {selectionRange.token
-                                ? formatDateRange(selectionRange.startDate, selectionRange.endDate)
-                                : 'Filter By'}
-                        </p>
-                        <img
-                            src='calendar.svg'
-                            alt='calendarIcon'
-                            className='desktop:w-[20px] large-desktop:w-[40px] desktop:h-[20px] large-desktop:h-[40px] pointer-events-none'
-                        />
-                    </div>
-
-
-
-                    {showCalendar && (
-                        <div className='absolute mt-2 shadow-[0_4px_4px_3px_#00000040] rounded-[15px] bg-white p-2 z-10'>
-                            <DateRangePicker
-                                ranges={[selectionRange]}
-                                onChange={handleSelect}
-                                moveRangeOnFirstSelection={false}
-                                editableDateInputs={true}
-                                rangeColors={["#CC0001"]}
-
-                            />
-                            <div className="flex justify-end mt-2">
-                                <button
-                                    onClick={handleClear}
-                                    className="bg-[#CC0001] text-white px-4 py-2 rounded"
-                                >
-                                    Clear Date
-                                </button>
-                            </div>
-                        </div>
-                    )}
-                </div>
-
-                <div className={`${selectionRange.token ? "" : "opacity-50 cursor-not-allowed"} flex w-[12%] large-desktop:h-full flex-col items-center`}>
-                    {/* Button to open time picker */}
-                    <div
-                        className="w-full rounded-[15px] px-8 shadow-[0_4px_4px_3px_#00000040] desktop:h-[62px] large-desktop:h-full flex justify-around items-center bg-[#FAFAFA] cursor-pointer"
-                        onClick={() => toggleDropdown('time')}
-                    >
-                        <p className="desktop:text-[15px] desktop:leading-5 large-desktop:text-[2rem] text-black">
-                            {startTime != "12:00 AM" && endTime != "12:00 AM" ? `${formatTime(startTime)} - ${formatTime(endTime)}` : "Filter By"}
-                        </p>
-                        <img
-                            src="clock.svg"
-                            alt="Clock Icon"
-                            className="desktop:w-[20px] large-desktop:w-[40px] desktop:h-[20px] large-desktop:h-[40px] pointer-events-none"
-                        />
-                    </div>
-
-                    {/* Time Picker Modal */}
-                    {isTimePickerVisible && (
-                        <div className="absolute top-28 bg-white p-4 shadow-lg rounded-lg mt-4">
-                            <div className="flex flex-row justify-center gap-4 items-center">
-                                <div className="flex flex-col justify-center items-start">
-                                    <label className="mr-2 text-[#313131] text-[15px] font-normal">Start Time:</label>
-                                    <input
-                                        type="time"
-                                        value={startTime}
-                                        onChange={(e) => handleTimeChange(e, setStartTime, "start")}
-                                        className="text-center text-[#FFFFFF] text-[15px] appearance-none custom-time-input font-normal bg-[#CC0001] rounded-md p-2"
-                                    />
-                                </div>
-                                <div className="flex flex-col justify-center items-start">
-                                    <label className="mr-2 text-[#313131] text-[15px] font-normal">End Time:</label>
-                                    <input
-                                        type="time"
-                                        value={endTime}
-                                        onChange={(e) => handleTimeChange(e, setEndTime, "end")}
-                                        className="text-center text-[#FFFFFF] text-[15px] appearance-none custom-time-input font-normal bg-[#CC0001] rounded-md p-2"
-                                    />
-                                </div>
-
-                            </div>
-                            <div className="flex justify-end mt-4">
-                                <button
-                                    onClick={() => clearTimeRange()}
-                                    className="px-4 py-2 bg-[#CC0001] text-white text-[15px] rounded-md shadow-md hover:bg-red-700"
-                                >
-                                    Clear
-                                </button>
-                            </div>
-                        </div>
-                    )}
-                </div>
-
-
-
-                <div className=" flex w-[12%] large-desktop:h-full flex-col items-center">
-
-                    <div
-                        className="w-full rounded-[15px] shadow-[0_4px_4px_3px_#00000040] desktop:h-[62px] large-desktop:h-full flex justify-around items-center bg-[#FAFAFA] cursor-pointer px-4"
-                        onClick={() => toggleDropdown('filter')}
-                    >
-                        <p className="desktop:text-[15px] large-desktop:text-[2rem]  text-black">{selectedOption}</p>
-                        <img
-                            src="bp.svg"
-                            alt="BP Icon"
-                            className={`desktop:w-[20px] ${arrowRotate ? "rotate-180" : "rotate-0"} duration-300 transition-all large-desktop:w-[40px] desktop:h-[20px] large-desktop:h-[40px] pointer-events-none`}
-                        />
-                    </div>
-
-                    {/* Dropdown Menu */}
-                    {isDropdownOpen && (
-                        <div className="mt-2 absolute top-32 w-[227px] bg-[#FAFAFA] shadow-[0_4px_4px_3px_#00000040] rounded-[15px]">
-                            {options.map((option, index) => (
-                                <div
-                                    key={index}
-                                    className={`p-3 text-black text-[16px] cursor-pointer hover:bg-red-100 ${option === selectedOption ? "bg-[#FFF3F3] font-bold" : ""
-                                        }`}
-                                    onClick={() => handleBPOptionSelect(option)}
-                                >
-                                    {option}
-                                </div>
-                            ))}
-                        </div>
-                    )}
-                </div>
-
-                <div className=" flex w-[12%] large-desktop:h-full flex-col items-center">
-                    {/* Sort Button */}
-                    <div
-                        className="w-full rounded-[15px] shadow-[0_4px_4px_3px_#00000040] desktop:h-[62px] large-desktop:h-full flex justify-around items-center bg-[#FAFAFA] cursor-pointer px-4"
-                        onClick={() => toggleDropdown('sort')}
-                    >
-                        <p className="desktop:text-[15px] large-desktop:text-[2rem]  text-black">{selectedSortOption}</p>
-                        <img
-                            src="short.svg"
-                            alt="Sort Icon"
-                            className="desktop:w-[20px] large-desktop:w-[40px] desktop:h-[20px] large-desktop:h-[40px] pointer-events-none"
-                        />
-                    </div>
-
-                    {/* Dropdown Menu */}
-                    {isSortDropdownOpen && (
-                        <div className="mt-2 absolute top-32 w-[227px] bg-[#FAFAFA] shadow-[0_4px_4px_3px_#00000040] rounded-[15px]">
-                            {sortOptions.map((option, index) => (
-                                <div
-                                    key={index}
-                                    className={`p-3 text-black text-[16px] cursor-pointer hover:bg-red-100 ${option === selectedSortOption ? "bg-[#FFF3F3] font-bold" : ""
-                                        }`}
-                                    onClick={() => handleSortOptionSelect(option)}
-                                >
-                                    {option}
-                                </div>
-                            ))}
-                        </div>
-                    )}
-                </div>
+                <SearchTerm searchTerm={searchTerm} onInputChange={onInputChange} />
+                <FilterbyDateRange toggleDropdown={toggleDropdown} formatDateRange={formatDateRange} showCalendar={showCalendar} selectionRange={selectionRange} handleClear={handleClear} handleSelect={handleSelect} />
+                <FilterbyTimeRange selectionRange={selectionRange} formatTime={formatTime} setStartTime={setStartTime} setEndTime={setEndTime} startTime={startTime} endTime={endTime} toggleDropdown={toggleDropdown} isTimePickerVisible={isTimePickerVisible} handleTimeChange={handleTimeChange} clearTimeRange={clearTimeRange} />
+                <FilterbyBP toggleDropdown={toggleDropdown} selectedOption={selectedOption} handleBPOptionSelect={handleBPOptionSelect} arrowRotate={arrowRotate} isDropdownOpen={isDropdownOpen} options={options} />
+                <FilterbySort toggleDropdown={toggleDropdown} selectedSortOption={selectedSortOption} isSortDropdownOpen={isSortDropdownOpen} sortOptions={sortOptions} handleSortOptionSelect={handleSortOptionSelect} />
             </div>
         </>
     );
