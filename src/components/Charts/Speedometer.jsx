@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import ReactSpeedometer from "react-d3-speedometer";
 import { useMediaQuery } from 'react-responsive';
 
@@ -24,26 +24,31 @@ const SpeedoMeter = ({
     : isDesktop
       ? 130  // Desktop
       : isLaptop
-        ? 160  // Laptop
-        : 130;  // Default (Mobile/Tablet)
+        ? 120  // Laptop
+        : 10;  // Default (Mobile/Tablet)
 
   const speedometerHeight = isLargeDesktop
     ? 150  // Large Desktop
     : isDesktop
       ? 65  // Desktop
       : isLaptop
-        ? 100  // Laptop
-        : 75;  // Default (Mobile/Tablet)
+        ? 65  // Laptop
+        : 10;  // Default (Mobile/Tablet)
 
   const ringWidth = isLargeDesktop ?
     45 : isDesktop ?
       15 : isLaptop ?
-        20 : 15;
+        10 : 15;
+
+        useEffect(() => {
+          console.log( speedometerHeight , speedometerWidth )
+
+        },[speedometerWidth ,speedometerHeight])
 
   return (
     <>
      <div className='
-       flex flex-col justify-center items-center rounded-lg
+       flex flex-col justify-center   items-center rounded-lg
      
      '>
       <ReactSpeedometer
@@ -65,8 +70,8 @@ const SpeedoMeter = ({
       />
 
       <div className='w-full flex flex-col  justify-center items-center'>
-        <p className='desktop:text-[1rem] large-desktop:text-[2.5rem] text-center large-desktop: font-medium text-[#CC0001]'>{value} {unit}</p>
-        <p className='desktop:text-[1.2rem] large-desktop:text-[3rem] text-center font-semibold text-[#000000]'>{label}</p>
+        <p className='desktop:text-[1rem] laptop:text-[0.8rem] large-desktop:text-[2.5rem] text-center large-desktop: font-medium text-[#CC0001]'>{value} {unit}</p>
+        <p className='desktop:text-[1.2rem] laptop:text-[0.8rem] large-desktop:text-[3rem] text-center font-semibold text-[#000000]'>{label}</p>
       </div>
      </div>
         </>

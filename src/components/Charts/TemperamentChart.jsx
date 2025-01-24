@@ -38,7 +38,7 @@ const TemperamentChart = ({ details }) => {
     : isDesktop
     ? 18
     : isLaptop
-    ? 16
+    ? 11
     : isTablet
     ? 14
     : 12;
@@ -48,7 +48,7 @@ const TemperamentChart = ({ details }) => {
     : isDesktop
     ? 16
     : isLaptop
-    ? 14
+    ? 11
     : isTablet
     ? 12
     : 10;
@@ -58,7 +58,7 @@ const TemperamentChart = ({ details }) => {
     : isDesktop
     ? 18
     : isLaptop
-    ? 20
+    ? 11
     : isTablet
     ? 18
     : 16;
@@ -68,7 +68,7 @@ const TemperamentChart = ({ details }) => {
     : isDesktop
     ? 16
     : isLaptop
-    ? 14
+    ? 11
     : isTablet
     ? 12
     : 10;
@@ -80,19 +80,19 @@ const TemperamentChart = ({ details }) => {
         label: "1",
         data: [details.sanguine.one,details.choleric.two,details.melanCholic.three,details.phlegmatic.four],
         backgroundColor: "#CC0001",
-        barThickness: isLargeDesktop ? 45 : 25,
+        barThickness: isLargeDesktop ? 45 : isLaptop ? 20 : 25,
       },
       {
         label: "2",
         data: [details.sanguine.h, details.choleric.h, details.melanCholic.c, details.phlegmatic.c],
         backgroundColor: "#FF6464",
-        barThickness: isLargeDesktop ? 45 : 25,
+        barThickness: isLargeDesktop ? 45 : isLaptop ? 20 : 25,
       },
       {
         label: "3",
         data: [details.sanguine.m, details.choleric.d, details.melanCholic.d, details.phlegmatic.m],
         backgroundColor: "#F9B9B4",
-        barThickness: isLargeDesktop ? 45 : 25,
+        barThickness: isLargeDesktop ? 45 : isLaptop ? 20 : 25,
       },
     ],
   };
@@ -111,7 +111,7 @@ const TemperamentChart = ({ details }) => {
         display: true,
         color: "black",
         font:{
-         size: isLargeDesktop ? 28 : 18,
+         size: isLargeDesktop ? 28 : isLaptop ? 11 : 18,
         },
         // size: isLargeDesktop ? 80 : 60,  // ✅ Dynamic Font Size
         align: "end",
@@ -125,7 +125,7 @@ const TemperamentChart = ({ details }) => {
       x: {
         ticks: {
           font: {
-            size: isLargeDesktop ? 40 : 20,  // ✅ Dynamic Font Size for X-axis
+            size: isLargeDesktop ? 40 : isLaptop ? 11 : 20,  // ✅ Dynamic Font Size for X-axis
           },
           color: "#000",   // Black color for better visibility
           maxRotation: 0, // Prevent rotation

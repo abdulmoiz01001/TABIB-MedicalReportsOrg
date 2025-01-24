@@ -297,3 +297,22 @@ body {
     stroke-dasharray: 1000;
     animation: lineGrow 3s ease-in-out forwards 2s;
   }
+
+
+  .grid-background {
+	background: linear-gradient(
+	  to right,
+	  rgba(0, 0, 0, 0) 1px,
+	  transparent 1px
+	),
+	linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 1px, transparent 1px);
+	background-size: 1px 20px; /* Adjust the size of the grid */
+	position: relative;
+	z-index: 0;
+  }
+  
+  .grid-background > * {
+	z-index: 10;
+	position: relative;
+  }
+  

@@ -10,6 +10,8 @@ const RadarChart = ({details}) => {
   console.log(details)
   },[details])
   const isLargeDesktop = useMediaQuery({ minWidth: 2560 });      // 2xl
+   const isLaptop = useMediaQuery({ minWidth: 824, maxWidth: 1479 });
+  
   const [chartData, setChartData] = useState(null);
 
   useEffect(() => {
@@ -55,7 +57,7 @@ const RadarChart = ({details}) => {
         pointLabels: {
           color: 'black',
           font: {
-            size: isLargeDesktop ? 45 : 15,
+            size: isLargeDesktop ? 45 : isLaptop ? 11 : 15,
           },
         },
         ticks: {
@@ -67,7 +69,7 @@ const RadarChart = ({details}) => {
 
   return (
     <>
-      <h1 className='desktop:text-[1rem] large-desktop:text-[2.5rem] text-center font-semibold text-black ' >
+      <h1 className='desktop:text-[1rem] laptop:text-[0.7rem] large-desktop:text-[2.5rem] text-center font-semibold text-black ' >
         Temperament Graph
       </h1>
       {chartData ? (

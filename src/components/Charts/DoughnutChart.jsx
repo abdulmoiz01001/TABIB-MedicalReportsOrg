@@ -99,13 +99,13 @@ const DoughnutChart = ({details}) => {
     : { width: '20px', height: '20px' }; // Laptop/Tablet
 
   return (
-    <div  className='flex flex-col h-[100%] py-2 justify-center  items-center'>
-      <h3 className="desktop:text-[1rem] large-desktop:text-[2rem] font-bold text-[#000000]">
+    <div  className='flex flex-col h-[100%] laptop:py-1 py-2 justify-center  items-center'>
+      <h3 className="desktop:text-[1rem] laptop:text-[0.7rem] large-desktop:text-[2rem] font-bold text-[#000000]">
         Hypertension By BMI Classification
       </h3>
 
       <div
-      className='desktop:w-full desktop:h-full large-desktop:w-[80%] large-desktop:h-[80%]'
+      className='desktop:w-full desktop:h-full laptop:w-[90%] laptop:h-[90%] large-desktop:w-[80%] large-desktop:h-[80%]'
         style={{
           // width: "100%",
           // height: "100%",
@@ -118,7 +118,7 @@ const DoughnutChart = ({details}) => {
       </div>
 
       {/* Custom Legend */}
-      <div className='w-full flex h-[20%] justify-center items-center gap-2 flex-wrap'>
+      <div className='w-full flex h-[20%] justify-center items-center laptop:gap-1 gap-2 flex-wrap'>
         {[
           { color: '#FF4D4D', label: 'Overweight' },
           { color: '#FF6666', label: 'Obese' },
@@ -144,7 +144,7 @@ const DoughnutChart = ({details}) => {
                 borderRadius: '50%',
               }}
             ></div>
-            <span className='large-desktop:text-[2rem] large-desktop:font-bold desktop:text-[15px]' style={{  color: '#333' }}>{item.label}</span>
+            <span className='large-desktop:text-[2rem] large-desktop:font-bold laptop:text-[12px] desktop:text-[15px]' style={{  color: '#333' }}>{item.label}</span>
           </div>
         ))}
       </div>

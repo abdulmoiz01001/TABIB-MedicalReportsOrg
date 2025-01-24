@@ -9,9 +9,9 @@ const ReportBoxComp = ({ data, title, title2 , count }) => {
 
 
   return (
-    <div className="w-[14.5%] desktop:py-2 large-desktop:py-5 bg-[#FAFAFA] px-2 flex flex-col justify-end items-center  rounded-[15px] h-[90%] border border-[#CC0001]">
+    <div className="w-[14.5%] laptop:py-1.5 desktop:py-2 large-desktop:py-5 bg-[#FAFAFA] px-2 flex flex-col justify-end items-center  rounded-[15px] h-[90%] border border-[#CC0001]">
       {/* Title */}
-      <h1 className="text-[#000000] large-desktop:text-[3rem] text-[1.5rem] large-desktop:leading-[60px] desktop:leading-7 text-center font-bold">{title} <br /> {title2}</h1>
+      <h1 className="text-[#000000] large-desktop:text-[3rem] desktop:text-[1.5rem] laptop:text-[0.8rem] large-desktop:leading-[60px] desktop:leading-7 text-center font-bold">{title} <br /> {title2}</h1>
       {/* <h1 className="text-[#000000] text-[1.5rem] text-center font-bold"></h1> */}
       {data ? <>
         {/* Conditionally Show Male/Female Counts */}
@@ -26,7 +26,7 @@ const ReportBoxComp = ({ data, title, title2 , count }) => {
         <p className="text-[#CC0001] large-desktop:text-[8rem] laptop:text-[3rem] desktop:text-[3.2rem] font-bold">{data?.total == undefined ? data : data?.total }</p>
 
       </>:<>
-      <p className="text-[#CC0001] large-desktop:text-[8rem] desktop:text-[3.2rem] font-bold">0</p>
+      <p className="text-[#CC0001] large-desktop:text-[8rem] laptop:text-[] desktop:text-[3.2rem] font-bold">0</p>
 
       </>}
     </div>

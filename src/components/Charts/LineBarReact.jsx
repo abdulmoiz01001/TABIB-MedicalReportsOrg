@@ -40,7 +40,7 @@ const LineBarReact = ({details}) => {
     : isDesktop
     ? 20
     : isLaptop
-    ? 18
+    ? 11
     : 14;
 
     const data = {

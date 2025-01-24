@@ -244,7 +244,7 @@ const BarComp = ({ details }) => {
     : isDesktop
     ? 16
     : isLaptop
-    ? 18
+    ? 11
     : 14;
 
   const options = {

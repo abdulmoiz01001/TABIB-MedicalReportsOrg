@@ -30,18 +30,18 @@ const BodyTypeLayout = ({ details }) => {
     }, [details]);
 
     return (
-        <div id="cssportal-grid" className='desktop:px-2 large-desktop:px-4 border-red-900'>
+        <div id="cssportal-grid" className='desktop:px-2 large-desktop:px-4 laptop:px-2 laptop:pb-2 border-red-900'>
             {Object.entries(details).map(([key, value], index) => {
                 const isMax = value === maxValue;
                 const bgColor = isMax ? 'bg-[#CC0001]' : 'bg-[#f9d3c6]'; // Darker for max value, lighter otherwise
                 
                 return (
-                    <div key={index} id={`div${index + 1}`} className={`flex flex-col cursor-default justify-center items-center ${bgColor}`}>
+                    <div key={index} id={`div${index + 1}`} className={`flex flex-col  cursor-default justify-center items-center ${bgColor}`}>
                         {/* Use the transformed name */}
-                        <h1 className='desktop:text-[12px] text-center large-desktop:text-[1.7rem] text-[#00000] font-bold'>
+                        <h1 className='desktop:text-[12px] laptop:text-[0.5rem] text-center large-desktop:text-[1.7rem] text-[#00000] font-bold'>
                             {bodyTypeNames[index]}
                         </h1>
-                        <p className='text-[#000000] desktop:text-[10px] large-desktop:text-[1.5rem] font-bold'>
+                        <p className='text-[#000000] laptop:text-[0.5rem] desktop:text-[10px] large-desktop:text-[1.5rem] font-bold'>
                             {value}
                         </p>
                     </div>

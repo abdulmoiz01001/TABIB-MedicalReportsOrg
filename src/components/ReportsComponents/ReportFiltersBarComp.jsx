@@ -11,10 +11,13 @@ import FilterbyDateRange from './ReportFilterbarComponents/FilterbyDateRange';
 import FilterbyTimeRange from './ReportFilterbarComponents/FilterbyTimeRange';
 import FilterbyBP from './ReportFilterbarComponents/FilterbyBP';
 import FilterbySort from './ReportFilterbarComponents/FilterbySort';
+import { useMediaQuery } from 'react-responsive';
 
 
 
 const ReportFiltersBarComp = ({ reports }) => {
+    const isTablet = useMediaQuery({ minWidth: 640, maxWidth: 823 });    // md
+    const isMobile = useMediaQuery({ maxWidth: 639 });             
     const dispatch = useDispatch();
     const setCustomFunction = useStore((state) => state.setCustomFunction);
     const [sortOption, setSortOption] = useState("");
@@ -297,15 +300,49 @@ const ReportFiltersBarComp = ({ reports }) => {
         debouncedSetSearchTerm(value); 
     };
 
+    const [isFilterOpen, setIsFilterOpen] = useState(false);
+
+    // Toggle the filter bar visibility
+    const toggleFilterBar = () => {
+      setIsFilterOpen(!isFilterOpen);
+    };
+
     return (
         <>
-            <div className='w-[99%] large-desktop:h-[5%] laptop:h-[10%] mx-auto flex justify-between large-desktop:justify-between  items-center gap-4 ' >
+        {/* <div className='flex flex-col' > */}
+
+        {
+            isTablet || isMobile ? 
+            <>
+        <div className={`${ isFilterOpen ? "h-[100%]" : "h-[10%]" } transition-all duration-300 flex  flex-col gap-4`} >
+
+         <button onClick={() => toggleFilterBar()} className='w-[150px] ml-4 h-[50px] rounded-[15px] bg-[#CC0001] text-[#FFFFFF] text-[1rem]' >Filters</button>
+        {/* { isFilterOpen && */}
+
+            <div className={`w-[99%] flex flex-col  ${isFilterOpen ? "h-[85%]" : "h-[0%] hidden"} duration-300 transition-all overflow-auto py-2  mx-auto flex justify-between large-desktop:justify-between  items-center gap-4`} >
+                <SearchTerm searchTerm={searchTerm} onInputChange={onInputChange} />
+                <FilterbyDateRange toggleDropdown={toggleDropdown} formatDateRange={formatDateRange} showCalendar={showCalendar} selectionRange={selectionRange} handleClear={handleClear} handleSelect={handleSelect} />
+                <FilterbyTimeRange selectionRange={selectionRange} formatTime={formatTime} setStartTime={setStartTime} setEndTime={setEndTime} startTime={startTime} endTime={endTime} toggleDropdown={toggleDropdown} isTimePickerVisible={isTimePickerVisible} handleTimeChange={handleTimeChange} clearTimeRange={clearTimeRange} />
+                <FilterbyBP toggleDropdown={toggleDropdown} selectedOption={selectedOption} handleBPOptionSelect={handleBPOptionSelect} arrowRotate={arrowRotate} isDropdownOpen={isDropdownOpen} options={options} />
+                <FilterbySort toggleDropdown={toggleDropdown} sortOption={sortOption} selectedSortOption={selectedSortOption} isSortDropdownOpen={isSortDropdownOpen} sortOptions={sortOptions} handleSortOptionSelect={handleSortOptionSelect} />
+         </div>
+        {/* }  */}
+        </div>
+        </>
+        :
+        <>
+         <div className='w-[99%] large-desktop:h-[5%] laptop:h-[10%] mx-auto flex justify-between large-desktop:justify-between  items-center gap-4 ' >
                 <SearchTerm searchTerm={searchTerm} onInputChange={onInputChange} />
                 <FilterbyDateRange toggleDropdown={toggleDropdown} formatDateRange={formatDateRange} showCalendar={showCalendar} selectionRange={selectionRange} handleClear={handleClear} handleSelect={handleSelect} />
                 <FilterbyTimeRange selectionRange={selectionRange} formatTime={formatTime} setStartTime={setStartTime} setEndTime={setEndTime} startTime={startTime} endTime={endTime} toggleDropdown={toggleDropdown} isTimePickerVisible={isTimePickerVisible} handleTimeChange={handleTimeChange} clearTimeRange={clearTimeRange} />
                 <FilterbyBP toggleDropdown={toggleDropdown} selectedOption={selectedOption} handleBPOptionSelect={handleBPOptionSelect} arrowRotate={arrowRotate} isDropdownOpen={isDropdownOpen} options={options} />
                 <FilterbySort toggleDropdown={toggleDropdown} sortOption={sortOption} selectedSortOption={selectedSortOption} isSortDropdownOpen={isSortDropdownOpen} sortOptions={sortOptions} handleSortOptionSelect={handleSortOptionSelect} />
             </div>
+        </>
+        }
+           
+            
+        {/* </div> */}
         </>
     );
 };

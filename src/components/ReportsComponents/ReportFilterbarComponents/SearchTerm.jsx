@@ -3,11 +3,11 @@ import React from 'react'
 const SearchTerm = ({searchTerm , onInputChange}) => {
     return (
         <>
-            <div className="relative select-none large-desktop:h-full flex justify-between items-center w-[40%]">
+            <div className="relative select-none large-desktop:h-full flex justify-between items-center mobile:w-[98%] tablet:w-[98%] w-[40%]">
                 <input
                     type="text"
                     placeholder="Search Reports ( i.e Name, Mobile, CNIC )"
-                    className="bg-[#FAFAFA] shadow-[0_4px_4px_3px_#00000040] w-full laptop:h-[50px] desktop:h-[62px] large-desktop:h-full large-desktop:placeholder:text-[2rem] large-desktop:text-[2rem] pl-4 pr-12 rounded-[15px] border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#CC0001]"
+                    className="bg-[#FAFAFA] shadow-[0_4px_4px_3px_#00000040] w-full mobile:h-[50px] tablet:h-[50px]  laptop:h-[50px] desktop:h-[62px] large-desktop:h-full large-desktop:placeholder:text-[2rem] large-desktop:text-[2rem] pl-4 pr-12 rounded-[15px] border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#CC0001]"
                     value={searchTerm}
                     onChange={onInputChange}
                 />

@@ -194,31 +194,33 @@ const AverageTABIATScoreMalesvsFemalesComp = ({ data }) => {
   const femaleImage = getFemaleImage(femalePercentage);
 
   return (
-    <div className="w-full h-[35%] flex-col justify-center items-center p-4 bg-[#FAFAFA] flex border border-[#CC0001] rounded-[15px]">
-      <h1 className="desktop:text-[1rem] large-desktop:text-[2.2rem] font-bold text-black">
+    <div className=" w-full h-[35%] flex-col justify-center items-center laptop:p-2 p-4 bg-[#FAFAFA] flex border border-[#CC0001] rounded-[15px]">
+      <h1 className="desktop:text-[1rem] laptop:text-[0.7rem] large-desktop:text-[2.2rem] font-bold text-black">
         Average TABIAT Score of Males vs Females
       </h1>
-      <div className="flex h-[90%] w-full justify-evenly items-center">
+      <div className="flex  h-[90%] w-full grid-background justify-evenly items-center">
         {/* Left Y-axis for scale */}
-        <div className="h-full w-[20px] flex flex-col-reverse justify-center gap-[1px] items-center">
-          <span className="desktop:text-[0.8rem] large-desktop:text-[2rem]">0</span>
-          <span className="desktop:text-[0.8rem] large-desktop:text-[2rem]">2</span>
-          <span className="desktop:text-[0.8rem] large-desktop:text-[2rem]">3</span>
-          <span className="desktop:text-[0.8rem] large-desktop:text-[2rem]">4</span>
-          <span className="desktop:text-[0.8rem] large-desktop:text-[2rem]">5</span>
-          <span className="desktop:text-[0.8rem] large-desktop:text-[2rem]">6</span>
-          <span className="desktop:text-[0.8rem] large-desktop:text-[2rem]">7</span>
-          <span className="desktop:text-[0.8rem] large-desktop:text-[2rem]">8</span>
-          <span className="desktop:text-[0.8rem] large-desktop:text-[2rem]">9</span>
-          <span className="desktop:text-[0.8rem] large-desktop:text-[2rem]">10</span>
+        
+        <div className="h-full w-[20px]  flex flex-col-reverse justify-center gap-[1px] items-center">
+          <span className="desktop:text-[0.8rem] laptop:text-[0.5rem] large-desktop:text-[2rem]">0</span>
+          <span className="desktop:text-[0.8rem] laptop:text-[0.5rem] large-desktop:text-[2rem]">10</span>
+          <span className="desktop:text-[0.8rem] laptop:text-[0.5rem] large-desktop:text-[2rem]">20</span>
+          <span className="desktop:text-[0.8rem] laptop:text-[0.5rem] large-desktop:text-[2rem]">30</span>
+          <span className="desktop:text-[0.8rem] laptop:text-[0.5rem] large-desktop:text-[2rem]">40</span>
+          <span className="desktop:text-[0.8rem] laptop:text-[0.5rem] large-desktop:text-[2rem]">50</span>
+          <span className="desktop:text-[0.8rem] laptop:text-[0.5rem] large-desktop:text-[2rem]">60</span>
+          <span className="desktop:text-[0.8rem] laptop:text-[0.5rem] large-desktop:text-[2rem]">70</span>
+          <span className="desktop:text-[0.8rem] laptop:text-[0.5rem] large-desktop:text-[2rem]">80</span>
+          <span className="desktop:text-[0.8rem] laptop:text-[0.5rem] large-desktop:text-[2rem]">90</span>
+          <span className="desktop:text-[0.8rem] laptop:text-[0.5rem] large-desktop:text-[2rem]">100</span>
         </div>
 
         {/* Male Score */}
-        <div className="flex flex-col justify-center items-center">
+        <div className="flex  flex-col justify-center items-center">
           <img
             src={maleImage}
             alt="Male Score"
-            className="large-desktop:w-[200px] desktop:w-[100px]"
+            className="large-desktop:w-[200px] laptop:w-[60px] desktop:h-[205px] desktop:w-[100px]"
           />
       
         </div>
@@ -227,11 +229,11 @@ const AverageTABIATScoreMalesvsFemalesComp = ({ data }) => {
         <img src="line.svg" alt="Divider" className="large-desktop:h-[300px]" />
 
         {/* Female Score */}
-        <div className="flex flex-col justify-center items-center">
+        <div className="flex flex-col justify-center  items-center">
           <img
             src={femaleImage}
             alt="Female Score"
-            className="large-desktop:w-[200px] desktop:w-[100px]"
+            className="large-desktop:w-[200px] laptop:w-[65px] desktop:h-[300px] desktop:w-[105px]"
           />
        
         </div>
