@@ -19,7 +19,7 @@ const FilterbyTimeRange = ({selectionRange , formatTime , setStartTime , setEndT
 
     {/* Time Picker Modal */}
     {isTimePickerVisible && (
-        <div className="absolute top-28 mobile:top-10 tablet:top-10 z-50 bg-white p-4 shadow-lg rounded-lg mt-4">
+        <div className="absolute top-28 mobile:top-10 shadow-[0_4px_4px_3px_#0000000a] tablet:top-10 z-50 bg-white p-4 shadow-lg rounded-lg mt-4">
             <div className="flex flex-row justify-center gap-4 items-center">
                 <div className="flex flex-col justify-center items-start">
                     <label className="mr-2 text-[#313131] text-[15px] font-normal">Start Time:</label>

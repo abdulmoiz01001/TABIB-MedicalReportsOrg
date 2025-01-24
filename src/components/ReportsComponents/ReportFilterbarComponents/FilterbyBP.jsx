@@ -18,7 +18,7 @@ const FilterbyBP = ({toggleDropdown , selectedOption , handleBPOptionSelect , ar
 
     {/* Dropdown Menu */}
     {isDropdownOpen && (
-        <div className="mt-2 absolute z-50 top-28 mobile:top-10 tablet:top-10 w-[227px] bg-[#FAFAFA] shadow-[0_4px_4px_3px_#00000040] rounded-[15px]">
+        <div className="mt-2 absolute z-50 top-28 mobile:top-10 tablet:top-10 w-[227px] bg-[#FAFAFA] shadow-[0_4px_4px_3px_#0000000a] rounded-[15px]">
             {options.map((option, index) => (
                 <div
                     key={index}

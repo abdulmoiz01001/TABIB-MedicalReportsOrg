@@ -27,7 +27,7 @@ const FilterbyDateRange = ({toggleDropdown , formatDateRange , showCalendar ,sel
     
     
                         {showCalendar && (
-                            <div className='absolute mt-2 shadow-[0_4px_4px_3px_#00000040] rounded-[15px] bg-white p-2 z-10'>
+                            <div className='absolute mt-2 shadow-[0_4px_4px_3px_#0000000a] rounded-[15px] bg-white p-2 z-10'>
                                 <DateRangePicker
                                     ranges={[selectionRange]}
                                     onChange={handleSelect}

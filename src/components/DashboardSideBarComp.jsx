@@ -15,11 +15,11 @@ const navLinks = [
     path: "/report",
     icon: "report.svg",
   },
-  {
-    name: "About",
-    path: "/about",
-    icon: "about.svg",
-  },
+  // {
+  //   name: "About",
+  //   path: "/about",
+  //   icon: "about.svg",
+  // },
 ];
 
 const DashboardSideBarComp = () => {

@@ -40,11 +40,11 @@ const ReportListPaginationComp = ({ reports }) => {
   
   return (
     <>
-      <div onClick={() => customFunction()} className='w-[99%] overflow-auto  mx-auto mt-2 flex large-desktop:py-6 large-desktop:gap-8 flex-col justify-start items-center h-[78%]   bg-[#FAFAFA] shadow-[0_4px_4px_3px_#00000040] rounded-[15px]'>
+      <div onClick={() => customFunction()} className='w-[99%] overflow-auto  mx-auto mt-2 flex large-desktop:py-6 large-desktop:gap-8 flex-col justify-start items-center h-[78%]   bg-[#FAFAFA] shadow-[0_4px_4px_3px_#0000000a] rounded-[15px]'>
         <div className='desktop:w-full laptop:w-full w-full flex mobile:h-[70px] mobile:relative large-desktop:w-[98%] justify-between items-center '>
           <p className='desktop:text-[16px] tablet:sticky tablet:left-2 mobile:fixed mobile:left-2 tablet:text-[14px] mobile:text-[14px] large-desktop:text-[2rem] text-[#827F7F] p-4'>Total Reports :  { noReportsFound ? 0 : lengthReports}  </p>
         </div>
-        <div className='desktop:w-[98%] min-w-[800px] overflow-auto w-[98%] laptop:w-[98%] large-desktop:w-[98%] mx-auto  border-green-900 h-[90%] flex justify-center items-start'>
+        <div className='desktop:w-[98%] flex flex-col justify-between items-center min-w-[800px] overflow-auto w-[98%] laptop:w-[98%] large-desktop:w-[98%] mx-auto  border-green-900 h-[90%] flex justify-center items-start'>
           <table className='w-full  p-3  text-left'>
             <thead className='w-full min-w-full bg-[#F9B9B4] h-[72px] rounded-[8px]'>
               <tr className='large-desktop:h-[120px]' >
@@ -83,6 +83,23 @@ const ReportListPaginationComp = ({ reports }) => {
               ))}
             </tbody>}
           </table>
+          {/* <div className='w-[30%] flex justify-evenly items-center border-2 border-blue-900 h-[50px]' >
+              <div className='w-[50px] flex justify-center items-center h-[50px] border bg-[#CC0001] rounded-[5px] ' >
+          
+              </div>
+              <div className='w-[50px] flex justify-center items-center h-[50px] border bg-[#CC0001] rounded-[5px] ' >
+                1
+              </div>
+              <div className='w-[50px] flex justify-center items-center h-[50px] border bg-[#CC0001] rounded-[5px] ' >
+                ...
+              </div>
+              <div className='w-[50px] flex justify-center items-center h-[50px] border bg-[#CC0001] rounded-[5px] ' >
+                10
+              </div>
+              <div className='w-[50px] flex justify-center items-center h-[50px] border bg-[#CC0001] rounded-[5px] ' >
+           
+              </div>
+          </div> */}
         </div>
 
       </div>
