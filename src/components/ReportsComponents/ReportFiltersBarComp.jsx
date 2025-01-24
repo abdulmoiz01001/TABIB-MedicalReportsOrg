@@ -319,14 +319,14 @@ const ReportFiltersBarComp = ({ reports }) => {
          <button onClick={() => toggleFilterBar()} className='w-[150px] ml-4 h-[50px] rounded-[15px] bg-[#CC0001] text-[#FFFFFF] text-[1rem]' >Filters</button>
         {/* { isFilterOpen && */}
 
-            <div className={`w-[99%] flex flex-col  ${isFilterOpen ? "h-[85%]" : "h-[0%] hidden"} duration-300 transition-all overflow-auto py-2  mx-auto flex justify-between large-desktop:justify-between  items-center gap-4`} >
+            <div className={`w-[99%] flex flex-col  ${isFilterOpen ? "h-[85%]" : "h-[0%] hidden"} duration-300 transition-all overflow-auto py-2  mx-auto flex justify-center large-desktop:justify-between  items-center mobile:gap-2 tablet:gap-2`} >
                 <SearchTerm searchTerm={searchTerm} onInputChange={onInputChange} />
               
-              <div className='w-full flex justify-evenly items-center gap-2' >
+              <div className='w-full  flex justify-evenly items-center gap-2' >
                       <FilterbyDateRange toggleDropdown={toggleDropdown} formatDateRange={formatDateRange} showCalendar={showCalendar} selectionRange={selectionRange} handleClear={handleClear} handleSelect={handleSelect} />
                 <FilterbyTimeRange selectionRange={selectionRange} formatTime={formatTime} setStartTime={setStartTime} setEndTime={setEndTime} startTime={startTime} endTime={endTime} toggleDropdown={toggleDropdown} isTimePickerVisible={isTimePickerVisible} handleTimeChange={handleTimeChange} clearTimeRange={clearTimeRange} />
                 </div>
-                <div className='w-full flex justify-evenly items-center gap-2' >
+                <div className='w-full  flex justify-evenly items-center gap-2' >
                 <FilterbyBP toggleDropdown={toggleDropdown} selectedOption={selectedOption} handleBPOptionSelect={handleBPOptionSelect} arrowRotate={arrowRotate} isDropdownOpen={isDropdownOpen} options={options} />
                 <FilterbySort toggleDropdown={toggleDropdown} sortOption={sortOption} selectedSortOption={selectedSortOption} isSortDropdownOpen={isSortDropdownOpen} sortOptions={sortOptions} handleSortOptionSelect={handleSortOptionSelect} />
                     </div>

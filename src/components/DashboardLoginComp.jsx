@@ -84,7 +84,7 @@ const DashboardLoginComp = () => {
                   type="text"
                   name="email"
                   placeholder="Email / Username"
-                  className="w-[80%] pr-5 desktop:pl-6 tablet:h-[40px] mobile:mb-2 mobile:h-[40px] mobile:pl-4 tablet:pl-4 laptop:h-[50px] laptop:pl-4  large-desktop:pl-10 desktop:text-[20px] large-desktop:text-[50px] desktop:h-[80px] large-desktop:h-[130px] border-2 bg-transparent desktop:placeholder:text-[20px] large-desktop:placeholder:text-[40px] border-red-900 rounded-[15px] font-normal"
+                  className="w-[80%] pr-5 desktop:pl-6 mobile:placeholder:text-[10px] tablet:placeholder:text-[12px] tablet:h-[40px] mobile:mb-2 mobile:h-[40px] mobile:pl-4 tablet:pl-4 laptop:h-[50px] laptop:pl-4  large-desktop:pl-10 desktop:text-[20px] large-desktop:text-[50px] desktop:h-[80px] large-desktop:h-[130px] border-2 bg-transparent desktop:placeholder:text-[20px] large-desktop:placeholder:text-[40px] border-red-900 rounded-[15px] font-normal"
                   onBlur={() => {
                     setFieldTouched('email', true);
                   }}
@@ -98,7 +98,7 @@ const DashboardLoginComp = () => {
                     type={showPassword ? "text" : "password"}
                     name="password"
                     placeholder="Password"
-                    className="w-full pr-12 desktop:pl-6 tablet:h-[40px] mobile:h-[40px] mobile:pl-4 tablet:pl-4  laptop:h-[50px] laptop:pl-4 large-desktop:pl-10 desktop:text-[20px] large-desktop:text-[50px] desktop:h-[80px] large-desktop:h-[130px] border-2 bg-transparent desktop:placeholder:text-[20px] large-desktop:placeholder:text-[40px] mobile:mt-0 tablet:mt-3 mt-5 border-red-900 rounded-[15px] font-normal"
+                    className="w-full pr-12 desktop:pl-6 mobile:placeholder:text-[10px] tablet:placeholder:text-[12px] tablet:h-[40px] mobile:h-[40px] mobile:pl-4 tablet:pl-4  laptop:h-[50px] laptop:pl-4 large-desktop:pl-10 desktop:text-[20px] large-desktop:text-[50px] desktop:h-[80px] large-desktop:h-[130px] border-2 bg-transparent desktop:placeholder:text-[20px] large-desktop:placeholder:text-[40px] mobile:mt-0 tablet:mt-3 mt-5 border-red-900 rounded-[15px] font-normal"
                     onBlur={() => {
                       setFieldTouched('password', true);
                     }}
@@ -126,7 +126,7 @@ const DashboardLoginComp = () => {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className='desktop:w-[200px] mobile:w-[80px] mobile:h-[30px] tablet:w-[100px] tablet:h-[40px] laptop:w-[150px] laptop:h-[40px] large-desktop:w-[400px] large-desktop:h-[100px] desktop:h-[50px] rounded-[15px] desktop:text-[20px] large-desktop:text-[40px] bg-[#CC0001] text-[#FFFFFF] z-50'
+                  className='desktop:w-[200px] mobile:w-[80px] mobile:h-[30px] tablet:w-[100px] tablet:h-[40px] laptop:w-[150px] laptop:h-[40px] large-desktop:w-[400px] large-desktop:h-[100px] desktop:h-[50px] rounded-[15px] desktop:text-[20px] tablet:text-[12px] mobile:text-[11px] large-desktop:text-[40px] bg-[#CC0001] text-[#FFFFFF] z-50'
                 >
                   {isSubmitting ? 'Loading...' : 'Login'}
                 </button>
