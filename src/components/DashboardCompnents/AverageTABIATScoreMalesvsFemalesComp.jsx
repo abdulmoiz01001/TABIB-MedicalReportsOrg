@@ -136,51 +136,54 @@ const AverageTABIATScoreMalesvsFemalesComp = ({ data }) => {
 
   // Determine the male image based on the percentage
   const getMaleImage = (percentage) => {
+    console.log("percentage", percentage)
     switch (percentage) {
       case 0: return 'male0.svg';
-      case 5: return 'male2.svg';
+      case 5: return 'male1.svg';
       case 10: return 'male2.svg';
-      case 15: return 'male3.svg';
+      case 15: return 'male2.svg';
       case 20: return 'male3.svg';
-      case 25: return 'male4.svg';
+      case 25: return 'male3.svg';
       case 30: return 'male4.svg';
-      case 40: return 'male5.svg';
+      case 40: return 'male4.svg';
       case 45: return 'male5.svg';
-      case 50: return 'male6.svg';
+      case 50: return 'male5.svg';
       case 55: return 'male6.svg';
-      case 60: return 'male7.svg';
+      case 60: return 'male6.svg';
       case 65: return 'male7.svg';
-      case 70: return 'male8.svg';
+      case 70: return 'male7.svg';
       case 75: return 'male8.svg';
-      case 85: return 'male9.svg';
+      case 85: return 'male8.svg';
       case 90: return 'male9.svg';
       case 95: return 'male9.svg';
       case 100: return 'male9.svg'
-      default: return 'male9.svg'; // For percentages >= 95
+      // default: return 'male9.svg'; // For percentages >= 95
     }
   };
 
   // Determine the female image based on the percentage
   const getFemaleImage = (percentage) => {
+    console.log("percentage", percentage)
     switch (percentage) {
       case 0: return 'female0.svg';
       case 5: return 'female1.svg';
-      // case 10: return 'female2.svg';
+      case 10: return 'female1.svg';
       case 15: return 'female2.svg';
-      // case 20: return 'female4.svg';
+      case 20: return 'female2.svg';
       case 25: return 'female3.svg';
-      // case 30: return 'female6.svg';
+      case 30: return 'female3.svg';
       case 40: return 'female4.svg';
-      // case 45: return 'female8.svg';
+      case 45: return 'female4.svg';
       case 50: return 'female5.svg';
-      // case 55: return 'female10.svg';
+      case 55: return 'female5.svg';
       case 60: return 'female6.svg';
-      // case 65: return 'female13.svg';
+      case 65: return 'female6.svg';
       case 70: return 'female7.svg';
-      // case 75: return 'female15.svg';
+      case 75: return 'female8.svg';
       case 85: return 'female8.svg';
-      // case 90: return 'female17.svg';
-      default: return 'female9.svg'; // For percentages >= 95
+      case 90: return 'female9.svg';
+      case 100: return 'female9.svg'
+      // default: return 'female9.svg'; // For percentages >= 95
     }
   };
 

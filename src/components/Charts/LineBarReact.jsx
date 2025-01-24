@@ -97,8 +97,8 @@ const LineBarReact = ({details}) => {
                     color: 'rgba(0, 0, 0, 0.1)', // Color of the grid lines (faint)
                 },
                 beginAtZero: false,
-                min: 100,
-                max: 6400,
+                min: 0,
+                max: 100,
                 ticks: {
                     stepSize: 10,
                     color: 'black',
