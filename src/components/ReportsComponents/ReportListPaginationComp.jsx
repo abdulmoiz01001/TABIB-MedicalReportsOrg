@@ -74,10 +74,10 @@ const ReportListPaginationComp = ({ reports }) => {
                   <td className='desktop:text-[20px]  tablet:text-[0.8rem] mobile:text-[0.8rem]  laptop:text-[0.9rem] large-desktop:text-[3rem]' >{report?.measureDate} - {report?.measureTime}</td>
                   <td className=' desktop:w-[70px] mobile:mt-4 tablet:mt-4 tablet:w-[30px] tablet:h-[30px] mobile:h-[30px] mobile:w-[30px] laptop:w-[70px] laptop:h-[50px] desktop:h-[55px] large-desktop:h-[100px] flex tablet:gap-4 mobile:gap-4 justify-between items-center ' >
                     <img src="download.svg" alt='download' className='large-desktop:w-16 large-desktop:h-16' />
-                    <Link className='w-[50%] desktop:mt-2 tablet:mt-0 mobile:mt-0 laptop:mt-3 h-[50%]' to={`/patient-report/${report.sk}`} >
+                    {/* <Link className='w-[50%] desktop:mt-2 tablet:mt-0 mobile:mt-0 laptop:mt-3 h-[50%]' to={`/patient-report/${report.sk}`} > */}
                       {/* <img src='info.png' alt='menu' className='desktop:w-6 large-desktop:w-26 large-desktop:h-16 cursor-pointer desktop:h-4  ' /> */}
                       <FaEye size={ 20} color={"#CC0001"} />
-                    </Link>
+                    {/* </Link> */}
                   </td>
                 </tr>
               ))}

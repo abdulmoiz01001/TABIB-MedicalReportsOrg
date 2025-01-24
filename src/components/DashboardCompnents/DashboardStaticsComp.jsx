@@ -15,10 +15,14 @@ import PrevalenceOfHypertensionComp from './PrevalenceOfHypertensionComp';
 import AverageTABIATScoreMalesvsFemalesComp from './AverageTABIATScoreMalesvsFemalesComp';
 import AgeWiseDistributionHeartRateComp from './AgeWiseDistributionHeartRateComp';
 
+const SkeletonBox = ({ className }) => (
+  <div className={`animate-pulse bg-gray-300 rounded-lg ${className}`}></div>
+);
+
 const DashboardStaticsComp = () => {
   const dispatch = useDispatch();
 
-  const { analyticsData, loading, error } = useSelector(
+  const { analyticsData, loading } = useSelector(
     (state) => state.dashboardPatientsAnalytics
   );
 
@@ -28,84 +32,68 @@ const DashboardStaticsComp = () => {
   function getCurrentMonthName() {
     const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
     return monthNames[new Date().getMonth()];
-}
+  }
 
   useEffect(() => {
     dispatch(fetchDashboardAnalytics());
 
-    // Optional: clear data when component unmounts
     return () => {
       dispatch(clearAnalyticsData());
     };
   }, [dispatch]);
 
-  useEffect(() => {
-    console.log("data",analyticsData);
-  },[analyticsData])
-
   return (
     <div className="w-full flex flex-row justify-start items-start h-[94%]">
-      {loading || !analyticsData.success ? (
-        // Skeleton loader
-        <div className="w-full flex flex-row justify-start items-start h-full animate-pulse">
-          <div className="w-[78%] flex flex-col h-full desktop:gap-2 large-desktop:gap-4 justify-start items-end desktop:pr-2 large-desktop:pr-4">
-            <div className="desktop:w-[98%] large-desktop:w-[99%] flex justify-between items-center h-[20%] gap-3">
-              {[...Array(5)].map((_, i) => (
-                <div
-                  key={i}
-                  className="bg-gray-400 w-[18%] h-full rounded-lg"
-                ></div>
-              ))}
+      {loading || !analyticsData?.success ? (
+        <>
+          <div className="w-[77%] flex flex-col h-full gap-3 laptop:pr-3 desktop:pr-3 justify-start items-end large-desktop:pr-4">
+            <div className="desktop:w-[98%] laptop:w-[98%] large-desktop:w-[99%] flex justify-between items-center laptop:h-[15%] h-[20%]">
+              <SkeletonBox className="w-[18%] h-full" />
+              <SkeletonBox className="w-[18%] h-full" />
+              <SkeletonBox className="w-[18%] h-full" />
+              <SkeletonBox className="w-[18%] h-full" />
+              <SkeletonBox className="w-[18%] h-full" />
             </div>
-            <div className="desktop:w-[98%] large-desktop:w-[99%] h-screen flex flex-row justify-center items-start gap-2">
-              <div className="w-[28%] h-full flex flex-col gap-3">
-                <div className="bg-gray-400 h-[45%] rounded-lg"></div>
-                <div className="bg-gray-400 h-[45%] rounded-lg"></div>
+            <div className="desktop:w-[98%] laptop:w-[98%] large-desktop:w-[99%] h-screen flex flex-row justify-center items-start gap-2">
+              <div className="w-[28%] h-full flex flex-col laptop:gap-2 gap-3">
+                <SkeletonBox className="w-full h-[45%]" />
+                <SkeletonBox className="w-full h-[45%]" />
               </div>
-              <div className="w-[35.5%] h-full flex flex-col gap-3">
-                {[...Array(3)].map((_, i) => (
-                  <div
-                    key={i}
-                    className="bg-gray-400 h-[30%] rounded-lg"
-                  ></div>
-                ))}
+              <div className="w-[35.5%] h-full px-1 flex laptop:gap-2 gap-3 flex-col justify-start items-start">
+                <SkeletonBox className="w-full h-[30%]" />
+                <SkeletonBox className="w-full h-[30%]" />
+                <SkeletonBox className="w-full h-[30%]" />
               </div>
-              <div className="w-[36.5%] h-full flex flex-col gap-3">
-                {[...Array(3)].map((_, i) => (
-                  <div
-                    key={i}
-                    className="bg-gray-400 h-[30%] rounded-lg"
-                  ></div>
-                ))}
+              <div className="w-[36.5%] h-full flex flex-col laptop:gap-2 gap-3 justify-start items-start">
+                <SkeletonBox className="w-full h-[30%]" />
+                <SkeletonBox className="w-full h-[30%]" />
+                <SkeletonBox className="w-full h-[30%]" />
               </div>
             </div>
           </div>
-          <div className="w-[22%] h-[96vh] sticky desktop:top-2 large-desktop:top-24 pr-2 flex flex-col justify-start items-center gap-2">
-            {[...Array(3)].map((_, i) => (
-              <div
-                key={i}
-                className="bg-gray-400 w-full h-[30%] rounded-lg"
-              ></div>
-            ))}
+          <div className="w-[22%] h-[96vh] sticky laptop:top-1 desktop:top-2 laptop:gap-2 large-desktop:top-2 pr-2 flex flex-col justify-start items-center gap-3">
+            <SkeletonBox className="w-full h-[30%]" />
+            <SkeletonBox className="w-full h-[30%]" />
+            <SkeletonBox className="w-full h-[30%]" />
           </div>
-        </div>
+        </>
       ) : (
         <>
-          <div className="w-[77%] flex flex-col h-full gap-3 laptop:pr-3 desktop:pr-3 justify-start items-end large-desktop:pr-4 ">
-            <div className="desktop:w-[98%] laptop:w-[98%] large-desktop:w-[99%] flex justify-between items-center laptop:h-[15%]   h-[20%]">
+          <div className="w-[77%] flex flex-col h-full gap-3 laptop:pr-3 desktop:pr-3 justify-start items-end large-desktop:pr-4">
+            <div className="desktop:w-[98%] laptop:w-[98%] large-desktop:w-[99%] flex justify-between items-center laptop:h-[15%] h-[20%]">
               <ReportBoxComp data={analyticsData.data.hypertensive} title={"Hypertensive"} count={"2091"} female={"1123"} male={"800"} />
               <ReportBoxComp title={"Total Test"} title2={"Reports"} data={analyticsData.data.totalReportsCount} />
               <PulseRateAndBloodPresureComp data={analyticsData.data.pluseAndBpAverage} />
               <ReportBoxComp title={"Test Report "} title2={`Year ${getCurrentYear()}`} data={analyticsData.data.currentYearReportsCount} />
               <ReportBoxComp title={"Test Report "} title2={`Month ${getCurrentMonthName()}`} data={analyticsData.data.currentMonthReportsCount} />
             </div>
-            <div className="desktop:w-[98%] laptop:w-[98%]  large-desktop:w-[99%] h-screen flex flex-row justify-center items-start gap-2">
+            <div className="desktop:w-[98%] laptop:w-[98%] large-desktop:w-[99%] h-screen flex flex-row justify-center items-start gap-2">
               <div className="w-[28%] h-full flex flex-col laptop:gap-2 gap-3">
                 <HypertensionComp data={analyticsData.data.bmiClassification} />
                 <OtherTemperamentIndicesComp data={analyticsData.data.otherTemperamentIndices} />
               </div>
               <div className="w-[35.5%] h-full px-1 flex laptop:gap-2 gap-3 flex-col justify-start items-start">
-                <NoOfPatientsVsAgeComp data={analyticsData.data.ageWiseDistributionOfHypertensiveAndNormotensivePatients}  />
+                <NoOfPatientsVsAgeComp data={analyticsData.data.ageWiseDistributionOfHypertensiveAndNormotensivePatients} />
                 <AgeWiseDistributionHeartRateComp data={analyticsData.data.ageWiseDistributionOfHeartRate} />
                 <TemperamentChartComp data={analyticsData.data.temperamentWithDominantQualities} />
               </div>
@@ -116,8 +104,8 @@ const DashboardStaticsComp = () => {
               </div>
             </div>
           </div>
-          <div className="w-[22%] h-[96vh] sticky desktop:top-2 laptop:gap-2 large-desktop:top-2 pr-2 flex flex-col justify-start items-center gap-3">
-            <TemperamentCommunityComp data={analyticsData.data.temperamentOfTheCommunity}  />
+          <div className="w-[22%] h-[96vh] sticky laptop:top-1 desktop:top-2 laptop:gap-2 large-desktop:top-2 pr-2 flex flex-col justify-start items-center gap-3">
+            <TemperamentCommunityComp data={analyticsData.data.temperamentOfTheCommunity} />
             <DominantBodyCommunityComp data={analyticsData.data.dominantBodyCompositionInCommunity} />
             <TABIATScoreComp data={analyticsData?.data?.totalAverageTabiatScore} />
           </div>
