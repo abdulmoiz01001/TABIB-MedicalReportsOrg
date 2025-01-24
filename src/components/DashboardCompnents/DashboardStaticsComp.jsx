@@ -44,7 +44,7 @@ const DashboardStaticsComp = () => {
   },[analyticsData])
 
   return (
-    <div className="w-full flex flex-row justify-start items-start h-[94%]">
+    <div className="w-full flex flex-row justify-start items-start border-4 border-red-900 h-[94%]">
       {loading || !analyticsData.success ? (
         // Skeleton loader
         <div className="w-full flex flex-row justify-start items-start h-full animate-pulse">
@@ -92,7 +92,7 @@ const DashboardStaticsComp = () => {
       ) : (
         <>
           <div className="w-[77%] flex flex-col h-full gap-3 desktop:pr-3 justify-start items-end large-desktop:pr-4 ">
-            <div className="desktop:w-[98%] large-desktop:w-[99%] flex justify-between items-center  h-[20%]">
+            <div className="desktop:w-[98%] large-desktop:w-[99%] flex justify-between items-center laptop:h-[15%] border-4 border-blue-900  h-[20%]">
               <ReportBoxComp data={analyticsData.data.hypertensive} title={"Hypertensive"} count={"2091"} female={"1123"} male={"800"} />
               <ReportBoxComp title={"Total Test"} title2={"Reports"} data={analyticsData.data.totalReportsCount} />
               <PulseRateAndBloodPresureComp data={analyticsData.data.pluseAndBpAverage} />

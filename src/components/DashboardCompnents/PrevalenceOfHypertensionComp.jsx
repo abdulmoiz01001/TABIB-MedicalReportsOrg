@@ -8,7 +8,7 @@ const PrevalenceOfHypertensionComp = ({data}) => {
     return (
         <>
             <div className='w-full h-[32.5%]  bg-[#FAFAFA] flex  border border-[#CC0001] rounded-[15px] ' >
-                <div className='w-[55%] flex-col flex border-4 border-red-900 border-red-900 justify-center  items-center h-full ' >
+                <div className='w-[55%] flex-col flex justify-center  items-center h-full ' >
                     <h1 className='desktop:text-[1rem] large-desktop:text-[2.5rem] font-bold' >Prevalence of Hypertension</h1>
                     <div className='w-full flex justify-center items-center h-[85%]' >
 

@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setFilteredReports, clearFilteredReports } from '../../store/features/FiltersSlice';
 import { format } from 'date-fns';
 import useStore from '../../zustandStore/useStore';
-import SearchTerm from './ReportFilterbarComponents/searchTerm';
+import SearchTerm from './ReportFilterbarComponents/SearchTerm';
 import FilterbyDateRange from './ReportFilterbarComponents/FilterbyDateRange';
 import FilterbyTimeRange from './ReportFilterbarComponents/FilterbyTimeRange';
 import FilterbyBP from './ReportFilterbarComponents/FilterbyBP';

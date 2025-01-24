@@ -17,13 +17,13 @@ const ReportBoxComp = ({ data, title, title2 , count }) => {
         {/* Conditionally Show Male/Female Counts */}
         {data?.male >= 0 && data?.female  >= 0 && (
           <div className="flex justify-between desktop:gap-7 w-[70%] large-desktop:gap-16  items-center">
-            <p className="text-[#000000] large-desktop:text-[2rem]  text-[1rem] font-bold">M: {data?.male}</p>
-            <p className="text-[#000000] large-desktop:text-[2rem]  text-[1rem] font-bold">F: {data?.female}</p>
+            <p className="text-[#000000] large-desktop:text-[2rem] laptop:text-[0.8rem]  text-[1rem] font-bold">M: {data?.male}</p>
+            <p className="text-[#000000] large-desktop:text-[2rem] laptop:text-[0.8rem]  text-[1rem] font-bold">F: {data?.female}</p>
           </div>
         )} 
 
         {/* Total Count */}
-        <p className="text-[#CC0001] large-desktop:text-[8rem] desktop:text-[3.2rem] font-bold">{data?.total == undefined ? data : data?.total }</p>
+        <p className="text-[#CC0001] large-desktop:text-[8rem] laptop:text-[3rem] desktop:text-[3.2rem] font-bold">{data?.total == undefined ? data : data?.total }</p>
 
       </>:<>
       <p className="text-[#CC0001] large-desktop:text-[8rem] desktop:text-[3.2rem] font-bold">0</p>
