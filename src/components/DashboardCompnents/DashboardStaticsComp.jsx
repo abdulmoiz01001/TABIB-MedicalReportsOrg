@@ -40,7 +40,7 @@ const DashboardStaticsComp = () => {
   }, [dispatch]);
 
   useEffect(() => {
-    console.log(analyticsData);
+    console.log("data",analyticsData);
   },[analyticsData])
 
   return (
@@ -119,7 +119,7 @@ const DashboardStaticsComp = () => {
           <div className="w-[22%] h-[96vh] sticky desktop:top-2 large-desktop:top-2 pr-2 flex flex-col justify-start items-center gap-3">
             <TemperamentCommunityComp data={analyticsData.data.temperamentOfTheCommunity}  />
             <DominantBodyCommunityComp data={analyticsData.data.dominantBodyCompositionInCommunity} />
-            <TABIATScoreComp data={analyticsData?.data?.averageTabiatScoreOfrMaleAndFemale?.total} />
+            <TABIATScoreComp data={analyticsData?.data?.totalAverageTabiatScore} />
           </div>
         </>
       )}

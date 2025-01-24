@@ -7,7 +7,7 @@ const SearchTerm = ({searchTerm , onInputChange}) => {
                 <input
                     type="text"
                     placeholder="Search Reports ( i.e Name, Mobile, CNIC )"
-                    className="bg-[#FAFAFA] shadow-[0_4px_4px_3px_#00000040] w-full desktop:h-[62px] large-desktop:h-full large-desktop:placeholder:text-[2rem] large-desktop:text-[2rem] pl-4 pr-12 rounded-[15px] border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="bg-[#FAFAFA] shadow-[0_4px_4px_3px_#00000040] w-full laptop:h-[50px] desktop:h-[62px] large-desktop:h-full large-desktop:placeholder:text-[2rem] large-desktop:text-[2rem] pl-4 pr-12 rounded-[15px] border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#CC0001]"
                     value={searchTerm}
                     onChange={onInputChange}
                 />

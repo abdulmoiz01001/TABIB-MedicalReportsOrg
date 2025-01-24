@@ -242,7 +242,7 @@ const BarComp = ({ details }) => {
   const titleFontSize = isLargeDesktop
     ? 30
     : isDesktop
-    ? 20
+    ? 16
     : isLaptop
     ? 18
     : 14;
@@ -272,7 +272,7 @@ const BarComp = ({ details }) => {
           color: "#000",
           font: {
             size: titleFontSize, // Dynamically change font size
-            weight: "bold",
+            // weight: "bold",
           },
         },
         ticks: {
@@ -305,8 +305,8 @@ const BarComp = ({ details }) => {
   };
 
   return (
-    <div className="flex h-[90%] justify-center px-2 w-full items-center rounded-lg shadow-md">
-      <Bar className="w-full" ref={chartRef} data={data} options={options} />
+    <div className="flex h-[95%] justify-center px-2 w-full items-center rounded-lg shadow-md">
+      <Bar ref={chartRef} data={data} options={options} />
     </div>
   );
 };

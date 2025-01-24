@@ -4,22 +4,22 @@ const FilterbyTimeRange = ({selectionRange , formatTime , setStartTime , setEndT
     <div className={`${selectionRange.token ? "" : "opacity-50 cursor-not-allowed"} flex w-[12%] large-desktop:h-full flex-col items-center`}>
     {/* Button to open time picker */}
     <div
-        className="w-full rounded-[15px] px-8 shadow-[0_4px_4px_3px_#00000040] desktop:h-[62px] large-desktop:h-full flex justify-around items-center bg-[#FAFAFA] cursor-pointer"
+        className="w-full rounded-[15px] desktop:px-8 large-desktop:px-8 laptop:px-4 shadow-[0_4px_4px_3px_#00000040] laptop:h-[50px] desktop:h-[62px] large-desktop:h-full flex justify-around items-center bg-[#FAFAFA] cursor-pointer"
         onClick={() => toggleDropdown('time')}
     >
-        <p className="desktop:text-[15px] desktop:leading-5 large-desktop:text-[2rem] text-black">
-            {startTime != "12:00 AM" && endTime != "12:00 AM" ? `${formatTime(startTime)} - ${formatTime(endTime)}` : "Filter By"}
+        <p className="desktop:text-[15px] desktop:leading-5 laptop:leading-4 laptop:text-[0.8rem] large-desktop:text-[2rem] text-black">
+            {startTime != "" && endTime != "" ? `${formatTime(startTime)} - ${formatTime(endTime)}` : <span className="laptop:text-[0.9rem]" > Filter By</span>}
         </p>
         <img
             src="clock.svg"
             alt="Clock Icon"
-            className="desktop:w-[20px] large-desktop:w-[40px] desktop:h-[20px] large-desktop:h-[40px] pointer-events-none"
+            className="desktop:w-[20px] laptop:w-[16px] laptop:h-[16px] large-desktop:w-[40px] desktop:h-[20px] large-desktop:h-[40px] pointer-events-none"
         />
     </div>
 
     {/* Time Picker Modal */}
     {isTimePickerVisible && (
-        <div className="absolute top-28 bg-white p-4 shadow-lg rounded-lg mt-4">
+        <div className="absolute top-28 z-50 bg-white p-4 shadow-lg rounded-lg mt-4">
             <div className="flex flex-row justify-center gap-4 items-center">
                 <div className="flex flex-col justify-center items-start">
                     <label className="mr-2 text-[#313131] text-[15px] font-normal">Start Time:</label>

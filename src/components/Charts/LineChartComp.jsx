@@ -45,7 +45,7 @@ const LineChartComp = ({ ageData, heartRateData }) => {
   const axisTitleSize = isLargeDesktop
     ? 30
     : isDesktop
-    ? 20
+    ? 16
     : isLaptop
     ? 18
     : isTablet
@@ -135,7 +135,7 @@ const LineChartComp = ({ ageData, heartRateData }) => {
           color: "#000",
           font: {
             size: axisTitleSize,
-            weight: "bold",
+            // weight: "bold",
           },
         },
       },

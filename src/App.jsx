@@ -12,21 +12,12 @@ import ForgotPasswordPage from "./pages/ForgotPasswordPage";
 
 function App() {
   const dispatch = useDispatch();
-
-  // Authentication state
-  const { isAuthenticated } = useSelector((state) => state.Login); // Include a loading state in auth
-  const { items, loading, error } = useSelector((state) => state.patientsReports);
-
+  
   useEffect(() => {
     // Fetch data when the component mounts
     dispatch(fetchData());
   }, [dispatch]);
 
-  // PrivateRoute component for protecting routes
-  // const PrivateRoute = ({ children }) => {
- 
-  //   return isAuthenticated ? children : <Navigate to="/login" />;
-  // };
 
   return (
     <Router>

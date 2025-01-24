@@ -8,7 +8,7 @@ const PrevalenceOfHypertensionComp = ({data}) => {
     return (
         <>
             <div className='w-full h-[32.5%]  bg-[#FAFAFA] flex  border border-[#CC0001] rounded-[15px] ' >
-                <div className='w-[50%] flex-col flex  border-red-900 justify-center  items-center h-full ' >
+                <div className='w-[55%] flex-col flex border-4 border-red-900 border-red-900 justify-center  items-center h-full ' >
                     <h1 className='desktop:text-[1rem] large-desktop:text-[2.5rem] font-bold' >Prevalence of Hypertension</h1>
                     <div className='w-full flex justify-center items-center h-[85%]' >
 
@@ -27,7 +27,7 @@ const PrevalenceOfHypertensionComp = ({data}) => {
                         />
                         </div>
                 </div>
-                <div className='w-[50%] flex flex-col  justify-center items-center h-full gap-2' >
+                <div className='w-[45%] flex flex-col  justify-center items-center h-full gap-2' >
                     {/* First Chart */}
                     <PieCharts firstValue={data.male} firstColor="#CC0001" secondColor="#FFB1B1" title="In Males" />
 

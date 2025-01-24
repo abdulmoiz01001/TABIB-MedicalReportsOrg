@@ -75,41 +75,41 @@ const DashboardLoginComp = () => {
                 <h1 className="text-[#CC0001] items-start desktop:text-[22px] large-desktop:text-[46px] font-bold">
                   Your Gateway to Precision Insights and <br /> Patient Well-being
                 </h1>
-                <p className="text-[#313131] desktop:text-[15px] large-desktop:text-[30px] font-normal">
+                <p className="text-[#313131] desktop:text-[15px] laptop:text-[0.8rem] large-desktop:text-[30px] font-normal">
                   Step into the nerve center of health monitoring—designed exclusively for administrators. This dashboard provides you with a seamless overview of aggregated temperament and blood pressure results, offering key insights into patient trends at a glance.
                 </p>
               </div>
               <div className="w-[40%] overflow-auto flex flex-col justify-center items-center desktop:gap-2 large-desktop:gap-16 h-full">
-                <h1 className="text-[#313131] text-center desktop:text-[45px] large-desktop:text-[95px] font-bold">Login</h1>
+                <h1 className="text-[#313131] text-center laptop:text-[35px] laptop:mb-3 desktop:text-[45px] large-desktop:text-[95px] font-bold">Login</h1>
 
                 <Field
                   type="text"
                   name="email"
                   placeholder="Email / Username"
-                  className="w-[80%] pr-5 desktop:pl-6 large-desktop:pl-10 desktop:text-[20px] large-desktop:text-[50px] desktop:h-[80px] large-desktop:h-[130px] border-2 bg-transparent desktop:placeholder:text-[20px] large-desktop:placeholder:text-[40px] border-red-900 rounded-[15px] font-normal"
+                  className="w-[80%] pr-5 desktop:pl-6 laptop:h-[50px] laptop:pl-4  large-desktop:pl-10 desktop:text-[20px] large-desktop:text-[50px] desktop:h-[80px] large-desktop:h-[130px] border-2 bg-transparent desktop:placeholder:text-[20px] large-desktop:placeholder:text-[40px] border-red-900 rounded-[15px] font-normal"
                   onBlur={() => {
                     setFieldTouched('email', true)
                   }}
                 />
                 {touched.email && errors.email && (
-                  <div className="text-red-500 h-2 w-[80%] flex justify-start items-center">{errors.email}</div>
+                  <div className="text-red-500 h-2 w-[80%] laptop:h-8  flex justify-start items-center">{errors.email}</div>
                 )}
 
                 <Field
                   type="password"
                   name="password"
                   placeholder="Password"
-                  className="w-[80%] pr-5 desktop:pl-6 large-desktop:pl-10 desktop:text-[20px] large-desktop:text-[50px] desktop:h-[80px] large-desktop:h-[130px] border-2 bg-transparent desktop:placeholder:text-[20px] large-desktop:placeholder:text-[40px] mt-5 border-red-900 rounded-[15px] font-normal"
+                  className="w-[80%] pr-5 desktop:pl-6 laptop:h-[50px] laptop:pl-4 large-desktop:pl-10 desktop:text-[20px] large-desktop:text-[50px] desktop:h-[80px] large-desktop:h-[130px] border-2 bg-transparent desktop:placeholder:text-[20px] large-desktop:placeholder:text-[40px] mt-5 border-red-900 rounded-[15px] font-normal"
                   onBlur={() => {
                     setFieldTouched('password', true)
                   }}
                 />
                 {touched.password && errors.password && (
-                  <div className="text-red-500 h-2 w-[80%] flex justify-start items-center ">{errors.password}</div>
+                  <div className="text-red-500 h-2 w-[80%] flex laptop:h-8 justify-start items-center ">{errors.password}</div>
                 )}
 
                 <div className='flex justify-end items-center w-[80%]'>
-                  <p onClick={() => navigate("/forget-password")} className="text-[#CC0001] font-semibold cursor-pointer desktop:text-[18px] large-desktop:text-[30px]">Forgot Password?</p>
+                  <p onClick={() => navigate("/forget-password")} className="text-[#CC0001] laptop:my-2 font-semibold cursor-pointer laptop:text-[0.8rem] desktop:text-[18px] large-desktop:text-[30px]">Forgot Password?</p>
                 </div>
 
                 {/* Error message */}
@@ -120,7 +120,7 @@ const DashboardLoginComp = () => {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className='desktop:w-[200px] large-desktop:w-[400px] large-desktop:h-[100px] desktop:h-[50px] rounded-[15px] desktop:text-[20px] large-desktop:text-[40px] bg-[#CC0001] text-[#FFFFFF] z-50'
+                  className='desktop:w-[200px] laptop:w-[150px] laptop:h-[40px] large-desktop:w-[400px] large-desktop:h-[100px] desktop:h-[50px] rounded-[15px] desktop:text-[20px] large-desktop:text-[40px] bg-[#CC0001] text-[#FFFFFF] z-50'
                 >
                   {isSubmitting ? 'Loading...' : 'Login'}
                 </button>
