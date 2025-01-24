@@ -6,10 +6,10 @@ const FilterbySort = ({ toggleDropdown , selectedSortOption , sortOption , isSor
         return text.charAt(0).toUpperCase() + text.slice(1).toLowerCase();
     };
   return (
-    <div className=" flex w-[12%] large-desktop:h-full mobile:relative tablet:relative mobile:w-[98%] tablet:w-[98%] flex-col items-center">
+    <div className=" flex w-[12%] large-desktop:h-full mobile:relative tablet:relative mobile:w-[98%] tablet:w-[45%] flex-col items-center">
                  
     <div
-        className="w-full rounded-[15px] shadow-[0_4px_4px_3px_#00000040] mobile:h-[50px] tablet:h-[50px]  laptop:h-[50px] desktop:h-[62px] large-desktop:h-full flex justify-around items-center bg-[#FAFAFA] cursor-pointer px-4"
+        className="w-full rounded-[15px] border-2 mobile:h-[50px] tablet:h-[50px]  laptop:h-[50px] desktop:h-[62px] large-desktop:h-full flex justify-around items-center bg-[#FAFAFA] cursor-pointer px-4"
         onClick={() => toggleDropdown('sort')}
     >
         <p className="desktop:text-[15px]  laptop:text-[0.7rem] large-desktop:text-[2rem]  text-black">{selectedSortOption ?  capitalize(selectedSortOption)+" "+capitalize(sortOption) : <span className="laptop:text-[0.9rem]" >Sort by</span>}</p>

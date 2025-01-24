@@ -87,7 +87,7 @@ const DashboardStaticsComp = () => {
               <ReportBoxComp title={"Test Report "} title2={`Year ${getCurrentYear()}`} data={analyticsData.data.currentYearReportsCount} />
               <ReportBoxComp title={"Test Report "} title2={`Month ${getCurrentMonthName()}`} data={analyticsData.data.currentMonthReportsCount} />
             </div>
-            <div className="desktop:w-[98%] laptop:w-[98%] large-desktop:w-[99%] h-screen flex flex-row justify-center items-start gap-2">
+            <div className="desktop:w-[98%] laptop:w-[98%] mb-2 large-desktop:w-[99%] h-screen flex flex-row justify-center items-start gap-2">
               <div className="w-[28%] h-full flex flex-col laptop:gap-2 gap-3">
                 <HypertensionComp data={analyticsData.data.bmiClassification} />
                 <OtherTemperamentIndicesComp data={analyticsData.data.otherTemperamentIndices} />

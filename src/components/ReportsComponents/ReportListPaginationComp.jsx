@@ -42,13 +42,13 @@ const ReportListPaginationComp = ({ reports }) => {
     <>
       <div onClick={() => customFunction()} className='w-[99%] overflow-auto  mx-auto mt-2 flex large-desktop:py-6 large-desktop:gap-8 flex-col justify-start items-center h-[78%]   bg-[#FAFAFA] shadow-[0_4px_4px_3px_#00000040] rounded-[15px]'>
         <div className='desktop:w-full laptop:w-full w-full flex mobile:h-[70px] mobile:relative large-desktop:w-[98%] justify-between items-center '>
-          <p className='desktop:text-[16px] tablet:sticky tablet:left-2 mobile:fixed mobile:left-2 large-desktop:text-[2rem] text-[#827F7F] p-4'>Total Reports :  { noReportsFound ? 0 : lengthReports}  </p>
+          <p className='desktop:text-[16px] tablet:sticky tablet:left-2 mobile:fixed mobile:left-2 tablet:text-[14px] mobile:text-[14px] large-desktop:text-[2rem] text-[#827F7F] p-4'>Total Reports :  { noReportsFound ? 0 : lengthReports}  </p>
         </div>
         <div className='desktop:w-[98%] min-w-[800px] overflow-auto w-[98%] laptop:w-[98%] large-desktop:w-[98%] mx-auto  border-green-900 h-[90%] flex justify-center items-start'>
           <table className='w-full  p-3  text-left'>
             <thead className='w-full min-w-full bg-[#F9B9B4] h-[72px] rounded-[8px]'>
               <tr className='large-desktop:h-[120px]' >
-                <th className='desktop:text-[20px] tablet:text-[0.8rem] mobile:text-[0.8rem] laptop:text-[0.9rem] large-desktop:text-[3rem] font-medium capitalize pl-4'>Patients Name</th>
+                <th className='desktop:text-[20px] tablet:text-[0.8rem] mobile:text-[0.8rem] laptop:text-[0.9rem] large-desktop:text-[3rem] font-medium capitalize pl-4'>Patient Names</th>
                 <th className='desktop:text-[20px] tablet:text-[0.8rem] mobile:text-[0.8rem] laptop:text-[0.9rem] large-desktop:text-[3rem] font-medium capitalize'>Age</th>
                 <th className='desktop:text-[20px] tablet:text-[0.8rem] mobile:text-[0.8rem] laptop:text-[0.9rem] large-desktop:text-[3rem] font-medium capitalize'>Phone</th>
                 <th className='desktop:text-[20px] tablet:text-[0.8rem] mobile:text-[0.8rem] laptop:text-[0.9rem] large-desktop:text-[3rem] font-medium capitalize'>CNIC</th>

@@ -1,10 +1,10 @@
 
 const FilterbyTimeRange = ({selectionRange , formatTime , setStartTime , setEndTime , startTime , endTime , toggleDropdown ,isTimePickerVisible ,handleTimeChange, clearTimeRange} ) => {
  return(
-    <div className={`${selectionRange.token ? "" : "opacity-50 cursor-not-allowed"} flex w-[12%] mobile:relative tablet:relative large-desktop:h-full mobile:w-[98%] tablet:w-[98%] flex-col items-center`}>
+    <div className={`${selectionRange.token ? "" : "opacity-50 cursor-not-allowed"} flex w-[12%] mobile:relative tablet:relative large-desktop:h-full mobile:w-[98%] tablet:w-[45%] flex-col items-center`}>
     {/* Button to open time picker */}
     <div
-        className="w-full rounded-[15px] desktop:px-8 large-desktop:px-8 laptop:px-4 shadow-[0_4px_4px_3px_#00000040] mobile:h-[50px] tablet:h-[50px]  laptop:h-[50px] desktop:h-[62px] large-desktop:h-full flex justify-around items-center bg-[#FAFAFA] cursor-pointer"
+        className="w-full rounded-[15px] desktop:px-8 large-desktop:px-8 laptop:px-4 border-2 mobile:h-[50px] tablet:h-[50px]  laptop:h-[50px] desktop:h-[62px] large-desktop:h-full flex justify-around items-center bg-[#FAFAFA] cursor-pointer"
         onClick={() => toggleDropdown('time')}
     >
         <p className="desktop:text-[15px] desktop:leading-5 laptop:leading-4 laptop:text-[0.8rem] large-desktop:text-[2rem] text-black">

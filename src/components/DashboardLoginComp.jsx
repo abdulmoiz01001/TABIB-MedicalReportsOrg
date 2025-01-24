@@ -1,29 +1,29 @@
-import React, { useEffect, useState } from 'react'
-import { Formik, Field, Form, ErrorMessage } from 'formik'
-import { setLoginDone } from "../store/features/LoginSlice"
-import * as Yup from 'yup'
-import { useNavigate } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
+import React, { useEffect, useState } from 'react';
+import { Formik, Field, Form, ErrorMessage } from 'formik';
+import { setLoginDone } from "../store/features/LoginSlice";
+import * as Yup from 'yup';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { Eye, EyeOff } from 'lucide-react'; // Using lucide-react for icons
 
 const DashboardLoginComp = () => {
-  const dispatch = useDispatch()
-  const navigate = useNavigate()
-  const [errorMessage, setErrorMessage] = useState('') // State for error message
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const [errorMessage, setErrorMessage] = useState('');
+  const [showPassword, setShowPassword] = useState(false); // State for toggling password visibility
 
-   useEffect(() => {
-     console.log("token",localStorage.getItem("token"))
-   localStorage.getItem("token") != undefined ? navigate("/") : console.log("token is present")
-   },[])
+  useEffect(() => {
+    console.log("token", localStorage.getItem("token"));
+    localStorage.getItem("token") !== undefined && localStorage.getItem("token") != null ? navigate("/") : console.log("token is present");
+  }, []);
 
-  // Define validation schema using Yup
   const validationSchema = Yup.object({
     email: Yup.string().email('Invalid email address').required('Email is required'),
     password: Yup.string().required('Password is required')
-  })
+  });
 
-  // Handle form submission
   const handleSubmit = async (values) => {
-    setErrorMessage('') // Clear error message on submit
+    setErrorMessage('');
     try {
       const response = await fetch(`https://nole90yyzc.execute-api.us-east-1.amazonaws.com/dev/signIn`, {
         method: 'POST',
@@ -34,23 +34,21 @@ const DashboardLoginComp = () => {
         body: JSON.stringify(values),
       });
       const data = await response.json();
-      console.log("data", data)
+      console.log("data", data);
       if (response.status === 200) {
-        console.log("success")
-        // dispatch(setLoginDone())
-        localStorage.setItem("token", data.token)
+        console.log("success");
+        localStorage.setItem("token", data.token);
         if (localStorage.getItem("token") != null) {
-          navigate("/")
+          navigate("/");
         }
       } else {
-        // Show error message if status is not 200
-        setErrorMessage(data.message || 'Login failed. Please try again.')
+        setErrorMessage(data.message || 'Login failed. Please try again.');
       }
     } catch (e) {
-      console.log("error", e)
-      setErrorMessage('An unexpected error occurred. Please try again.')
+      console.log("error", e);
+      setErrorMessage('An unexpected error occurred. Please try again.');
     }
-  }
+  };
 
   return (
     <Formik
@@ -69,7 +67,7 @@ const DashboardLoginComp = () => {
             }}
             className='w-full h-screen flex mobile:py-2 justify-center items-center'
           >
-            <div className='w-[80%] tablet:h-[80%]  mobile:h-[80%] mobile:w-[90%] tablet:w-[90%] h-[70%] mobile:flex-col-reverse tablet:flex-col-reverse flex justify-evenly items-center rounded-[16px] bg-[#FFFEFE] bg-opacity-75'>
+            <div className='w-[80%] tablet:h-[80%] mobile:h-[80%] mobile:w-[90%] tablet:w-[90%] h-[70%] mobile:flex-col-reverse tablet:flex-col-reverse flex justify-evenly items-center rounded-[16px] bg-[#FFFEFE] bg-opacity-75'>
               <div className="w-[35%] mobile:px-4 tablet:px-4 tablet:w-full tablet:h-[50%] mobile:h-[50%] mobile:w-full flex flex-col tablet:items-center mobile:items-center justify-center mobile:gap-4 gap-8 items-start h-full">
                 <img src="logo.svg" alt="logo" className="desktop:w-[161px] desktop:h-[80px] large-desktop:w-[350px] large-desktop:h-[200px]" />
                 <h1 className="text-[#CC0001] tablet:text-center mobile:text-center mobile:text-[12px] tablet:text-[15px] items-start desktop:text-[22px] large-desktop:text-[46px] font-bold">
@@ -88,31 +86,39 @@ const DashboardLoginComp = () => {
                   placeholder="Email / Username"
                   className="w-[80%] pr-5 desktop:pl-6 tablet:h-[40px] mobile:mb-2 mobile:h-[40px] mobile:pl-4 tablet:pl-4 laptop:h-[50px] laptop:pl-4  large-desktop:pl-10 desktop:text-[20px] large-desktop:text-[50px] desktop:h-[80px] large-desktop:h-[130px] border-2 bg-transparent desktop:placeholder:text-[20px] large-desktop:placeholder:text-[40px] border-red-900 rounded-[15px] font-normal"
                   onBlur={() => {
-                    setFieldTouched('email', true)
+                    setFieldTouched('email', true);
                   }}
                 />
                 {touched.email && errors.email && (
                   <div className="text-red-500 h-2 w-[80%] mobile:text-[12px] mobile:h-6 tablet:text-[14px] tablet:h-8  laptop:h-8  flex justify-start items-center">{errors.email}</div>
                 )}
 
-                <Field
-                  type="password"
-                  name="password"
-                  placeholder="Password"
-                  className="w-[80%] pr-5 desktop:pl-6 tablet:h-[40px] mobile:h-[40px] mobile:pl-4 tablet:pl-4  laptop:h-[50px] laptop:pl-4 large-desktop:pl-10 desktop:text-[20px] large-desktop:text-[50px] desktop:h-[80px] large-desktop:h-[130px] border-2 bg-transparent desktop:placeholder:text-[20px] large-desktop:placeholder:text-[40px] mobile:mt-0 tablet:mt-3 mt-5 border-red-900 rounded-[15px] font-normal"
-                  onBlur={() => {
-                    setFieldTouched('password', true)
-                  }}
-                />
+                <div className="w-[80%] relative">
+                  <Field
+                    type={showPassword ? "text" : "password"}
+                    name="password"
+                    placeholder="Password"
+                    className="w-full pr-12 desktop:pl-6 tablet:h-[40px] mobile:h-[40px] mobile:pl-4 tablet:pl-4  laptop:h-[50px] laptop:pl-4 large-desktop:pl-10 desktop:text-[20px] large-desktop:text-[50px] desktop:h-[80px] large-desktop:h-[130px] border-2 bg-transparent desktop:placeholder:text-[20px] large-desktop:placeholder:text-[40px] mobile:mt-0 tablet:mt-3 mt-5 border-red-900 rounded-[15px] font-normal"
+                    onBlur={() => {
+                      setFieldTouched('password', true);
+                    }}
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowPassword(!showPassword)}
+                    className="absolute top-1/2 -translate-y-1/5 mobile:-translate-y-1/2 tablet:-translate-y-1/3 right-4 text-gray-500 hover:text-gray-700"
+                  >
+                    {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+                  </button>
+                </div>
                 {touched.password && errors.password && (
-                  <div className="text-red-500 h-2 w-[80%] mobile:text-[12px] mobile:h-6 tablet:text-[14px] tablet:h-8 flex laptop:h-8 justify-start items-center ">{errors.password}</div>
+                  <div className="text-red-500 h-2 w-[80%] mobile:text-[12px] mobile:h-6 tablet:text-[14px] tablet:h-8 flex laptop:h-8 justify-start items-center">{errors.password}</div>
                 )}
 
                 <div className='flex justify-end items-center w-[80%]'>
                   <p onClick={() => navigate("/forget-password")} className="text-[#CC0001] laptop:my-2 font-semibold cursor-pointer tablet:py-2 laptop:text-[0.8rem] mobile:text-[10px] tablet:text-[12px] mobile:py-3 desktop:text-[18px] large-desktop:text-[30px]">Forgot Password?</p>
                 </div>
 
-                {/* Error message */}
                 {errorMessage && (
                   <div className="text-red-500 w-[80%] text-center mt-3">{errorMessage}</div>
                 )}
@@ -130,7 +136,7 @@ const DashboardLoginComp = () => {
         </Form>
       )}
     </Formik>
-  )
-}
+  );
+};
 
-export default DashboardLoginComp
+export default DashboardLoginComp;

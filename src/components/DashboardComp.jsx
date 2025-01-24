@@ -7,7 +7,7 @@ const DashboardComp = () => {
   const navigate = useNavigate()
   useEffect(() => {
     console.log("token",localStorage.getItem("token"))
-  localStorage.getItem("token") == undefined ? navigate("/login") : console.log("token is present")
+  localStorage.getItem("token") == undefined || localStorage.getItem("token") == null ? navigate("/login") : console.log("token is present")
   },[])
   return (
     <>

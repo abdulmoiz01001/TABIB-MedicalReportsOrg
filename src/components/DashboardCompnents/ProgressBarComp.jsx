@@ -37,8 +37,8 @@ const ProgressBarComp = ({ details, title, percentage, min = 0, max = 100 , firs
                       title === 'SpO2' ?<> <div className="flex justify-start text-sm text-gray-600 mt-1">
                         <div className="flex justify-start desktop:text-[0.9rem] large-desktop:text-[1.5rem] w-full">
 
-                            <span className='large-desktop:text-[2rem] laptop:text-[o.5rem] ' >{min}</span>~
-                            <span className='large-desktop:text-[2rem] laptop:text-[o.5rem] ' >{max}</span>
+                            <span className='large-desktop:text-[2rem] laptop:text-[0.5rem] ' >{min}</span>~
+                            <span className='large-desktop:text-[2rem] laptop:text-[0.5rem] ' >{max}</span>
                         </div>
                     </div></> : <>
                     <div className="flex justify-between large-desktop:justify-between  w-full desktop:text-sm text-gray-600 mt-1">
