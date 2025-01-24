@@ -44,7 +44,7 @@ const DashboardStaticsComp = () => {
   },[analyticsData])
 
   return (
-    <div className="w-full flex flex-row justify-start items-start border-4 border-red-900 h-[94%]">
+    <div className="w-full flex flex-row justify-start items-start h-[94%]">
       {loading || !analyticsData.success ? (
         // Skeleton loader
         <div className="w-full flex flex-row justify-start items-start h-full animate-pulse">
