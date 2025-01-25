@@ -76,36 +76,83 @@ const ReportListPaginationComp = ({ reports }) => {
                 </th>
               </tr>
             </thead>
-            {noReportsFound ? <>
+            {noReportsFound ? (
               <tbody className="h-full relative">
                 <tr className="bg-[#FFEFEF] flex flex-col justify-center items-start absolute w-full top-1 large-desktop:h-[100px] cursor-pointer h-[62px]">
                   <td className="desktop:text-[20px] large-desktop:text-[3rem] pl-4">No Reports Found</td>
                 </tr>
               </tbody>
-            </> : <tbody className='h-full' >
-              {data.map((report, index) => (
-                <tr key={index} className='bg-[#FFEFEF] large-desktop:h-[100px] cursor-pointer h-[62px] rounded-[8px] border-b-2 border-white '>
-                  <td className='desktop:text-[20px]  tablet:text-[0.8rem] mobile:text-[0.8rem]  laptop:text-[0.9rem] large-desktop:text-[3rem] pl-4'>{report.Name}</td>
-                  <td className='desktop:text-[20px]  tablet:text-[0.8rem] mobile:text-[0.8rem]  laptop:text-[0.9rem] large-desktop:text-[3rem]' >{report.Member.Age}</td>
-                  <td className='desktop:text-[20px]  tablet:text-[0.8rem] mobile:text-[0.8rem]  laptop:text-[0.9rem] large-desktop:text-[3rem]' >{`${report.Mobile}`}</td>
-                  <td className='desktop:text-[20px]  tablet:text-[0.8rem] mobile:text-[0.8rem]  laptop:text-[0.9rem] large-desktop:text-[3rem]' >{`${report?.IdCode || "-"}`}</td>
-                  <td className='desktop:text-[20px]  tablet:text-[0.8rem] mobile:text-[0.8rem]  laptop:text-[0.9rem] large-desktop:text-[3rem]' >{report.Member?.Nation || "-" }</td>
-                  <td className='desktop:text-[20px]  tablet:text-[0.8rem] mobile:text-[0.8rem]  laptop:text-[0.9rem] large-desktop:text-[3rem]' >{report?.measureDate} - {report?.measureTime}</td>
-                  <td className=' desktop:w-[70px] mobile:mt-4 tablet:mt-4 tablet:w-[30px] tablet:h-[30px] mobile:h-[30px] mobile:w-[30px] laptop:w-[70px] laptop:h-[50px] desktop:h-[55px] large-desktop:h-[100px] flex tablet:gap-4 mobile:gap-4 justify-between items-center ' >
-                    <img src="download.svg" alt='download' className='large-desktop:w-16 large-desktop:h-16' />
-                    {/* <Link className='w-[50%] desktop:mt-2 tablet:mt-0 mobile:mt-0 laptop:mt-3 h-[50%]' to={`/patient-report/${report.sk}`} > */}
-                      {/* <img src='info.png' alt='menu' className='desktop:w-6 large-desktop:w-26 large-desktop:h-16 cursor-pointer desktop:h-4  ' /> */}
-                      <FaEye size={ 20} color={"#CC0001"} />
-                    {/* </Link> */}
-                  </td>
-                </tr>
-              ))}
-            </tbody>}
+            ) : (
+              <tbody className="h-full">
+                {currentRecords.map((report, index) => (
+                  <tr
+                    key={index}
+                    className="bg-[#FFEFEF] large-desktop:h-[100px] cursor-pointer h-[62px] rounded-[8px] border-b-2 border-white"
+                  >
+                    <td className="desktop:text-[20px] tablet:text-[0.8rem] mobile:text-[0.8rem] laptop:text-[0.9rem] large-desktop:text-[3rem] pl-4">
+                      {report.Name}
+                    </td>
+                    <td className="desktop:text-[20px] tablet:text-[0.8rem] mobile:text-[0.8rem] laptop:text-[0.9rem] large-desktop:text-[3rem]">
+                      {report.Member.Age}
+                    </td>
+                    <td className="desktop:text-[20px] tablet:text-[0.8rem] mobile:text-[0.8rem] laptop:text-[0.9rem] large-desktop:text-[3rem]">
+                      ${report.Mobile}
+                    </td>
+                    <td className="desktop:text-[20px] tablet:text-[0.8rem] mobile:text-[0.8rem] laptop:text-[0.9rem] large-desktop:text-[3rem]">
+                      ${report?.IdCode || "-"}
+                    </td>
+                    <td className="desktop:text-[20px] tablet:text-[0.8rem] mobile:text-[0.8rem] laptop:text-[0.9rem] large-desktop:text-[3rem]">
+                      {report.Member?.Nation || "-"}
+                    </td>
+                    <td className="desktop:text-[20px] tablet:text-[0.8rem] mobile:text-[0.8rem] laptop:text-[0.9rem] large-desktop:text-[3rem]">
+                      {report?.measureDate} - {report?.measureTime}
+                    </td>
+                    <td className="desktop:w-[70px] mobile:mt-4 tablet:mt-4 tablet:w-[30px] tablet:h-[30px] mobile:h-[30px] mobile:w-[30px] laptop:w-[70px] laptop:h-[50px] desktop:h-[55px] large-desktop:h-[100px] flex tablet:gap-4 mobile:gap-4 justify-between items-center">
+                      <FaEye size={20} color={"#CC0001"} />
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            )}
           </table>
           {/* Pagination Controls */}
         
         </div>
-
+        <div className="flex desktop:mb-4 justify-center items-center gap-2 mt-4">
+            <button
+              onClick={() => handlePageChange(currentPage - 1)}
+              disabled={currentPage === 1}
+              className={`w-10 h-10 flex justify-center items-center rounded-md border ${
+                currentPage === 1 ? "bg-gray-300" : "bg-white hover:bg-gray-200"
+              }`}
+            >
+              &lt;
+            </button>
+            {[...Array(totalPages)].map((_, index) => (
+              <button
+                key={index}
+                onClick={() => handlePageChange(index + 1)}
+                className={`w-10 h-10 flex justify-center items-center rounded-md border ${
+                  currentPage === index + 1
+                    ? "bg-red-400 text-white"
+                    : "bg-white hover:bg-gray-200"
+                }`}
+              >
+                {index + 1}
+              </button>
+            ))}
+            <button
+              onClick={() => handlePageChange(currentPage + 1)}
+              disabled={currentPage === totalPages}
+              className={`w-10 h-10 flex justify-center items-center rounded-md border ${
+                currentPage === totalPages
+                  ? "bg-gray-300"
+                  : "bg-white hover:bg-gray-200"
+              }`}
+            >
+              &gt;
+            </button>
+          </div>
       </div>
     </>
   );
