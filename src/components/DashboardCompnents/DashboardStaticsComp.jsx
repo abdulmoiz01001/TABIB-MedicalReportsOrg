@@ -98,7 +98,7 @@ const DashboardStaticsComp = () => {
               <ReportBoxComp title={"Test Report "} title2={`Year ${getCurrentYear()}`} data={analyticsData.data.currentYearReportsCount} />
               <ReportBoxComp title={"Test Report "} title2={`Month ${getCurrentMonthName()}`} data={analyticsData.data.currentMonthReportsCount} />
             </div>
-            <div className="desktop:w-[100%] laptop:w-full  border-green-900 tablet:overflow-auto tablet:flex-wrap mobile:flex-wrap tablet:h-full tablet:w-full  laptop:w-[98%] mb-2 large-desktop:w-[99%]  flex flex-row justify-center tablet:items-center items-start gap-2">
+            <div className="desktop:w-[100%] laptop:w-full  border-green-900 tablet:overflow-auto tablet:flex-wrap mobile:flex-wrap tablet:h-full desktop:h-screen tablet:w-full  laptop:w-[98%] mb-2 large-desktop:w-[99%]  flex flex-row justify-center tablet:items-center items-start gap-2">
               <div className="w-[48%] tablet:w-full mobile:w-full  desktop:w-[31%] h-full flex flex-col laptop:gap-3 gap-3">
                 <HypertensionComp data={analyticsData.data.bmiClassification} />
                 <OtherTemperamentIndicesComp data={analyticsData.data.otherTemperamentIndices} />
