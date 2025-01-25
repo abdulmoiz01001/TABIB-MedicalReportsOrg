@@ -54,7 +54,7 @@ const ReportListPaginationComp = ({ reports }) => {
                 <th className='desktop:text-[20px] tablet:text-[0.8rem] mobile:text-[0.8rem] laptop:text-[0.9rem] large-desktop:text-[3rem] font-medium capitalize'>CNIC</th>
                 <th className='desktop:text-[20px] tablet:text-[0.8rem] mobile:text-[0.8rem] laptop:text-[0.9rem] large-desktop:text-[3rem] font-medium capitalize'>Nationality</th>
                 <th className='desktop:text-[20px] tablet:text-[0.8rem] mobile:text-[0.8rem] laptop:text-[0.9rem] large-desktop:text-[3rem] font-medium capitalize'>Created Date</th>
-                <th className='desktop:text-[20px] tablet:text-[0.8rem] mobile:text-[0.8rem] laptop:text-[0.9rem] large-desktop:text-[3rem] font-medium capitalize'>Action</th>
+                <th className='desktop:text-[20px] tablet:text-[0.8rem] mobile:text-[0.8rem] laptop:text-[0.9rem] large-desktop:text-[3rem] font-medium capitalize'>Actions</th>
               </tr>
             </thead>
             { noReportsFound ? <> 
@@ -65,7 +65,7 @@ const ReportListPaginationComp = ({ reports }) => {
               </tbody>
             </> : <tbody className='h-full' >
               {data.map((report, index) => (
-                <tr key={index} className='bg-[#FFEFEF] large-desktop:h-[100px] cursor-pointer h-[62px] rounded-[8px] '>
+                <tr key={index} className='bg-[#FFEFEF] large-desktop:h-[100px] cursor-pointer h-[62px] rounded-[8px] border-b-2 border-white '>
                   <td className='desktop:text-[20px]  tablet:text-[0.8rem] mobile:text-[0.8rem]  laptop:text-[0.9rem] large-desktop:text-[3rem] pl-4'>{report.Name}</td>
                   <td className='desktop:text-[20px]  tablet:text-[0.8rem] mobile:text-[0.8rem]  laptop:text-[0.9rem] large-desktop:text-[3rem]' >{report.Member.Age}</td>
                   <td className='desktop:text-[20px]  tablet:text-[0.8rem] mobile:text-[0.8rem]  laptop:text-[0.9rem] large-desktop:text-[3rem]' >{`${report.Mobile}`}</td>
