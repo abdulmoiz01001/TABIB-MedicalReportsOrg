@@ -5,13 +5,15 @@ import { useMediaQuery } from 'react-responsive';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-const DoughnutChart = ({details}) => {
-  useEffect(() =>{
-  console.log(details)
-  },[details])
+const DoughnutChart = ({ details }) => {
+  useEffect(() => {
+    console.log(details)
+  }, [details])
   const isLargeDesktop = useMediaQuery({ minWidth: 2560 });
   const isDesktop = useMediaQuery({ minWidth: 1480, maxWidth: 2559 });
   const isLaptop = useMediaQuery({ minWidth: 824, maxWidth: 1479 });
+  const isTablet = useMediaQuery({ minWidth: 640, maxWidth: 823 });    // md
+  const isMobile = useMediaQuery({ maxWidth: 639 });
 
   const data = {
     labels: ['Overweight', 'Obese', 'Normal', 'Underweight'],
@@ -56,7 +58,7 @@ const DoughnutChart = ({details}) => {
         ctx.lineWidth = 2;
         ctx.stroke();
 
-        ctx.font = !isLargeDesktop ?'18px Arial' : '40px Arial';
+        ctx.font = !isLargeDesktop ? '18px Arial' : '40px Arial';
         ctx.fillStyle = '#000';
         ctx.textAlign = angle > Math.PI ? 'right' : 'left';
         ctx.fillText(`${data.datasets[0].data[index]}`, endX + (angle > Math.PI ? -5 : 5), endY - 2);
@@ -66,12 +68,12 @@ const DoughnutChart = ({details}) => {
 
   const options = {
     responsive: true,
-    layout:{
-      padding:{
-        right:20,
-        left:10,
-        top:40,
-        bottom:40
+    layout: {
+      padding: {
+        right: 20,
+        left: 10,
+        top: 40,
+        bottom: 40
       }
     },
     maintainAspectRatio: false,
@@ -95,17 +97,17 @@ const DoughnutChart = ({details}) => {
   const chartSize = isLargeDesktop
     ? { width: '60px', height: '60px' }  // Large Desktop
     : isDesktop
-    ? { width: '25px', height: '25px' }  // Desktop
-    : { width: '20px', height: '20px' }; // Laptop/Tablet
+      ? { width: '25px', height: '25px' }  // Desktop
+      : { width: '20px', height: '20px' }; // Laptop/Tablet
 
   return (
-    <div  className='flex flex-col h-[100%] laptop:py-1 py-2 justify-center  items-center'>
-      <h3 className="desktop:text-[1rem] laptop:text-[0.7rem] large-desktop:text-[2rem] font-bold text-[#000000]">
+    <div className='flex flex-col h-[100%] laptop:py-1 py-2 justify-center  items-center'>
+      <h3 className="desktop:text-[1rem] tablet:text-[0.7rem] laptop:text-[0.7rem] large-desktop:text-[2rem] font-bold text-[#000000]">
         Hypertension By BMI Classification
       </h3>
 
       <div
-      className='desktop:w-full desktop:h-full laptop:w-[90%] laptop:h-[90%] large-desktop:w-[80%] large-desktop:h-[80%]'
+        className='desktop:w-full desktop:h-full laptop:w-[90%] laptop:h-[90%] large-desktop:w-[80%] large-desktop:h-[80%]'
         style={{
           // width: "100%",
           // height: "100%",
@@ -139,12 +141,12 @@ const DoughnutChart = ({details}) => {
             <div
               style={{
                 width: chartSize.width,
-                height:chartSize.height,
+                height: chartSize.height,
                 backgroundColor: item.color,
                 borderRadius: '50%',
               }}
             ></div>
-            <span className='large-desktop:text-[2rem] large-desktop:font-bold laptop:text-[12px] desktop:text-[15px]' style={{  color: '#333' }}>{item.label}</span>
+            <span className='large-desktop:text-[2rem] large-desktop:font-bold laptop:text-[12px] tablet:text-[10px] desktop:text-[15px]' style={{ color: '#333' }}>{item.label}</span>
           </div>
         ))}
       </div>

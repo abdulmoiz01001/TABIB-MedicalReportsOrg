@@ -314,7 +314,7 @@ const ReportFiltersBarComp = ({ reports }) => {
         {
             isTablet || isMobile ? 
             <>
-        <div className={`${ isFilterOpen ? "h-[100%]" : "h-[10%]" } transition-all duration-300 flex  flex-col gap-4`} >
+        <div className={`${ isFilterOpen ? "min-h-[40%] max-h-[100%]" : "h-[10%]" } transition-all duration-300 flex  flex-col gap-4`} >
 
          <button onClick={() => toggleFilterBar()} className='w-[150px] ml-4 h-[50px] rounded-[15px] bg-[#CC0001] text-[#FFFFFF] text-[1rem]' >Filters</button>
         {/* { isFilterOpen && */}

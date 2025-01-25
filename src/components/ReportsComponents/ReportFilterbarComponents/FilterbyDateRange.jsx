@@ -12,7 +12,7 @@ const FilterbyDateRange = ({toggleDropdown , formatDateRange , showCalendar ,sel
                             className='w-full border-2 mobile:h-[50px] tablet:h-[50px]  desktop:px-8 large-desktop:px-8 laptop:px-4 rounded-[15px] laptop:h-[50px] desktop:h-[62px] large-desktop:h-full flex justify-around  items-center bg-[#FAFAFA] cursor-pointer'
                             onClick={() => toggleDropdown("calendar")}
                         >
-                            <p className='desktop:text-[15px] desktop:leading-5 laptop:leading-4 laptop:text-[0.7rem] select-none large-desktop:text-[2rem] text-black'>
+                            <p className='desktop:text-[15px] desktop:leading-5 mobile:text-[11px] tablet:text-[12px] laptop:leading-4 laptop:text-[0.7rem] select-none large-desktop:text-[2rem] text-black'>
                                 {selectionRange.token
                                     ? formatDateRange(selectionRange.startDate, selectionRange.endDate)
                                     : <span className="laptop:text-[0.8rem]" >Filter By</span>}
@@ -20,7 +20,7 @@ const FilterbyDateRange = ({toggleDropdown , formatDateRange , showCalendar ,sel
                             <img
                                 src='calendar.svg'
                                 alt='calendarIcon'
-                                className='desktop:w-[20px] laptop:w-[16px] laptop:h-[16px] large-desktop:w-[40px] desktop:h-[20px] large-desktop:h-[40px] pointer-events-none'
+                                className='desktop:w-[20px] laptop:w-[16px] mobile:w-[18px] tablet:w-[20px] laptop:h-[16px] large-desktop:w-[40px] desktop:h-[20px] large-desktop:h-[40px] pointer-events-none'
                             />
                         </div>
     
@@ -34,7 +34,7 @@ const FilterbyDateRange = ({toggleDropdown , formatDateRange , showCalendar ,sel
                                     moveRangeOnFirstSelection={false}
                                     editableDateInputs={true}
                                     rangeColors={["#CC0001"]}
-    
+                                    className='mobile:flex tablet:flex tablet:flex-col mobile:w-[280px] overflow-auto mobile:flex-col'
                                 />
                                 <div className="flex justify-end mt-2">
                                     <button

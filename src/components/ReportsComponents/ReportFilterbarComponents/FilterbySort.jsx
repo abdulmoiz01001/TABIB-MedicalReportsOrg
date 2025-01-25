@@ -12,11 +12,11 @@ const FilterbySort = ({ toggleDropdown , selectedSortOption , sortOption , isSor
         className="w-full rounded-[15px] border-2 mobile:h-[50px] tablet:h-[50px]  laptop:h-[50px] desktop:h-[62px] large-desktop:h-full flex justify-around items-center bg-[#FAFAFA] cursor-pointer px-4"
         onClick={() => toggleDropdown('sort')}
     >
-        <p className="desktop:text-[15px]  laptop:text-[0.7rem] large-desktop:text-[2rem]  text-black">{selectedSortOption ?  capitalize(selectedSortOption)+" "+capitalize(sortOption) : <span className="laptop:text-[0.9rem]" >Sort by</span>}</p>
+        <p className="desktop:text-[15px] mobile:text-[11px] tablet:text-[12px] laptop:text-[0.7rem] large-desktop:text-[2rem]  text-black">{selectedSortOption ?  capitalize(selectedSortOption)+" "+capitalize(sortOption) : <span className="laptop:text-[0.9rem]" >Sort by</span>}</p>
         <img
             src="short.svg"
             alt="Sort Icon"
-            className="desktop:w-[20px] laptop:w-[16px] laptop:h-[16px] large-desktop:w-[40px] desktop:h-[20px] large-desktop:h-[40px] pointer-events-none"
+            className="desktop:w-[20px] laptop:w-[16px] mobile:w-[18px] tablet:w-[20px] laptop:h-[16px] large-desktop:w-[40px] desktop:h-[20px] large-desktop:h-[40px] pointer-events-none"
         />
     </div>
 

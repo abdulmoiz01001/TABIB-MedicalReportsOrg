@@ -11,7 +11,7 @@ const ProgressBarComp = ({ details, title, percentage, min = 0, max = 100 , firs
     return (
         <>
             <div className='flex w-full h-[18%]  my-1 justify-between items-center ' >
-                <div className=' bg-[#F9B9B4] laptop:w-[50px] laptop:h-[50px] desktop:w-[82px] large-desktop:w-[17%]  large-desktop:h-[150px] desktop:h-[80px] flex justify-center items-center rounded-[15px] border border-[#CC0001]' >
+                <div className=' bg-[#F9B9B4] tablet:w-[50px] tablet:h-[50px] laptop:w-[50px] laptop:h-[50px] desktop:w-[82px] large-desktop:w-[17%]  large-desktop:h-[150px] desktop:h-[80px] flex justify-center items-center rounded-[15px] border border-[#CC0001]' >
 
                     <img src={imgSrc} alt="logo" className='desktop:w-[50px] large-desktop:w-[100px]  desktop:h-[50px] large-desktop:h-[100px] ' />
                 </div>

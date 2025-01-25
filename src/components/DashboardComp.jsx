@@ -11,7 +11,7 @@ const DashboardComp = () => {
   },[])
   return (
     <>
-    <div className='w-full min-h-screen large-desktop:min-h-screen flex flex-col justify-start items-center' >
+    <div className='w-full min-h-screen  large-desktop:min-h-screen flex flex-col justify-start items-center' >
       <HeadingComp />
       <DashboardStaticsComp />
 
