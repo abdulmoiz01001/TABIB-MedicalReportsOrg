@@ -201,7 +201,60 @@ const BarComp = ({ details , totalCount }) => {
   };
 
   
+    // Shine animation effect
+    useEffect(() => {
+      const chart = chartRef.current;
+      if (!chart) return;
   
+      const ctx = chart.ctx;
+      let shineY = chart.chartArea.bottom;
+  
+      const animateShine = () => {
+        ctx.save();
+  
+        // Clear previous shine
+        ctx.clearRect(
+          chart.chartArea.left,
+          chart.chartArea.top,
+          chart.chartArea.right - chart.chartArea.left,
+          chart.chartArea.bottom - chart.chartArea.top
+        );
+  
+        // Draw static bars
+        chart.draw();
+  
+        // Create the shine gradient
+        const gradient = ctx.createLinearGradient(0, shineY, 0, shineY + 20);
+        gradient.addColorStop(0, "rgba(255, 255, 255, 0)");
+        gradient.addColorStop(0.5, "rgba(255, 255, 255, 0.4)");
+        gradient.addColorStop(1, "rgba(255, 255, 255, 0)");
+  
+        // Overlay the shine effect
+        ctx.fillStyle = gradient;
+        ctx.fillRect(
+          chart.chartArea.left,
+          shineY,
+          chart.chartArea.right - chart.chartArea.left,
+          20
+        );
+  
+        ctx.restore();
+  
+        // Move the shine effect upward
+        shineY -= 1;
+        if (shineY < chart.chartArea.top) {
+          shineY = chart.chartArea.bottom;
+        }
+  
+        requestAnimationFrame(animateShine);
+      };
+  
+      animateShine();
+    }, []);
+
+    
+
+    
 
   return (
     <div className="flex h-[95%] justify-center px-2 w-full items-center rounded-lg shadow-md">

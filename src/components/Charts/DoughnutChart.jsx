@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect , useRef} from 'react';
 import { Doughnut } from 'react-chartjs-2';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { useMediaQuery } from 'react-responsive';
@@ -6,6 +6,7 @@ import { useMediaQuery } from 'react-responsive';
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 const DoughnutChart = ({ details }) => {
+  const chartRef = useRef()
   useEffect(() => {
     console.log(details)
   }, [details])
@@ -93,6 +94,56 @@ const DoughnutChart = ({ details }) => {
     },
   };
 
+   useEffect(() => {
+        const chart = chartRef.current;
+        if (!chart) return;
+    
+        const ctx = chart.ctx;
+        let shineY = chart.chartArea.bottom;
+    
+        const animateShine = () => {
+          ctx.save();
+    
+          // Clear previous shine
+          ctx.clearRect(
+            chart.chartArea.left,
+            chart.chartArea.top,
+            chart.chartArea.right - chart.chartArea.left,
+            chart.chartArea.bottom - chart.chartArea.top
+          );
+    
+          // Draw static bars
+          chart.draw();
+    
+          // Create the shine gradient
+          const gradient = ctx.createLinearGradient(0, shineY, 0, shineY + 20);
+          gradient.addColorStop(0, "rgba(255, 255, 255, 0)");
+          gradient.addColorStop(0.5, "rgba(255, 255, 255, 0.4)");
+          gradient.addColorStop(1, "rgba(255, 255, 255, 0)");
+    
+          // Overlay the shine effect
+          ctx.fillStyle = gradient;
+          ctx.fillRect(
+            chart.chartArea.left,
+            shineY,
+            chart.chartArea.right - chart.chartArea.left,
+            20
+          );
+    
+          ctx.restore();
+    
+          // Move the shine effect upward
+          shineY -= 1;
+          if (shineY < chart.chartArea.top) {
+            shineY = chart.chartArea.bottom;
+          }
+    
+          requestAnimationFrame(animateShine);
+        };
+    
+        animateShine();
+      }, []);
+
   // Dynamic size based on screen size
   const chartSize = isLargeDesktop
     ? { width: '60px', height: '60px' }  // Large Desktop
@@ -116,7 +167,7 @@ const DoughnutChart = ({ details }) => {
           alignItems: 'center',
         }}
       >
-        <Doughnut data={data} options={options} plugins={[zigzagLinePlugin]} />
+        <Doughnut ref={chartRef} data={data} options={options} plugins={[zigzagLinePlugin]} />
       </div>
 
       {/* Custom Legend */}

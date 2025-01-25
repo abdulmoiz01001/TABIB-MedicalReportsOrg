@@ -101,7 +101,7 @@ const DashboardStaticsComp = () => {
             <div className="desktop:w-[100%] laptop:w-full  border-green-900 tablet:overflow-auto tablet:flex-wrap mobile:flex-wrap tablet:h-full tablet:w-full  laptop:w-[98%] mb-2 large-desktop:w-[99%] h-screen flex flex-row justify-center tablet:items-center items-start gap-2">
               <div className="w-[48%] tablet:w-full mobile:w-full  desktop:w-[31%] h-full flex flex-col laptop:gap-3 gap-3">
                 <HypertensionComp data={analyticsData.data.bmiClassification} />
-                <OtherTemperamentIndicesComp data={analyticsData.data.otherTemperamentIndices} />
+                <OtherTemperamentIndicesComp reportsCounts={analyticsData.data.totalReportsCount} data={analyticsData.data.otherTemperamentIndices} />
               </div>
               <div className="w-[48%] tablet:w-full mobile:w-full   border-red-900 h-full px-1 flex laptop:gap-3 gap-3 flex-col justify-start items-start">
                 <NoOfPatientsVsAgeComp totalCount={analyticsData.data.totalReportsCount} data={analyticsData.data.ageWiseDistributionOfHypertensiveAndNormotensivePatients} />
