@@ -7,6 +7,7 @@ import useStore from '../../zustandStore/useStore'
 
 const ReportListPaginationComp = ({ reports }) => {
   let data = reports
+  console.log(data)
   let lengthReports = reports.length
   useEffect(() => {
     console.log(reports)
@@ -46,15 +47,15 @@ const ReportListPaginationComp = ({ reports }) => {
         </div>
         <div className='desktop:w-[98%] flex flex-col justify-between items-center min-w-[800px] overflow-auto w-[98%] laptop:w-[98%] large-desktop:w-[98%] mx-auto  border-green-900 h-[90%] flex justify-center items-start'>
           <table className='w-full  p-3  text-left'>
-            <thead className='w-full min-w-full bg-[#F9B9B4] h-[72px] rounded-[8px]'>
-              <tr className='large-desktop:h-[120px]' >
+            <thead className='w-full min-w-full bg-[#F9B9B4] h-[72px] rounded-[8px]  sticky top-0'>
+              <tr className='large-desktop:h-[120px] ' >
                 <th className='desktop:text-[20px] tablet:text-[0.8rem] mobile:text-[0.8rem] laptop:text-[0.9rem] large-desktop:text-[3rem] font-medium capitalize pl-4'>Patient Names</th>
                 <th className='desktop:text-[20px] tablet:text-[0.8rem] mobile:text-[0.8rem] laptop:text-[0.9rem] large-desktop:text-[3rem] font-medium capitalize'>Age</th>
                 <th className='desktop:text-[20px] tablet:text-[0.8rem] mobile:text-[0.8rem] laptop:text-[0.9rem] large-desktop:text-[3rem] font-medium capitalize'>Phone</th>
                 <th className='desktop:text-[20px] tablet:text-[0.8rem] mobile:text-[0.8rem] laptop:text-[0.9rem] large-desktop:text-[3rem] font-medium capitalize'>CNIC</th>
                 <th className='desktop:text-[20px] tablet:text-[0.8rem] mobile:text-[0.8rem] laptop:text-[0.9rem] large-desktop:text-[3rem] font-medium capitalize'>Nationality</th>
                 <th className='desktop:text-[20px] tablet:text-[0.8rem] mobile:text-[0.8rem] laptop:text-[0.9rem] large-desktop:text-[3rem] font-medium capitalize'>Created Date</th>
-                <th className='desktop:text-[20px] tablet:text-[0.8rem] mobile:text-[0.8rem] laptop:text-[0.9rem] large-desktop:text-[3rem] font-medium capitalize'>Action</th>
+                <th className='desktop:text-[20px] tablet:text-[0.8rem] mobile:text-[0.8rem] laptop:text-[0.9rem] large-desktop:text-[3rem] font-medium capitalize'>Actions</th>
               </tr>
             </thead>
             { noReportsFound ? <> 
@@ -65,12 +66,12 @@ const ReportListPaginationComp = ({ reports }) => {
               </tbody>
             </> : <tbody className='h-full' >
               {data.map((report, index) => (
-                <tr key={index} className='bg-[#FFEFEF] large-desktop:h-[100px] cursor-pointer h-[62px] rounded-[8px] '>
+                <tr key={index} className='bg-[#FFEFEF] large-desktop:h-[100px] cursor-pointer h-[62px] rounded-[8px] border-b-2 border-white '>
                   <td className='desktop:text-[20px]  tablet:text-[0.8rem] mobile:text-[0.8rem]  laptop:text-[0.9rem] large-desktop:text-[3rem] pl-4'>{report.Name}</td>
                   <td className='desktop:text-[20px]  tablet:text-[0.8rem] mobile:text-[0.8rem]  laptop:text-[0.9rem] large-desktop:text-[3rem]' >{report.Member.Age}</td>
                   <td className='desktop:text-[20px]  tablet:text-[0.8rem] mobile:text-[0.8rem]  laptop:text-[0.9rem] large-desktop:text-[3rem]' >{`${report.Mobile}`}</td>
-                  <td className='desktop:text-[20px]  tablet:text-[0.8rem] mobile:text-[0.8rem]  laptop:text-[0.9rem] large-desktop:text-[3rem]' >{`${report?.cnic || "-"}`}</td>
-                  <td className='desktop:text-[20px]  tablet:text-[0.8rem] mobile:text-[0.8rem]  laptop:text-[0.9rem] large-desktop:text-[3rem]' >{report?.Nation || "-" }</td>
+                  <td className='desktop:text-[20px]  tablet:text-[0.8rem] mobile:text-[0.8rem]  laptop:text-[0.9rem] large-desktop:text-[3rem]' >{`${report?.IdCode || "-"}`}</td>
+                  <td className='desktop:text-[20px]  tablet:text-[0.8rem] mobile:text-[0.8rem]  laptop:text-[0.9rem] large-desktop:text-[3rem]' >{report.Member?.Nation || "-" }</td>
                   <td className='desktop:text-[20px]  tablet:text-[0.8rem] mobile:text-[0.8rem]  laptop:text-[0.9rem] large-desktop:text-[3rem]' >{report?.measureDate} - {report?.measureTime}</td>
                   <td className=' desktop:w-[70px] mobile:mt-4 tablet:mt-4 tablet:w-[30px] tablet:h-[30px] mobile:h-[30px] mobile:w-[30px] laptop:w-[70px] laptop:h-[50px] desktop:h-[55px] large-desktop:h-[100px] flex tablet:gap-4 mobile:gap-4 justify-between items-center ' >
                     <img src="download.svg" alt='download' className='large-desktop:w-16 large-desktop:h-16' />
