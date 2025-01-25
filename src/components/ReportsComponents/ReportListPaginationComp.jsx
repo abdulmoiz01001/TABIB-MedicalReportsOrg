@@ -84,7 +84,7 @@ const ReportListPaginationComp = ({ reports }) => {
               ))}
             </tbody>}
           </table>
-          {/* <div className='w-[30%] flex justify-evenly items-center border-2 border-blue-900 h-[50px]' >
+           <div className='w-[30%] flex justify-evenly items-center border-2 border-blue-900 h-[50px]' >
               <div className='w-[50px] flex justify-center items-center h-[50px] border bg-[#CC0001] rounded-[5px] ' >
           
               </div>
@@ -100,7 +100,7 @@ const ReportListPaginationComp = ({ reports }) => {
               <div className='w-[50px] flex justify-center items-center h-[50px] border bg-[#CC0001] rounded-[5px] ' >
            
               </div>
-          </div> */}
+          </div> 
         </div>
 
       </div>
