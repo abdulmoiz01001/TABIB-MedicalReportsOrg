@@ -96,10 +96,10 @@ const ReportListPaginationComp = ({ reports }) => {
                       {report.Member.Age}
                     </td>
                     <td className="desktop:text-[20px] tablet:text-[0.8rem] mobile:text-[0.8rem] laptop:text-[0.9rem] large-desktop:text-[3rem]">
-                      {${report.Mobile}}
+                      ${report.Mobile}
                     </td>
                     <td className="desktop:text-[20px] tablet:text-[0.8rem] mobile:text-[0.8rem] laptop:text-[0.9rem] large-desktop:text-[3rem]">
-                      {${report?.IdCode || "-"}}
+                      ${report?.IdCode || "-"}
                     </td>
                     <td className="desktop:text-[20px] tablet:text-[0.8rem] mobile:text-[0.8rem] laptop:text-[0.9rem] large-desktop:text-[3rem]">
                       {report.Member?.Nation || "-"}
@@ -134,7 +134,7 @@ const ReportListPaginationComp = ({ reports }) => {
                 onClick={() => handlePageChange(index + 1)}
                 className={`w-10 h-10 flex justify-center items-center rounded-md border ${
                   currentPage === index + 1
-                    ? "bg-red-500 text-white"
+                    ? "bg-red-400 text-white"
                     : "bg-white hover:bg-gray-200"
                 }`}
               >
