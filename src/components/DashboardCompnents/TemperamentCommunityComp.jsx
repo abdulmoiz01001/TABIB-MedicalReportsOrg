@@ -3,7 +3,7 @@ import RadarChart from '../Charts/RadarChart'
 
 const TemperamentCommunityComp = ({data}) => {
   useEffect(() => {
-  console.log(data)
+  console.log("temperament",data)
   },[data])
   return (
     <>

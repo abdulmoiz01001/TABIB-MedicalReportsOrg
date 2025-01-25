@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import LineChartComp from '../Charts/LineChartComp';
 
-const AgeWiseDistributionHeartRateComp = ({ data }) => {
+const AgeWiseDistributionHeartRateComp = ({ data  }) => {
     const [ageData, setAgeData] = useState([]);
     const [heartRateData, setHeartRateData] = useState([]);
 

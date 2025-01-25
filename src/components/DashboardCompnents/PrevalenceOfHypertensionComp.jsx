@@ -9,7 +9,7 @@ const PrevalenceOfHypertensionComp = ({data}) => {
         <>
             <div className='w-full h-[32.5%]  bg-[#FAFAFA] flex tablet:flex tablet:flex-row tablet:justify-center tablet:items-center  border border-[#CC0001] rounded-[15px] ' >
                 <div className='w-[55%] flex-col flex  justify-center  items-center h-full ' >
-                    <h1 className='desktop:text-[1rem] tablet:text-[0.7rem] mobile:text-[0.7rem] laptop:text-[0.7rem] large-desktop:text-[2.5rem] font-bold' >Prevalence of Hypertension</h1>
+                    <h1 className='desktop:text-[1rem] tablet:text-[0.7rem] mobile:text-[0.7rem] text-center desktop:mt-2 desktop:leading-4 laptop:text-[0.7rem] large-desktop:text-[2.5rem] font-bold' >Prevalence of Hypertension</h1>
                     <div className='w-full flex justify-center items-center h-[85%]' >
 
 
@@ -20,8 +20,8 @@ const PrevalenceOfHypertensionComp = ({data}) => {
                         lay={{
                             top: 30,
                             bottom: 30,
-                            left: isLargeDesktop ? 70 : 40 ,
-                            right: isLargeDesktop ? 70 : 40,
+                            left: isLargeDesktop ? 70 : 30 ,
+                            right: isLargeDesktop ? 70 : 30,
                         }}
                         
                         />
