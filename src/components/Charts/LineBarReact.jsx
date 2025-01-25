@@ -98,9 +98,9 @@ const LineBarReact = ({details}) => {
                 },
                 beginAtZero: false,
                 min: 0,
-                max: 100,
+                max: 10,
                 ticks: {
-                    stepSize: 10,
+                    stepSize: 1,
                     color: 'black',
                     font: {
                         size: titleFontSize,  // Dynamic Font Size for Y-axis ticks
