@@ -38,14 +38,14 @@ const BarComp = ({ details }) => {
       {
         label: "Hypertension",
         // data: [100,80],  // Data for hypertensive
-        data: [hypertensiveData],
+        data: hypertensiveData,
         backgroundColor: "rgba(255, 0, 0, 0.8)",  // Red color for hypertensive
         barThickness: isLargeDesktop ? 45 : 25,  // Controlled bar width based on screen size
       },
       {
         label: "Normotensive",
         // data: [20,10],  // Data for normotensive
-        data: [normotensiveData],
+        data: normotensiveData,
         backgroundColor: "rgba(255, 182, 193, 0.8)",  // Light pink color for normotensive
         barThickness: isLargeDesktop ? 45 : 25,  // Controlled bar width based on screen size
       },
