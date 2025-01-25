@@ -25,6 +25,7 @@ const TemperamentChart = ({ details }) => {
   useEffect(() => {
   console.log("temperatent patakha",details)
   },[details])
+  const {both,male,female}=details;
   // 📱 Tailwind Custom Breakpoints
   const isLargeDesktop = useMediaQuery({ minWidth: 2560 });      // 2xl
   const isDesktop = useMediaQuery({ minWidth: 1480, maxWidth: 2559 }); // xl
@@ -78,19 +79,19 @@ const TemperamentChart = ({ details }) => {
     datasets: [
       {
         label: "1",
-        data: [details.sanguine.one,details.choleric.two,details.melanCholic.three,details.phlegmatic.four],
+        data: [both.sanguine.one,both.choleric.two,both.melanCholic.three,both.phlegmatic.four],
         backgroundColor: "#CC0001",
         barThickness: isLargeDesktop ? 45 : isLaptop ? 20 : isTablet ? 20 : 25,
       },
       {
         label: "2",
-        data: [details.sanguine.h, details.choleric.h, details.melanCholic.c, details.phlegmatic.c],
+        data: [both.sanguine.h, both.choleric.h, both.melanCholic.c, both.phlegmatic.c],
         backgroundColor: "#FF6464",
         barThickness: isLargeDesktop ? 45 : isLaptop ? 20 : isTablet ? 20 : 25,
       },
       {
         label: "3",
-        data: [details.sanguine.m, details.choleric.d, details.melanCholic.d, details.phlegmatic.m],
+        data: [both.sanguine.m, both.choleric.d, both.melanCholic.d, both.phlegmatic.m],
         backgroundColor: "#F9B9B4",
         barThickness: isLargeDesktop ? 45 : isLaptop ? 20 : isTablet ? 20 : 25,
       },
