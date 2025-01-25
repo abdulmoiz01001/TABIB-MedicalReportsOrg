@@ -26,6 +26,8 @@ const BarComp = ({ details }) => {
   const isLargeDesktop = useMediaQuery({ minWidth: 2560 });
   const isDesktop = useMediaQuery({ minWidth: 1480, maxWidth: 2559 });
   const isLaptop = useMediaQuery({ minWidth: 824, maxWidth: 1479 });
+  const isTablet = useMediaQuery({ minWidth: 640, maxWidth: 823 });    // md
+  const isMobile = useMediaQuery({ maxWidth: 639 });             // sm and below
 
   const chartRef = useRef(null);
 
@@ -36,14 +38,14 @@ const BarComp = ({ details }) => {
       {
         label: "Hypertension",
         // data: [100,80],  // Data for hypertensive
-        data:[hypertensiveData],
+        data: [hypertensiveData],
         backgroundColor: "rgba(255, 0, 0, 0.8)",  // Red color for hypertensive
         barThickness: isLargeDesktop ? 45 : 25,  // Controlled bar width based on screen size
       },
       {
         label: "Normotensive",
         // data: [20,10],  // Data for normotensive
-        data:[normotensiveData],
+        data: [normotensiveData],
         backgroundColor: "rgba(255, 182, 193, 0.8)",  // Light pink color for normotensive
         barThickness: isLargeDesktop ? 45 : 25,  // Controlled bar width based on screen size
       },
@@ -54,10 +56,10 @@ const BarComp = ({ details }) => {
   const titleFontSize = isLargeDesktop
     ? 30
     : isDesktop
-    ? 16
-    : isLaptop
-    ? 11
-    : 14;
+      ? 16
+      : isLaptop
+        ? 11 :isTablet ? 10
+        : 14;
 
   // Chart options with customized scales and labels
   const options = {

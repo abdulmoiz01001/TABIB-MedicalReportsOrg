@@ -198,7 +198,7 @@ const AverageTABIATScoreMalesvsFemalesComp = ({ data }) => {
 
   return (
     <div className=" w-full h-[35%] flex-col justify-between items-center laptop:p-2 p-4 bg-[#FAFAFA] flex border border-[#CC0001] rounded-[15px]">
-      <h1 className="desktop:text-[1rem] laptop:text-[0.7rem] large-desktop:text-[2.2rem] font-bold text-black">
+      <h1 className="desktop:text-[1rem] tablet:text-[0.7rem] mobile:text-[0.7rem] laptop:text-[0.7rem] large-desktop:text-[2.2rem] font-bold text-black">
         Average TABIAT Score of Males vs Females
       </h1>
       <div className="flex  h-[70%] w-[90%]  grid-background justify-between items-center">
@@ -223,7 +223,7 @@ const AverageTABIATScoreMalesvsFemalesComp = ({ data }) => {
           <img
             src={maleImage}
             alt="Male Score"
-            className="large-desktop:w-[200px] laptop:w-[60px] desktop:h-[205px] desktop:w-[100px]"
+            className="large-desktop:w-[200px] tablet:w-[40px] laptop:w-[60px] desktop:h-[205px] desktop:w-[100px]"
           />
       
         </div>

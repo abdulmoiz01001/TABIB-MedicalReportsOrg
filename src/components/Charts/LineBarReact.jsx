@@ -31,8 +31,8 @@ const LineBarReact = ({details}) => {
     const isLargeDesktop = useMediaQuery({ minWidth: 2560 });      // 2xl
     const isDesktop = useMediaQuery({ minWidth: 1480, maxWidth: 2559 }); // xl
     const isLaptop = useMediaQuery({ minWidth: 824, maxWidth: 1479 });   // lg
-    // const isTablet = useMediaQuery({ minWidth: 640, maxWidth: 823 });    // md
-    // const isMobile = useMediaQuery({ maxWidth: 639 });             // sm and below
+    const isTablet = useMediaQuery({ minWidth: 640, maxWidth: 823 });    // md
+    const isMobile = useMediaQuery({ maxWidth: 639 });             // sm and below
 
     // 🎨 Dynamic Styles Based on Screen Size
     const titleFontSize = isLargeDesktop
@@ -40,7 +40,7 @@ const LineBarReact = ({details}) => {
     : isDesktop
     ? 20
     : isLaptop
-    ? 11
+    ? 11 : isTablet ? 10 : isMobile ? 9
     : 14;
 
     const data = {

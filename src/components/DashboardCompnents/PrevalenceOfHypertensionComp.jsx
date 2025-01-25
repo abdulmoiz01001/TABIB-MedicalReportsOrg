@@ -7,9 +7,9 @@ const PrevalenceOfHypertensionComp = ({data}) => {
     const isLargeDesktop = useMediaQuery({ minWidth: 2560 });      // 2xl
     return (
         <>
-            <div className='w-full h-[32.5%]  bg-[#FAFAFA] flex  border border-[#CC0001] rounded-[15px] ' >
-                <div className='w-[55%] flex-col flex justify-center  items-center h-full ' >
-                    <h1 className='desktop:text-[1rem] laptop:text-[0.7rem] large-desktop:text-[2.5rem] font-bold' >Prevalence of Hypertension</h1>
+            <div className='w-full h-[32.5%]  bg-[#FAFAFA] flex tablet:flex tablet:flex-row tablet:justify-center tablet:items-center  border border-[#CC0001] rounded-[15px] ' >
+                <div className='w-[55%] flex-col flex  justify-center  items-center h-full ' >
+                    <h1 className='desktop:text-[1rem] tablet:text-[0.7rem] mobile:text-[0.7rem] laptop:text-[0.7rem] large-desktop:text-[2.5rem] font-bold' >Prevalence of Hypertension</h1>
                     <div className='w-full flex justify-center items-center h-[85%]' >
 
 
@@ -27,7 +27,7 @@ const PrevalenceOfHypertensionComp = ({data}) => {
                         />
                         </div>
                 </div>
-                <div className='w-[45%] flex flex-col  justify-center laptop:justify-around items-center h-full laptop:gap-0 gap-2' >
+                <div className='w-[45%] flex flex-col justify-center laptop:justify-around items-center h-full laptop:gap-0 gap-2' >
                    
                     <PieCharts firstValue={data.male} firstColor="#CC0001" secondColor="#FFB1B1" title="In Males" />
 

@@ -39,7 +39,7 @@ const LineChartComp = ({ ageData, heartRateData }) => {
     : isLaptop
     ? 20
     : isTablet
-    ? 11
+    ? 10
     : 16;
 
   const axisTitleSize = isLargeDesktop
@@ -49,7 +49,7 @@ const LineChartComp = ({ ageData, heartRateData }) => {
     : isLaptop
     ? 11
     : isTablet
-    ? 16
+    ? 10
     : 14;
 
   const dataLabelFontSize = isLargeDesktop
