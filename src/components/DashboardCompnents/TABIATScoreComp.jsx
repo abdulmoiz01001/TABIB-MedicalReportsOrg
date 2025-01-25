@@ -8,9 +8,9 @@ console.log("data of TABIYAT",data)
     return (
         <>
             <div className='w-full flex justify-between  items-center h-[20%]  bg-[#FAFAFA] border border-[#CC0001] rounded-[15px] ' >
-                <div className='w-[50%]  h-full flex-col flex  justify-center gap-4  desktop:items-end large-desktop:items-start border-blue-900' >
+                <div className='w-[50%]  h-full flex-col flex  justify-center  desktop:gap-4  desktop:items-end large-desktop:items-start border-blue-900' >
                     <h1 className='desktop:text-[1rem] laptop:text-[0.7rem] large-desktop:text-[2.2rem] large-desktop:pl-6 text-center font-bold text-black'>Avg. TABIAT Score </h1>
-                    <div className='desktop:w-[80%] large-desktop:w-[90%] border-green-900 flex  justify-end laptop:gap-4 gap-5 items-center' >
+                    <div className='desktop:w-[80%] large-desktop:w-[90%] border-green-900 flex  justify-end laptop:gap-4 desktop:gap-5 items-center' >
                         <img src="jamiya.svg" alt="logo" className='desktop:w-[40px] laptop:w-[30px] latop:h-[30px] large-desktop:w-[120px]  desktop:h-[40px] large-desktop:h-[120px]  ' />
                         {/* <div className='desktop:w-4 large-desktop:w-8 desktop:h-4 large-desktop:h-8 rounded-full bg-[#CC0001]'  >
                          
