@@ -47,7 +47,7 @@ const DashboardStaticsComp = () => {
   }, [dispatch]);
 
   return (
-    <div className="desktop:w-[98%] large-desktop:w-[98%] mx-auto  border-red-900 laptop:w-[98%] tablet:w-[100vw] flex flex-row laptop:gap-3 tablet:flex-col mobile:flex-col tablet:justify-center tablet:items-center laptop:justify-between justify-start items-start h-[94%]">
+    <div className="mobile:w-[95%] desktop:w-[98%] large-desktop:w-[98%] mx-auto  border-red-900 laptop:w-[98%] tablet:w-[100vw] flex flex-row laptop:gap-3 tablet:flex-col mobile:flex-col tablet:justify-center tablet:items-center laptop:justify-between justify-start items-start h-[94%]">
       {loading || !analyticsData?.success ? (
         <>
           <div className="w-[77%] flex flex-col h-full gap-3 laptop:pr-3 desktop:pr-3 justify-start items-end large-desktop:pr-4">
@@ -98,7 +98,7 @@ const DashboardStaticsComp = () => {
               <ReportBoxComp title={"Test Report "} title2={`Year ${getCurrentYear()}`} data={analyticsData.data.currentYearReportsCount} />
               <ReportBoxComp title={"Test Report "} title2={`Month ${getCurrentMonthName()}`} data={analyticsData.data.currentMonthReportsCount} />
             </div>
-            <div className="desktop:w-[100%] laptop:w-full  border-green-900 tablet:overflow-auto tablet:flex-wrap mobile:flex-wrap tablet:h-full tablet:w-full  laptop:w-[98%] mb-2 large-desktop:w-[99%] h-screen flex flex-row justify-center tablet:items-center items-start gap-2">
+            <div className="desktop:w-[100%] laptop:w-full  border-green-900 tablet:overflow-auto tablet:flex-wrap mobile:flex-wrap tablet:h-full tablet:w-full  laptop:w-[98%] mb-2 large-desktop:w-[99%]  flex flex-row justify-center tablet:items-center items-start gap-2">
               <div className="w-[48%] tablet:w-full mobile:w-full  desktop:w-[31%] h-full flex flex-col laptop:gap-3 gap-3">
                 <HypertensionComp data={analyticsData.data.bmiClassification} />
                 <OtherTemperamentIndicesComp data={analyticsData.data.otherTemperamentIndices} />
@@ -115,7 +115,7 @@ const DashboardStaticsComp = () => {
               </div>
             </div>
           </div>
-          <div className="w-[22%] desktop:w-[21%]  border-red-900 tablet:w-full h-[96vh] sticky laptop:top-1 desktop:top-2 laptop:gap-2 large-desktop:top-2  flex flex-col justify-start items-center gap-3">
+          <div className="mobile-w[100%] desktop:w-[23%]   border-red-900 tablet:w-full h-[96vh] sticky laptop:top-1 desktop:top-2 laptop:gap-2 large-desktop:top-2  flex flex-col justify-start items-center gap-3">
             <TemperamentCommunityComp data={analyticsData.data.temperamentOfTheCommunity} />
             <DominantBodyCommunityComp data={analyticsData.data.dominantBodyCompositionInCommunity} />
             <TABIATScoreComp data={analyticsData?.data?.totalAverageTabiatScore} />
