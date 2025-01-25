@@ -20,14 +20,14 @@ const FilterbyTimeRange = ({ selectionRange, formatTime, setStartTime, setEndTim
             {/* Time Picker Modal */}
             {isTimePickerVisible && (
                 <div className="absolute top-28 mobile:top-10 mobile:right-4 mobile:w-[178%] shadow-[0_4px_4px_3px_#0000000a] tablet:top-10 z-50 bg-white p-4 mobile:p-2 shadow-lg rounded-lg mobile:mt-3 mt-4">
-                    <div className="flex flex-row justify-center mobile:w-[99%] gap-4 items-center">
+                    <div className="flex flex-row justify-center  gap-4 items-center">
                         <div className="flex flex-col relative justify-center  items-start">
                             <label className="mr-2 mobile:text-[13px] text-[#313131] text-[15px] font-normal">Start Time:</label>
                             <input
                                 type="time"
                                 value={startTime}
                                 onChange={(e) => handleTimeChange(e, setStartTime, "start")}
-                                className="text-center mobile:w-[90px] text-[#FFFFFF] text-[15px] appearance-none custom-time-input font-normal bg-[#CC0001] rounded-md p-2 [&::-webkit-calendar-picker-indicator]:opacity-0 [&::-webkit-calendar-picker-indicator]:cursor-default"
+                                className="text-center mobile:w-[110px] text-[#FFFFFF] text-[15px] appearance-none custom-time-input font-normal bg-[#CC0001] rounded-md p-2 [&::-webkit-calendar-picker-indicator]:opacity-0 [&::-webkit-calendar-picker-indicator]:cursor-default"
                             />
                             <img
                                 src="white-clock.svg"
@@ -41,7 +41,7 @@ const FilterbyTimeRange = ({ selectionRange, formatTime, setStartTime, setEndTim
                                 type="time"
                                 value={endTime}
                                 onChange={(e) => handleTimeChange(e, setEndTime, "end")}
-                                className="text-center mobile:w-[90px] text-[#FFFFFF] text-[15px] appearance-none custom-time-input font-normal bg-[#CC0001] rounded-md p-2 [&::-webkit-calendar-picker-indicator]:opacity-0 [&::-webkit-calendar-picker-indicator]:cursor-default "
+                                className="text-center mobile:w-[110px] text-[#FFFFFF] text-[15px] appearance-none custom-time-input font-normal bg-[#CC0001] rounded-md p-2 [&::-webkit-calendar-picker-indicator]:opacity-0 [&::-webkit-calendar-picker-indicator]:cursor-default "
                             />
                             <img
                                 src="white-clock.svg"
