@@ -83,7 +83,7 @@ const DashboardStaticsComp = () => {
         </>
       ) : (
         <>
-          <div className="desktop:w-[78%] large-desktop:w-[77%] border-2 border-red-900 tablet:w-full mobile:w-full  flex flex-col   h-full gap-3 laptop:pr-0 desktop:pr-3 tablet:justify-center justify-start laptop:justify-between  large-desktop:pr-4">
+          <div className="desktop:w-[78%] large-desktop:w-[77%] border-red-900 tablet:w-full mobile:w-full  flex flex-col   h-full gap-3 laptop:pr-0 desktop:pr-3 tablet:justify-center justify-start laptop:justify-between  large-desktop:pr-4">
             {/* <div className="desktop:w-[98%] tablet:w-[98%] tablet:flex-wrap tablet:h-full laptop:w-[98%] large-desktop:w-[99%] flex justify-between items-center laptop:h-[15%] h-[20%]">
               <ReportBoxComp data={analyticsData.data.hypertensive} title={"Hypertensive"} count={"2091"} female={"1123"} male={"800"} />
               <ReportBoxComp title={"Total Test"} title2={"Reports"} data={analyticsData.data.totalReportsCount} />
@@ -115,7 +115,7 @@ const DashboardStaticsComp = () => {
               </div>
             </div>
           </div>
-          <div className="mobile-w[100%] desktop:w-[23%] border-2  border-red-900 tablet:w-full h-[96vh] sticky laptop:top-1 desktop:top-2 laptop:gap-2 large-desktop:top-2  flex flex-col justify-start items-center gap-3">
+          <div className="mobile-w[100%] desktop:w-[23%]   border-red-900 tablet:w-full h-[96vh] sticky laptop:top-1 desktop:top-2 laptop:gap-2 large-desktop:top-2  flex flex-col justify-start items-center gap-3">
             <TemperamentCommunityComp data={analyticsData.data.temperamentOfTheCommunity} />
             <DominantBodyCommunityComp data={analyticsData.data.dominantBodyCompositionInCommunity} />
             <TABIATScoreComp data={analyticsData?.data?.totalAverageTabiatScore} />
