@@ -74,8 +74,8 @@ const SpeedoMeter = ({
       />
 
       <div className='w-full flex flex-col  justify-center items-center'>
-        <p className='desktop:text-[1rem] tablet:text-[0.6rem] laptop:text-[0.8rem] large-desktop:text-[2.5rem] text-center large-desktop: font-medium text-[#CC0001]'>{parseInt(value)} {unit}</p>
-        <p className='desktop:text-[1.2rem] laptop:text-[0.8rem] tablet:text-[0.7rem] large-desktop:text-[3rem] text-center font-semibold text-[#000000]'>{label}</p>
+        <p className='desktop:text-[0.9rem] tablet:text-[0.6rem] laptop:text-[0.8rem] large-desktop:text-[2.5rem] text-center large-desktop: font-medium text-[#CC0001]'>{parseInt(value)} {unit}</p>
+        <p className='desktop:text-[0.9rem] laptop:text-[0.8rem] tablet:text-[0.7rem] large-desktop:text-[3rem] text-center font-semibold text-[#000000]'>{label}</p>
       </div>
      </div>
         </>

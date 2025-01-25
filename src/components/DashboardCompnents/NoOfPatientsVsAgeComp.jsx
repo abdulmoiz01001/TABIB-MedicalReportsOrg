@@ -1,7 +1,7 @@
 import React from 'react'
 import BarChart from '../Charts/BarChart'
 
-const NoOfPatientsVsAgeComp = ({data}) => {
+const NoOfPatientsVsAgeComp = ({data , totalCount}) => {
   return (
     <div className='w-full h-[32.5%]   flex flex-col justify-end items-center bg-[#FAFAFA] border border-[#CC0001] rounded-[15px] ' >
       <div className='w-[95%] h-[15%] px-2 flex justify-center items-center' >
@@ -20,7 +20,7 @@ const NoOfPatientsVsAgeComp = ({data}) => {
           <p className='desktop:text-[1rem] large-desktop:text-[2rem] font-bold text-black' >Normotensive</p>
         </div> */}
       </div>
-      <BarChart details={data} />
+      <BarChart totalCount={totalCount} details={data} />
     </div>
   )
 }

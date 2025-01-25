@@ -12,11 +12,14 @@ import { useMediaQuery } from "react-responsive";
 
 ChartJS.register(BarElement, CategoryScale, LinearScale, Legend, Tooltip);
 
-const BarComp = ({ details }) => {
+const BarComp = ({ details , totalCount }) => {
   // Extract labels (age) and data for hypertensive and normotensive from the 'details' prop
   const labels = Object.keys(details);  // Get the age groups (30, 40, 50, ...)
   const hypertensiveData = labels.map((label) => details[label].hypertensive);  // Data for hypertensive
   const normotensiveData = labels.map((label) => details[label].normotensive);  // Data for normotensive
+
+  console.log("hyper data",hypertensiveData)
+  console.log("normo data", normotensiveData)
 
   useEffect(() => {
     console.log("normation", details);
@@ -38,16 +41,16 @@ const BarComp = ({ details }) => {
       {
         label: "Hypertension",
         // data: [100,80],  // Data for hypertensive
-        data: [hypertensiveData],
+        data: hypertensiveData,
         backgroundColor: "rgba(255, 0, 0, 0.8)",  // Red color for hypertensive
-        barThickness: isLargeDesktop ? 45 : 25,  // Controlled bar width based on screen size
+        barThickness: isLargeDesktop ?  45 :isDesktop ? 20 : isLaptop ? 15 : 25,  // Controlled bar width based on screen size
       },
       {
         label: "Normotensive",
         // data: [20,10],  // Data for normotensive
-        data: [normotensiveData],
+        data: normotensiveData,
         backgroundColor: "rgba(255, 182, 193, 0.8)",  // Light pink color for normotensive
-        barThickness: isLargeDesktop ? 45 : 25,  // Controlled bar width based on screen size
+        barThickness: isLargeDesktop ?  45 :isDesktop ? 20 : isLaptop ? 15 : 25,  // Controlled bar width based on screen size
       },
     ],
   };
@@ -62,7 +65,70 @@ const BarComp = ({ details }) => {
         : 14;
 
   // Chart options with customized scales and labels
+  // const options = {
+  //   responsive: true,
+  //   layout: {
+  //     padding: {
+  //       right: 0,
+  //       left: 0,
+  //     },
+  //   },
+  //   plugins: {
+  //     legend: {
+  //       display: true,
+  //       position: "top",
+  //       labels: {
+  //         color: "#000",
+  //       },
+  //     },
+  //   },
+  //   scales: {
+  //     x: {
+  //       title: {
+  //         display: true,
+  //         text: "Age",
+  //         color: "#000",
+  //         font: {
+  //           size: titleFontSize,  // Dynamically change font size
+  //         },
+  //       },
+  //       ticks: {
+  //         color: "#000",
+  //         font: {
+  //           size: titleFontSize,  // Dynamically change font size
+  //         },
+  //       },
+  //     },
+  //     y: {
+  //       title: {
+  //         display: true,
+  //         text: "Number of patients",
+  //         color: "#000",
+  //         font: {
+  //           size: titleFontSize,  // Dynamically change font size
+  //           weight: "bold",
+  //         },
+  //       },
+  //       ticks: {
+  //         color: "#000",
+  //         font: {
+  //           size: titleFontSize,  // Dynamically change font size
+  //         },
+  //         beginAtZero: true,  // Start the y-axis from 0
+  //         min: 0,  // Set the minimum value for the y-axis
+  //         max: 100,  // Set the maximum value for the y-axis
+  //         stepSize: 10,  // Set the step size to 10setSize:10,
+  //         beginAtZero: true,
+  //       },
+  //     },
+  //   },
+  //   animation: false,  // Keep bars static
+  // };
+
+  
+
   const options = {
+   
     responsive: true,
     layout: {
       padding: {
@@ -106,21 +172,36 @@ const BarComp = ({ details }) => {
             weight: "bold",
           },
         },
+        // ticks: {
+        //   color: "#000",
+        //   font: {
+        //     size: titleFontSize,  // Dynamically change font size
+        //     weight:"bold"
+        //   },
+        //   beginAtZero: true,  // Start the y-axis from 0
+        // },
+        grid: {
+          display: true,  // Show grid lines for the y-axis
+        },
+        // This option will make the labels vertical
+        suggestedMax: totalCount,
+        // suggestedMin: 0,
+        // stepSize: 0,  // Set the step size to 10
         ticks: {
-          color: "#000",
-          font: {
-            size: titleFontSize,  // Dynamically change font size
+          callback: function(value) {
+            return value.toString(); // Ensure the label is a string (optional)
           },
-          beginAtZero: true,  // Start the y-axis from 0
-          min: 0,  // Set the minimum value for the y-axis
-          max: 100,  // Set the maximum value for the y-axis
-          stepSize: 10,  // Set the step size to 10setSize:10,
-          beginAtZero: true,
+          autoSkip: false,  // Prevent auto-skip for ticks
+          maxRotation: 0,  // Rotate labels to 90 degrees for vertical alignment
+          minRotation:0,  // Set the minimum rotation to 90 degrees
         },
       },
     },
     animation: false,  // Keep bars static
   };
+
+  
+  
 
   return (
     <div className="flex h-[95%] justify-center px-2 w-full items-center rounded-lg shadow-md">

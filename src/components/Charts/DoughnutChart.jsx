@@ -71,7 +71,7 @@ const DoughnutChart = ({ details }) => {
     layout: {
       padding: {
         right: 20,
-        left: 10,
+        left: 20,
         top: 40,
         bottom: 40
       }
@@ -146,7 +146,7 @@ const DoughnutChart = ({ details }) => {
                 borderRadius: '50%',
               }}
             ></div>
-            <span className='large-desktop:text-[2rem] large-desktop:font-bold laptop:text-[12px] tablet:text-[10px] desktop:text-[15px]' style={{ color: '#333' }}>{item.label}</span>
+            <span className='large-desktop:text-[2rem] large-desktop:font-bold laptop:text-[11px] tablet:text-[10px] desktop:text-[15px]' style={{ color: '#333' }}>{item.label}</span>
           </div>
         ))}
       </div>

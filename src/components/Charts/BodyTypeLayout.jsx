@@ -13,13 +13,36 @@ const BodyTypeLayout = ({ details }) => {
         );
     };
 
+    // Utility to interpolate between two hex colors
+    const interpolateColor = (startHex, endHex, factor) => {
+        const normalizeFactor = Math.max(0, Math.min(factor, 1)); // Clamp factor between 0 and 1
+        const start = {
+            r: parseInt(startHex.slice(1, 3), 16),
+            g: parseInt(startHex.slice(3, 5), 16),
+            b: parseInt(startHex.slice(5, 7), 16),
+        };
+        const end = {
+            r: parseInt(endHex.slice(1, 3), 16),
+            g: parseInt(endHex.slice(3, 5), 16),
+            b: parseInt(endHex.slice(5, 7), 16),
+        };
+        const r = Math.round(start.r + (end.r - start.r) * normalizeFactor);
+        const g = Math.round(start.g + (end.g - start.g) * normalizeFactor);
+        const b = Math.round(start.b + (end.b - start.b) * normalizeFactor);
+        return `rgb(${r}, ${g}, ${b})`;
+    };
+
+    // Utility to calculate dynamic background color
+    const calculateBgColor = (value, max) => {
+        const factor = value / max; // Normalize intensity
+        return interpolateColor('#FFB1B1', '#CC0001', factor); // Interpolate between light pink and dark red
+    };
+
     useEffect(() => {
         if (details) {
-            // Find the highest value dynamically from the details
             const highestValue = Math.max(...Object.values(details));
             setMaxValue(highestValue);
-            console.log(highestValue)
-            // Transform object keys into an array of names
+
             const names = transformObjectKeysToArray(details);
             setBodyTypeNames(names);
 
@@ -32,17 +55,16 @@ const BodyTypeLayout = ({ details }) => {
     return (
         <div id="cssportal-grid" className="desktop:px-2 large-desktop:px-4 laptop:px-2 laptop:pb-2 border-red-900">
             {Object.entries(details).map(([key, value], index) => {
-                const isMax = value === maxValue;
-                const bgColor = isMax ? 'bg-[#CC0001]' : 'bg-[#f9d3c6]'; // Darker for max value, lighter otherwise
-                const textColor = isMax ? 'text-white' : 'text-black'; // White for dark bg, black for light bg
+                const bgColor = calculateBgColor(value, maxValue); // Get dynamic background color
+                const textColor = value / maxValue > 0.5 ? 'text-white' : 'text-black'; // Adjust text color
 
                 return (
                     <div
                         key={index}
                         id={`div${index + 1}`}
-                        className={`flex flex-col cursor-default justify-center items-center ${bgColor}`}
+                        className={`flex flex-col cursor-default justify-center items-center`}
+                        style={{ backgroundColor: bgColor }}
                     >
-                        {/* Use the transformed name */}
                         <h1
                             className={`desktop:text-[12px] laptop:text-[0.5rem] text-center large-desktop:text-[1.7rem] font-bold ${textColor}`}
                         >
