@@ -123,7 +123,7 @@ const ReportListPaginationComp = ({ reports }) => {
         
         </div>
         {lengthReports > 10 && 
-        <div className="flex tablet:sticky tablet:left-2 mobile:fixed mobile:left-12 mobile:bottom-2  desktop:mb-4 justify-center items-center gap-2 mt-4">
+        <div className="flex tablet:sticky bg-[#FAFAFA] tablet:left-2 mobile:fixed mobile:left-12 mobile:bottom-2  desktop:mb-4 justify-center items-center gap-2 mt-4">
             <button
               onClick={() => handlePageChange(currentPage - 1)}
               disabled={currentPage === 1}

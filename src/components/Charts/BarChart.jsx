@@ -43,14 +43,14 @@ const BarComp = ({ details , totalCount }) => {
         // data: [100,80],  // Data for hypertensive
         data: hypertensiveData,
         backgroundColor: "rgba(255, 0, 0, 0.8)",  // Red color for hypertensive
-        barThickness: isLargeDesktop ?  45 :isDesktop ? 20 : isLaptop ? 15 : 25,  // Controlled bar width based on screen size
+        barThickness: isLargeDesktop ?  45 :isDesktop ? 20 : isLaptop ? 20 : isTablet ? 20 : 15,  // Controlled bar width based on screen size
       },
       {
         label: "Normotensive",
         // data: [20,10],  // Data for normotensive
         data: normotensiveData,
         backgroundColor: "rgba(255, 182, 193, 0.8)",  // Light pink color for normotensive
-        barThickness: isLargeDesktop ?  45 :isDesktop ? 20 : isLaptop ? 15 : 25,  // Controlled bar width based on screen size
+        barThickness: isLargeDesktop ?  45 :isDesktop ? 20 : isLaptop ? 20 : isTablet ? 20 : 15,  // Controlled bar width based on screen size
       },
     ],
   };
