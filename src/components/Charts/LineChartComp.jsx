@@ -50,7 +50,7 @@ const LineChartComp = ({ ageData, heartRateData }) => {
     ? 11
     : isTablet
     ? 10
-    : 14;
+    : 9;
 
   const dataLabelFontSize = isLargeDesktop
     ? 30

@@ -82,19 +82,19 @@ const TemperamentChart = ({ details }) => {
         label: "1",
         data: [details.sanguine.one,details.choleric.two,details.melanCholic.three,details.phlegmatic.four],
         backgroundColor: "#CC0001",
-        barThickness: isLargeDesktop ? 45 : isLaptop ? 20 : isTablet ? 20 : 25,
+        barThickness: isLargeDesktop ? 45 : isLaptop ? 20 : isTablet ? 20 : 15,
       },
       {
         label: "2",
         data: [details.sanguine.h, details.choleric.h, details.melanCholic.c, details.phlegmatic.c],
         backgroundColor: "#FF6464",
-        barThickness: isLargeDesktop ? 45 : isLaptop ? 20 : isTablet ? 20 : 25,
+        barThickness: isLargeDesktop ? 45 : isLaptop ? 20 : isTablet ? 20 : 15,
       },
       {
         label: "3",
         data: [details.sanguine.m, details.choleric.d, details.melanCholic.d, details.phlegmatic.m],
         backgroundColor: "#F9B9B4",
-        barThickness: isLargeDesktop ? 45 : isLaptop ? 20 : isTablet ? 20 : 25,
+        barThickness: isLargeDesktop ? 45 : isLaptop ? 20 : isTablet ? 20 : 15,
       },
     ],
   };
@@ -113,7 +113,7 @@ const TemperamentChart = ({ details }) => {
         display: true,
         color: "black",
         font:{
-         size: isLargeDesktop ? 28 : isLaptop ? 11 : isTablet ? 10 : 18,
+         size: isLargeDesktop ? 28 : isLaptop ? 11 : isTablet ? 10 : 9,
         },
         // size: isLargeDesktop ? 80 : 60,  // ✅ Dynamic Font Size
         align: "end",
@@ -127,7 +127,7 @@ const TemperamentChart = ({ details }) => {
       x: {
         ticks: {
           font: {
-            size: isLargeDesktop ? 40 : isLaptop ? 11 : isTablet ? 10 : 20,  // ✅ Dynamic Font Size for X-axis
+            size: isLargeDesktop ? 40 : isLaptop ? 11 : isTablet ? 10 : 9,  // ✅ Dynamic Font Size for X-axis
           },
           color: "#000",   // Black color for better visibility
           maxRotation: 0, // Prevent rotation

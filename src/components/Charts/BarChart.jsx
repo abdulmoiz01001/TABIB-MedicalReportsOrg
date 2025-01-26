@@ -62,7 +62,7 @@ const BarComp = ({ details , totalCount }) => {
       ? 16
       : isLaptop
         ? 11 :isTablet ? 10
-        : 14;
+        : 8;
 
   // Chart options with customized scales and labels
   // const options = {
@@ -257,7 +257,7 @@ const BarComp = ({ details , totalCount }) => {
     
 
   return (
-    <div className="flex h-[95%] justify-center px-2 w-full items-center rounded-lg shadow-md">
+    <div className="flex h-[95%] justify-center mobile:pr-1 mobile:px-0 px-2 w-full items-center rounded-lg shadow-md">
       <Bar ref={chartRef} data={data} options={options} />
     </div>
   );
