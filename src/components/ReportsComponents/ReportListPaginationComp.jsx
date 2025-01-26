@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect , useMemo } from "react";
 import { useSelector } from "react-redux";
 import { FaEye } from "react-icons/fa";
 import useStore from "../../zustandStore/useStore";
@@ -6,31 +6,35 @@ import useStore from "../../zustandStore/useStore";
 const ReportListPaginationComp = ({ reports }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [recordsPerPage] = useState(10);
-
-  let data = reports;
-  let lengthReports = reports.length;
-
-  const { filteredReports } = useSelector((state) => state.PatientReportFilters);
-  const { noReportsFound } = useSelector((state) => state.PatientReportFilters);
-
+  const { filteredReports, noReportsFound } = useSelector(
+    (state) => state.PatientReportFilters
+  );
   const customFunction = useStore((state) => state.customFunction);
 
-  useEffect(() => {
-    if (filteredReports.length > 0) {
-      data = filteredReports;
-      lengthReports = filteredReports.length;
+  const data = useMemo(() => {
+    if (filteredReports?.length > 0) {
+      setCurrentPage(1)
+      return filteredReports;
     }
-    if (filteredReports.count > 0) {
-      data = filteredReports.Items;
-      lengthReports = filteredReports.count;
+    if (filteredReports?.Items?.length > 0) {
+      setCurrentPage(1)
+      return filteredReports.Items;
     }
-  }, [filteredReports]);
+    return reports;
+  }, [reports, filteredReports]);
 
-  // Calculate pagination
+  const lengthReports = useMemo(() => data.length, [data]);
+
   const indexOfLastRecord = currentPage * recordsPerPage;
   const indexOfFirstRecord = indexOfLastRecord - recordsPerPage;
-  const currentRecords = data.slice(indexOfFirstRecord, indexOfLastRecord);
-  const totalPages = Math.ceil(lengthReports / recordsPerPage);
+  const currentRecords = useMemo(
+    () => data.slice(indexOfFirstRecord, indexOfLastRecord),
+    [data, indexOfFirstRecord, indexOfLastRecord]
+  );
+  const totalPages = useMemo(
+    () => Math.ceil(lengthReports / recordsPerPage),
+    [lengthReports, recordsPerPage]
+  );
 
   const handlePageChange = (page) => {
     if (page >= 1 && page <= totalPages) {
@@ -42,17 +46,17 @@ const ReportListPaginationComp = ({ reports }) => {
     <>
       <div
         onClick={() => customFunction()}
-        className="w-[99%] overflow-auto mx-auto mt-2 flex large-desktop:py-6 large-desktop:gap-8 flex-col justify-start items-center h-[78%] bg-[#FAFAFA] shadow-[0_4px_4px_3px_#0000000a] rounded-[15px]"
+        className="w-[99%] overflow-auto mx-auto mt-2 mobile:relative flex large-desktop:py-6 large-desktop:gap-8 flex-col justify-start items-center h-[78%] bg-[#FAFAFA] shadow-[0_4px_4px_3px_#0000000a] rounded-[15px]"
       >
         <div className="desktop:w-full laptop:w-full w-full flex mobile:h-[70px] mobile:relative large-desktop:w-[98%] justify-between items-center">
           <p className="desktop:text-[16px] tablet:sticky tablet:left-2 mobile:fixed mobile:left-2 tablet:text-[14px] mobile:text-[14px] large-desktop:text-[2rem] text-[#827F7F] p-4">
             Total Reports : {noReportsFound ? 0 : lengthReports}
           </p>
         </div>
-        <div className="desktop:w-[98%] flex flex-col justify-between items-center min-w-[800px] overflow-auto w-[98%] laptop:w-[98%] large-desktop:w-[98%] mx-auto border-green-900 h-[90%]">
+        <div className="desktop:w-[98%] mobile:mb-16 flex flex-col justify-between items-center min-w-[800px] overflow-auto w-[98%] laptop:w-[98%] large-desktop:w-[98%] mx-auto border-green-900 h-[90%]">
           <table className="w-full p-3 text-left">
-            <thead className="w-full min-w-full bg-[#F9B9B4] h-[72px] rounded-[8px] sticky top-0">
-              <tr className="large-desktop:h-[120px]">
+            <thead className="w-full min-w-full bg-[#F9B9B4] mobile:h-[40px] tablet:h-[40px] h-[72px] rounded-[8px] sticky top-0">
+              <tr className="large-desktop:h-[120px] mobile:h-[40px] tablet:h-[40px]">
                 <th className="desktop:text-[20px] tablet:text-[0.8rem] mobile:text-[0.8rem] laptop:text-[0.9rem] large-desktop:text-[3rem] font-medium capitalize pl-4">
                   Patient Names
                 </th>
@@ -87,7 +91,7 @@ const ReportListPaginationComp = ({ reports }) => {
                 {currentRecords.map((report, index) => (
                   <tr
                     key={index}
-                    className="bg-[#FFEFEF] large-desktop:h-[100px] cursor-pointer h-[62px] rounded-[8px] border-b-2 border-white"
+                    className="bg-[#FFEFEF] large-desktop:h-[100px] cursor-pointer mobile:h-[40px] tablet:h-[40px] h-[62px] rounded-[8px] border-b-2 border-white"
                   >
                     <td className="desktop:text-[20px] tablet:text-[0.8rem] mobile:text-[0.8rem] laptop:text-[0.9rem] large-desktop:text-[3rem] pl-4">
                       {report.Name}
@@ -96,10 +100,10 @@ const ReportListPaginationComp = ({ reports }) => {
                       {report.Member.Age}
                     </td>
                     <td className="desktop:text-[20px] tablet:text-[0.8rem] mobile:text-[0.8rem] laptop:text-[0.9rem] large-desktop:text-[3rem]">
-                      ${report.Mobile}
+                      {report.Mobile}
                     </td>
                     <td className="desktop:text-[20px] tablet:text-[0.8rem] mobile:text-[0.8rem] laptop:text-[0.9rem] large-desktop:text-[3rem]">
-                      ${report?.IdCode || "-"}
+                      {report?.IdCode || "-"}
                     </td>
                     <td className="desktop:text-[20px] tablet:text-[0.8rem] mobile:text-[0.8rem] laptop:text-[0.9rem] large-desktop:text-[3rem]">
                       {report.Member?.Nation || "-"}
@@ -118,7 +122,8 @@ const ReportListPaginationComp = ({ reports }) => {
           {/* Pagination Controls */}
         
         </div>
-        <div className="flex desktop:mb-4 justify-center items-center gap-2 mt-4">
+        {lengthReports > 10 && 
+        <div className="flex tablet:sticky tablet:left-2 mobile:fixed mobile:left-12 mobile:bottom-2  desktop:mb-4 justify-center items-center gap-2 mt-4">
             <button
               onClick={() => handlePageChange(currentPage - 1)}
               disabled={currentPage === 1}
@@ -153,6 +158,7 @@ const ReportListPaginationComp = ({ reports }) => {
               &gt;
             </button>
           </div>
+    }
       </div>
     </>
   );

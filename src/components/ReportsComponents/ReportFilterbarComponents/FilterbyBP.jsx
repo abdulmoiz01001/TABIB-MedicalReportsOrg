@@ -8,7 +8,7 @@ const FilterbyBP = ({toggleDropdown , selectedOption , handleBPOptionSelect , ar
         className="w-full rounded-[15px] border-2 mobile:h-[50px] tablet:h-[50px] laptop:h-[50px] desktop:h-[62px] large-desktop:h-full flex justify-around laptop:gap-2 items-center bg-[#FAFAFA] cursor-pointer px-4"
         onClick={() => toggleDropdown('filter')}
     >
-        <p className="desktop:text-[15px] mobile:text-[11px] tablet:text-[12px] laptop:text-[0.7rem] laptop:leading-4 large-desktop:text-[2rem]  text-black">{selectedOption}</p>
+        <p className="desktop:text-[15px] mobile:text-[11px] tablet:text-[12px] laptop:text-[0.7rem] laptop:leading-4 large-desktop:text-[2rem]  text-black">{selectedOption == "Clear" ? "Filter By BP" : selectedOption}</p>
         <img
             src="bp.svg"
             alt="BP Icon"

@@ -119,11 +119,11 @@ const PieCharts = ({ firstValue = 60.3, firstColor = "#FF0000", secondColor = "#
   }, []);
 
   return (
-    <div className="desktop:w-[115px] laptop:w-[80px] tablet:h-[40%] tablet:w-[60px] mobile:w-[70px] mobile:h-[90px] laptop:h-[42%] desktop:h-[45%] large-desktop:w-[170px] large-desktop:h-[50%] flex flex-col justify-center items-center">
+    <div className="desktop:w-[80px] text-center laptop:w-[80px] tablet:h-[40%] tablet:w-[60px] mobile:w-[70px] mobile:h-[90px] laptop:h-[42%] desktop:h-[45%] large-desktop:w-[170px] large-desktop:h-[50%] flex flex-col justify-center items-center">
       <h1 className="desktop:text-[1rem] tablet:text-[0.6rem] mobile:text-[0.6rem] laptop:text-[0.7rem] large-desktop:text-[2rem] text-[#CC0001]">
         {title}
       </h1>
-      <div className="w-full h-full">
+      <div className="w-full">
         <Doughnut ref={chartRef} data={data} plugins={[ChartDataLabels]} options={options} />
       </div>
     </div>

@@ -3,7 +3,7 @@ import { useMediaQuery } from 'react-responsive';
 
 const TempProgressBarComp = ({ details }) => {
   useEffect(() => {
-    console.log(details);
+    console.log("details temp" , details);
   }, [details]);
 
   const isLargeDesktop = useMediaQuery({ minWidth: 2560 });

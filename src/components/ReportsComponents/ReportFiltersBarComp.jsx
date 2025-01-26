@@ -13,11 +13,11 @@ import FilterbyBP from './ReportFilterbarComponents/FilterbyBP';
 import FilterbySort from './ReportFilterbarComponents/FilterbySort';
 import { useMediaQuery } from 'react-responsive';
 
-
+import { IoFunnelSharp } from "react-icons/io5";
 
 const ReportFiltersBarComp = ({ reports }) => {
     const isTablet = useMediaQuery({ minWidth: 640, maxWidth: 823 });    // md
-    const isMobile = useMediaQuery({ maxWidth: 639 });             
+    const isMobile = useMediaQuery({ maxWidth: 639 });
     const dispatch = useDispatch();
     const setCustomFunction = useStore((state) => state.setCustomFunction);
     const [sortOption, setSortOption] = useState("");
@@ -27,17 +27,17 @@ const ReportFiltersBarComp = ({ reports }) => {
     const [isTimePickerVisible, setTimePickerVisible] = useState(false);
     const [selectedOption, setSelectedOption] = useState("Filter by BP");
     const [isDropdownOpen, setDropdownOpen] = useState(false);
-    const [selectedSortOption, setSelectedSortOption] = useState(""); 
-    const [isSortDropdownOpen, setSortDropdownOpen] = useState(false); 
+    const [selectedSortOption, setSelectedSortOption] = useState("");
+    const [isSortDropdownOpen, setSortDropdownOpen] = useState(false);
     const [showCalendar, setShowCalendar] = useState(false);
     const [arrowRotate, setArrowRotate] = useState(false)
     const [searchTerm, setSearchTerm] = useState("");
-    const [ searchApiTerm , setSearchApiTerm ] = useState("")
-    const [ timeSelectionRange , setTimeSelectionRange ] = useState({
-        startTime:"",
-        endTime:"",
-        key:"selection",
-        token:false
+    const [searchApiTerm, setSearchApiTerm] = useState("")
+    const [timeSelectionRange, setTimeSelectionRange] = useState({
+        startTime: "",
+        endTime: "",
+        key: "selection",
+        token: false
     })
     const [selectionRange, setSelectionRange] = useState({
         startDate: "",
@@ -46,7 +46,7 @@ const ReportFiltersBarComp = ({ reports }) => {
         token: false
     });
 
-    useEffect(() =>{
+    useEffect(() => {
         const queryParameters = {
             ...(selectionRange?.startDate && { startDate: selectionRange.startDate }),
             ...(selectionRange?.endDate && { endDate: selectionRange.endDate }),
@@ -58,8 +58,8 @@ const ReportFiltersBarComp = ({ reports }) => {
             ...(sortOption && { sortOrder: sortOption }),
         };
 
-      fetchPatientsReports(queryParameters)
-    },[selectionRange , searchApiTerm , bPOption , timeSelectionRange , selectedSortOption , sortOption])
+        fetchPatientsReports(queryParameters)
+    }, [selectionRange, searchApiTerm, bPOption, timeSelectionRange, selectedSortOption, sortOption])
 
 
     const fetchPatientsReports = async (params = {}) => {
@@ -68,7 +68,7 @@ const ReportFiltersBarComp = ({ reports }) => {
             const queryString = new URLSearchParams(params).toString();
 
             console.log(queryString)
-    
+
             const response = await fetch(`https://nole90yyzc.execute-api.us-east-1.amazonaws.com/dev/reports?${queryString}`, {
                 method: 'GET',
                 headers: {
@@ -76,10 +76,10 @@ const ReportFiltersBarComp = ({ reports }) => {
                     'Content-Type': 'application/json',
                 },
             });
-    
+
             const data = await response.json();
             console.log("Fetched data:", data);
-    
+
             if (data.success) {
                 dispatch(clearFilteredReports());
                 dispatch(setFilteredReports(data.data || data.data.Items || []));
@@ -105,7 +105,7 @@ const ReportFiltersBarComp = ({ reports }) => {
     const formatDateRange = (start, end) => {
         return (
             <>
-                {format(start, "MMM d, yyyy")} - <br />
+                {format(start, "MMM d, yyyy")}  <br />
                 {format(end, "MMM d, yyyy")}
             </>
         );
@@ -142,10 +142,10 @@ const ReportFiltersBarComp = ({ reports }) => {
         if (option == "High Blood Pressure") {
             setSelectedOption(option); // Update selected option
             option = "high"
-        }else if ( option == "Clear" ){
+        } else if (option == "Clear") {
             setSelectedOption(option)
-               option = ""
-        }else if (option == "Low Blood Pressure") {
+            option = ""
+        } else if (option == "Low Blood Pressure") {
             setSelectedOption(option); // Update selected option
             option = "low"
         } else if (option == "Normal Blood Pressure") {
@@ -160,7 +160,7 @@ const ReportFiltersBarComp = ({ reports }) => {
         }
         setBPOption(option)
         console.log(option)
-        setDropdownOpen(false); 
+        setDropdownOpen(false);
     }
 
     const handleSortOptionSelect = (option) => {
@@ -183,8 +183,8 @@ const ReportFiltersBarComp = ({ reports }) => {
         }
 
         setSortOption(sortOrder)
-        setSelectedSortOption(sortBy); 
-        setSortDropdownOpen(false); 
+        setSelectedSortOption(sortBy);
+        setSortDropdownOpen(false);
     };
 
     const options = [
@@ -197,7 +197,7 @@ const ReportFiltersBarComp = ({ reports }) => {
     ];
 
     const handleTimeChange = (e, setTime, type) => {
-        const time = e.target.value; 
+        const time = e.target.value;
         const formattedTime = `${time}:00`;
         setTime(formattedTime);
 
@@ -210,18 +210,18 @@ const ReportFiltersBarComp = ({ reports }) => {
         if (type === "start" && endTime != "") {
             console.log("having both time")
             setTimeSelectionRange({
-                startTime:startTime,
-                endTime:endTime,
-                key:"selection",
-                token:true                
+                startTime: startTime,
+                endTime: endTime,
+                key: "selection",
+                token: true
             })
         } else if (type === "end" && startTime != "") {
             console.log("having both time")
             setTimeSelectionRange({
-                startTime:startTime,
-                endTime:endTime,
-                key:"selection",
-                token:true
+                startTime: startTime,
+                endTime: endTime,
+                key: "selection",
+                token: true
             })
         }
     };
@@ -230,38 +230,38 @@ const ReportFiltersBarComp = ({ reports }) => {
         setStartTime("");
         setEndTime("");
         setTimeSelectionRange({
-            startTime:"",
-            endTime:"",
-            key:"selection",
-            token:false                
+            startTime: "",
+            endTime: "",
+            key: "selection",
+            token: false
         })
     };
- 
+
     const toggleDropdown = (type) => {
         if (type === 'calendar') {
             setShowCalendar(!showCalendar)
             setArrowRotate(false)
-            setTimePickerVisible(false)  
-            setDropdownOpen(false) 
+            setTimePickerVisible(false)
+            setDropdownOpen(false)
             setSortDropdownOpen(false)
         } else if (type === 'time' && selectionRange.token == true) {
             setTimePickerVisible(!isTimePickerVisible)
             setArrowRotate(false)
-            setShowCalendar(false) 
-            setDropdownOpen(false) 
-            setSortDropdownOpen(false) 
+            setShowCalendar(false)
+            setDropdownOpen(false)
+            setSortDropdownOpen(false)
         } else if (type === 'filter') {
             setDropdownOpen(!isDropdownOpen)
             setArrowRotate(!arrowRotate)
-            setShowCalendar(false) 
-            setTimePickerVisible(false) 
-            setSortDropdownOpen(false) 
+            setShowCalendar(false)
+            setTimePickerVisible(false)
+            setSortDropdownOpen(false)
         } else if (type === 'sort') {
             setSortDropdownOpen(!isSortDropdownOpen)
             setArrowRotate(false)
-            setShowCalendar(false) 
-            setTimePickerVisible(false) 
-            setDropdownOpen(false) 
+            setShowCalendar(false)
+            setTimePickerVisible(false)
+            setDropdownOpen(false)
         }
     };
 
@@ -274,7 +274,7 @@ const ReportFiltersBarComp = ({ reports }) => {
     };
 
     const handleClear = () => {
-        setSelectionRange({ startDate: null, endDate: null, key: "selection" , token:false });
+        setSelectionRange({ startDate: null, endDate: null, key: "selection", token: false });
     };
 
 
@@ -291,63 +291,67 @@ const ReportFiltersBarComp = ({ reports }) => {
             setSearchApiTerm(value);
             console.log(value)
         }, 1000),
-        [] 
+        []
     );
 
     const onInputChange = (e) => {
         const value = e.target.value;
         setSearchTerm(value)
-        debouncedSetSearchTerm(value); 
+        debouncedSetSearchTerm(value);
     };
 
     const [isFilterOpen, setIsFilterOpen] = useState(false);
 
     // Toggle the filter bar visibility
     const toggleFilterBar = () => {
-      setIsFilterOpen(!isFilterOpen);
+        setIsFilterOpen(!isFilterOpen);
     };
 
     return (
         <>
-        {/* <div className='flex flex-col' > */}
+            {/* <div className='flex flex-col' > */}
 
-        {
-            isTablet || isMobile ? 
-            <>
-        <div className={`${ isFilterOpen ? "min-h-[40%] max-h-[100%]" : "h-[10%]" } transition-all duration-300 flex  flex-col gap-4`} >
+            {
+                isTablet || isMobile ?
+                    <>
+                        <div className={`${isFilterOpen ? "min-h-[40%] max-h-[100%]" : "h-[10%]"} transition-all duration-300 flex  flex-col gap-4`} >
 
-         <button onClick={() => toggleFilterBar()} className='w-[150px] ml-4 h-[50px] rounded-[15px] bg-[#CC0001] text-[#FFFFFF] text-[1rem]' >Filters</button>
-        {/* { isFilterOpen && */}
+                            <button onClick={() => toggleFilterBar()} className='w-[150px] ml-4 h-[50px] flex justify-evenly items-center rounded-[15px] bg-[#CC0001] text-[#FFFFFF] text-[1rem]' >Filters 
+                            <IoFunnelSharp color={"#FFFFFF"} size={20} />
 
-            <div className={`w-[99%] flex flex-col  ${isFilterOpen ? "h-[85%]" : "h-[0%] hidden"} duration-300 transition-all overflow-auto py-2  mx-auto flex justify-center large-desktop:justify-between  items-center mobile:gap-2 tablet:gap-2`} >
-                <SearchTerm searchTerm={searchTerm} onInputChange={onInputChange} />
-              
-              <div className='w-full  flex justify-evenly items-center gap-2' >
-                      <FilterbyDateRange toggleDropdown={toggleDropdown} formatDateRange={formatDateRange} showCalendar={showCalendar} selectionRange={selectionRange} handleClear={handleClear} handleSelect={handleSelect} />
-                <FilterbyTimeRange selectionRange={selectionRange} formatTime={formatTime} setStartTime={setStartTime} setEndTime={setEndTime} startTime={startTime} endTime={endTime} toggleDropdown={toggleDropdown} isTimePickerVisible={isTimePickerVisible} handleTimeChange={handleTimeChange} clearTimeRange={clearTimeRange} />
-                </div>
-                <div className='w-full  flex justify-evenly items-center gap-2' >
-                <FilterbyBP toggleDropdown={toggleDropdown} selectedOption={selectedOption} handleBPOptionSelect={handleBPOptionSelect} arrowRotate={arrowRotate} isDropdownOpen={isDropdownOpen} options={options} />
-                <FilterbySort toggleDropdown={toggleDropdown} sortOption={sortOption} selectedSortOption={selectedSortOption} isSortDropdownOpen={isSortDropdownOpen} sortOptions={sortOptions} handleSortOptionSelect={handleSortOptionSelect} />
-                    </div>
-         </div>
-        {/* }  */}
-        </div>
-        </>
-        :
-        <>
-         <div className='w-[99%] large-desktop:h-[5%] laptop:h-[10%] mx-auto flex justify-between large-desktop:justify-between  items-center gap-4 ' >
-                <SearchTerm searchTerm={searchTerm} onInputChange={onInputChange} />
-                <FilterbyDateRange toggleDropdown={toggleDropdown} formatDateRange={formatDateRange} showCalendar={showCalendar} selectionRange={selectionRange} handleClear={handleClear} handleSelect={handleSelect} />
-                <FilterbyTimeRange selectionRange={selectionRange} formatTime={formatTime} setStartTime={setStartTime} setEndTime={setEndTime} startTime={startTime} endTime={endTime} toggleDropdown={toggleDropdown} isTimePickerVisible={isTimePickerVisible} handleTimeChange={handleTimeChange} clearTimeRange={clearTimeRange} />
-                <FilterbyBP toggleDropdown={toggleDropdown} selectedOption={selectedOption} handleBPOptionSelect={handleBPOptionSelect} arrowRotate={arrowRotate} isDropdownOpen={isDropdownOpen} options={options} />
-                <FilterbySort toggleDropdown={toggleDropdown} sortOption={sortOption} selectedSortOption={selectedSortOption} isSortDropdownOpen={isSortDropdownOpen} sortOptions={sortOptions} handleSortOptionSelect={handleSortOptionSelect} />
-            </div>
-        </>
-        }
-           
-            
-        {/* </div> */}
+                                
+                            </button>
+                            {/* { isFilterOpen && */} 
+
+                            <div className={`w-[99%] flex flex-col  ${isFilterOpen ? "h-[85%]" : "h-[0%] hidden"} duration-300 transition-all overflow-auto py-2  mx-auto flex justify-center large-desktop:justify-between  items-center mobile:gap-2 tablet:gap-2`} >
+                                <SearchTerm searchTerm={searchTerm} onInputChange={onInputChange} />
+
+                                <div className='w-full  flex justify-evenly items-center gap-2' >
+                                    <FilterbyDateRange toggleDropdown={toggleDropdown} formatDateRange={formatDateRange} showCalendar={showCalendar} selectionRange={selectionRange} handleClear={handleClear} handleSelect={handleSelect} />
+                                    <FilterbyTimeRange selectionRange={selectionRange} formatTime={formatTime} setStartTime={setStartTime} setEndTime={setEndTime} startTime={startTime} endTime={endTime} toggleDropdown={toggleDropdown} isTimePickerVisible={isTimePickerVisible} handleTimeChange={handleTimeChange} clearTimeRange={clearTimeRange} />
+                                </div>
+                                <div className='w-full  flex justify-evenly items-center gap-2' >
+                                    <FilterbyBP toggleDropdown={toggleDropdown} selectedOption={selectedOption} handleBPOptionSelect={handleBPOptionSelect} arrowRotate={arrowRotate} isDropdownOpen={isDropdownOpen} options={options} />
+                                    <FilterbySort toggleDropdown={toggleDropdown} sortOption={sortOption} selectedSortOption={selectedSortOption} isSortDropdownOpen={isSortDropdownOpen} sortOptions={sortOptions} handleSortOptionSelect={handleSortOptionSelect} />
+                                </div>
+                            </div>
+                            {/* }  */}
+                        </div>
+                    </>
+                    :
+                    <>
+                        <div className='w-[99%] large-desktop:h-[5%] laptop:h-[10%] mx-auto flex justify-between large-desktop:justify-between  items-center gap-4 ' >
+                            <SearchTerm searchTerm={searchTerm} onInputChange={onInputChange} />
+                            <FilterbyDateRange toggleDropdown={toggleDropdown} formatDateRange={formatDateRange} showCalendar={showCalendar} selectionRange={selectionRange} handleClear={handleClear} handleSelect={handleSelect} />
+                            <FilterbyTimeRange selectionRange={selectionRange} formatTime={formatTime} setStartTime={setStartTime} setEndTime={setEndTime} startTime={startTime} endTime={endTime} toggleDropdown={toggleDropdown} isTimePickerVisible={isTimePickerVisible} handleTimeChange={handleTimeChange} clearTimeRange={clearTimeRange} />
+                            <FilterbyBP toggleDropdown={toggleDropdown} selectedOption={selectedOption} handleBPOptionSelect={handleBPOptionSelect} arrowRotate={arrowRotate} isDropdownOpen={isDropdownOpen} options={options} />
+                            <FilterbySort toggleDropdown={toggleDropdown} sortOption={sortOption} selectedSortOption={selectedSortOption} isSortDropdownOpen={isSortDropdownOpen} sortOptions={sortOptions} handleSortOptionSelect={handleSortOptionSelect} />
+                        </div>
+                    </>
+            }
+
+
+            {/* </div> */}
         </>
     );
 };

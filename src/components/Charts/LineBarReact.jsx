@@ -23,7 +23,7 @@ ChartJS.register(
     Legend
 );
 
-const LineBarReact = ({details}) => {
+const LineBarReact = ({totalCount , details}) => {
     useEffect(() => {
      console.log(details)
     },[details])
@@ -98,7 +98,7 @@ const LineBarReact = ({details}) => {
                 },
                 beginAtZero: false,
                 min: 0,
-                max: 10,
+                max: totalCount ,
                 ticks: {
                     stepSize: 1,
                     color: 'black',

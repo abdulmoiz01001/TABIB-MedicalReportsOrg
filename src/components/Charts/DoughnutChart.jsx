@@ -158,7 +158,7 @@ const DoughnutChart = ({ details }) => {
       </h3>
 
       <div
-        className='desktop:w-full desktop:h-full laptop:w-[90%] laptop:h-[90%] large-desktop:w-[80%] large-desktop:h-[80%]'
+        className='desktop:w-full mobile:w-full mobile:h-[220px] desktop:h-full laptop:w-[90%] laptop:h-[90%] large-desktop:w-[80%] large-desktop:h-[80%]'
         style={{
           // width: "100%",
           // height: "100%",

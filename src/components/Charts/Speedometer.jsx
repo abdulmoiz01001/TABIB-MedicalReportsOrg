@@ -28,7 +28,7 @@ const SpeedoMeter = ({
       : isLaptop
         ? 120  // Laptop
          : isTablet ? 105 
-        : 10;  // Default (Mobile/Tablet)
+        : 100;  // Default (Mobile/Tablet)
 
   const speedometerHeight = isLargeDesktop
     ? 150  // Large Desktop
@@ -37,12 +37,12 @@ const SpeedoMeter = ({
       : isLaptop
         ? 65  // Laptop
         : isTablet ? 55
-        : 10;  // Default (Mobile/Tablet)
+        : 60;  // Default (Mobile/Tablet)
 
   const ringWidth = isLargeDesktop ?
     45 : isDesktop ?
       15 : isLaptop ?
-        10 : 15;
+        10 : 9;
 
         useEffect(() => {
           console.log( speedometerHeight , speedometerWidth )
@@ -52,7 +52,7 @@ const SpeedoMeter = ({
   return (
     <>
      <div className='
-       flex flex-col justify-center   items-center rounded-lg
+       flex flex-col justify-center items-center rounded-lg
      
      '>
       <ReactSpeedometer
