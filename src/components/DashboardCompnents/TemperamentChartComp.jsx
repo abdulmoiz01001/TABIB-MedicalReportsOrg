@@ -33,10 +33,10 @@ const TemperamentChartComp = ({ data }) => {
           >
             <img
               src="square.svg"
-              className="desktop:w-4 large-desktop:w-8 desktop:h-4 large-desktop:h-8"
+              className="desktop:w-4 large-desktop:w-8 mobile:w-3 tablet:w-3 desktop:h-4 large-desktop:h-8"
               alt="Male"
             />
-            <p className="desktop:text-[1rem] laptop:text-[0.6rem] tablet:text-[0.5rem] mobile:text-[0.5rem] large-desktop:text-[2.2rem] text-black">
+            <p className="desktop:text-[1rem] laptop:text-[0.6rem] tablet:text-[0.8rem] mobile:text-[0.8rem] large-desktop:text-[2.2rem] text-black">
               Male
             </p>
           </div>
@@ -51,10 +51,10 @@ const TemperamentChartComp = ({ data }) => {
           >
             <img
               src="square.svg"
-              className="desktop:w-4 large-desktop:w-8 desktop:h-4 large-desktop:h-8"
+              className="desktop:w-4 large-desktop:w-8 desktop:h-4 mobile:w-3 tablet:w-3 large-desktop:h-8"
               alt="Female"
             />
-            <p className="desktop:text-[1rem] laptop:text-[0.6rem] tablet:text-[0.5rem] mobile:text-[0.5rem] large-desktop:text-[2.2rem] text-black">
+            <p className="desktop:text-[1rem] laptop:text-[0.6rem] tablet:text-[0.8rem] mobile:text-[0.8rem] large-desktop:text-[2.2rem] text-black">
               Female
             </p>
           </div>
