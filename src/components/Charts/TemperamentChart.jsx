@@ -82,13 +82,13 @@ const TemperamentChart = ({ details }) => {
         label: "1",
         data: [details.sanguine.one,details.choleric.two,details.melanCholic.three,details.phlegmatic.four],
         backgroundColor: "#CC0001",
-        barThickness: isLargeDesktop ? 45 :isDesktop ? 20 : isLaptop ? 20 : isTablet ? 20 : 15,
+        barThickness: isLargeDesktop ? 35 :isDesktop ? 20 : isLaptop ? 20 : isTablet ? 20 : 15,
       },
       {
         label: "2",
         data: [details.sanguine.h, details.choleric.h, details.melanCholic.c, details.phlegmatic.c],
         backgroundColor: "#FF6464",
-        barThickness: isLargeDesktop ? 45 :isDesktop ? 20 : isLaptop ? 20 : isTablet ? 20 : 15,
+        barThickness: isLargeDesktop ? 35 :isDesktop ? 20 : isLaptop ? 20 : isTablet ? 20 : 15,
       },
       {
         label: "3",
@@ -113,7 +113,7 @@ const TemperamentChart = ({ details }) => {
         display: true,
         color: "black",
         font:{
-         size: isLargeDesktop ? 28 : isDesktop ? 20 : isLaptop ? 11 : isTablet ? 10 : 9,
+         size: isLargeDesktop ? 20 : isDesktop ? 20 : isLaptop ? 11 : isTablet ? 10 : 9,
         },
         // size: isLargeDesktop ? 80 : 60,  // ✅ Dynamic Font Size
         align: "end",
@@ -127,7 +127,7 @@ const TemperamentChart = ({ details }) => {
       x: {
         ticks: {
           font: {
-            size: isLargeDesktop ? 40 : isDesktop ? 20 : isLaptop ? 11 : isTablet ? 10 : 9,  // ✅ Dynamic Font Size for X-axis
+            size: isLargeDesktop ? 25 : isDesktop ? 20 : isLaptop ? 11 : isTablet ? 10 : 9,  // ✅ Dynamic Font Size for X-axis
           },
           color: "#000",   // Black color for better visibility
           maxRotation: 0, // Prevent rotation
@@ -147,7 +147,7 @@ const TemperamentChart = ({ details }) => {
     },
     layout: {
       padding: {
-        top: isLargeDesktop ? 80 : 60,  // Dynamic Padding
+        top: isLargeDesktop ? 65 : 60,  // Dynamic Padding
         left: 0,
         right: 0,
       },
@@ -156,7 +156,7 @@ const TemperamentChart = ({ details }) => {
       display: false,
       text: "Temperament with Dominant Qualities",
       font: {
-        size: isLargeDesktop ? 80 : 60,  // ✅ Dynamic Title Font Size
+        size: isLargeDesktop ? 60 : 60,  // ✅ Dynamic Title Font Size
         weight: "bold",
       },
     },

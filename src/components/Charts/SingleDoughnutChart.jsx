@@ -86,122 +86,111 @@ const DynamicDoughnutChart = ({ value, showCenterValue = true, showSegmentLines 
       });
     },
   };
-
    useEffect(() => {
-          const chart = chartRef.current;
-          if (!chart) return;
+     const chart = chartRef.current;
+     if (!chart) return;
+   
+     const ctx = chart.ctx;
+     const centerX = (chart.chartArea.left + chart.chartArea.right) / 2;
+     const centerY = (chart.chartArea.top + chart.chartArea.bottom) / 2;
+     let angle = 0;
+     const radius = Math.min(chart.chartArea.right - chart.chartArea.left, chart.chartArea.bottom - chart.chartArea.top) / 2;
+   
+     const animateShine = () => {
+       ctx.save();
+   
+       // Clear previous shine
+       ctx.clearRect(
+         chart.chartArea.left,
+         chart.chartArea.top,
+         chart.chartArea.right - chart.chartArea.left,
+         chart.chartArea.bottom - chart.chartArea.top
+       );
+   
+       // Draw static bars
+       chart.draw();
+   
+       // Calculate shine position using circular motion
+       const shineX = centerX + radius * Math.cos(angle);
+       const shineY = centerY + radius * Math.sin(angle);
+   
+       // Create radial gradient for circular shine effect
+       const gradient = ctx.createRadialGradient(shineX, shineY, 5, shineX, shineY, 50);
+       gradient.addColorStop(0, "rgba(255, 255, 255, 0.6)");
+       gradient.addColorStop(0.5, "rgba(255, 255, 255, 0.3)");
+       gradient.addColorStop(1, "rgba(255, 255, 255, 0)");
+   
+       // Apply shine effect
+       ctx.fillStyle = gradient;
+       ctx.beginPath();
+       ctx.arc(shineX, shineY, 50, 0, Math.PI * 2);
+       ctx.fill();
+   
+       ctx.restore();
+   
+       // Update angle for circular motion
+       angle += 0.02; // Adjust speed of rotation
+       if (angle > Math.PI * 2) {
+         angle = 0; // Reset after full circle
+       }
+   
+       requestAnimationFrame(animateShine);
+     };
+   
+     animateShine();
+   }, []);
+   
+  //  useEffect(() => {
+  //         const chart = chartRef.current;
+  //         if (!chart) return;
       
-          const ctx = chart.ctx;
-          let shineY = chart.chartArea.bottom;
+  //         const ctx = chart.ctx;
+  //         let shineY = chart.chartArea.bottom;
       
-          const animateShine = () => {
-            ctx.save();
+  //         const animateShine = () => {
+  //           ctx.save();
       
-            // Clear previous shine
-            ctx.clearRect(
-              chart.chartArea.left,
-              chart.chartArea.top,
-              chart.chartArea.right - chart.chartArea.left,
-              chart.chartArea.bottom - chart.chartArea.top
-            );
+  //           // Clear previous shine
+  //           ctx.clearRect(
+  //             chart.chartArea.left,
+  //             chart.chartArea.top,
+  //             chart.chartArea.right - chart.chartArea.left,
+  //             chart.chartArea.bottom - chart.chartArea.top
+  //           );
       
-            // Draw static bars
-            chart.draw();
+  //           // Draw static bars
+  //           chart.draw();
       
-            // Create the shine gradient
-            const gradient = ctx.createLinearGradient(0, shineY, 0, shineY + 20);
-            gradient.addColorStop(0, "rgba(255, 255, 255, 0)");
-            gradient.addColorStop(0.5, "rgba(255, 255, 255, 0.4)");
-            gradient.addColorStop(1, "rgba(255, 255, 255, 0)");
+  //           // Create the shine gradient
+  //           const gradient = ctx.createLinearGradient(0, shineY, 0, shineY + 20);
+  //           gradient.addColorStop(0, "rgba(255, 255, 255, 0)");
+  //           gradient.addColorStop(0.5, "rgba(255, 255, 255, 0.4)");
+  //           gradient.addColorStop(1, "rgba(255, 255, 255, 0)");
       
-            // Overlay the shine effect
-            ctx.fillStyle = gradient;
-            ctx.fillRect(
-              chart.chartArea.left,
-              shineY,
-              chart.chartArea.right - chart.chartArea.left,
-              20
-            );
+  //           // Overlay the shine effect
+  //           ctx.fillStyle = gradient;
+  //           ctx.fillRect(
+  //             chart.chartArea.left,
+  //             shineY,
+  //             chart.chartArea.right - chart.chartArea.left,
+  //             20
+  //           );
       
-            ctx.restore();
+  //           ctx.restore();
       
-            // Move the shine effect upward
-            shineY -= 1;
-            if (shineY < chart.chartArea.top) {
-              shineY = chart.chartArea.bottom;
-            }
+  //           // Move the shine effect upward
+  //           shineY -= 1;
+  //           if (shineY < chart.chartArea.top) {
+  //             shineY = chart.chartArea.bottom;
+  //           }
       
-            requestAnimationFrame(animateShine);
-          };
+  //           requestAnimationFrame(animateShine);
+  //         };
       
-          animateShine();
-        }, []);
+  //         animateShine();
+  //       }, []);
   
 
-  // const segmentLinePlugin = {
-  //   id: 'segmentLine',
-  //   afterDatasetDraw: (chart) => {
-  //     if (!showSegmentLines) return;
-  
-  //     const { ctx } = chart;
-  //     const meta = chart.getDatasetMeta(0);
-  
-  //     meta.data.forEach((arc, index) => {
-  //       const angle = (arc.startAngle + arc.endAngle) / 2;
-  //       const midRadius = (arc.outerRadius + arc.innerRadius) / 2;
-  
-  //       // Start Point (inside the doughnut)
-  //       const startX = chart.width / 2 + Math.cos(angle) * midRadius;
-  //       const startY = chart.height / 2 + Math.sin(angle) * midRadius;
-  
-  //       // First Zig Point (slightly outside the arc)
-  //       const midX = chart.width / 2 + Math.cos(angle) * (arc.outerRadius + 10);
-  //       const midY = chart.height / 2 + Math.sin(angle) * (arc.outerRadius + 10);
-  
-  //       // Second Zig Point (outward horizontal line)
-  //       const horizontalLength = 20;  // Length of the horizontal zig-zag
-  //       const endX = midX + (angle > Math.PI ? -horizontalLength : horizontalLength);
-  //       const endY = midY;
-  
-  //       // Draw Zig-Zag Line
-  //       ctx.beginPath();
-  //       ctx.moveTo(startX, startY);  // Start inside the doughnut
-  //       ctx.lineTo(midX, midY);      // First outward point
-  //       ctx.lineTo(endX, endY);      // Horizontal zig-zag
-  //       ctx.strokeStyle = '#000';
-  //       ctx.lineWidth = 1.5;
-  //       ctx.stroke();
-  
-  //       // Draw Percentage Text at the End
-  //       ctx.font = '12px Arial';
-  //       ctx.fillStyle = '#000';
-  //       ctx.textAlign = angle > Math.PI ? 'right' : 'left';
-  //       ctx.fillText(`${data.datasets[0].data[index]}%`, endX + (angle > Math.PI ? -5 : 5), endY);
-  //     });
-  //   },
-  // };
-  
-  // const segmentLinePlugin = {
-  //   id: 'segmentLine',
-  //   afterDatasetDraw: (chart) => {
-  //     if (!showSegmentLines) return;
-  //     const { ctx, chartArea, scales } = chart;
-  //     const meta = chart.getDatasetMeta(0);
-  //     meta.data.forEach((arc, index) => {
-  //       const angle = (arc.startAngle + arc.endAngle) / 2;
-  //       const x = chart.width / 2 + Math.cos(angle) * (arc.outerRadius + 10);
-  //       const y = chart.height / 2 + Math.sin(angle) * (arc.outerRadius + 10);
-  //       ctx.beginPath();
-  //       ctx.moveTo(arc.x, arc.y);
-  //       ctx.lineTo(x, y);
-  //       ctx.strokeStyle = '#000';
-  //       ctx.stroke();
-  //       ctx.font = '12px Arial';
-  //       ctx.fillStyle = '#000';
-  //       ctx.fillText(`${data.datasets[0].data[index]}%`, x + 5, y);
-  //     });
-  //   },
-  // };
 
   const options = {
     responsive: true,

@@ -1,6 +1,6 @@
 import React , { useEffect } from 'react'
 import ProgressBarComp from './ProgressBarComp'
-import TempProgressBarComp from "../DashboardCompnents/TempProgressBarComp"
+// import TempProgressBarComp from "../DashboardCompnents/TempProgressBarComp"
 
 const   OtherTemperamentIndicesComp = ({reportsCounts , data}) => {
 
@@ -9,8 +9,8 @@ const   OtherTemperamentIndicesComp = ({reportsCounts , data}) => {
   },[data])
   return (
     <>
-    <div className='w-full flex flex-col desktop:gap-0 py-2  large-desktop:gap-2 justify-start items-center h-[60%] rounded-[15px] bg-[#FAFAFA] px-2 border border-[#CC0001]' >
-      <h1 className='text-[#000000] laptop:text-[0.7rem] tablet:text-[0.7rem] desktop:text-[1rem] large-desktop:text-[2rem] text-center  font-bold'>Other Temperament Indices</h1>
+    <div className='w-full h-[50%] flex flex-col desktop:gap-0 py-2  large-desktop:gap-0 justify-start items-center h-[60%] rounded-[15px] bg-[#FAFAFA] px-2 border border-[#CC0001]' >
+      <h1 className='text-[#000000] laptop:text-[0.7rem] tablet:text-[0.7rem] desktop:text-[1rem] large-desktop:text-[1.5rem] text-center  font-bold'>Other Temperament Indices</h1>
       {/* <TempProgressBarComp details={data} /> */}
      <ProgressBarComp reportsCounts={reportsCounts} details={data} imgSrc="temperature.svg" title="Temperature" percentage={data.temperature} min={96.8} max={98.6} />
      <ProgressBarComp reportsCounts={reportsCounts}  imgSrc="spo2.svg" title="SpO2" percentage={data.spO2} min={95} max={100} />

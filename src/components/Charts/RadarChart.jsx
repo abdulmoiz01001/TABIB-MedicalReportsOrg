@@ -61,7 +61,7 @@ const RadarChart = ({ details }) => {
         pointLabels: {
           color: 'black',
           font: {
-            size: isLargeDesktop ? 45 : isLaptop ? 11 : 15,
+            size: isLargeDesktop ? 35 : isLaptop ? 11 : 15,
           },
         },
         ticks: {
@@ -73,11 +73,11 @@ const RadarChart = ({ details }) => {
 
   return (
     <>
-      <h1 className="desktop:text-[1rem] laptop:text-[0.7rem] large-desktop:text-[2.5rem] text-center font-semibold text-black">
+      <h1 className="desktop:text-[1rem] laptop:text-[0.7rem] large-desktop:text-[1.5rem] text-center font-semibold text-black">
         Temperament Graph
       </h1>
       {chartData ? (
-        <div className="w-full h-[90%]">
+        <div className="w-full flex justify-center items-center large-desktop:p-4 large-desktop:h-[500px]">
           <Radar data={chartData} options={chartOptions} />
         </div>
       ) : (

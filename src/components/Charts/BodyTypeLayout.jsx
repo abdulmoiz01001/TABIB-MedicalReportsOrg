@@ -66,7 +66,7 @@ const BodyTypeLayout = ({ details }) => {
                         style={{ backgroundColor: bgColor }}
                     >
                         <h1
-                            className={`mobile:text-[0.6rem] tablet:text-[0.6rem] desktop:text-[12px] laptop:text-[0.5rem]  text-center large-desktop:text-[1.7rem] font-bold ${textColor}`}
+                            className={`mobile:text-[0.6rem] tablet:text-[0.6rem] desktop:text-[12px] laptop:text-[0.5rem]  text-center large-desktop:leading-6 large-desktop:text-[1.4rem] font-bold ${textColor}`}
                         >
                             {bodyTypeNames[index]}
                         </h1>

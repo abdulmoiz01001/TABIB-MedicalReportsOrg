@@ -197,25 +197,25 @@ const AverageTABIATScoreMalesvsFemalesComp = ({ data }) => {
   const femaleImage = getFemaleImage(femalePercentage);
 
   return (
-    <div className=" w-full h-[35%] flex-col justify-between items-center laptop:p-2 p-4 bg-[#FAFAFA] flex border border-[#CC0001] rounded-[15px]">
-      <h1 className="desktop:text-[1rem] mobile:pb-2 tablet:text-[0.7rem] mobile:text-[0.7rem] laptop:text-[0.7rem] large-desktop:text-[2.2rem] font-bold text-black">
+    <div className=" w-full h-[32.5%] flex-col justify-between items-center laptop:p-2 p-4 bg-[#FAFAFA] flex border border-[#CC0001] rounded-[15px]">
+      <h1 className="desktop:text-[1rem] mobile:pb-2 tablet:text-[0.7rem] mobile:text-[0.7rem] laptop:text-[0.7rem] large-desktop:text-[1.5rem] font-bold text-black">
         Average TABIAT Score of Males vs Females
       </h1>
-      <div className="flex  h-[70%] w-[90%]  grid-background justify-between mobile:items-end  items-center">
+      <div className="flex  h-[70%] w-[90%] grid-background justify-between mobile:items-end  items-end">
         {/* Left Y-axis for scale */}
         
-        <div className="h-full w-[20px]  flex flex-col-reverse justify-center gap-[1px] items-center">
-          <span className="desktop:text-[0.8rem] mobile:text-[0.35rem] tablet:text-[0.5rem] laptop:text-[0.5rem] large-desktop:text-[2rem]">0</span>
-          <span className="desktop:text-[0.8rem] mobile:text-[0.35rem] tablet:text-[0.5rem] laptop:text-[0.5rem] large-desktop:text-[2rem]">10</span>
-          <span className="desktop:text-[0.8rem] mobile:text-[0.35rem] tablet:text-[0.5rem] laptop:text-[0.5rem] large-desktop:text-[2rem]">20</span>
-          <span className="desktop:text-[0.8rem] mobile:text-[0.35rem] tablet:text-[0.5rem] laptop:text-[0.5rem] large-desktop:text-[2rem]">30</span>
-          <span className="desktop:text-[0.8rem] mobile:text-[0.35rem] tablet:text-[0.5rem] laptop:text-[0.5rem] large-desktop:text-[2rem]">40</span>
-          <span className="desktop:text-[0.8rem] mobile:text-[0.35rem] tablet:text-[0.5rem] laptop:text-[0.5rem] large-desktop:text-[2rem]">50</span>
-          <span className="desktop:text-[0.8rem] mobile:text-[0.35rem] tablet:text-[0.5rem] laptop:text-[0.5rem] large-desktop:text-[2rem]">60</span>
-          <span className="desktop:text-[0.8rem] mobile:text-[0.35rem] tablet:text-[0.5rem] laptop:text-[0.5rem] large-desktop:text-[2rem]">70</span>
-          <span className="desktop:text-[0.8rem] mobile:text-[0.35rem] tablet:text-[0.5rem] laptop:text-[0.5rem] large-desktop:text-[2rem]">80</span>
-          <span className="desktop:text-[0.8rem] mobile:text-[0.35rem] tablet:text-[0.5rem] laptop:text-[0.5rem] large-desktop:text-[2rem]">90</span>
-          <span className="desktop:text-[0.8rem] mobile:text-[0.35rem] tablet:text-[0.5rem] laptop:text-[0.5rem] large-desktop:text-[2rem]">100</span>
+        <div className="h-full w-[20px] gap-[2px]  flex flex-col-reverse justify-center  items-center">
+          <span className="desktop:text-[0.8rem] mobile:text-[0.35rem] tablet:text-[0.5rem] laptop:text-[0.5rem] large-desktop:text-[1.2rem]">0</span>
+          <span className="desktop:text-[0.8rem] mobile:text-[0.35rem] tablet:text-[0.5rem] laptop:text-[0.5rem] large-desktop:text-[1.2rem]">10</span>
+          <span className="desktop:text-[0.8rem] mobile:text-[0.35rem] tablet:text-[0.5rem] laptop:text-[0.5rem] large-desktop:text-[1.2rem]">20</span>
+          <span className="desktop:text-[0.8rem] mobile:text-[0.35rem] tablet:text-[0.5rem] laptop:text-[0.5rem] large-desktop:text-[1.2rem]">30</span>
+          <span className="desktop:text-[0.8rem] mobile:text-[0.35rem] tablet:text-[0.5rem] laptop:text-[0.5rem] large-desktop:text-[1.2rem]">40</span>
+          <span className="desktop:text-[0.8rem] mobile:text-[0.35rem] tablet:text-[0.5rem] laptop:text-[0.5rem] large-desktop:text-[1.2rem]">50</span>
+          <span className="desktop:text-[0.8rem] mobile:text-[0.35rem] tablet:text-[0.5rem] laptop:text-[0.5rem] large-desktop:text-[1.2rem]">60</span>
+          <span className="desktop:text-[0.8rem] mobile:text-[0.35rem] tablet:text-[0.5rem] laptop:text-[0.5rem] large-desktop:text-[1.2rem]">70</span>
+          <span className="desktop:text-[0.8rem] mobile:text-[0.35rem] tablet:text-[0.5rem] laptop:text-[0.5rem] large-desktop:text-[1.2rem]">80</span>
+          <span className="desktop:text-[0.8rem] mobile:text-[0.35rem] tablet:text-[0.5rem] laptop:text-[0.5rem] large-desktop:text-[1.2rem]">90</span>
+          <span className="desktop:text-[0.8rem] mobile:text-[0.35rem] tablet:text-[0.5rem] laptop:text-[0.5rem] large-desktop:text-[1.2rem]">100</span>
         </div>
 
         {/* Male Score */}
@@ -223,7 +223,7 @@ const AverageTABIATScoreMalesvsFemalesComp = ({ data }) => {
           <img
             src={maleImage}
             alt="Male Score"
-            className="large-desktop:w-[200px] mobile:w-[60px] mobile:h-[100px] tablet:w-[40px] laptop:w-[60px] desktop:h-[205px] desktop:w-[100px]"
+            className="large-desktop:w-[140px] mobile:w-[60px] mobile:h-[100px] tablet:w-[40px] laptop:w-[60px] desktop:h-[205px] desktop:w-[100px]"
           />
       
         </div>
@@ -236,7 +236,7 @@ const AverageTABIATScoreMalesvsFemalesComp = ({ data }) => {
           <img
             src={femaleImage}
             alt="Female Score"
-            className="large-desktop:w-[200px] mobile:w-[47.5px] laptop:w-[65px] desktop:h-[300px] desktop:w-[98px]"
+            className="large-desktop:w-[150px] mobile:w-[47.5px] laptop:w-[65px] desktop:h-[300px] desktop:w-[98px]"
           />
        
         </div>

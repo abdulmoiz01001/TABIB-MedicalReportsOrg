@@ -60,7 +60,7 @@ const PieCharts = ({ firstValue = 60.3, firstColor = "#FF0000", secondColor = "#
         color: "#fff",  // Color of the text
         font: {
           weight: "bold",
-          size: isTablet ? 8 : isMobile ? 8 :12
+          size: isTablet ? 8 : isMobile ? 8 :20
         },
         formatter: (value) => `${value}%`,  // Format the value as percentage
         anchor: "center",  // Position the label in the center of the segment
@@ -73,59 +73,113 @@ const PieCharts = ({ firstValue = 60.3, firstColor = "#FF0000", secondColor = "#
     },
   };
 
-  useEffect(() => {
-    const chart = chartRef.current;
-    if (!chart) return;
+     useEffect(() => {
+       const chart = chartRef.current;
+       if (!chart) return;
+     
+       const ctx = chart.ctx;
+       const centerX = (chart.chartArea.left + chart.chartArea.right) / 2;
+       const centerY = (chart.chartArea.top + chart.chartArea.bottom) / 2;
+       let angle = 0;
+       const radius = Math.min(chart.chartArea.right - chart.chartArea.left, chart.chartArea.bottom - chart.chartArea.top) / 2;
+     
+       const animateShine = () => {
+         ctx.save();
+     
+         // Clear previous shine
+         ctx.clearRect(
+           chart.chartArea.left,
+           chart.chartArea.top,
+           chart.chartArea.right - chart.chartArea.left,
+           chart.chartArea.bottom - chart.chartArea.top
+         );
+     
+         // Draw static bars
+         chart.draw();
+     
+         // Calculate shine position using circular motion
+         const shineX = centerX + radius * Math.cos(angle);
+         const shineY = centerY + radius * Math.sin(angle);
+     
+         // Create radial gradient for circular shine effect
+         const gradient = ctx.createRadialGradient(shineX, shineY, 5, shineX, shineY, 50);
+         gradient.addColorStop(0, "rgba(255, 255, 255, 0.6)");
+         gradient.addColorStop(0.5, "rgba(255, 255, 255, 0.3)");
+         gradient.addColorStop(1, "rgba(255, 255, 255, 0)");
+     
+         // Apply shine effect
+         ctx.fillStyle = gradient;
+         ctx.beginPath();
+         ctx.arc(shineX, shineY, 50, 0, Math.PI * 2);
+         ctx.fill();
+     
+         ctx.restore();
+     
+         // Update angle for circular motion
+         angle += 0.02; // Adjust speed of rotation
+         if (angle > Math.PI * 2) {
+           angle = 0; // Reset after full circle
+         }
+     
+         requestAnimationFrame(animateShine);
+       };
+     
+       animateShine();
+     }, []);
+     
+  // useEffect(() => {
+  //   const chart = chartRef.current;
+  //   if (!chart) return;
 
-    const ctx = chart.ctx;
-    let shineY = chart.chartArea.bottom;
+  //   const ctx = chart.ctx;
+  //   let shineY = chart.chartArea.bottom;
 
-    const animateShine = () => {
-      ctx.save();
+  //   const animateShine = () => {
+  //     ctx.save();
 
-      // Clear previous shine
-      ctx.clearRect(
-        chart.chartArea.left,
-        chart.chartArea.top,
-        chart.chartArea.right - chart.chartArea.left,
-        chart.chartArea.bottom - chart.chartArea.top
-      );
+  //     // Clear previous shine
+  //     ctx.clearRect(
+  //       chart.chartArea.left,
+  //       chart.chartArea.top,
+  //       chart.chartArea.right - chart.chartArea.left,
+  //       chart.chartArea.bottom - chart.chartArea.top
+  //     );
 
-      // Draw static bars
-      chart.draw();
+  //     // Draw static bars
+  //     chart.draw();
 
-      // Create the shine gradient
-      const gradient = ctx.createLinearGradient(0, shineY, 0, shineY + 20);
-      gradient.addColorStop(0, "rgba(255, 255, 255, 0)");
-      gradient.addColorStop(0.5, "rgba(255, 255, 255, 0.4)");
-      gradient.addColorStop(1, "rgba(255, 255, 255, 0)");
+  //     // Create the shine gradient
+  //     const gradient = ctx.createLinearGradient(0, shineY, 0, shineY + 20);
+  //     gradient.addColorStop(0, "rgba(255, 255, 255, 0)");
+  //     gradient.addColorStop(0.5, "rgba(255, 255, 255, 0.4)");
+  //     gradient.addColorStop(1, "rgba(255, 255, 255, 0)");
 
-      // Overlay the shine effect
-      ctx.fillStyle = gradient;
-      ctx.fillRect(
-        chart.chartArea.left,
-        shineY,
-        chart.chartArea.right - chart.chartArea.left,
-        20
-      );
+  //     // Overlay the shine effect
+  //     ctx.fillStyle = gradient;
+  //     ctx.fillRect(
+  //       chart.chartArea.left,
+  //       shineY,
+  //       chart.chartArea.right - chart.chartArea.left,
+  //       20
+  //     );
 
-      ctx.restore();
+  //     ctx.restore();
 
-      // Move the shine effect upward
-      shineY -= 1;
-      if (shineY < chart.chartArea.top) {
-        shineY = chart.chartArea.bottom;
-      }
+  //     // Move the shine effect upward
+  //     shineY -= 1;
+  //     if (shineY < chart.chartArea.top) {
+  //       shineY = chart.chartArea.bottom;
+  //     }
 
-      requestAnimationFrame(animateShine);
-    };
+  //     requestAnimationFrame(animateShine);
+  //   };
 
-    animateShine();
-  }, []);
+  //   animateShine();
+  // }, []);
 
   return (
-    <div className="desktop:w-[80px] text-center laptop:w-[80px] tablet:h-[40%] tablet:w-[60px] mobile:w-[70px] mobile:h-[90px] laptop:h-[42%] desktop:h-[45%] large-desktop:w-[170px] large-desktop:h-[50%] flex flex-col justify-center items-center">
-      <h1 className="desktop:text-[1rem] tablet:text-[0.6rem] mobile:text-[0.6rem] laptop:text-[0.7rem] large-desktop:text-[2rem] text-[#CC0001]">
+    <div className="desktop:w-[80px] text-center laptop:w-[80px]  tablet:h-[40%] tablet:w-[60px] mobile:w-[70px] mobile:h-[90px] laptop:h-[42%] desktop:h-[45%] large-desktop:w-[140px] large-desktop:h-[40%]  flex flex-col justify-center items-center">
+      <h1 className="desktop:text-[1rem] tablet:text-[0.6rem] mobile:text-[0.6rem] laptop:text-[0.7rem] large-desktop:text-[1.5rem] text-[#CC0001]">
         {title}
       </h1>
       <div className="w-full">

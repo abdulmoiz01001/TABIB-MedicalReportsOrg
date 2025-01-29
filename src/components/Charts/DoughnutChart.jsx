@@ -93,72 +93,127 @@ const DoughnutChart = ({ details }) => {
       },
     },
   };
-
    useEffect(() => {
-        const chart = chartRef.current;
-        if (!chart) return;
+  const chart = chartRef.current;
+  if (!chart) return;
+
+  const ctx = chart.ctx;
+  const centerX = (chart.chartArea.left + chart.chartArea.right) / 2;
+  const centerY = (chart.chartArea.top + chart.chartArea.bottom) / 2;
+  let angle = 0;
+  const radius = Math.min(chart.chartArea.right - chart.chartArea.left, chart.chartArea.bottom - chart.chartArea.top) / 2;
+
+  const animateShine = () => {
+    ctx.save();
+
+    // Clear previous shine
+    ctx.clearRect(
+      chart.chartArea.left,
+      chart.chartArea.top,
+      chart.chartArea.right - chart.chartArea.left,
+      chart.chartArea.bottom - chart.chartArea.top
+    );
+
+    // Draw static bars
+    chart.draw();
+
+    // Calculate shine position using circular motion
+    const shineX = centerX + radius * Math.cos(angle);
+    const shineY = centerY + radius * Math.sin(angle);
+
+    // Create radial gradient for circular shine effect
+    const gradient = ctx.createRadialGradient(shineX, shineY, 5, shineX, shineY, 50);
+    gradient.addColorStop(0, "rgba(255, 255, 255, 0.6)");
+    gradient.addColorStop(0.5, "rgba(255, 255, 255, 0.3)");
+    gradient.addColorStop(1, "rgba(255, 255, 255, 0)");
+
+    // Apply shine effect
+    ctx.fillStyle = gradient;
+    ctx.beginPath();
+    ctx.arc(shineX, shineY, 50, 0, Math.PI * 2);
+    ctx.fill();
+
+    ctx.restore();
+
+    // Update angle for circular motion
+    angle += 0.02; // Adjust speed of rotation
+    if (angle > Math.PI * 2) {
+      angle = 0; // Reset after full circle
+    }
+
+    requestAnimationFrame(animateShine);
+  };
+
+  animateShine();
+}, []);
+
+  //  useEffect(() => {
+  //       const chart = chartRef.current;
+  //       if (!chart) return;
     
-        const ctx = chart.ctx;
-        let shineY = chart.chartArea.bottom;
+  //       const ctx = chart.ctx;
+  //       let shineY = chart.chartArea.bottom;
     
-        const animateShine = () => {
-          ctx.save();
+  //       const animateShine = () => {
+  //         ctx.save();
     
-          // Clear previous shine
-          ctx.clearRect(
-            chart.chartArea.left,
-            chart.chartArea.top,
-            chart.chartArea.right - chart.chartArea.left,
-            chart.chartArea.bottom - chart.chartArea.top
-          );
+  //         // Clear previous shine
+  //         ctx.clearRect(
+  //           chart.chartArea.left,
+  //           chart.chartArea.top,
+  //           chart.chartArea.right - chart.chartArea.left,
+  //           chart.chartArea.bottom - chart.chartArea.top
+  //         );
     
-          // Draw static bars
-          chart.draw();
+  //         // Draw static bars
+  //         chart.draw();
     
-          // Create the shine gradient
-          const gradient = ctx.createLinearGradient(0, shineY, 0, shineY + 20);
-          gradient.addColorStop(0, "rgba(255, 255, 255, 0)");
-          gradient.addColorStop(0.5, "rgba(255, 255, 255, 0.4)");
-          gradient.addColorStop(1, "rgba(255, 255, 255, 0)");
+  //         // Create the shine gradient
+  //         const gradient = ctx.createLinearGradient(0, shineY, 0, shineY + 20);
+  //         gradient.addColorStop(0, "rgba(255, 255, 255, 0)");
+  //         gradient.addColorStop(0.5, "rgba(255, 255, 255, 0.4)");
+  //         gradient.addColorStop(1, "rgba(255, 255, 255, 0)");
     
-          // Overlay the shine effect
-          ctx.fillStyle = gradient;
-          ctx.fillRect(
-            chart.chartArea.left,
-            shineY,
-            chart.chartArea.right - chart.chartArea.left,
-            20
-          );
+  //         // Overlay the shine effect
+  //         ctx.fillStyle = gradient;
+  //         ctx.fillRect(
+  //           chart.chartArea.left,
+  //           shineY,
+  //           chart.chartArea.right - chart.chartArea.left,
+  //           20
+  //         );
     
-          ctx.restore();
+  //         ctx.restore();
+
+        
     
-          // Move the shine effect upward
-          shineY -= 1;
-          if (shineY < chart.chartArea.top) {
-            shineY = chart.chartArea.bottom;
-          }
+  //         // Move the shine effect upward
+  //         shineY -= 1;
+  //         if (shineY < chart.chartArea.top) {
+  //           shineY = chart.chartArea.bottom;
+  //         }
     
-          requestAnimationFrame(animateShine);
-        };
+  //         requestAnimationFrame(animateShine);
+  //       };
     
-        animateShine();
-      }, []);
+  //       animateShine();
+  //     }, []);
 
   // Dynamic size based on screen size
   const chartSize = isLargeDesktop
-    ? { width: '60px', height: '60px' }  // Large Desktop
+    ? { width: '40px', height: '40px' }  // Large Desktop
     : isDesktop
       ? { width: '25px', height: '25px' }  // Desktop
       : { width: '20px', height: '20px' }; // Laptop/Tablet
 
   return (
-    <div className='flex flex-col h-[100%] laptop:py-1 py-2 justify-center  items-center'>
-      <h3 className="desktop:text-[1rem] tablet:text-[0.7rem] laptop:text-[0.7rem] large-desktop:text-[2rem] font-bold text-[#000000]">
+    <div className='flex flex-col h-[100%] laptop:py-1 py-2 justify-around  items-center'>
+      <h3 className="desktop:text-[1rem] text-center tablet:text-[0.7rem] laptop:text-[0.7rem] large-desktop:text-[1.5rem] font-bold text-[#000000]">
         Hypertension By BMI Classification
       </h3>
 
       <div
-        className='desktop:w-full mobile:w-full mobile:h-[220px] desktop:h-full laptop:w-[90%] laptop:h-[90%] large-desktop:w-[80%] large-desktop:h-[80%]'
+        className='desktop:w-full mobile:w-full mobile:h-[220px] desktop:h-full laptop:w-[90%] laptop:h-[90%] large-desktop:w-[100%] large-desktop:py-4 large-desktop:h-[380px]'
         style={{
           // width: "100%",
           // height: "100%",
@@ -197,7 +252,7 @@ const DoughnutChart = ({ details }) => {
                 borderRadius: '50%',
               }}
             ></div>
-            <span className='large-desktop:text-[2rem] large-desktop:font-bold laptop:text-[11px] tablet:text-[10px] desktop:text-[15px]' style={{ color: '#333' }}>{item.label}</span>
+            <span className='large-desktop:text-[1.2rem] large-desktop:font-bold laptop:text-[11px] tablet:text-[10px] desktop:text-[15px]' style={{ color: '#333' }}>{item.label}</span>
           </div>
         ))}
       </div>

@@ -22,7 +22,7 @@ const SpeedoMeter = ({
 
   // Dynamically set width and height
   const speedometerWidth = isLargeDesktop
-    ? 235  // Large Desktop (4K and ultra-wide screens)
+    ? 165  // Large Desktop (4K and ultra-wide screens)
     : isDesktop
       ? 130  // Desktop
       : isLaptop
@@ -31,7 +31,7 @@ const SpeedoMeter = ({
         : 100;  // Default (Mobile/Tablet)
 
   const speedometerHeight = isLargeDesktop
-    ? 150  // Large Desktop
+    ? 90  // Large Desktop
     : isDesktop
       ? 65  // Desktop
       : isLaptop
@@ -40,7 +40,7 @@ const SpeedoMeter = ({
         : 60;  // Default (Mobile/Tablet)
 
   const ringWidth = isLargeDesktop ?
-    45 : isDesktop ?
+    20 : isDesktop ?
       15 : isLaptop ?
         10 : 9;
 
@@ -74,8 +74,8 @@ const SpeedoMeter = ({
       />
 
       <div className='w-full flex flex-col  justify-center items-center'>
-        <p className='desktop:text-[0.9rem] tablet:text-[0.6rem] laptop:text-[0.8rem] large-desktop:text-[2.5rem] text-center large-desktop: font-medium text-[#CC0001]'>{parseInt(value)} {unit}</p>
-        <p className='desktop:text-[0.9rem] laptop:text-[0.8rem] tablet:text-[0.7rem] large-desktop:text-[3rem] text-center font-semibold text-[#000000]'>{label}</p>
+        <p className='desktop:text-[0.9rem] tablet:text-[0.6rem] laptop:text-[0.8rem] large-desktop:text-[1.5rem] text-center large-desktop: font-medium text-[#CC0001]'>{parseInt(value)} {unit}</p>
+        <p className='desktop:text-[0.9rem] laptop:text-[0.8rem] tablet:text-[0.7rem] large-desktop:text-[2rem] text-center font-semibold text-[#000000]'>{label}</p>
       </div>
      </div>
         </>

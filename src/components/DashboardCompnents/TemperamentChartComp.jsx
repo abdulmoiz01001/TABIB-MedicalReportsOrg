@@ -23,8 +23,8 @@ const TemperamentChartComp = ({ data }) => {
 
   return (
     <>
-      <div className="w-full flex h-[35%] flex-col justify-end items-center bg-[#FAFAFA] border border-[#CC0001] rounded-[15px]">
-        <div className="desktop:w-[90%] large-desktop:w-[90%] h-[20%] laptop:px-0 laptop:gap-2 px-2 flex justify-between items-center">
+      <div className="w-full flex h-[32.5%] flex-col justify-end items-center bg-[#FAFAFA] border border-[#CC0001] rounded-[15px]">
+        <div className="desktop:w-[90%] large-desktop:w-[95%]  h-[15%]  laptop:px-0 laptop:gap-2 px-2 flex justify-between items-center">
           <div
             className={`flex justify-end gap-1 items-center cursor-pointer ${getBackgroundColor(
               isMaleSelected
@@ -33,14 +33,14 @@ const TemperamentChartComp = ({ data }) => {
           >
             <img
               src="square.svg"
-              className="desktop:w-4 large-desktop:w-8 mobile:w-3 tablet:w-3 desktop:h-4 large-desktop:h-8"
+              className="desktop:w-4 large-desktop:w-4 mobile:w-3 tablet:w-3 desktop:h-4 large-desktop:h-8"
               alt="Male"
             />
-            <p className="desktop:text-[1rem] laptop:text-[0.6rem] tablet:text-[0.8rem] mobile:text-[0.8rem] large-desktop:text-[2.2rem] text-black">
+            <p className="desktop:text-[1rem] large-desktop:text-[20px] laptop:text-[0.6rem] tablet:text-[0.8rem] mobile:text-[0.8rem] large-desktop:text-[2rem] text-black">
               Male
             </p>
           </div>
-          <h1 className="desktop:text-[1rem] laptop:text-[0.7rem] tablet:px-2 mobile:px-2 tablet:text-[0.7rem] mobile:text-[0.7rem] large-desktop:text-[2.2rem] text-center font-bold text-black">
+          <h1 className="desktop:text-[1rem] laptop:text-[0.7rem] tablet:px-2 mobile:px-2 tablet:text-[0.7rem] mobile:text-[0.7rem] large-desktop:text-[1.5rem] text-center font-bold text-black">
             Temperament with Dominant Qualities
           </h1>
           <div
@@ -51,15 +51,15 @@ const TemperamentChartComp = ({ data }) => {
           >
             <img
               src="square.svg"
-              className="desktop:w-4 large-desktop:w-8 desktop:h-4 mobile:w-3 tablet:w-3 large-desktop:h-8"
+              className="desktop:w-4 large-desktop:w-4 desktop:h-4 mobile:w-3 tablet:w-3 large-desktop:h-8"
               alt="Female"
             />
-            <p className="desktop:text-[1rem] laptop:text-[0.6rem] tablet:text-[0.8rem] mobile:text-[0.8rem] large-desktop:text-[2.2rem] text-black">
+            <p className="desktop:text-[1rem] large-desktop:text-[20px] laptop:text-[0.6rem] tablet:text-[0.8rem] mobile:text-[0.8rem] large-desktop:text-[2rem] text-black">
               Female
             </p>
           </div>
         </div>
-        <div className="h-[90%] w-[90%] flex flex-col justify-end items-center">
+        <div className="h-[85%] w-[90%] flex flex-col justify-end items-center">
           {/* Conditional rendering based on selected checkboxes */}
           {isMaleSelected && isFemaleSelected && <TemperamentChart details={data.both} />}
           {isMaleSelected && !isFemaleSelected && <TemperamentChart details={data.male} />}

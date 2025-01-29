@@ -43,21 +43,21 @@ const BarComp = ({ details , totalCount }) => {
         // data: [100,80],  // Data for hypertensive
         data: hypertensiveData,
         backgroundColor: "rgba(255, 0, 0, 0.8)",  // Red color for hypertensive
-        barThickness: isLargeDesktop ?  45 :isDesktop ? 20 : isLaptop ? 20 : isTablet ? 20 : 15,  // Controlled bar width based on screen size
+        barThickness: isLargeDesktop ?  35 :isDesktop ? 20 : isLaptop ? 20 : isTablet ? 20 : 15,  // Controlled bar width based on screen size
       },
       {
         label: "Normotensive",
         // data: [20,10],  // Data for normotensive
         data: normotensiveData,
         backgroundColor: "rgba(255, 182, 193, 0.8)",  // Light pink color for normotensive
-        barThickness: isLargeDesktop ?  45 :isDesktop ? 20 : isLaptop ? 20 : isTablet ? 20 : 15,  // Controlled bar width based on screen size
+        barThickness: isLargeDesktop ?  35 :isDesktop ? 20 : isLaptop ? 20 : isTablet ? 20 : 15,  // Controlled bar width based on screen size
       },
     ],
   };
 
   // Dynamically set font size based on screen size
   const titleFontSize = isLargeDesktop
-    ? 30
+    ? 20
     : isDesktop
       ? 16
       : isLaptop
@@ -169,7 +169,7 @@ const BarComp = ({ details , totalCount }) => {
           color: "#000",
           font: {
             size: titleFontSize,  // Dynamically change font size
-            weight: "bold",
+            // weight: "bold",
           },
         },
         // ticks: {
@@ -261,7 +261,7 @@ const BarComp = ({ details , totalCount }) => {
     
 
   return (
-    <div className="flex h-[95%] justify-center mobile:pr-1 mobile:px-0 px-2 w-full items-center rounded-lg shadow-md">
+    <div className="flex h-[95%] large-desktop:h-[90%] justify-center mobile:pr-1 mobile:px-0 px-2 w-full items-center rounded-lg shadow-md">
       <Bar ref={chartRef} data={data} options={options} />
     </div>
   );

@@ -36,12 +36,33 @@ const LineBarReact = ({totalCount , details}) => {
 
     // 🎨 Dynamic Styles Based on Screen Size
     const titleFontSize = isLargeDesktop
-    ? 25
+    ? 20
     : isDesktop
     ? 20
     : isLaptop
     ? 11 : isTablet ? 10 : isMobile ? 9
     : 14;
+
+    
+  const borderWidth = isLargeDesktop
+  ? 5
+  : isDesktop
+  ? 3
+  : isLaptop
+  ? 2
+  : isTablet
+  ? 1.5
+  : 1;
+
+const pointRadius = isLargeDesktop
+  ? 5
+  : isDesktop
+  ? 4
+  : isLaptop
+  ? 3
+  : isTablet
+  ? 2
+  : 1;
 
     const data = {
         labels: [
@@ -61,9 +82,11 @@ const LineBarReact = ({totalCount , details}) => {
                 backgroundColor: "red",
                 pointBackgroundColor: "red",
                 pointBorderColor: "red",
-                pointStyle: "rect",
+                pointStyle: "circle",
                 pointHoverRadius: 8,
-                borderWidth: 2,
+                borderWidth: borderWidth,    // ✅ Dynamic Border Width
+                pointRadius: pointRadius,    // ✅ Dynamic Point Radius
+               
             },
         ],
     };
@@ -131,9 +154,9 @@ const LineBarReact = ({totalCount , details}) => {
     };
 
     return (
-        // <div className="h-[85%] flex justify-center w-full">
+        <div className="h-[85%] flex justify-center w-full">
             <Line data={data} options={options} />
-        // </div>
+         </div>
     );
 };
 

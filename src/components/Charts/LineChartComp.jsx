@@ -43,7 +43,7 @@ const LineChartComp = ({ ageData, heartRateData }) => {
     : 16;
 
   const axisTitleSize = isLargeDesktop
-    ? 30
+    ? 20
     : isDesktop
     ? 16
     : isLaptop
@@ -53,7 +53,7 @@ const LineChartComp = ({ ageData, heartRateData }) => {
     : 9;
 
   const dataLabelFontSize = isLargeDesktop
-    ? 30
+    ? 18
     : isDesktop
     ? 14
     : isLaptop
@@ -63,7 +63,7 @@ const LineChartComp = ({ ageData, heartRateData }) => {
     : 8;
 
   const borderWidth = isLargeDesktop
-    ? 6
+    ? 5
     : isDesktop
     ? 3
     : isLaptop
@@ -73,7 +73,7 @@ const LineChartComp = ({ ageData, heartRateData }) => {
     : 1;
 
   const pointRadius = isLargeDesktop
-    ? 5
+    ? 4
     : isDesktop
     ? 4
     : isLaptop
@@ -117,7 +117,7 @@ const LineChartComp = ({ ageData, heartRateData }) => {
         align: "top",
         font: {
           size: dataLabelFontSize,  // ✅ Dynamic Data Label Font Size
-          weight: "bold",
+          // weight: "bold",
         },
       },
     },
@@ -152,7 +152,7 @@ const LineChartComp = ({ ageData, heartRateData }) => {
           color: "#000",
           font: {
             size: axisTitleSize,
-            weight: "bold",
+            // weight: "bold",
           },
         },
         beginAtZero: true,
