@@ -8,10 +8,14 @@ import {
   Title,
 } from "chart.js";
 import ChartDataLabels from 'chartjs-plugin-datalabels';  // Import the plugin
+import { useMediaQuery } from "react-responsive";
 
 ChartJS.register(ArcElement, Tooltip, Legend, Title);  // Register the plugin
 
 const PieCharts = ({ firstValue = 60.3, firstColor = "#FF0000", secondColor = "#FFCCCC", title }) => {
+  const isLaptop = useMediaQuery({ minWidth: 824, maxWidth: 1479 });
+  const isTablet = useMediaQuery({ minWidth: 640, maxWidth: 823 });    // md
+  const isMobile = useMediaQuery({ maxWidth: 639 });       
   const secondValue = 100 - firstValue;
 
   const chartRef = useRef();
@@ -56,6 +60,7 @@ const PieCharts = ({ firstValue = 60.3, firstColor = "#FF0000", secondColor = "#
         color: "#fff",  // Color of the text
         font: {
           weight: "bold",
+          size: isTablet ? 8 : isMobile ? 8 :12
         },
         formatter: (value) => `${value}%`,  // Format the value as percentage
         anchor: "center",  // Position the label in the center of the segment

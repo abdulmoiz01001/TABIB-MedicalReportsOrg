@@ -321,6 +321,7 @@ body {
 		linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 1px, transparent 1px);
 		background-size: 1px 10px; /* Adjust the size of the grid */
 		position: relative;
+		margin-top:4px;
 		z-index: 0;
 	  }
   }

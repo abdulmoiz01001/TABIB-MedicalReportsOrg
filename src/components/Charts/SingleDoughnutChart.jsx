@@ -33,7 +33,7 @@ const DynamicDoughnutChart = ({ value, showCenterValue = true, showSegmentLines 
       if (!showCenterValue) return;
       const { ctx, width, height } = chart;
       ctx.save();
-      ctx.font =  isLaptop ? 'bold 15px Arial' :'bold 24px Arial';
+      ctx.font = isLargeDesktop ? 'bold 24px Arial' : isDesktop ? 'bold 24px Arial' :  isLaptop ? 'bold 20px Arial' :'bold 12px Arial';
       ctx.fillStyle = '#000000';
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';

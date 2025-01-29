@@ -62,7 +62,7 @@ const BarComp = ({ details , totalCount }) => {
       ? 16
       : isLaptop
         ? 11 :isTablet ? 10
-        : 8;
+        : 9;
 
   // Chart options with customized scales and labels
   // const options = {
@@ -178,7 +178,7 @@ const BarComp = ({ details , totalCount }) => {
         //     size: titleFontSize,  // Dynamically change font size
         //     weight:"bold"
         //   },
-        //   beginAtZero: true,  // Start the y-axis from 0
+        //   // beginAtZero: true,  // Start the y-axis from 0
         // },
         grid: {
           display: true,  // Show grid lines for the y-axis
@@ -190,6 +190,10 @@ const BarComp = ({ details , totalCount }) => {
         ticks: {
           callback: function(value) {
             return value.toString(); // Ensure the label is a string (optional)
+          },
+          font: {
+            size: titleFontSize,  // Dynamically change font size
+            weight:"bold"
           },
           autoSkip: false,  // Prevent auto-skip for ticks
           maxRotation: 0,  // Rotate labels to 90 degrees for vertical alignment

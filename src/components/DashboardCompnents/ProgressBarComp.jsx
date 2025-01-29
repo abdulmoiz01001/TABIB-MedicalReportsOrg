@@ -33,20 +33,32 @@ const ProgressBarComp = ({ reportsCounts, details, title, percentage, min = 0, m
                     {/* Title Section */}
                     <div className="flex justify-between w-full items-center">
                         <span className="desktop:text-[1.2rem] mobile:text-[0.9rem] laptop:text-[0.9rem] tablet:text-[0.9rem] large-desktop:text-[2.2rem] font-semibold text-gray-700">{title}</span>
-                        {title === 'SpO2'|| title === 'Temperature' && (
+                        {title === 'SpO2' && (
                             <span className="desktop:text-[1rem] mobile:text-[0.9rem] tablet:text-[0.9rem] laptop:text-[0.7rem] large-desktop:text-[2.2rem] font-semibold text-red-500">{percentage}%</span>
+                        )}
+                        {title === 'Temperature'  && (
+                        <span className="desktop:text-[1rem] mobile:text-[0.9rem] tablet:text-[0.9rem] laptop:text-[0.7rem] large-desktop:text-[2.2rem] font-semibold text-red-500">{percentage}%</span>
                         )}
                     </div>
                     {/* Progress Bar Container */}
                     <div className="relative w-full laptop:h-[10px] tablet:h-[8px] mobile:h-[9px] desktop:h-[17px] large-desktop:h-[30px] bg-gray-200 rounded-none overflow-hidden">
                         {/* Progress Bar Fill */}
+                      {   rangeValue ? 
+                          <div
+                          className="h-full bg-red-500 transition-all duration-300 ease-in-out relative"
+                          style={{ width: rangeValue }}
+                          >
+                            {/* Shine Effect */}
+                            <div className="absolute top-0 left-0 w-full h-full shine-effect"></div>
+                        </div> :
                         <div
-                            className="h-full bg-red-500 transition-all duration-300 ease-in-out relative"
-                            style={{ width: rangeValue }}
+                        className="h-full bg-red-500 transition-all duration-300 ease-in-out relative"
+                        style={{ width: percentage+"%" }}
                         >
                             {/* Shine Effect */}
                             <div className="absolute top-0 left-0 w-full h-full shine-effect"></div>
                         </div>
+                        } 
                     </div>
                     {/* Range Section */}
                     {title === 'SpO2' || title === 'Temperature' ? (
