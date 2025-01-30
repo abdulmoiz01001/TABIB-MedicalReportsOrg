@@ -92,8 +92,8 @@ const DashboardStaticsComp = () => {
               <ReportBoxComp title={"Test Report "} title2={`Month ${getCurrentMonthName()}`} data={analyticsData.data.currentMonthReportsCount} />
             </div> */}
             <div className="tablet:w-full  mobile:w-full tablet:flex-wrap mobile:flex-wrap mobile:h-full tablet:h-full gap-3 flex justify-between items-center laptop:h-[15%] h-[20%]">
-              <ReportBoxComp data={analyticsData.data.hypertensive} title={"Hypertensive"} count={"2091"} female={"1123"} male={"800"} />
               <ReportBoxComp title={"Total Test"} title2={"Reports"} data={analyticsData.data.totalReportsCount} />
+              <ReportBoxComp data={analyticsData.data.hypertensive} title={"Hypertensive"} count={"2091"} female={"1123"} male={"800"} />
               <PulseRateAndBloodPresureComp data={analyticsData.data.pluseAndBpAverage} />
               <ReportBoxComp title={"Test Report "} title2={`Year ${getCurrentYear()}`} data={analyticsData.data.currentYearReportsCount} />
               <ReportBoxComp title={"Test Report "} title2={`Month ${getCurrentMonthName()}`} data={analyticsData.data.currentMonthReportsCount} />

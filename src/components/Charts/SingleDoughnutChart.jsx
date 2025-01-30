@@ -15,7 +15,7 @@ const DynamicDoughnutChart = ({ value, showCenterValue = true, showSegmentLines 
   const chartRef = useRef()
 
   const data = {
-    labels: ['Covered', 'Remaining'],
+    labels: ['Hypertensive', 'Normotensive'],
     datasets: [
       {
         data: [value, remaining],

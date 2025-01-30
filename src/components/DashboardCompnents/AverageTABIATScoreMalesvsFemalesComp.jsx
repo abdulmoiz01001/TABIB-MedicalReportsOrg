@@ -219,12 +219,13 @@ const AverageTABIATScoreMalesvsFemalesComp = ({ data }) => {
         </div>
 
         {/* Male Score */}
-        <div className="flex  flex-col h-full   justify-center items-center">
+        <div className="flex overflow-hidden border-4 relative flex-col h-full   justify-center items-center">
           <img
             src={maleImage}
             alt="Male Score"
-            className="large-desktop:w-[140px] mobile:w-[60px] mobile:h-[100px] tablet:w-[40px] laptop:w-[60px] desktop:h-[205px] desktop:w-[100px]"
+            className="large-desktop:w-[137px] mobile:w-[60px] mobile:h-[100px] tablet:w-[40px] laptop:w-[60px] desktop:h-[205px] desktop:w-[100px]"
           />
+           <div className="absolute top-0 left-0 w-full h-full shine-effect-male-female"></div>
       
         </div>
 
@@ -232,16 +233,13 @@ const AverageTABIATScoreMalesvsFemalesComp = ({ data }) => {
         <img src="line.svg" alt="Divider" className="large-desktop:h-[300px] mobile:h-[100px]" />
 
         {/* Female Score */}
-        <div className="flex flex-col h-full  justify-center  items-center">
+        <div className="flex overflow-hidden relative  flex-col h-full  justify-center  items-center">
           <img
             src={femaleImage}
             alt="Female Score"
             className="large-desktop:w-[150px] mobile:w-[47.5px]  laptop:w-[65px] desktop:h-[300px] desktop:w-[98px]"
           />
-
-
-
-       
+            <div className="absolute top-0 left-0 w-full  h-full shine-effect-male-female"></div>
         </div>
       </div>
     </div>

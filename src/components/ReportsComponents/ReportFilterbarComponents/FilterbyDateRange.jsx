@@ -35,7 +35,11 @@ const FilterbyDateRange = ({toggleDropdown , formatDateRange , showCalendar ,sel
                                     editableDateInputs={true}
                                     rangeColors={["#CC0001"]}
                                     className='mobile:flex tablet:flex tablet:flex-col mobile:w-[280px] overflow-auto mobile:flex-col'
-                                />
+                            
+                                    // startDatePlaceholder=''
+                                    // endDatePlaceholder=''
+                                    // weekStartsOn={false}
+                              />
                                 <div className="flex justify-end mt-2">
                                     <button
                                         onClick={handleClear}

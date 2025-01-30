@@ -37,7 +37,7 @@ const ProgressBarComp = ({ reportsCounts, details, title, percentage, min = 0, m
                             <span className="desktop:text-[1rem] mobile:text-[0.9rem] tablet:text-[0.9rem] laptop:text-[0.7rem] large-desktop:text-[1.2rem] font-semibold text-red-500">{percentage}%</span>
                         )}
                         {title === 'Temperature'  && (
-                        <span className="desktop:text-[1rem] mobile:text-[0.9rem] tablet:text-[0.9rem] laptop:text-[0.7rem] large-desktop:text-[1.2rem] font-semibold text-red-500">{percentage}%</span>
+                        <span className="desktop:text-[1rem] mobile:text-[0.9rem] tablet:text-[0.9rem] laptop:text-[0.7rem] large-desktop:text-[1.2rem] font-semibold text-red-500">{percentage} <sup className="text-[#333333]" >F</sup></span>
                         )}
                     </div>
                     {/* Progress Bar Container */}

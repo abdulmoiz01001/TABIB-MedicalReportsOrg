@@ -37,7 +37,7 @@ const TemperamentChartComp = ({ data }) => {
               alt="Male"
             />
             <p className="desktop:text-[1rem] large-desktop:text-[20px] laptop:text-[0.6rem] tablet:text-[0.8rem] mobile:text-[0.8rem] large-desktop:text-[2rem] text-black">
-              Male
+              M
             </p>
           </div>
           <h1 className="desktop:text-[1rem] laptop:text-[0.7rem] tablet:px-2 mobile:px-2 tablet:text-[0.7rem] mobile:text-[0.7rem] large-desktop:text-[1.5rem] text-center font-bold text-black">
@@ -55,7 +55,7 @@ const TemperamentChartComp = ({ data }) => {
               alt="Female"
             />
             <p className="desktop:text-[1rem] large-desktop:text-[20px] laptop:text-[0.6rem] tablet:text-[0.8rem] mobile:text-[0.8rem] large-desktop:text-[2rem] text-black">
-              Female
+              F
             </p>
           </div>
         </div>

@@ -39,7 +39,7 @@ const BarComp = ({ details, totalCount }) => {
     labels,
     datasets: [
       {
-        label: "Hypertension",
+        label: "Hypertensive",
         data: hypertensiveData,
         backgroundColor: "rgba(255, 0, 0, 0.8)",
         barThickness: isLargeDesktop
