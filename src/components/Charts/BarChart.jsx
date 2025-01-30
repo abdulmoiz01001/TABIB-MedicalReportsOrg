@@ -106,14 +106,59 @@ const BarComp = ({ details, totalCount }) => {
     animation: false, 
   };
 
+  // useEffect(() => {
+  //   const chart = chartRef.current;
+  //   if (!chart) return;
+
+  //   const ctx = chart.ctx;
+  //   let shineY = chart.chartArea.bottom;
+
+  //   const animateShine = () => {
+  //     ctx.clearRect(0, 0, chart.width, chart.height);
+  //     chart.draw();
+
+  //     chart.data.datasets.forEach((dataset, datasetIndex) => {
+  //       const meta = chart.getDatasetMeta(datasetIndex);
+  //       meta.data.forEach((bar) => {
+  //         const barX = bar.x - bar.width / 2;
+  //         const barY = bar.y;
+  //         const barWidth = bar.width;
+  //         const barHeight = chart.chartArea.bottom - barY;
+
+  //         const gradient = ctx.createLinearGradient(0, shineY, 0, shineY + 10);
+  //         gradient.addColorStop(0, "rgba(255, 255, 255, 0)");
+  //         gradient.addColorStop(0.5, "rgba(255, 255, 255, 0.6)");
+  //         gradient.addColorStop(1, "rgba(255, 255, 255, 0)");
+
+  //         ctx.fillStyle = gradient;
+  //         ctx.fillRect(barX, barY, barWidth, barHeight);
+  //       });
+  //     });
+
+  //     shineY -= 1;
+  //     if (shineY < chart.chartArea.top) {
+  //       shineY = chart.chartArea.bottom;
+  //     }
+
+  //     requestAnimationFrame(animateShine);
+  //   };
+
+  //   animateShine();
+  // }, []);
+
   useEffect(() => {
     const chart = chartRef.current;
     if (!chart) return;
 
     const ctx = chart.ctx;
     let shineY = chart.chartArea.bottom;
+    let lastTime = performance.now();
+    const speed = 1000; // Adjust speed (in milliseconds) for one complete cycle
 
-    const animateShine = () => {
+    const animateShine = (timestamp) => {
+      const deltaTime = timestamp - lastTime;
+      lastTime = timestamp;
+
       ctx.clearRect(0, 0, chart.width, chart.height);
       chart.draw();
 
@@ -125,9 +170,9 @@ const BarComp = ({ details, totalCount }) => {
           const barWidth = bar.width;
           const barHeight = chart.chartArea.bottom - barY;
 
-          const gradient = ctx.createLinearGradient(0, shineY, 0, shineY + 10);
+          const gradient = ctx.createLinearGradient(0, shineY, 0, shineY + 50);
           gradient.addColorStop(0, "rgba(255, 255, 255, 0)");
-          gradient.addColorStop(0.5, "rgba(255, 255, 255, 0.6)");
+          gradient.addColorStop(0.5, "rgba(255, 255, 255, 0.3)");
           gradient.addColorStop(1, "rgba(255, 255, 255, 0)");
 
           ctx.fillStyle = gradient;
@@ -135,7 +180,9 @@ const BarComp = ({ details, totalCount }) => {
         });
       });
 
-      shineY -= 1;
+      // Control speed: Movement is proportional to time elapsed
+      shineY -= (chart.chartArea.bottom - chart.chartArea.top) * (deltaTime / speed);
+
       if (shineY < chart.chartArea.top) {
         shineY = chart.chartArea.bottom;
       }
@@ -143,7 +190,7 @@ const BarComp = ({ details, totalCount }) => {
       requestAnimationFrame(animateShine);
     };
 
-    animateShine();
+    requestAnimationFrame(animateShine);
   }, []);
 
   return (

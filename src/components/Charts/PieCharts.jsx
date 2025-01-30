@@ -13,6 +13,9 @@ import { useMediaQuery } from "react-responsive";
 ChartJS.register(ArcElement, Tooltip, Legend, Title);  // Register the plugin
 
 const PieCharts = ({ firstValue = 60.3, firstColor = "#FF0000", secondColor = "#FFCCCC", title }) => {
+  const isLargeDesktop = useMediaQuery({ minWidth: 2560 });      // 2xl
+  const isDesktop = useMediaQuery({ minWidth: 1480, maxWidth: 2559 }); // xl
+  
   const isLaptop = useMediaQuery({ minWidth: 824, maxWidth: 1479 });
   const isTablet = useMediaQuery({ minWidth: 640, maxWidth: 823 });    // md
   const isMobile = useMediaQuery({ maxWidth: 639 });       
@@ -60,7 +63,7 @@ const PieCharts = ({ firstValue = 60.3, firstColor = "#FF0000", secondColor = "#
         color: "#fff",  // Color of the text
         font: {
           weight: "bold",
-          size: isTablet ? 8 : isMobile ? 8 :20
+          size: isTablet ? 8 : isMobile ? 8 : isLaptop ? 14 : isDesktop? 14: 16
         },
         formatter: (value) => `${value}%`,  // Format the value as percentage
         anchor: "center",  // Position the label in the center of the segment

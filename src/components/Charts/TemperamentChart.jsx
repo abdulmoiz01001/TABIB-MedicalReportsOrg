@@ -162,55 +162,101 @@ const TemperamentChart = ({ details }) => {
     },
   };
 
-      useEffect(() => {
-        const chart = chartRef.current;
-        if (!chart) return;
+   useEffect(() => {
+      const chart = chartRef.current;
+      if (!chart) return;
+  
+      const ctx = chart.ctx;
+      let shineY = chart.chartArea.bottom;
+      let lastTime = performance.now();
+      const speed = 1000; // Adjust speed (in milliseconds) for one complete cycle
+  
+      const animateShine = (timestamp) => {
+        const deltaTime = timestamp - lastTime;
+        lastTime = timestamp;
+  
+        ctx.clearRect(0, 0, chart.width, chart.height);
+        chart.draw();
+  
+        chart.data.datasets.forEach((dataset, datasetIndex) => {
+          const meta = chart.getDatasetMeta(datasetIndex);
+          meta.data.forEach((bar) => {
+            const barX = bar.x - bar.width / 2;
+            const barY = bar.y;
+            const barWidth = bar.width;
+            const barHeight = chart.chartArea.bottom - barY;
+  
+            const gradient = ctx.createLinearGradient(0, shineY, 0, shineY + 50);
+            gradient.addColorStop(0, "rgba(255, 255, 255, 0)");
+            gradient.addColorStop(0.5, "rgba(255, 255, 255, 0.3)");
+            gradient.addColorStop(1, "rgba(255, 255, 255, 0)");
+  
+            ctx.fillStyle = gradient;
+            ctx.fillRect(barX, barY, barWidth, barHeight);
+          });
+        });
+  
+        // Control speed: Movement is proportional to time elapsed
+        shineY -= (chart.chartArea.bottom - chart.chartArea.top) * (deltaTime / speed);
+  
+        if (shineY < chart.chartArea.top) {
+          shineY = chart.chartArea.bottom;
+        }
+  
+        requestAnimationFrame(animateShine);
+      };
+  
+      requestAnimationFrame(animateShine);
+    }, []);
+      // useEffect(() => {
+      //   const chart = chartRef.current;
+      //   if (!chart) return;
     
-        const ctx = chart.ctx;
-        let shineY = chart.chartArea.bottom;
+      //   const ctx = chart.ctx;
+      //   let shineY = chart.chartArea.bottom;
     
-        const animateShine = () => {
-          ctx.save();
+      //   const animateShine = () => {
+      //     ctx.save();
     
-          // Clear previous shine
-          ctx.clearRect(
-            chart.chartArea.left,
-            chart.chartArea.top,
-            chart.chartArea.right - chart.chartArea.left,
-            chart.chartArea.bottom - chart.chartArea.top
-          );
+      //     // Clear previous shine
+      //     ctx.clearRect(
+      //       chart.chartArea.left,
+      //       chart.chartArea.top,
+      //       chart.chartArea.right - chart.chartArea.left,
+      //       chart.chartArea.bottom - chart.chartArea.top
+      //     );
     
-          // Draw static bars
-          chart.draw();
+      //     // Draw static bars
+      //     chart.draw();
     
-          // Create the shine gradient
-          const gradient = ctx.createLinearGradient(0, shineY, 0, shineY + 20);
-          gradient.addColorStop(0, "rgba(255, 255, 255, 0)");
-          gradient.addColorStop(0.5, "rgba(255, 255, 255, 0.4)");
-          gradient.addColorStop(1, "rgba(255, 255, 255, 0)");
+      //     // Create the shine gradient
+      //     const gradient = ctx.createLinearGradient(0, shineY, 0, shineY + 20);
+      //     gradient.addColorStop(0, "rgba(255, 255, 255, 0)");
+      //     gradient.addColorStop(0.5, "rgba(255, 255, 255, 0.4)");
+      //     gradient.addColorStop(1, "rgba(255, 255, 255, 0)");
     
-          // Overlay the shine effect
-          ctx.fillStyle = gradient;
-          ctx.fillRect(
-            chart.chartArea.left,
-            shineY,
-            chart.chartArea.right - chart.chartArea.left,
-            20
-          );
+      //     // Overlay the shine effect
+      //     ctx.fillStyle = gradient;
+      //     ctx.fillRect(
+      //       chart.chartArea.left,
+      //       shineY,
+      //       chart.chartArea.right - chart.chartArea.left,
+      //       20
+      //     );
     
-          ctx.restore();
+      //     ctx.restore();
     
-          // Move the shine effect upward
-          shineY -= 1;
-          if (shineY < chart.chartArea.top) {
-            shineY = chart.chartArea.bottom;
-          }
+      //     // Move the shine effect upward
+      //     shineY -= 1;
+      //     if (shineY < chart.chartArea.top) {
+      //       shineY = chart.chartArea.bottom;
+      //     }
     
-          requestAnimationFrame(animateShine);
-        };
+      //     requestAnimationFrame(animateShine);
+      //   };
     
-        animateShine();
-      }, []);
+      //   animateShine();
+      // }, []);
 
   return <Bar ref={chartRef} data={data} options={options} plugins={[ChartDataLabels]} />;
 };

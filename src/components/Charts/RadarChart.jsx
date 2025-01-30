@@ -77,7 +77,7 @@ const RadarChart = ({ details }) => {
         Temperament Graph
       </h1>
       {chartData ? (
-        <div className="w-full flex justify-center items-center large-desktop:p-4 large-desktop:h-[500px]">
+        <div className="w-[80%] flex  h-[80%] justify-center items-center large-desktop:p-4 large-desktop:h-[500px]">
           <Radar data={chartData} options={chartOptions} />
         </div>
       ) : (

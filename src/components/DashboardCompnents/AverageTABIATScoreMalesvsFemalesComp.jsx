@@ -201,7 +201,7 @@ const AverageTABIATScoreMalesvsFemalesComp = ({ data }) => {
       <h1 className="desktop:text-[1rem] mobile:pb-2 tablet:text-[0.7rem] mobile:text-[0.7rem] laptop:text-[0.7rem] large-desktop:text-[1.5rem] font-bold text-black">
         Average TABIAT Score of Males vs Females
       </h1>
-      <div className="flex  h-[70%] w-[90%] grid-background justify-between mobile:items-end  items-end">
+      <div className="flex  h-[70%] w-[90%]  grid-background justify-between mobile:items-end  items-end">
         {/* Left Y-axis for scale */}
         
         <div className="h-full w-[20px] gap-[2px]  flex flex-col-reverse justify-center  items-center">
@@ -219,7 +219,7 @@ const AverageTABIATScoreMalesvsFemalesComp = ({ data }) => {
         </div>
 
         {/* Male Score */}
-        <div className="flex  flex-col  justify-center items-center">
+        <div className="flex  flex-col h-full   justify-center items-center">
           <img
             src={maleImage}
             alt="Male Score"
@@ -232,12 +232,15 @@ const AverageTABIATScoreMalesvsFemalesComp = ({ data }) => {
         <img src="line.svg" alt="Divider" className="large-desktop:h-[300px] mobile:h-[100px]" />
 
         {/* Female Score */}
-        <div className="flex flex-col justify-center  items-center">
+        <div className="flex flex-col h-full  justify-center  items-center">
           <img
             src={femaleImage}
             alt="Female Score"
-            className="large-desktop:w-[150px] mobile:w-[47.5px] laptop:w-[65px] desktop:h-[300px] desktop:w-[98px]"
+            className="large-desktop:w-[150px] mobile:w-[47.5px]  laptop:w-[65px] desktop:h-[300px] desktop:w-[98px]"
           />
+
+
+
        
         </div>
       </div>
