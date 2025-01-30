@@ -320,6 +320,7 @@ body {
 
 @keyframes shine-animation-vertical {
     0% {
+		
         top: 100%;
     }
     100% {

@@ -231,7 +231,7 @@ const AverageTABIATScoreMalesvsFemalesComp = ({ data }) => {
           <div className='w-full h-[1px] z-0 bg-gray-300' ></div>
 
         </div>
-        <div className="flex absolute  h-[100%] w-[90%] desktop:h-[95%] ml-6 large-desktop:h-[90%] large-desktop:mb-2 grid-background justify-between mobile:justify-start mobile:gap-8 mobile:items-end  items-end">
+        <div className="flex absolute  h-[100%] w-[90%] desktop:h-[95%] ml-6  large-desktop:ml-[70px] large-desktop:h-[90%] large-desktop:mb-2 grid-background justify-between mobile:justify-start mobile:gap-8 mobile:items-end  items-end">
        
       
         <div className="flex overflow-hidden relative flex-col h-full   justify-center items-center">
@@ -240,7 +240,7 @@ const AverageTABIATScoreMalesvsFemalesComp = ({ data }) => {
             alt="Male Score"
             className="large-desktop:w-[133px] z-10 mobile:w-[80px] mobile:h-[152px] tablet:w-[40px] laptop:w-[60px] desktop:h-[199px] desktop:w-[100px]"
           />
-           <div className="absolute top-0 left-0 w-full h-full shine-effect-male-female"></div>
+           <div className="absolute top-0 left-0 w-full z-20 h-full shine-effect-male-female"></div>
       
         </div>
 
@@ -254,7 +254,7 @@ const AverageTABIATScoreMalesvsFemalesComp = ({ data }) => {
             alt="Female Score"
             className="large-desktop:w-[144px] z-10 mobile:w-[87.5px] mobile:h-[152px] laptop:w-[65px] desktop:h-[300px] desktop:w-[95px]"
           />
-            <div className="absolute top-0 left-0 w-full  h-full shine-effect-male-female"></div>
+            <div className="absolute top-0 left-0 w-full  z-20 h-full shine-effect-male-female"></div>
         </div>
         </div>
       </div>
