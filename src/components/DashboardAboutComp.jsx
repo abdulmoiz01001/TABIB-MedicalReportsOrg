@@ -102,6 +102,30 @@ const DashboardAboutComp = () => {
         </p>
       </div>
 
+      <div className="bg-white flex justify center flex-col shadow-lg p-6 rounded-lg mb-10">
+        <img src="machine.png" alt="Machine" />
+        {/* <h2 className="text-2xl font-semibold text-red-600">9. ADDITIONAL INFORMATION</h2> */}
+        <p className="text-gray-700 text-center mt-2">
+        TABIB (Temperament and Blood-Pressure Indication Bot) Kiosk
+        </p>
+      </div>
+
+      <div className="bg-white flex justify center flex-col shadow-lg p-6 rounded-lg mb-10">
+        <img src="infograph.png" alt="Machine" />
+        {/* <h2 className="text-2xl font-semibold text-red-600">9. ADDITIONAL INFORMATION</h2> */}
+        <p className="text-gray-700 text-center mt-2">
+        TABIAT (Temperament and Blood-Pressure Indication and Tracking) Report
+        </p>
+      </div>
+
+      <div className="bg-white flex justify center flex-col shadow-lg p-6 rounded-lg mb-10">
+        <img src="desktop.png" alt="Machine" />
+        {/* <h2 className="text-2xl font-semibold text-red-600">9. ADDITIONAL INFORMATION</h2> */}
+        <p className="text-gray-700 text-center mt-2">
+        TABIAT.LIVE (Temperament and Blood-Pressure Indication and Tracking) 
+        </p>
+      </div>
+
       {/* Footer Section */}
       <footer className="text-center py-6 border-t mt-6 text-gray-600">
         &copy; {new Date().getFullYear()} TABIAT.LIVE | Powered by AI & Data Science
