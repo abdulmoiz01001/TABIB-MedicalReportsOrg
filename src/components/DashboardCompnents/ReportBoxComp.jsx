@@ -9,7 +9,7 @@ const ReportBoxComp = ({ data, title, title2 , count }) => {
 
 
   return (
-    <div className=" mobile:w-[48%] large-desktop:w-[13%] mobile:h-[120px] mobile:justify-center tablet:w-[48%] desktop:w-full laptop:w-full   tablet:py-3 laptop:py-1.5 desktop:py-2 large-desktop:py-5 bg-[#FAFAFA] px-2 flex flex-col justify-end items-center  rounded-[15px] h-[100%] border border-[#CC0001]">
+    <div className=" mobile:w-[48%] mobile:h-[120px] mobile:justify-center tablet:w-[48%] desktop:w-[40%] laptop:w-full   tablet:py-3 laptop:py-1.5 desktop:py-2 large-desktop:py-5 bg-[#FAFAFA] px-2 flex flex-col justify-end items-center  rounded-[15px] h-[90%] border border-[#CC0001]">
       {/* Title */}
       <h1 className="text-[#000000] large-desktop:text-[2rem] tablet:text-[0.8rem] desktop:text-[1.5rem] laptop:text-[0.8rem] large-desktop:leading-[35px] desktop:leading-7 text-center font-semibold">{title} <br /> {title2}</h1>
       {/* <h1 className="text-[#000000] text-[1.5rem] text-center font-bold"></h1> */}
