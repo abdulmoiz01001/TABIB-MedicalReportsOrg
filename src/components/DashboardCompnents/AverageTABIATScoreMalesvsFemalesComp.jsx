@@ -201,45 +201,61 @@ const AverageTABIATScoreMalesvsFemalesComp = ({ data }) => {
       <h1 className="desktop:text-[1rem] mobile:pb-2 tablet:text-[0.7rem] mobile:text-[0.7rem] laptop:text-[0.7rem] large-desktop:text-[1.5rem] font-bold text-black">
         Average TABIAT Score of Males vs Females
       </h1>
-      <div className="flex  h-[70%] w-[90%]  grid-background justify-between mobile:items-end  items-end">
+      <div className="flex relative h-[70%]  large-desktop:h-full w-[90%] grid-background justify-center mobile:justify-start  mobile:items-end  items-end">
         {/* Left Y-axis for scale */}
         
-        <div className="h-full w-[20px] gap-[2px]  flex flex-col-reverse justify-center  items-center">
-          <span className="desktop:text-[0.8rem] mobile:text-[0.35rem] tablet:text-[0.5rem] laptop:text-[0.5rem] large-desktop:text-[1.2rem]">0</span>
-          <span className="desktop:text-[0.8rem] mobile:text-[0.35rem] tablet:text-[0.5rem] laptop:text-[0.5rem] large-desktop:text-[1.2rem]">10</span>
-          <span className="desktop:text-[0.8rem] mobile:text-[0.35rem] tablet:text-[0.5rem] laptop:text-[0.5rem] large-desktop:text-[1.2rem]">20</span>
-          <span className="desktop:text-[0.8rem] mobile:text-[0.35rem] tablet:text-[0.5rem] laptop:text-[0.5rem] large-desktop:text-[1.2rem]">30</span>
-          <span className="desktop:text-[0.8rem] mobile:text-[0.35rem] tablet:text-[0.5rem] laptop:text-[0.5rem] large-desktop:text-[1.2rem]">40</span>
-          <span className="desktop:text-[0.8rem] mobile:text-[0.35rem] tablet:text-[0.5rem] laptop:text-[0.5rem] large-desktop:text-[1.2rem]">50</span>
-          <span className="desktop:text-[0.8rem] mobile:text-[0.35rem] tablet:text-[0.5rem] laptop:text-[0.5rem] large-desktop:text-[1.2rem]">60</span>
-          <span className="desktop:text-[0.8rem] mobile:text-[0.35rem] tablet:text-[0.5rem] laptop:text-[0.5rem] large-desktop:text-[1.2rem]">70</span>
-          <span className="desktop:text-[0.8rem] mobile:text-[0.35rem] tablet:text-[0.5rem] laptop:text-[0.5rem] large-desktop:text-[1.2rem]">80</span>
-          <span className="desktop:text-[0.8rem] mobile:text-[0.35rem] tablet:text-[0.5rem] laptop:text-[0.5rem] large-desktop:text-[1.2rem]">90</span>
-          <span className="desktop:text-[0.8rem] mobile:text-[0.35rem] tablet:text-[0.5rem] laptop:text-[0.5rem] large-desktop:text-[1.2rem]">100</span>
+        <div className="h-full w-[5%]  flex flex-col-reverse justify-start  items-center">
+          <span className="desktop:text-[0.8rem] mobile:text-[0.62rem] tablet:text-[0.5rem] laptop:text-[0.5rem] large-desktop:text-[1.2rem]">0</span>
+          <span className="desktop:text-[0.8rem] mobile:text-[0.62rem] tablet:text-[0.5rem] laptop:text-[0.5rem] large-desktop:text-[1.2rem]">10</span>
+          <span className="desktop:text-[0.8rem] mobile:text-[0.62rem] tablet:text-[0.5rem] laptop:text-[0.5rem] large-desktop:text-[1.2rem]">20</span>
+          <span className="desktop:text-[0.8rem] mobile:text-[0.62rem] tablet:text-[0.5rem] laptop:text-[0.5rem] large-desktop:text-[1.2rem]">30</span>
+          <span className="desktop:text-[0.8rem] mobile:text-[0.62rem] tablet:text-[0.5rem] laptop:text-[0.5rem] large-desktop:text-[1.2rem]">40</span>
+          <span className="desktop:text-[0.8rem] mobile:text-[0.62rem] tablet:text-[0.5rem] laptop:text-[0.5rem] large-desktop:text-[1.2rem]">50</span>
+          <span className="desktop:text-[0.8rem] mobile:text-[0.62rem] tablet:text-[0.5rem] laptop:text-[0.5rem] large-desktop:text-[1.2rem]">60</span>
+          <span className="desktop:text-[0.8rem] mobile:text-[0.62rem] tablet:text-[0.5rem] laptop:text-[0.5rem] large-desktop:text-[1.2rem]">70</span>
+          <span className="desktop:text-[0.8rem] mobile:text-[0.62rem] tablet:text-[0.5rem] laptop:text-[0.5rem] large-desktop:text-[1.2rem]">80</span>
+          <span className="desktop:text-[0.8rem] mobile:text-[0.62rem] tablet:text-[0.5rem] laptop:text-[0.5rem] large-desktop:text-[1.2rem]">90</span>
+          <span className="desktop:text-[0.8rem] mobile:text-[0.62rem] tablet:text-[0.5rem] laptop:text-[0.5rem] large-desktop:text-[1.2rem]">100</span>
         </div>
+        <div className='w-[95%] h-full mb-1 flex mobile:gap-[14px] desktop:gap-[20px]  large-desktop:gap-[28px] desktop:h-[90%] large-desktop:h-[90%]  desktop:gap-[18.2px] flex-col justify-center items-center' >
+          <div className='w-full h-[1px] z-0 bg-gray-300' ></div>
+          <div className='w-full h-[1px] z-0 bg-gray-300' ></div>
+          <div className='w-full h-[1px] z-0 bg-gray-300' ></div>
+          <div className='w-full h-[1px] z-0 bg-gray-300' ></div>
+          <div className='w-full h-[1px] z-0 bg-gray-300' ></div>
+          <div className='w-full h-[1px] z-0 bg-gray-300' ></div>
+          <div className='w-full h-[1px] z-0 bg-gray-300' ></div>
+          <div className='w-full h-[1px] z-0 bg-gray-300' ></div>
+          <div className='w-full h-[1px] z-0 bg-gray-300' ></div>
+          <div className='w-full h-[1px] z-0 bg-gray-300' ></div>
+          <div className='w-full h-[1px] z-0 bg-gray-300' ></div>
 
-        {/* Male Score */}
-        <div className="flex overflow-hidden border-4 relative flex-col h-full   justify-center items-center">
+        </div>
+        <div className="flex absolute  h-[100%] w-[90%] desktop:h-[95%] ml-6 large-desktop:h-[90%] large-desktop:mb-2 grid-background justify-between mobile:justify-start mobile:gap-8 mobile:items-end  items-end">
+       
+      
+        <div className="flex overflow-hidden relative flex-col h-full   justify-center items-center">
           <img
             src={maleImage}
             alt="Male Score"
-            className="large-desktop:w-[137px] mobile:w-[60px] mobile:h-[100px] tablet:w-[40px] laptop:w-[60px] desktop:h-[205px] desktop:w-[100px]"
+            className="large-desktop:w-[133px] z-10 mobile:w-[80px] mobile:h-[152px] tablet:w-[40px] laptop:w-[60px] desktop:h-[199px] desktop:w-[100px]"
           />
            <div className="absolute top-0 left-0 w-full h-full shine-effect-male-female"></div>
       
         </div>
 
-        {/* Line Divider */}
-        <img src="line.svg" alt="Divider" className="large-desktop:h-[300px] mobile:h-[100px]" />
+    
+        <img src="line.svg" alt="Divider" className="large-desktop:h-[300px] desktop:h-[200px] mobile:h-[150px]" />
 
-        {/* Female Score */}
+  
         <div className="flex overflow-hidden relative  flex-col h-full  justify-center  items-center">
           <img
             src={femaleImage}
             alt="Female Score"
-            className="large-desktop:w-[150px] mobile:w-[47.5px]  laptop:w-[65px] desktop:h-[300px] desktop:w-[98px]"
+            className="large-desktop:w-[144px] z-10 mobile:w-[87.5px] mobile:h-[152px] laptop:w-[65px] desktop:h-[300px] desktop:w-[95px]"
           />
             <div className="absolute top-0 left-0 w-full  h-full shine-effect-male-female"></div>
+        </div>
         </div>
       </div>
     </div>
