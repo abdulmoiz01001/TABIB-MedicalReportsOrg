@@ -47,7 +47,7 @@ const DashboardStaticsComp = () => {
   }, [dispatch]);
 
   return (
-    <div className="mobile:w-[95%] desktop:w-[98%] large-desktop:w-[98%] large-desktop:h-auto mx-auto   laptop:w-[98%] tablet:w-[100vw] flex flex-row laptop:gap-3 tablet:flex-col mobile:flex-col tablet:justify-center tablet:items-center laptop:justify-between justify-start items-start h-[94%]">
+    <div className="mobile:w-[95%] mobile:py-2 tablet:py-2 desktop:w-[98%] large-desktop:w-[98%] large-desktop:h-auto mx-auto   laptop:w-[98%] tablet:w-[100vw] flex flex-row laptop:gap-3 tablet:flex-col mobile:flex-col tablet:justify-center tablet:items-center laptop:justify-between justify-start items-start h-[94%]">
       {loading || !analyticsData?.success ? (
         <>
           <div className="w-[77%] mobile:w-full flex flex-col h-full gap-3 laptop:pr-3 desktop:pr-3 justify-start items-end large-desktop:pr-4">

@@ -12,7 +12,7 @@ const NoOfPatientsVsAgeComp = ({data , totalCount}) => {
           <p className='desktop:text-[1rem] large-desktop:text-[2rem] font-bold text-black' >Hypertension</p>
         </div> */}
 
-        <h1 className='desktop:text-[1rem] laptop:text-[0.7rem] tablet:text-[0.7rem] mobile:text-[0.7rem] font-bold large-desktop:text-[1.5rem] border-blue-900 text-black ' >Age-wise Distribution of Hypertension</h1>
+        <h1 className='desktop:text-[1rem] mobile:py-2 tablet:py-2 laptop:text-[0.7rem] tablet:text-[0.7rem] mobile:text-[0.7rem] font-bold large-desktop:text-[1.5rem] border-blue-900 text-black ' >Age-wise Distribution of Hypertension</h1>
         {/* <div className='w-[30%] flex justify-center gap-1 items-center h-full ' >
           <div className='bg-[#F9B9B4]  large-desktop:w-[41px] large-desktop:h-[20px] desktop:w-[21px] desktop:h-[10px]' >
 

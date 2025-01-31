@@ -217,7 +217,7 @@ const AverageTABIATScoreMalesvsFemalesComp = ({ data }) => {
           <span className="desktop:text-[0.8rem] mobile:text-[0.62rem] tablet:text-[0.5rem] laptop:text-[0.5rem] large-desktop:text-[1.2rem]">90</span>
           <span className="desktop:text-[0.8rem] mobile:text-[0.62rem] tablet:text-[0.5rem] laptop:text-[0.5rem] large-desktop:text-[1.2rem]">100</span>
         </div>
-        <div className='w-[95%] h-full mb-1 flex mobile:gap-[14px] desktop:gap-[20px]  large-desktop:gap-[28px] desktop:h-[90%] large-desktop:h-[90%]  desktop:gap-[18.2px] flex-col justify-center items-center' >
+        <div className='w-[95%] h-full mb-1 flex mobile:gap-[14px]  desktop:gap-[18px]  large-desktop:gap-[28px] desktop:h-[90%] large-desktop:h-[90%]  desktop:gap-[18.2px] flex-col justify-center items-center' >
           <div className='w-full h-[1px] z-0 bg-gray-300' ></div>
           <div className='w-full h-[1px] z-0 bg-gray-300' ></div>
           <div className='w-full h-[1px] z-0 bg-gray-300' ></div>
@@ -231,7 +231,7 @@ const AverageTABIATScoreMalesvsFemalesComp = ({ data }) => {
           <div className='w-full h-[1px] z-0 bg-gray-300' ></div>
 
         </div>
-        <div className="flex absolute  h-[100%] w-[90%] desktop:h-[95%] ml-6  large-desktop:ml-[70px] large-desktop:h-[90%] large-desktop:mb-2 grid-background justify-between mobile:justify-start mobile:gap-8 mobile:items-end  items-end">
+        <div className="flex absolute  h-[100%] w-[90%] desktop:h-[95%]  ml-6  large-desktop:ml-[70px] large-desktop:h-[90%] large-desktop:mb-2 grid-background justify-between mobile:justify-start mobile:gap-8 mobile:items-end  items-end">
        
       
         <div className="flex overflow-hidden relative flex-col h-full   justify-center items-center">

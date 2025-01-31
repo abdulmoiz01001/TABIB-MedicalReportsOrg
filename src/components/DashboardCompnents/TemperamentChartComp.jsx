@@ -28,7 +28,7 @@ const TemperamentChartComp = ({ data }) => {
       <div className={test}>
         <div className="desktop:w-[90%] large-desktop:w-[95%]  h-[15%]  laptop:px-0 laptop:gap-2 px-2 flex justify-between items-center">
           <div
-            className={`flex justify-end gap-1 items-center cursor-pointer ${getBackgroundColor(
+            className={`flex justify-end gap-1 mobile:py-2 tablet:py-2 items-center cursor-pointer ${getBackgroundColor(
               isMaleSelected
             )}`}
             onClick={handleMaleClick}

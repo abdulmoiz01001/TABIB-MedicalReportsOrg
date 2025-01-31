@@ -208,7 +208,7 @@ const DoughnutChart = ({ details }) => {
 
   return (
     <div className='flex flex-col h-[100%] laptop:py-1 py-2 justify-around  items-center'>
-      <h3 className="desktop:text-[1rem] text-center tablet:text-[0.7rem] laptop:text-[0.7rem] large-desktop:text-[1.5rem] font-bold text-[#000000]">
+      <h3 className="desktop:text-[1rem] text-center mobile:text-[0.7rem] tablet:text-[0.7rem] laptop:text-[0.7rem] large-desktop:text-[1.5rem] font-bold text-[#000000]">
         Hypertension By BMI Classification
       </h3>
 
