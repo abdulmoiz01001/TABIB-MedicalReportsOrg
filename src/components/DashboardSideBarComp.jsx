@@ -44,11 +44,11 @@ const DashboardSideBarComp = () => {
       <LogoutPopUpComp show={logoutPopuUpShow} setShow={setLogoutPopuUpShow} />
       {/* Sidebar */}
       <div
-        className={`desktop:h-[50%] large-desktop:h-[50%] py-4 laptop:h-[70%] laptop:w-[100px] tablet:w-[80px] tablet:h-[50%] mobile:w-[60px] mobile:h-[30%] large-desktop:w-[220px] rounded-[15px] absolute top-1/2 -translate-y-1/2 ${
+        className={`desktop:h-[50%] large-desktop:h-[50%] py-4 laptop:h-[70%] laptop:w-[100px] tablet:w-[80px] tablet:h-[50%] mobile:w-[60px] mobile:h-[50%] large-desktop:w-[220px] rounded-[15px] absolute top-1/2 -translate-y-1/2 ${
           hide ? "-translate-x-[91%] mobile:-translate-x-[88%]" : "translate-x-0"
         } transition-transform duration-300  desktop:w-[81px] bg-[#313131] flex flex-col justify-between gap-8 items-center py-4 shadow-lg`}
       >
-        <div className="flex w-full justify-center items-center large-desktop:pt-4 flex-col gap-4">
+        <div className="flex w-full justify-center items-center large-desktop:pt-4 mobile:pt-2 desktop:pt-4 flex-col gap-4">
           {/* Dynamic Navigation Links */}
           {navLinks.map((link) => (
             <NavLink key={link.name} to={link.path} className={linkClasses}>
