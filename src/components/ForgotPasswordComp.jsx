@@ -193,6 +193,9 @@ const ForgotPasswordComp = () => {
     'items-center'
   );
 
+  const forgotPasswordContainerClass = clsx("w-[40%] tablet:h-[60%] mobile:h-[60%] tablet:w-full mobile:w-full flex flex-col justify-center items-center laptop:gap-2 desktop:gap-2 mobile:gap-2 large-desktop:gap-2 h-full")
+  const logoImageClass = clsx("desktop:w-[161px] desktop:h-[80px] large-desktop:w-[350px] large-desktop:h-[200px]")
+  const logoContainerClass = clsx("w-[35%] mobile:px-4 tablet:px-4 tablet:w-full tablet:h-[40%] mobile:h-[40%] mobile:w-full flex flex-col justify-center tablet:gap-2 mobile:gap-2 gap-8 tablet:items-center mobile:items-center items-start h-full")
   return (
     <Formik
       initialValues={{
@@ -216,11 +219,11 @@ const ForgotPasswordComp = () => {
             className={containerClass}
           >
             <div className={formContainerClass}>
-              <div className="w-[35%] mobile:px-4 tablet:px-4 tablet:w-full tablet:h-[40%] mobile:h-[40%] mobile:w-full flex flex-col justify-center tablet:gap-2 mobile:gap-2 gap-8 tablet:items-center mobile:items-center items-start h-full">
+              <div className={logoContainerClass}>
                 <img
                   src="logo.svg"
                   alt="logo"
-                  className="desktop:w-[161px] desktop:h-[80px] large-desktop:w-[350px] large-desktop:h-[200px]"
+                  className={logoImageClass}
                 />
                 <h1 className={headingClass}>Reset Your Password</h1>
                 <p className={subTextClass}>
@@ -235,7 +238,7 @@ const ForgotPasswordComp = () => {
                   Back to Login
                 </p>
               </div>
-              <div className="w-[40%] tablet:h-[60%] mobile:h-[60%] tablet:w-full mobile:w-full flex flex-col justify-center items-center laptop:gap-2 desktop:gap-2 mobile:gap-2 large-desktop:gap-2 h-full">
+              <div className={forgotPasswordContainerClass}>
                 <h1 className={resetPasswordHeadingClass}>Forgot Password</h1>
 
                 <Field

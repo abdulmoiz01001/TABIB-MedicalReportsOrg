@@ -3,9 +3,9 @@ import clsx from 'clsx';
 const FilterbyBP = ({ toggleDropdown, selectedOption, handleBPOptionSelect, arrowRotate, isDropdownOpen, options }) => {
   
   // Define variables for the Tailwind classes
-  const containerClass = 'flex w-[12%] large-desktop:h-full mobile:relative tablet:relative mobile:w-[98%] tablet:w-[45%] flex-col items-center';
+  const containerClass = 'flex w-[12%] large-desktop:h-full relative mobile:relative tablet:relative mobile:w-[98%] tablet:w-[45%] flex-col items-center';
   const buttonClass = 'w-full rounded-[15px] border-2 mobile:h-[50px] tablet:h-[50px] laptop:h-[50px] desktop:h-[62px] large-desktop:h-full flex justify-around laptop:gap-2 items-center bg-[#FAFAFA] cursor-pointer px-4';
-  const textClass = 'desktop:text-[15px] mobile:text-[11px] tablet:text-[12px] laptop:text-[0.9rem] laptop:leading-4 large-desktop:text-[2rem] text-black';
+  const textClass = 'desktop:text-[15px] mobile:text-[11px] tablet:text-[12px] laptop:text-[0.9rem] laptop:leading-4 large-desktop:text-[1.5rem] text-black';
   const iconClass = clsx('desktop:w-[20px]', {
     'rotate-180': arrowRotate,
     'rotate-0': !arrowRotate,

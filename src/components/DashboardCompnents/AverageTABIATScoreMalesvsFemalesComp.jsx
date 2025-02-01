@@ -115,10 +115,14 @@ const AverageTABIATScoreMalesvsFemalesComp = ({ data }) => {
     'laptop:w-[65px] desktop:h-[300px] desktop:w-[95px]'
   );
 
+  const graphLinesClasses = clsx("w-[95%] h-full mb-1 flex mobile:gap-[14px] desktop:gap-[18px] large-desktop:gap-[28px] desktop:h-[90%] large-desktop:h-[90%] desktop:gap-[18.2px] flex-col justify-center items-center")
+  const graphEachLineClasses = clsx("w-full h-[1px] z-0 bg-gray-300")
+  const subContainerClasses = clsx("flex relative h-[70%] large-desktop:h-full w-[90%] grid-background justify-center mobile:justify-start mobile:items-end items-end")
+  const maleAndFemaleContainerClasses = clsx("flex absolute h-[100%] w-[90%] desktop:h-[95%] ml-6 large-desktop:ml-[70px] large-desktop:h-[90%] large-desktop:mb-2 grid-background justify-between mobile:justify-start mobile:gap-8 mobile:items-end items-end")
   return (
     <div className={containerClasses}>
       <h1 className={titleClasses}>Average TABIAT Score of Males vs Females</h1>
-      <div className="flex relative h-[70%] large-desktop:h-full w-[90%] grid-background justify-center mobile:justify-start mobile:items-end items-end">
+      <div className={subContainerClasses}>
         {/* Left Y-axis for scale */}
         <div className={axisClasses}>
           <span className={axisTextClasses}>0</span>
@@ -133,20 +137,20 @@ const AverageTABIATScoreMalesvsFemalesComp = ({ data }) => {
           <span className={axisTextClasses}>90</span>
           <span className={axisTextClasses}>100</span>
         </div>
-        <div className="w-[95%] h-full mb-1 flex mobile:gap-[14px] desktop:gap-[18px] large-desktop:gap-[28px] desktop:h-[90%] large-desktop:h-[90%] desktop:gap-[18.2px] flex-col justify-center items-center">
-          <div className="w-full h-[1px] z-0 bg-gray-300"></div>
-          <div className="w-full h-[1px] z-0 bg-gray-300"></div>
-          <div className="w-full h-[1px] z-0 bg-gray-300"></div>
-          <div className="w-full h-[1px] z-0 bg-gray-300"></div>
-          <div className="w-full h-[1px] z-0 bg-gray-300"></div>
-          <div className="w-full h-[1px] z-0 bg-gray-300"></div>
-          <div className="w-full h-[1px] z-0 bg-gray-300"></div>
-          <div className="w-full h-[1px] z-0 bg-gray-300"></div>
-          <div className="w-full h-[1px] z-0 bg-gray-300"></div>
-          <div className="w-full h-[1px] z-0 bg-gray-300"></div>
-          <div className="w-full h-[1px] z-0 bg-gray-300"></div>
+        <div className={graphLinesClasses}>
+          <div className={graphEachLineClasses}></div>
+          <div className={graphEachLineClasses}></div>
+          <div className={graphEachLineClasses}></div>
+          <div className={graphEachLineClasses}></div>
+          <div className={graphEachLineClasses}></div>
+          <div className={graphEachLineClasses}></div>
+          <div className={graphEachLineClasses}></div>
+          <div className={graphEachLineClasses}></div>
+          <div className={graphEachLineClasses}></div>
+          <div className={graphEachLineClasses}></div>
+          <div className={graphEachLineClasses}></div>
         </div>
-        <div className="flex absolute h-[100%] w-[90%] desktop:h-[95%] ml-6 large-desktop:ml-[70px] large-desktop:h-[90%] large-desktop:mb-2 grid-background justify-between mobile:justify-start mobile:gap-8 mobile:items-end items-end">
+        <div className={maleAndFemaleContainerClasses}>
           <div className={imageContainerClasses}>
             <img
               src={maleImage}

@@ -194,9 +194,9 @@ const DoughnutChart = ({ details }) => {
   );
 
   const labelsClasses = clsx("large-desktop:text-[1.2rem]", "large-desktop:font-bold", "laptop:text-[11px]", "tablet:text-[10px]", "desktop:text-[15px]")
-
+  const containerClasses = clsx('flex flex-col h-[100%] laptop:py-1 py-2 justify-around items-center')
   return (
-    <div className='flex flex-col h-[100%] laptop:py-1 py-2 justify-around items-center'>
+    <div className={containerClasses}>
       <h3 className={textClasses}>
         Hypertension By BMI Classification
       </h3>

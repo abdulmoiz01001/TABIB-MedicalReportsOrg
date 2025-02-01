@@ -65,15 +65,37 @@ const ProgressBarComp = ({
     'flex justify-between large-desktop:justify-between w-full desktop:text-sm text-gray-600 mt-1'
   );
 
+  const subContainerClasses = clsx("w-[82%] large-desktop:h-[80%] flex flex-col justify-around items-start px-2")
+  const titleContainerClasses = clsx("flex justify-between w-full items-center")
+  const shineEffectClasses = clsx("absolute top-0 left-0 w-full h-full shine-effect")
+   // Define clsx variables for the text styles
+   const textBaseClasses = clsx(
+    'desktop:text-[0.9rem]',
+    'laptop:text-[0.6rem]',
+    'tablet:text-[0.8rem]',
+    'mobile:text-[0.8rem]',
+    'large-desktop:text-[1.3rem]',
+    'text-black'
+  );
+
+  const textRangeClasses = clsx(
+    'large-desktop:text-[1rem]',
+    'tablet:text-[0.6rem]',
+    'mobile:text-[0.6rem]',
+    'laptop:text-[0.5rem]'
+  );
+
+  const rangeContainerClasses = clsx("flex justify-start text-sm text-gray-600 mt-1")
+  const rangeSubContainerClasses = clsx("flex justify-start desktop:text-[0.9rem] large-desktop:text-[1.2rem] w-full")
   return (
     <>
       <div className={containerStyles}>
         <div className={iconStyles}>
           <img src={imgSrc} alt="logo" className={imgStyles} />
         </div>
-        <div className="w-[82%] large-desktop:h-[80%] flex flex-col justify-around items-start px-2">
+        <div className={subContainerClasses}>
           {/* Title Section */}
-          <div className="flex justify-between w-full items-center">
+          <div className={titleContainerClasses}>
             <span className={titleStyles}>{title}</span>
             {title === 'SpO2' && (
               <span className={`${percentageStyles} text-red-500`}>
@@ -93,31 +115,31 @@ const ProgressBarComp = ({
             {rangeValue ? (
               <div className={progressFillStyles} style={{ width: rangeValue }}>
                 {/* Shine Effect */}
-                <div className="absolute top-0 left-0 w-full h-full shine-effect"></div>
+                <div className={shineEffectClasses}></div>
               </div>
             ) : (
               <div className={progressFillStyles} style={{ width: `${percentage}%` }}>
                 {/* Shine Effect */}
-                <div className="absolute top-0 left-0 w-full h-full shine-effect"></div>
+                <div className={shineEffectClasses}></div>
               </div>
             )}
           </div>
 
           {/* Range Section */}
-          {title === 'SpO2' || title === 'Temperature' ? (
-            <div className="flex justify-start text-sm text-gray-600 mt-1">
-              <div className="flex justify-start desktop:text-[0.9rem] large-desktop:text-[1.2rem] w-full">
-                <span className="large-desktop:text-[1rem] tablet:text-[0.6rem] mobile:text-[0.6rem] laptop:text-[0.5rem]">{min}</span>~
-                <span className="large-desktop:text-[1rem] tablet:text-[0.6rem] mobile:text-[0.6rem] laptop:text-[0.5rem]">{max}</span>
-              </div>
-            </div>
-          ) : (
-            <div className={rangeStyles}>
-              <span className="desktop:text-[0.9rem] laptop:text-[0.6rem] tablet:text-[0.8rem] mobile:text-[0.8rem] large-desktop:text-[1.3rem] text-black">{firstState}</span>
-              <span className="desktop:text-[0.9rem] laptop:text-[0.6rem] tablet:text-[0.8rem] mobile:text-[0.8rem] large-desktop:text-[1.3rem] text-black">{secondState}</span>
-              <span className="desktop:text-[0.9rem] laptop:text-[0.6rem] tablet:text-[0.8rem] mobile:text-[0.8rem] large-desktop:text-[1.3rem] text-black">{thirdState}</span>
-            </div>
-          )}
+      {title === 'SpO2' || title === 'Temperature' ? (
+        <div className={rangeContainerClasses}>
+          <div className={rangeSubContainerClasses}>
+            <span className={clsx(textRangeClasses)}>{min}</span>~
+            <span className={clsx(textRangeClasses)}>{max}</span>
+          </div>
+        </div>
+      ) : (
+        <div className={rangeStyles}>
+          <span className={clsx(textBaseClasses)}>{firstState}</span>
+          <span className={clsx(textBaseClasses)}>{secondState}</span>
+          <span className={clsx(textBaseClasses)}>{thirdState}</span>
+        </div>
+      )}
         </div>
       </div>
     </>

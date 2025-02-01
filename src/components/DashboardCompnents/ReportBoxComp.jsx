@@ -40,6 +40,8 @@ const ReportBoxComp = ({ data, title, title2 }) => {
     "text-[1rem]"
   );
 
+  const genderContainerClasses = clsx("flex justify-between items-center w-[70%] large-desktop:w-[85%] laptop:px-1 mobile:px-2 desktop:gap-7")
+
   return (
     <div className={containerClass}>
       {/* Title */}
@@ -51,7 +53,7 @@ const ReportBoxComp = ({ data, title, title2 }) => {
       {data ? (
         <>
           {data?.male >= 0 && data?.female >= 0 && (
-            <div className="flex justify-between items-center w-[70%] large-desktop:w-[85%] laptop:px-1 mobile:px-2 desktop:gap-7">
+            <div className={genderContainerClasses}>
               <p className={genderCountClass}>M: {data?.male}</p>
               <p className={genderCountClass}>F: {data?.female}</p>
             </div>

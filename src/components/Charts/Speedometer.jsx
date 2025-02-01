@@ -69,8 +69,10 @@ const SpeedoMeter = ({
     console.log(speedometerHeight, speedometerWidth);
   }, [speedometerWidth, speedometerHeight]);
 
+  const containerClasses = clsx("flex flex-col justify-center items-center rounded-lg")
+  const subContainerClasses = clsx("w-full flex flex-col justify-center items-center")
   return (
-    <div className="flex flex-col justify-center items-center rounded-lg">
+    <div className={containerClasses}>
       <ReactSpeedometer
         ringWidth={ringWidth}
         maxSegmentLabels={0}
@@ -89,7 +91,7 @@ const SpeedoMeter = ({
         currentValueText=""
       />
 
-      <div className="w-full flex flex-col justify-center items-center">
+      <div className={subContainerClasses}>
         <p className={valueTextSize}>
           {parseInt(value)} {unit}
         </p>

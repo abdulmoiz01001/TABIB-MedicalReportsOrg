@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-
+import clsx from "clsx"
 const BodyTypeLayout = ({ details }) => {
     const [maxValue, setMaxValue] = useState(0);
     const [bodyTypeNames, setBodyTypeNames] = useState([]);
@@ -52,26 +52,29 @@ const BodyTypeLayout = ({ details }) => {
         }
     }, [details]);
 
-    return (
-        <div id="cssportal-grid" className="desktop:px-2 large-desktop:px-4 laptop:px-2 laptop:pb-2 border-red-900">
+     const containerClasses = clsx("desktop:px-2 large-desktop:px-4 laptop:px-2 laptop:pb-2 border-red-900")
+     const subContainerClasses = clsx(`flex flex-col cursor-default justify-center items-center`)
+     const textContainerClasses = clsx(`mobile:text-[0.6rem] tablet:text-[0.6rem] desktop:text-[12px] laptop:text-[0.5rem]  text-center large-desktop:leading-6 large-desktop:text-[1.4rem] font-bold`)
+     const textPageContainerClasses = clsx(`mobile:text-[0.6rem] tablet:text-[0.6rem] laptop:text-[0.5rem] desktop:text-[10px] large-desktop:text-[1.5rem] font-bold`)
+     return (
+        <div id="cssportal-grid" className={containerClasses}>
             {Object.entries(details).map(([key, value], index) => {
                 const bgColor = calculateBgColor(value, maxValue); // Get dynamic background color
                 const textColor = value / maxValue > 0.5 ? 'text-white' : 'text-black'; // Adjust text color
-
                 return (
                     <div
                         key={index}
                         id={`div${index + 1}`}
-                        className={`flex flex-col cursor-default justify-center items-center`}
+                        className={subContainerClasses}
                         style={{ backgroundColor: bgColor }}
                     >
                         <h1
-                            className={`mobile:text-[0.6rem] tablet:text-[0.6rem] desktop:text-[12px] laptop:text-[0.5rem]  text-center large-desktop:leading-6 large-desktop:text-[1.4rem] font-bold ${textColor}`}
+                            className={textContainerClasses + " "+textColor}
                         >
                             {bodyTypeNames[index]}
                         </h1>
                         <p
-                            className={`mobile:text-[0.6rem] tablet:text-[0.6rem] laptop:text-[0.5rem] desktop:text-[10px] large-desktop:text-[1.5rem] font-bold ${textColor}`}
+                            className={textPageContainerClasses + " "+ textColor}
                         >
                             {value}
                         </p>

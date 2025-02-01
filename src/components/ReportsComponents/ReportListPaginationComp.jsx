@@ -3,8 +3,10 @@ import { useSelector } from "react-redux";
 import { FaEye } from "react-icons/fa";
 import useStore from "../../zustandStore/useStore";
 import clsx from "clsx";
+import { useMediaQuery } from "react-responsive";
 
 const ReportListPaginationComp = ({ reports }) => {
+  const isLargeDesktop = useMediaQuery({ minWidth: 2560 });
   const [currentPage, setCurrentPage] = useState(1);
   const [recordsPerPage] = useState(10);
   const { filteredReports, noReportsFound } = useSelector(
@@ -184,70 +186,84 @@ const ReportListPaginationComp = ({ reports }) => {
     isCurrent ? "bg-red-400 text-white" : "bg-white hover:bg-gray-200"
   );
 
-  return (
-    <div className={containerClasses}>
+  const tableClass = clsx("w-full p-3 text-left")
+  const statictableRowClasses = clsx("large-desktop:h-[120px] mobile:h-[40px] tablet:h-[40px]")
+  const tbodyClasses = "h-full relative";
+  const noReportsRowClasses = clsx(
+    "bg-[#FFEFEF] flex flex-col justify-center items-start absolute w-full top-1",
+    "large-desktop:h-[100px] cursor-pointer h-[62px]"
+  );
+  const noReportsTextClasses = clsx(
+    "desktop:text-[20px] large-desktop:text-[3rem] pl-4"
+  );
+ const  dynamicTableDataClasses = clsx("desktop:text-[20px] tablet:text-[0.8rem] mobile:text-[0.8rem] laptop:text-[0.9rem] large-desktop:text-[3rem]")
+ const dynamicTableDataNameClasses = clsx("desktop:text-[20px] tablet:text-[0.8rem] mobile:text-[0.8rem] laptop:text-[0.9rem] large-desktop:text-[3rem] pl-4")
+ const staticTableNameDataClasses  = clsx("desktop:text-[20px] tablet:text-[0.8rem] mobile:text-[0.8rem] laptop:text-[0.9rem] large-desktop:text-[3rem] font-medium capitalize pl-4")
+ const staticTableDataClasses = clsx("desktop:text-[20px] tablet:text-[0.8rem] mobile:text-[0.8rem] laptop:text-[0.9rem] large-desktop:text-[3rem] font-medium capitalize")
+ return (
+    <div onClick={() => customFunction()} className={containerClasses}>
       <div className={headerClasses}>
         <p className={textClasses}>
           Total Reports : {noReportsFound ? 0 : lengthReports}
         </p>
       </div>
       <div className={tableClasses}>
-        <table className="w-full p-3 text-left">
+        <table className={tableClass}>
           <thead className={tableHeaderClasses}>
-            <tr className="large-desktop:h-[120px] mobile:h-[40px] tablet:h-[40px]">
-              <th className="desktop:text-[20px] tablet:text-[0.8rem] mobile:text-[0.8rem] laptop:text-[0.9rem] large-desktop:text-[3rem] font-medium capitalize pl-4">
+            <tr className={statictableRowClasses}>
+              <th className={staticTableNameDataClasses}>
                 Patient Names
               </th>
-              <th className="desktop:text-[20px] tablet:text-[0.8rem] mobile:text-[0.8rem] laptop:text-[0.9rem] large-desktop:text-[3rem] font-medium capitalize">
+              <th className={staticTableDataClasses}>
                 Age
               </th>
-              <th className="desktop:text-[20px] tablet:text-[0.8rem] mobile:text-[0.8rem] laptop:text-[0.9rem] large-desktop:text-[3rem] font-medium capitalize">
+              <th className={staticTableDataClasses}>
                 Phone
               </th>
-              <th className="desktop:text-[20px] tablet:text-[0.8rem] mobile:text-[0.8rem] laptop:text-[0.9rem] large-desktop:text-[3rem] font-medium capitalize">
+              <th className={staticTableDataClasses}>
                 CNIC
               </th>
-              <th className="desktop:text-[20px] tablet:text-[0.8rem] mobile:text-[0.8rem] laptop:text-[0.9rem] large-desktop:text-[3rem] font-medium capitalize">
+              <th className={staticTableDataClasses}>
                 Nationality
               </th>
-              <th className="desktop:text-[20px] tablet:text-[0.8rem] mobile:text-[0.8rem] laptop:text-[0.9rem] large-desktop:text-[3rem] font-medium capitalize">
+              <th className={staticTableDataClasses}>
                 Created Date
               </th>
-              <th className="desktop:text-[20px] tablet:text-[0.8rem] mobile:text-[0.8rem] laptop:text-[0.9rem] large-desktop:text-[3rem] font-medium capitalize">
+              <th className={staticTableDataClasses}>
                 Actions
               </th>
             </tr>
           </thead>
           {noReportsFound ? (
-            <tbody className="h-full relative">
-              <tr className="bg-[#FFEFEF] flex flex-col justify-center items-start absolute w-full top-1 large-desktop:h-[100px] cursor-pointer h-[62px]">
-                <td className="desktop:text-[20px] large-desktop:text-[3rem] pl-4">No Reports Found</td>
-              </tr>
-            </tbody>
+            <tbody className={tbodyClasses}>
+            <tr className={noReportsRowClasses}>
+              <td className={noReportsTextClasses}>No Reports Found</td>
+            </tr>
+          </tbody>
           ) : (
-            <tbody className="h-full">
+            <tbody>
               {currentRecords.map((report, index) => (
                 <tr key={index} className={rowClasses}>
-                  <td className="desktop:text-[20px] tablet:text-[0.8rem] mobile:text-[0.8rem] laptop:text-[0.9rem] large-desktop:text-[3rem] pl-4">
+                  <td className={dynamicTableDataNameClasses}>
                     {report.Name}
                   </td>
-                  <td className="desktop:text-[20px] tablet:text-[0.8rem] mobile:text-[0.8rem] laptop:text-[0.9rem] large-desktop:text-[3rem]">
+                  <td className={dynamicTableDataClasses}>
                     {report.Member.Age}
                   </td>
-                  <td className="desktop:text-[20px] tablet:text-[0.8rem] mobile:text-[0.8rem] laptop:text-[0.9rem] large-desktop:text-[3rem]">
+                  <td className={dynamicTableDataClasses}>
                     {report.Mobile}
                   </td>
-                  <td className="desktop:text-[20px] tablet:text-[0.8rem] mobile:text-[0.8rem] laptop:text-[0.9rem] large-desktop:text-[3rem]">
+                  <td className={dynamicTableDataClasses}>
                     {report?.IdCode || "-"}
                   </td>
-                  <td className="desktop:text-[20px] tablet:text-[0.8rem] mobile:text-[0.8rem] laptop:text-[0.9rem] large-desktop:text-[3rem]">
+                  <td className={dynamicTableDataClasses}>
                     {report.Member?.Nation || "-"}
                   </td>
-                  <td className="desktop:text-[20px] tablet:text-[0.8rem] mobile:text-[0.8rem] laptop:text-[0.9rem] large-desktop:text-[3rem]">
+                  <td className={dynamicTableDataClasses}>
                     {report?.measureDate} - {report?.measureTime}
                   </td>
                   <td className={actionButtonClasses}>
-                    <FaEye size={20} color={"#CC0001"} />
+                    <FaEye size={isLargeDesktop ? 30 :20} color={"#CC0001"} />
                   </td>
                 </tr>
               ))}
@@ -256,7 +272,7 @@ const ReportListPaginationComp = ({ reports }) => {
         </table>
         {/* Pagination Controls */}
       </div>
-      {lengthReports > 10 && (
+      {lengthReports > 10 && !noReportsFound && (
         <div className={paginationContainerClasses}>
           <button
             onClick={() => handlePageChange(currentPage - 1)}
