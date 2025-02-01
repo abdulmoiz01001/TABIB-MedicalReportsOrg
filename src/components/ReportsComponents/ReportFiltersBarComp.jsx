@@ -13,6 +13,7 @@ import FilterbyBP from './ReportFilterbarComponents/FilterbyBP';
 import FilterbySort from './ReportFilterbarComponents/FilterbySort';
 import { useMediaQuery } from 'react-responsive';
 
+import clsx from 'clsx';
 import { IoFunnelSharp } from "react-icons/io5";
 
 const ReportFiltersBarComp = ({ reports }) => {
@@ -307,52 +308,56 @@ const ReportFiltersBarComp = ({ reports }) => {
         setIsFilterOpen(!isFilterOpen);
     };
 
+    // Tailwind CSS class variables
+  const filterContainerClasses = 'w-[99%] flex flex-col gap-4';
+  const filterButtonClasses = 'w-[150px] ml-4 h-[50px] flex justify-evenly items-center rounded-[15px] bg-[#CC0001] text-[#FFFFFF] text-[1rem]';
+  const filterBarClasses = (isFilterOpen) => clsx(
+    isFilterOpen ? "min-h-[40%] max-h-[100%]" : "h-[10%]",
+    'transition-all duration-300 flex flex-col gap-4'
+  );
+  const filterContentClasses = (isFilterOpen) => clsx(
+    'w-[99%] flex flex-col',
+    isFilterOpen ? "h-[85%]" : "h-[0%] hidden",
+    'duration-300 transition-all overflow-auto py-2 mx-auto flex justify-center large-desktop:justify-between items-center mobile:gap-2 tablet:gap-2'
+  );
+  const filterRowClasses = 'w-full flex justify-evenly items-center gap-2';
+  const filterWrapperClasses = 'w-[99%] large-desktop:h-[5%] laptop:h-[10%] mx-auto flex justify-between large-desktop:justify-between items-center gap-4';
+
+
     return (
         <>
-            {/* <div className='flex flex-col' > */}
+      {
+        isTablet || isMobile ?
+          <div className={filterBarClasses(isFilterOpen)}>
+            <button onClick={() => toggleFilterBar()} className={filterButtonClasses}>
+              Filters
+              <IoFunnelSharp color={"#FFFFFF"} size={20} />
+            </button>
 
-            {
-                isTablet || isMobile ?
-                    <>
-                        <div className={`${isFilterOpen ? "min-h-[40%] max-h-[100%]" : "h-[10%]"} transition-all duration-300 flex  flex-col gap-4`} >
+            <div className={filterContentClasses(isFilterOpen)}>
+              <SearchTerm searchTerm={searchTerm} onInputChange={onInputChange} />
 
-                            <button onClick={() => toggleFilterBar()} className='w-[150px] ml-4 h-[50px] flex justify-evenly items-center rounded-[15px] bg-[#CC0001] text-[#FFFFFF] text-[1rem]' >Filters 
-                            <IoFunnelSharp color={"#FFFFFF"} size={20} />
+              <div className={filterRowClasses}>
+                <FilterbyDateRange toggleDropdown={toggleDropdown} formatDateRange={formatDateRange} showCalendar={showCalendar} selectionRange={selectionRange} handleClear={handleClear} handleSelect={handleSelect} />
+                <FilterbyTimeRange selectionRange={selectionRange} formatTime={formatTime} setStartTime={setStartTime} setEndTime={setEndTime} startTime={startTime} endTime={endTime} toggleDropdown={toggleDropdown} isTimePickerVisible={isTimePickerVisible} handleTimeChange={handleTimeChange} clearTimeRange={clearTimeRange} />
+              </div>
 
-                                
-                            </button>
-                            {/* { isFilterOpen && */} 
-
-                            <div className={`w-[99%] flex flex-col  ${isFilterOpen ? "h-[85%]" : "h-[0%] hidden"} duration-300 transition-all overflow-auto py-2  mx-auto flex justify-center large-desktop:justify-between  items-center mobile:gap-2 tablet:gap-2`} >
-                                <SearchTerm searchTerm={searchTerm} onInputChange={onInputChange} />
-
-                                <div className='w-full  flex justify-evenly items-center gap-2' >
-                                    <FilterbyDateRange toggleDropdown={toggleDropdown} formatDateRange={formatDateRange} showCalendar={showCalendar} selectionRange={selectionRange} handleClear={handleClear} handleSelect={handleSelect} />
-                                    <FilterbyTimeRange selectionRange={selectionRange} formatTime={formatTime} setStartTime={setStartTime} setEndTime={setEndTime} startTime={startTime} endTime={endTime} toggleDropdown={toggleDropdown} isTimePickerVisible={isTimePickerVisible} handleTimeChange={handleTimeChange} clearTimeRange={clearTimeRange} />
-                                </div>
-                                <div className='w-full  flex justify-evenly items-center gap-2' >
-                                    <FilterbyBP toggleDropdown={toggleDropdown} selectedOption={selectedOption} handleBPOptionSelect={handleBPOptionSelect} arrowRotate={arrowRotate} isDropdownOpen={isDropdownOpen} options={options} />
-                                    <FilterbySort toggleDropdown={toggleDropdown} sortOption={sortOption} selectedSortOption={selectedSortOption} isSortDropdownOpen={isSortDropdownOpen} sortOptions={sortOptions} handleSortOptionSelect={handleSortOptionSelect} />
-                                </div>
-                            </div>
-                            {/* }  */}
-                        </div>
-                    </>
-                    :
-                    <>
-                        <div className='w-[99%] large-desktop:h-[5%] laptop:h-[10%] mx-auto flex justify-between large-desktop:justify-between  items-center gap-4 ' >
-                            <SearchTerm searchTerm={searchTerm} onInputChange={onInputChange} />
-                            <FilterbyDateRange toggleDropdown={toggleDropdown} formatDateRange={formatDateRange} showCalendar={showCalendar} selectionRange={selectionRange} handleClear={handleClear} handleSelect={handleSelect} />
-                            <FilterbyTimeRange selectionRange={selectionRange} formatTime={formatTime} setStartTime={setStartTime} setEndTime={setEndTime} startTime={startTime} endTime={endTime} toggleDropdown={toggleDropdown} isTimePickerVisible={isTimePickerVisible} handleTimeChange={handleTimeChange} clearTimeRange={clearTimeRange} />
-                            <FilterbyBP toggleDropdown={toggleDropdown} selectedOption={selectedOption} handleBPOptionSelect={handleBPOptionSelect} arrowRotate={arrowRotate} isDropdownOpen={isDropdownOpen} options={options} />
-                            <FilterbySort toggleDropdown={toggleDropdown} sortOption={sortOption} selectedSortOption={selectedSortOption} isSortDropdownOpen={isSortDropdownOpen} sortOptions={sortOptions} handleSortOptionSelect={handleSortOptionSelect} />
-                        </div>
-                    </>
-            }
-
-
-            {/* </div> */}
-        </>
+              <div className={filterRowClasses}>
+                <FilterbyBP toggleDropdown={toggleDropdown} selectedOption={selectedOption} handleBPOptionSelect={handleBPOptionSelect} arrowRotate={arrowRotate} isDropdownOpen={isDropdownOpen} options={options} />
+                <FilterbySort toggleDropdown={toggleDropdown} sortOption={sortOption} selectedSortOption={selectedSortOption} isSortDropdownOpen={isSortDropdownOpen} sortOptions={sortOptions} handleSortOptionSelect={handleSortOptionSelect} />
+              </div>
+            </div>
+          </div>
+          :
+          <div className={filterWrapperClasses}>
+            <SearchTerm searchTerm={searchTerm} onInputChange={onInputChange} />
+            <FilterbyDateRange toggleDropdown={toggleDropdown} formatDateRange={formatDateRange} showCalendar={showCalendar} selectionRange={selectionRange} handleClear={handleClear} handleSelect={handleSelect} />
+            <FilterbyTimeRange selectionRange={selectionRange} formatTime={formatTime} setStartTime={setStartTime} setEndTime={setEndTime} startTime={startTime} endTime={endTime} toggleDropdown={toggleDropdown} isTimePickerVisible={isTimePickerVisible} handleTimeChange={handleTimeChange} clearTimeRange={clearTimeRange} />
+            <FilterbyBP toggleDropdown={toggleDropdown} selectedOption={selectedOption} handleBPOptionSelect={handleBPOptionSelect} arrowRotate={arrowRotate} isDropdownOpen={isDropdownOpen} options={options} />
+            <FilterbySort toggleDropdown={toggleDropdown} sortOption={sortOption} selectedSortOption={selectedSortOption} isSortDropdownOpen={isSortDropdownOpen} sortOptions={sortOptions} handleSortOptionSelect={handleSortOptionSelect} />
+          </div>
+      }
+    </>
     );
 };
 

@@ -9,6 +9,7 @@ import {
   Tooltip,
 } from "chart.js";
 import { useMediaQuery } from "react-responsive";
+import clsx from "clsx";
 
 ChartJS.register(BarElement, CategoryScale, LinearScale, Legend, Tooltip);
 
@@ -193,8 +194,10 @@ const BarComp = ({ details, totalCount }) => {
     requestAnimationFrame(animateShine);
   }, []);
 
+  const containerClasses = clsx("flex h-[95%] large-desktop:h-[90%] justify-center mobile:pr-1 mobile:px-0 px-2 w-full items-center rounded-lg shadow-md")
+
   return (
-    <div className="flex h-[95%] large-desktop:h-[90%] justify-center mobile:pr-1 mobile:px-0 px-2 w-full items-center rounded-lg shadow-md">
+    <div className={containerClasses}>
       <Bar ref={chartRef} data={data} options={options} />
     </div>
   );

@@ -11,6 +11,7 @@ import {
     Legend,
 } from "chart.js";
 import { useMediaQuery } from "react-responsive";  // Import the hook
+import clsx from "clsx";
 
 // Register required Chart.js components
 ChartJS.register(
@@ -97,14 +98,6 @@ const pointRadius = isLargeDesktop
             legend: {
                 display: false,
             },
-            // title: {
-            //     display: true,
-            //     text: "Monthly Trend of Hypertension",
-            //     color: "black",
-            //     font: {
-            //         size: 16, // Dynamic Font Size for Title
-            //     },
-            // },
         },
         scales: {
             y: {
@@ -153,8 +146,10 @@ const pointRadius = isLargeDesktop
         },
     };
 
+    const containerClasses = clsx("h-[85%] flex justify-center w-full")
+
     return (
-        <div className="h-[85%] flex justify-center w-full">
+        <div className={containerClasses}>
             <Line data={data} options={options} />
          </div>
     );

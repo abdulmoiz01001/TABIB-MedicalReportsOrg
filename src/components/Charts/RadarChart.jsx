@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Chart as ChartJS, registerables } from 'chart.js';
 import { Radar } from 'react-chartjs-2';
 import { useMediaQuery } from 'react-responsive';
+import clsx from 'clsx';
 
 ChartJS.register(...registerables);
 
@@ -70,20 +71,33 @@ const RadarChart = ({ details }) => {
       },
     },
   };
+  // Class variables
+  const headingClasses = clsx(
+    'text-center font-semibold text-black',
+    isLargeDesktop && 'large-desktop:text-[1.5rem]',
+    isLaptop && 'laptop:text-[0.7rem]',
+    'desktop:text-[1rem] mobile:text-[0.7rem]'
+  );
+
+  const chartContainerClasses = clsx(
+    'flex justify-center items-center',
+    'w-[80%] h-[80%]',
+    'large-desktop:p-4 large-desktop:h-[500px]'
+  );
 
   return (
     <>
-      <h1 className="desktop:text-[1rem] laptop:text-[0.7rem] large-desktop:text-[1.5rem] text-center font-semibold text-black">
-        Temperament Graph
-      </h1>
-      {chartData ? (
-        <div className="w-[80%] flex  h-[80%] justify-center items-center large-desktop:p-4 large-desktop:h-[500px]">
-          <Radar data={chartData} options={chartOptions} />
-        </div>
-      ) : (
-        <p>Loading chart...</p>
-      )}
-    </>
+    <h1 className={headingClasses}>
+      Temperament Graph
+    </h1>
+    {chartData ? (
+      <div className={chartContainerClasses}>
+        <Radar data={chartData} options={chartOptions} />
+      </div>
+    ) : (
+      <p>Loading chart...</p>
+    )}
+  </>
   );
 };
 

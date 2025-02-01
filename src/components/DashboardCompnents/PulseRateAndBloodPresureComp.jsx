@@ -1,51 +1,50 @@
-import React, { useEffect } from 'react'
-import SpeedoMeter from '../Charts/Speedometer'
+import React from "react";
+import { clsx } from "clsx";
+import SpeedoMeter from "../Charts/Speedometer";
 
-const PulseRateAndBloodPresureComp = ({data}) => {
- 
-    return (
-        <>
-            <div className='w-full h-[100%] large-desktop:w-[45%] mobile:py-2 tablet:py-2 large-desktop:py-[5px] desktop:py-[5px] border  border-[#CC0001] bg-[#FAFAFA]  rounded-[15px] flex flex-col justify-center items-center ' >
-                <div className='h-[15%]  w-full ' >
+const PulseRateAndBloodPresureComp = ({ data }) => {
+  const containerClass = clsx(
+    "w-full h-full border border-[#CC0001] bg-[#FAFAFA] rounded-[15px] flex flex-col items-center justify-center",
+    "mobile:py-2 tablet:py-2",
+    "large-desktop:w-[45%] large-desktop:py-[5px]",
+    "desktop:w-[45%] desktop:py-[5px]"
+  );
 
-                    <h1 className='text-[#000000] mobile:text-[0.7rem] tablet:text-[0.7rem]  large-desktop:text-[1.5rem]  desktop:text-[1rem] laptop:text-[0.8rem] text-center font-bold'>Average Pulse Rate and Blood Pressure</h1>
-                </div>
-                 <div className='flex w-full mobile:justify-evenly large-desktop:h-[85%] tablet:justify-evenly  desktop:justify-evenly large-desktop:justify-evenly laptop:justify-evenly items-center  large-desktop:mb-0' >
+  const titleClass = clsx(
+    "text-[#000000] text-center font-bold",
+    "mobile:text-[0.7rem] tablet:text-[0.7rem]",
+    "large-desktop:text-[1.5rem]",
+    "desktop:text-[1rem]",
+    "laptop:text-[0.8rem]"
+  );
 
-                {/* Pulse Rate Speedometer */}
-                <SpeedoMeter
-                    
-                    value={data?.pluse}
-                    maxValue={180}
-                    label="Pulse Rate"
-                    unit="BPM"
-                    // needleColor="blue"
-                    // segmentColors={['#DFF2FF', '#70C1FF', '#005B96']}
-                    />
+  const speedometerContainerClass = clsx(
+    "flex w-full items-center",
+    "mobile:justify-evenly",
+    "tablet:justify-evenly",
+    "desktop:justify-evenly",
+    "large-desktop:justify-evenly large-desktop:h-[85%] large-desktop:mb-0",
+    "laptop:justify-evenly"
+  );
 
-                {/* Systolic Speedometer */}
-                <SpeedoMeter
-                    value={data?.systolic}
-                    maxValue={180}
-                    label="Systolic"
-                    unit="mmHg"
-                    // needleColor="green"
-                    // segmentColors={['#E0FFE0', '#80FF80', '#008000']}
-                    />
+  return (
+    <div className={containerClass}>
+      <div className="h-[15%] w-full">
+        <h1 className={titleClass}>Average Pulse Rate and Blood Pressure</h1>
+      </div>
 
-                {/* Diastolic Speedometer */}
-                <SpeedoMeter
-                    value={data?.diastolic}
-                    maxValue={120}
-                    label="Diastolic"
-                    unit="mmHg"
-                // needleColor="red"
-                // segmentColors={['#FFE0E0', '#FF8080', '#800000']}
-                />
-                </div>
-            </div>
-        </>
-    )
-}
+      <div className={speedometerContainerClass}>
+        {/* Pulse Rate Speedometer */}
+        <SpeedoMeter value={data?.pluse} maxValue={180} label="Pulse Rate" unit="BPM" />
 
-export default PulseRateAndBloodPresureComp
+        {/* Systolic Speedometer */}
+        <SpeedoMeter value={data?.systolic} maxValue={180} label="Systolic" unit="mmHg" />
+
+        {/* Diastolic Speedometer */}
+        <SpeedoMeter value={data?.diastolic} maxValue={120} label="Diastolic" unit="mmHg" />
+      </div>
+    </div>
+  );
+};
+
+export default PulseRateAndBloodPresureComp;

@@ -1,20 +1,20 @@
-import React, { useEffect , useRef} from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Doughnut } from 'react-chartjs-2';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { useMediaQuery } from 'react-responsive';
+import clsx from 'clsx';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 const DoughnutChart = ({ details }) => {
-  const chartRef = useRef()
+  const chartRef = useRef();
+  
   useEffect(() => {
-    console.log(details)
-  }, [details])
+    console.log(details);
+  }, [details]);
+
   const isLargeDesktop = useMediaQuery({ minWidth: 2560 });
   const isDesktop = useMediaQuery({ minWidth: 1480, maxWidth: 2559 });
-  const isLaptop = useMediaQuery({ minWidth: 824, maxWidth: 1479 });
-  const isTablet = useMediaQuery({ minWidth: 640, maxWidth: 823 });    // md
-  const isMobile = useMediaQuery({ maxWidth: 639 });
 
   const data = {
     labels: ['Overweight', 'Obese', 'Normal', 'Underweight'],
@@ -74,7 +74,7 @@ const DoughnutChart = ({ details }) => {
         right: 20,
         left: 20,
         top: 40,
-        bottom: 40
+        bottom: 40,
       }
     },
     maintainAspectRatio: false,
@@ -93,111 +93,60 @@ const DoughnutChart = ({ details }) => {
       },
     },
   };
-   useEffect(() => {
-  const chart = chartRef.current;
-  if (!chart) return;
 
-  const ctx = chart.ctx;
-  const centerX = (chart.chartArea.left + chart.chartArea.right) / 2;
-  const centerY = (chart.chartArea.top + chart.chartArea.bottom) / 2;
-  let angle = 0;
-  const radius = Math.min(chart.chartArea.right - chart.chartArea.left, chart.chartArea.bottom - chart.chartArea.top) / 2;
+  useEffect(() => {
+    const chart = chartRef.current;
+    if (!chart) return;
 
-  const animateShine = () => {
-    ctx.save();
+    const ctx = chart.ctx;
+    const centerX = (chart.chartArea.left + chart.chartArea.right) / 2;
+    const centerY = (chart.chartArea.top + chart.chartArea.bottom) / 2;
+    let angle = 0;
+    const radius = Math.min(chart.chartArea.right - chart.chartArea.left, chart.chartArea.bottom - chart.chartArea.top) / 2;
 
-    // Clear previous shine
-    ctx.clearRect(
-      chart.chartArea.left,
-      chart.chartArea.top,
-      chart.chartArea.right - chart.chartArea.left,
-      chart.chartArea.bottom - chart.chartArea.top
-    );
+    const animateShine = () => {
+      ctx.save();
 
-    // Draw static bars
-    chart.draw();
+      // Clear previous shine
+      ctx.clearRect(
+        chart.chartArea.left,
+        chart.chartArea.top,
+        chart.chartArea.right - chart.chartArea.left,
+        chart.chartArea.bottom - chart.chartArea.top
+      );
 
-    // Calculate shine position using circular motion
-    const shineX = centerX + radius * Math.cos(angle);
-    const shineY = centerY + radius * Math.sin(angle);
+      // Draw static bars
+      chart.draw();
 
-    // Create radial gradient for circular shine effect
-    const gradient = ctx.createRadialGradient(shineX, shineY, 5, shineX, shineY, 50);
-    gradient.addColorStop(0, "rgba(255, 255, 255, 0.6)");
-    gradient.addColorStop(0.5, "rgba(255, 255, 255, 0.3)");
-    gradient.addColorStop(1, "rgba(255, 255, 255, 0)");
+      // Calculate shine position using circular motion
+      const shineX = centerX + radius * Math.cos(angle);
+      const shineY = centerY + radius * Math.sin(angle);
 
-    // Apply shine effect
-    ctx.fillStyle = gradient;
-    ctx.beginPath();
-    ctx.arc(shineX, shineY, 50, 0, Math.PI * 2);
-    ctx.fill();
+      // Create radial gradient for circular shine effect
+      const gradient = ctx.createRadialGradient(shineX, shineY, 5, shineX, shineY, 50);
+      gradient.addColorStop(0, "rgba(255, 255, 255, 0.6)");
+      gradient.addColorStop(0.5, "rgba(255, 255, 255, 0.3)");
+      gradient.addColorStop(1, "rgba(255, 255, 255, 0)");
 
-    ctx.restore();
+      // Apply shine effect
+      ctx.fillStyle = gradient;
+      ctx.beginPath();
+      ctx.arc(shineX, shineY, 50, 0, Math.PI * 2);
+      ctx.fill();
 
-    // Update angle for circular motion
-    angle += 0.02; // Adjust speed of rotation
-    if (angle > Math.PI * 2) {
-      angle = 0; // Reset after full circle
-    }
+      ctx.restore();
 
-    requestAnimationFrame(animateShine);
-  };
+      // Update angle for circular motion
+      angle += 0.02; // Adjust speed of rotation
+      if (angle > Math.PI * 2) {
+        angle = 0; // Reset after full circle
+      }
 
-  animateShine();
-}, []);
+      requestAnimationFrame(animateShine);
+    };
 
-  //  useEffect(() => {
-  //       const chart = chartRef.current;
-  //       if (!chart) return;
-    
-  //       const ctx = chart.ctx;
-  //       let shineY = chart.chartArea.bottom;
-    
-  //       const animateShine = () => {
-  //         ctx.save();
-    
-  //         // Clear previous shine
-  //         ctx.clearRect(
-  //           chart.chartArea.left,
-  //           chart.chartArea.top,
-  //           chart.chartArea.right - chart.chartArea.left,
-  //           chart.chartArea.bottom - chart.chartArea.top
-  //         );
-    
-  //         // Draw static bars
-  //         chart.draw();
-    
-  //         // Create the shine gradient
-  //         const gradient = ctx.createLinearGradient(0, shineY, 0, shineY + 20);
-  //         gradient.addColorStop(0, "rgba(255, 255, 255, 0)");
-  //         gradient.addColorStop(0.5, "rgba(255, 255, 255, 0.4)");
-  //         gradient.addColorStop(1, "rgba(255, 255, 255, 0)");
-    
-  //         // Overlay the shine effect
-  //         ctx.fillStyle = gradient;
-  //         ctx.fillRect(
-  //           chart.chartArea.left,
-  //           shineY,
-  //           chart.chartArea.right - chart.chartArea.left,
-  //           20
-  //         );
-    
-  //         ctx.restore();
-
-        
-    
-  //         // Move the shine effect upward
-  //         shineY -= 1;
-  //         if (shineY < chart.chartArea.top) {
-  //           shineY = chart.chartArea.bottom;
-  //         }
-    
-  //         requestAnimationFrame(animateShine);
-  //       };
-    
-  //       animateShine();
-  //     }, []);
+    animateShine();
+  }, []);
 
   // Dynamic size based on screen size
   const chartSize = isLargeDesktop
@@ -206,33 +155,62 @@ const DoughnutChart = ({ details }) => {
       ? { width: '25px', height: '25px' }  // Desktop
       : { width: '20px', height: '20px' }; // Laptop/Tablet
 
+  // Define reusable class names with clsx variables
+  const chartClasses = clsx(
+    "desktop:w-full",
+    "mobile:w-full",
+    "mobile:h-[220px]",
+    "desktop:h-full",
+    "laptop:w-[90%]",
+    "laptop:h-[90%]",
+    "large-desktop:w-[100%]",
+    "large-desktop:py-4",
+    "large-desktop:h-[380px]",
+    "flex",
+    "justify-center",
+    "items-center"
+  );
+
+  const legendClasses = clsx(
+    "w-full",
+    "flex",
+    "h-[20%]",
+    "justify-center",
+    "items-center",
+    "laptop:gap-1",
+    "gap-2",
+    "flex-wrap"
+  );
+
+  const textClasses = clsx(
+    "desktop:text-[1rem]",
+    "text-center",
+    "mobile:text-[0.7rem]",
+    "tablet:text-[0.7rem]",
+    "laptop:text-[0.7rem]",
+    "large-desktop:text-[1.5rem]",
+    "font-bold",
+    "text-[#000000]"
+  );
+
+  const labelsClasses = clsx("large-desktop:text-[1.2rem]", "large-desktop:font-bold", "laptop:text-[11px]", "tablet:text-[10px]", "desktop:text-[15px]")
+
   return (
-    <div className='flex flex-col h-[100%] laptop:py-1 py-2 justify-around  items-center'>
-      <h3 className="desktop:text-[1rem] text-center mobile:text-[0.7rem] tablet:text-[0.7rem] laptop:text-[0.7rem] large-desktop:text-[1.5rem] font-bold text-[#000000]">
+    <div className='flex flex-col h-[100%] laptop:py-1 py-2 justify-around items-center'>
+      <h3 className={textClasses}>
         Hypertension By BMI Classification
       </h3>
 
-      <div
-        className='desktop:w-full mobile:w-full mobile:h-[220px] desktop:h-full laptop:w-[90%] laptop:h-[90%] large-desktop:w-[100%] large-desktop:py-4 large-desktop:h-[380px]'
-        style={{
-          // width: "100%",
-          // height: "100%",
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-        }}
-      >
+      <div className={chartClasses}>
         <Doughnut ref={chartRef} data={data} options={options} plugins={[zigzagLinePlugin]} />
       </div>
 
       {/* Custom Legend */}
-      <div className='w-full flex h-[20%] justify-center items-center laptop:gap-1 gap-2 flex-wrap'>
-        {[
-          { color: '#FF4D4D', label: 'Overweight' },
+      <div className={legendClasses}>
+        {[{ color: '#FF4D4D', label: 'Overweight' },
           { color: '#FF6666', label: 'Obese' },
           { color: '#FFCCCC', label: 'Underweight' },
-          { color: '#FF9999', label: 'Normal' },
-        ].map((item, idx) => (
+          { color: '#FF9999', label: 'Normal' }].map((item, idx) => (
           <div
             key={idx}
             style={{
@@ -252,7 +230,9 @@ const DoughnutChart = ({ details }) => {
                 borderRadius: '50%',
               }}
             ></div>
-            <span className='large-desktop:text-[1.2rem] large-desktop:font-bold laptop:text-[11px] tablet:text-[10px] desktop:text-[15px]' style={{ color: '#333' }}>{item.label}</span>
+            <span className={labelsClasses} style={{ color: '#333' }}>
+              {item.label}
+            </span>
           </div>
         ))}
       </div>
