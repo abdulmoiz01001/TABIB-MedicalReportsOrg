@@ -7,7 +7,7 @@ import clsx from "clsx"
 const DashboardReportComp = () => {
   const { items, loading, error } = useSelector((state) => state.patientsReports); // when ever i want data it will be in items
     useEffect(() => {
-    localStorage.getItem("token") == null ? navigate("/login") : console.log("token is present")
+    localStorage.getItem("token") == null && navigate("/login") 
     },[])
 
     const containerClasses = clsx("w-full gap-4 laptop:gap-2 flex flex-col  h-screen")

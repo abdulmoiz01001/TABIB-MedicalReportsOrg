@@ -25,9 +25,6 @@ ChartJS.register(
 );
 
 const LineBarReact = ({totalCount , details}) => {
-    useEffect(() => {
-     console.log(details)
-    },[details])
     // 📱 Tailwind Custom Breakpoints
     const isLargeDesktop = useMediaQuery({ minWidth: 2560 });      // 2xl
     const isDesktop = useMediaQuery({ minWidth: 1480, maxWidth: 2559 }); // xl

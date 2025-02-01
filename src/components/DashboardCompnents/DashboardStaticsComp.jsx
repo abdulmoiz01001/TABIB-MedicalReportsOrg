@@ -26,9 +26,6 @@ const DashboardStaticsComp = () => {
     (state) => state.dashboardPatientsAnalytics
   );
 
-  useEffect(() => {
-   console.log("data" , analyticsData)
-  },[analyticsData])
 
   function getCurrentYear() {
     return new Date().getFullYear();

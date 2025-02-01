@@ -14,8 +14,7 @@ const DashboardLoginComp = () => {
   const [showPassword, setShowPassword] = useState(false);
 
   useEffect(() => {
-    console.log("token", localStorage.getItem("token"));
-    localStorage.getItem("token") !== undefined && localStorage.getItem("token") != null ? navigate("/") : console.log("token is present");
+    localStorage.getItem("token") !== undefined && localStorage.getItem("token") != null && navigate("/") 
   }, []);
 
   const validationSchema = Yup.object({
@@ -35,9 +34,7 @@ const DashboardLoginComp = () => {
         body: JSON.stringify(values),
       });
       const data = await response.json();
-      console.log("data", data);
       if (response.status === 200) {
-        console.log("success");
         localStorage.setItem("token", data.token);
         if (localStorage.getItem("token") != null) {
           navigate("/");
@@ -46,7 +43,6 @@ const DashboardLoginComp = () => {
         setErrorMessage(data.message || 'Login failed. Please try again.');
       }
     } catch (e) {
-      console.log("error", e);
       setErrorMessage('An unexpected error occurred. Please try again.');
     }
   };

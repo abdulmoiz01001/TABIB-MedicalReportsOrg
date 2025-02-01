@@ -3,9 +3,6 @@ import DynamicDoughnutChart from '../Charts/SingleDoughnutChart';
 import clsx from 'clsx';
 
 const TABIATScoreComp = ({ data }) => {
-  useEffect(() => {
-    console.log("data of TABIAT", data);
-  }, [data]);
 
   // Class variables
   const containerClasses = clsx(

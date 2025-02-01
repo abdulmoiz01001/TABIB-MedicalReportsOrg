@@ -45,10 +45,6 @@ const BodyTypeLayout = ({ details }) => {
 
             const names = transformObjectKeysToArray(details);
             setBodyTypeNames(names);
-
-            console.log("Details of body chart", details);
-            console.log("High value:", highestValue);
-            console.log("Body type names:", names);
         }
     }, [details]);
 

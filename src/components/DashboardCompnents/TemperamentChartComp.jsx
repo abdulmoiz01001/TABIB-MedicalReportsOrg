@@ -15,10 +15,6 @@ const TemperamentChartComp = ({ data }) => {
   const checkBoxClass = 'flex justify-end gap-1 mobile:py-2 tablet:py-2 items-center cursor-pointer';
   const chartContainerClass = 'h-[85%] w-[90%] flex flex-col justify-end items-center';
 
-  useEffect(() => {
-    console.log(data);
-  }, [data]);
-
   const handleMaleClick = () => {
     setIsMaleSelected((prev) => !prev); // Toggle male selection
   };

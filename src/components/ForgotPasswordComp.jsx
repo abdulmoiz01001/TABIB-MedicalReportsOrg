@@ -27,7 +27,6 @@ const ForgotPasswordComp = () => {
   // Handle form submission
   const [invalidCredentials, setInvalidCredentials] = useState('');
   const handleSubmit = async (values) => {
-    console.log('Form values:', values);
     try {
       const response = await fetch(
         `https://nole90yyzc.execute-api.us-east-1.amazonaws.com/dev/resetPassword`,
@@ -41,12 +40,9 @@ const ForgotPasswordComp = () => {
         }
       );
       const data = await response.json();
-      console.log('API response:', data);
       if (response.status === 200) {
-        console.log('Password updated successfully');
         navigate('/login');
       } else {
-        console.log('Error:', data.message);
         setInvalidCredentials(data.message);
       }
     } catch (error) {

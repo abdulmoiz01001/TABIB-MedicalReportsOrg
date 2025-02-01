@@ -29,9 +29,6 @@ const ProgressBarComp = ({
     }
   }, [firstValue, secondValue, thirdValue, reportsCounts]);
 
-  useEffect(() => {
-    console.log('Progress Bar Component: ', details);
-  }, [details]);
 
   const containerStyles = clsx(
     'flex w-full h-[20%] justify-between items-center'

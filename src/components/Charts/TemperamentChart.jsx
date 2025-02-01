@@ -23,9 +23,6 @@ ChartJS.register(
 
 const TemperamentChart = ({ details }) => {
     const chartRef = useRef(null);
-  useEffect(() => {
-  console.log("temperatent patakha",details)
-  },[details])
   
   // 📱 Tailwind Custom Breakpoints
   const isLargeDesktop = useMediaQuery({ minWidth: 2560 });      // 2xl

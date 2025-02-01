@@ -2,9 +2,6 @@ import React, { useEffect } from "react";
 import { clsx } from "clsx";
 
 const ReportBoxComp = ({ data, title, title2 }) => {
-  useEffect(() => {
-    console.log("Report Box Data:", data);
-  }, [data]);
 
   const containerClass = clsx(
     "bg-[#FAFAFA] border border-[#CC0001] rounded-[15px] flex flex-col items-center justify-end px-2",

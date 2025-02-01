@@ -3,9 +3,7 @@ import clsx from 'clsx'; // Import clsx for dynamic class management
 import RadarChart from '../Charts/RadarChart';
 
 const TemperamentCommunityComp = ({ data }) => {
-  useEffect(() => {
-    console.log("temperament", data);
-  }, [data]);
+
 
   // Tailwind CSS classes as variables
   const containerClasses = clsx(

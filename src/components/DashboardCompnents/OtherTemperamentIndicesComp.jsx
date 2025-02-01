@@ -1,13 +1,9 @@
 import React, { useEffect } from 'react';
 import ProgressBarComp from './ProgressBarComp';
 import clsx from "clsx"
-// import TempProgressBarComp from "../DashboardCompnents/TempProgressBarComp";
 
 const OtherTemperamentIndicesComp = ({ reportsCounts, data }) => {
 
-  useEffect(() => {
-    console.log("data", data);
-  }, [data]);
 
   const containerStyles = clsx(
     'w-full h-[50%] flex flex-col desktop:gap-0 py-2 large-desktop:gap-0 justify-start items-center rounded-[15px] bg-[#FAFAFA] px-2 border border-[#CC0001]'

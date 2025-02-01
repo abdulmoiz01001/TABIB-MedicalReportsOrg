@@ -65,10 +65,6 @@ const SpeedoMeter = ({
     isTablet && "text-[0.7rem]"
   );
 
-  useEffect(() => {
-    console.log(speedometerHeight, speedometerWidth);
-  }, [speedometerWidth, speedometerHeight]);
-
   const containerClasses = clsx("flex flex-col justify-center items-center rounded-lg")
   const subContainerClasses = clsx("w-full flex flex-col justify-center items-center")
   return (

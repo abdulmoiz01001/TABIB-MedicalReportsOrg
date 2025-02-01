@@ -68,8 +68,6 @@ const ReportFiltersBarComp = ({ reports }) => {
 
             const queryString = new URLSearchParams(params).toString();
 
-            console.log(queryString)
-
             const response = await fetch(`https://nole90yyzc.execute-api.us-east-1.amazonaws.com/dev/reports?${queryString}`, {
                 method: 'GET',
                 headers: {
@@ -79,13 +77,12 @@ const ReportFiltersBarComp = ({ reports }) => {
             });
 
             const data = await response.json();
-            console.log("Fetched data:", data);
-
+    
             if (data.success) {
                 dispatch(clearFilteredReports());
                 dispatch(setFilteredReports(data.data || data.data.Items || []));
-                console.log(data.data);
-                console.log("Fetch successful");
+          
+             
             } else {
                 dispatch(clearFilteredReports());
             }
@@ -114,14 +111,11 @@ const ReportFiltersBarComp = ({ reports }) => {
 
     const handleSelect = async (ranges) => {
 
-        console.log(ranges.selection.startDate)
 
         if (ranges.selection.startDate !== ranges.selection.endDate) {
             const formattedStartDate = format(ranges.selection.startDate, 'yyyy-MM-dd');
             const formattedEndDate = format(ranges.selection.endDate, 'yyyy-MM-dd');
 
-            console.log(formattedStartDate);
-            console.log(formattedEndDate);
 
             setSelectionRange({
                 startDate: formattedStartDate,
@@ -160,7 +154,7 @@ const ReportFiltersBarComp = ({ reports }) => {
             option = "female"
         }
         setBPOption(option)
-        console.log(option)
+ 
         setDropdownOpen(false);
     }
 
@@ -209,7 +203,6 @@ const ReportFiltersBarComp = ({ reports }) => {
         }
 
         if (type === "start" && endTime != "") {
-            console.log("having both time")
             setTimeSelectionRange({
                 startTime: startTime,
                 endTime: endTime,
@@ -217,7 +210,6 @@ const ReportFiltersBarComp = ({ reports }) => {
                 token: true
             })
         } else if (type === "end" && startTime != "") {
-            console.log("having both time")
             setTimeSelectionRange({
                 startTime: startTime,
                 endTime: endTime,
@@ -290,7 +282,6 @@ const ReportFiltersBarComp = ({ reports }) => {
     const debouncedSetSearchTerm = useCallback(
         debounce((value) => {
             setSearchApiTerm(value);
-            console.log(value)
         }, 1000),
         []
     );

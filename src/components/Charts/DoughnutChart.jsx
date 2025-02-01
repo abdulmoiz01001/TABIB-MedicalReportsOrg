@@ -9,9 +9,6 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 const DoughnutChart = ({ details }) => {
   const chartRef = useRef();
   
-  useEffect(() => {
-    console.log(details);
-  }, [details]);
 
   const isLargeDesktop = useMediaQuery({ minWidth: 2560 });
   const isDesktop = useMediaQuery({ minWidth: 1480, maxWidth: 2559 });

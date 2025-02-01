@@ -4,16 +4,11 @@ import clsx from 'clsx';
 const AverageTABIATScoreMalesvsFemalesComp = ({ data }) => {
   const maleScore = data.male || 10; // Dynamic male score
   const femaleScore = data.female || 10; // Dynamic female score
-
-  console.log(maleScore);
-  console.log(femaleScore);
-
   // Function to calculate percentage and round to nearest 5
   const calculatePercentage = (score) => Math.round((score / 10) * 10 / 5) * 5;
 
   // Determine the male image based on the percentage
   const getMaleImage = (percentage) => {
-    console.log('percentage', percentage);
     switch (percentage) {
       case 0: return 'male0.svg';
       case 5: return 'male1.svg';
@@ -40,7 +35,6 @@ const AverageTABIATScoreMalesvsFemalesComp = ({ data }) => {
 
   // Determine the female image based on the percentage
   const getFemaleImage = (percentage) => {
-    console.log('percentage', percentage);
     switch (percentage) {
       case 0: return 'female0.svg';
       case 5: return 'female1.svg';
@@ -66,9 +60,6 @@ const AverageTABIATScoreMalesvsFemalesComp = ({ data }) => {
 
   const malePercentage = calculatePercentage(maleScore);
   const femalePercentage = calculatePercentage(femaleScore);
-
-  console.log(malePercentage);
-  console.log(femalePercentage);
 
   const maleImage = getMaleImage(malePercentage);
   const femaleImage = getFemaleImage(femalePercentage);
