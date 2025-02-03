@@ -217,7 +217,7 @@ const ForgotPasswordComp = () => {
             <div className={formContainerClass}>
               <div className={logoContainerClass}>
                 <img
-                  src="logo.svg"
+                  src="logo.png"
                   alt="logo"
                   className={logoImageClass}
                 />

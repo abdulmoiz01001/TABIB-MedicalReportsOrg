@@ -14,7 +14,7 @@ const DashboardAboutComp = () => {
     <div className={containerClass}>
       {/* Header Section */}
       <div className="text-center mb-12">
-        <img src='logo.svg' alt="tabbib logo" className='mx-auto' />
+        <img src='logo.png' alt="tabbib logo" className='mx-auto' />
         <h1 className="text-4xl font-bold text-red-600">TABIAT.LIVE</h1>
         <p className="text-lg mt-2">A Predictive, Preventive, Personalized Approach to Hypertension</p>
         <p className="text-gray-600">Powered by AI Integrated TABIB Kiosk</p>

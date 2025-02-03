@@ -85,7 +85,7 @@ const DashboardLoginComp = () => {
           >
             <div className={clsx(formContainerClasses)}>
               <div className={mainSubContainerClasses}>
-                <img src="logo.svg" alt="logo" className={clsx(logoClasses)} />
+                <img src="logo.png" alt="logo" className={clsx(logoClasses)} />
                 <h1 className={clsx(headingClasses)}>
                   Your Gateway to Precision Insights and <br /> Patient Well-being
                 </h1>

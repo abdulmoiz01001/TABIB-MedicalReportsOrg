@@ -41,11 +41,11 @@ const HeadingComp = () => {
 
   return (
     <div className={containerClasses}>
-      <img src="logo.svg" alt="logo" className={logoClasses} />
+      <img src="logo.png" alt="logo" className={logoClasses} />
       <h1 className={headingClasses}>
         TABIAT: Temperament and Blood-Pressure Indication and Tracking (powered by TABIB)
       </h1>
-      <img src="logo.svg" alt="logo" className={logoClasses} />
+      <img src="logo.png" alt="logo" className={logoClasses} />
     </div>
   )
 }

@@ -9,7 +9,7 @@ const ReportsHeadingComp = () => {
 
   return (
     <div className={clsx(containerClasses)}>
-      <img src="logo.svg" alt="headingIcon" className={clsx(logoClasses)} />
+      <img src="logo.png" alt="headingIcon" className={clsx(logoClasses)} />
       <h1 className={clsx(headingClasses)}>REPORTS</h1>
     </div>
   );
