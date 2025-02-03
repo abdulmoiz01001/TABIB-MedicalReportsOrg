@@ -47,7 +47,7 @@ const DashboardStaticsComp = () => {
   const skeletonContainerClasses = clsx("w-[77%] mobile:w-full flex flex-col h-full gap-3 laptop:pr-3 desktop:pr-3 justify-start items-end large-desktop:pr-4")
  
   const rowClasses = clsx(
-    'desktop:w-[98%]', 
+    'desktop:w-[98%] ', 
     'laptop:w-[98%]', 
     'large-desktop:w-[99%]', 
     'flex', 
@@ -132,14 +132,14 @@ const DashboardStaticsComp = () => {
     'gap-3'
   )
 
-  const dashboardContainerClasses = clsx("desktop:w-[78%] large-desktop:w-[75%] large-desktop:h-[100%] tablet:w-full mobile:w-full  flex flex-col   h-full gap-3 laptop:pr-0 desktop:pr-3 tablet:justify-center justify-start laptop:justify-between  large-desktop:pr-4")
+  const dashboardContainerClasses = clsx("desktop:w-[78%]  large-desktop:w-[75%] large-desktop:h-[100%] tablet:w-full mobile:w-full  flex flex-col   h-full gap-3 laptop:gap-2 laptop:pr-0 desktop:pr-3 tablet:justify-center justify-start laptop:justify-center  large-desktop:pr-4")
   const dashboardReportContainerClasses = clsx("tablet:w-full  mobile:w-full tablet:flex-wrap mobile:flex-wrap mobile:h-full tablet:h-full gap-3 flex justify-between items-center laptop:h-[15%] h-[20%]")
-  const dashboardChartsContainerClasses = clsx("desktop:w-[100%] laptop:w-full large-desktop:h-[75vh]  tablet:overflow-auto tablet:flex-wrap mobile:flex-wrap tablet:h-full desktop:h-screen tablet:w-full  laptop:w-[98%] mb-2 large-desktop:w-[100%]  flex flex-row justify-center tablet:items-center items-start gap-2")
-  const dashboardFirstChartsContainerClasses = clsx("w-[48%] large-desktop:w-[25%] large-desktop:h-[100%]  tablet:w-full mobile:w-full  desktop:w-[31%] h-full flex flex-col laptop:gap-3 gap-3")
-  const dashboardSecondChartsContainerClasses = clsx("w-[48%] large-desktop:w-[40%] large-desktop:h-[100%]  tablet:w-full mobile:w-full  h-full px-1 flex laptop:gap-3 gap-3 flex-col justify-start items-start")
-  const dashboardThirdChartsContainerClasses = clsx("w-[50%] large-desktop:w-[40%] large-desktop:h-[100%]  tablet:w-full mobile:w-full  desktop:w-[40%] h-full flex flex-col laptop:gap-3 gap-3 justify-start items-start")
-  const dashboardTemperamentChartsContainerClasses = clsx("mobile:w-[100%] large-desktop:w-[25%] large-desktop:h-[90vh]  desktop:w-[23%]   border-red-900 tablet:w-full h-[96vh] desktop:sticky laptop:sticky large-desktop:sticky laptop:top-1 desktop:top-2 laptop:gap-2 large-desktop:top-2  flex flex-col justify-start items-center gap-3")
-  return (
+  const dashboardChartsContainerClasses = clsx("desktop:w-[100%]  laptop:w-full large-desktop:h-[75vh] laptop:h-[110vh] tablet:overflow-auto tablet:flex-wrap mobile:flex-wrap tablet:h-full desktop:h-screen tablet:w-full  laptop:w-[98%] mb-2 large-desktop:w-[100%]  flex flex-row justify-center tablet:items-center items-start gap-2")
+  const dashboardFirstChartsContainerClasses = clsx("w-[48%]  large-desktop:w-[25%] laptop:w-[27%] laptop:h-full large-desktop:h-[100%]  tablet:w-full mobile:w-full  desktop:w-[31%] h-full flex flex-col laptop:gap-2 gap-3")
+  const dashboardSecondChartsContainerClasses = clsx("w-[48%]  large-desktop:w-[40%] laptop:w-[37%] laptop:h-full large-desktop:h-[100%]  tablet:w-full mobile:w-full  h-full px-1 flex laptop:gap-2 gap-3 flex-col justify-start items-start")
+  const dashboardThirdChartsContainerClasses = clsx("w-[50%]  large-desktop:w-[40%] laptop:w-[36%] laptop:h-full large-desktop:h-[100%]  tablet:w-full mobile:w-full  desktop:w-[40%] h-full flex flex-col laptop:gap-2 gap-3 justify-start items-start")
+  const dashboardTemperamentChartsContainerClasses = clsx("mobile:w-[100%]  large-desktop:w-[25%] laptop:w-[23%] large-desktop:h-[90vh]  desktop:w-[23%]    tablet:w-full h-[96vh] desktop:sticky laptop:sticky large-desktop:sticky laptop:top-1 desktop:top-2 laptop:gap-2 large-desktop:top-2  flex flex-col justify-start items-center gap-3")
+  return ( 
     <div className={containerClasses}>
       {loading || !analyticsData?.success ? (
         <>

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { clsx } from "clsx";
 
 const ReportBoxComp = ({ data, title, title2 }) => {
@@ -37,7 +37,7 @@ const ReportBoxComp = ({ data, title, title2 }) => {
     "text-[1rem]"
   );
 
-  const genderContainerClasses = clsx("flex justify-between items-center w-[70%] large-desktop:w-[85%] laptop:px-1 mobile:px-2 desktop:gap-7")
+  const genderContainerClasses = clsx("flex justify-between items-center w-[70%] large-desktop:w-[85%] laptop:px-2 mobile:px-2 desktop:gap-7")
 
   return (
     <div className={containerClass}>

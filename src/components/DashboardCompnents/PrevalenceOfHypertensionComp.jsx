@@ -6,6 +6,7 @@ import { useMediaQuery } from 'react-responsive';
 
 const PrevalenceOfHypertensionComp = ({ data }) => {
   const isLargeDesktop = useMediaQuery({ minWidth: 2560 });
+    const isLaptop = useMediaQuery({ minWidth: 824, maxWidth: 1479 });  
   const isMobile = useMediaQuery({ maxWidth: 639 });
 
   // Tailwind class variables
@@ -16,8 +17,8 @@ const PrevalenceOfHypertensionComp = ({ data }) => {
   const rightSectionClass = 'w-[45%] desktop:w-[20%] flex flex-col justify-center mobile:justify-center tablet:justify-center laptop:justify-around items-center h-full laptop:gap-0 large-desktop:gap-4 gap-2';
 
   const lay = {
-    top: 60,
-    bottom: 60,
+    top: isLaptop ? 48 : 60,
+    bottom: isLaptop ? 48 : 60,
     left: isLargeDesktop ? 90 : isMobile ? 50 : 30,
     right: isLargeDesktop ? 90 : isMobile ? 50 : 30,
   };

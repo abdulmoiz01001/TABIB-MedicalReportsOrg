@@ -79,7 +79,7 @@ const DynamicDoughnutChart = ({ value, showCenterValue = true, showSegmentLines 
         ctx.stroke();
   
         // Draw the value at the end of the line
-        ctx.font = isLargeDesktop ? '30px Arial' : '15px Arial';
+        ctx.font = isLargeDesktop ? '30px Arial' : isLaptop ? '10px Arial' : '15px Arial';
         ctx.fillStyle = '#000';
         ctx.textAlign = angle > Math.PI ? 'right' : 'left';
         ctx.fillText(`${data.datasets[0].data[index]}%`, endX + (angle > Math.PI ? -5 : 5), endY - 2);
@@ -87,58 +87,58 @@ const DynamicDoughnutChart = ({ value, showCenterValue = true, showSegmentLines 
     },
   };
    useEffect(() => {
-     const chart = chartRef.current;
-     if (!chart) return;
-   
-     const ctx = chart.ctx;
-     const centerX = (chart.chartArea.left + chart.chartArea.right) / 2;
-     const centerY = (chart.chartArea.top + chart.chartArea.bottom) / 2;
-     let angle = 0;
-     const radius = Math.min(chart.chartArea.right - chart.chartArea.left, chart.chartArea.bottom - chart.chartArea.top) / 2;
-   
-     const animateShine = () => {
-       ctx.save();
-   
-       // Clear previous shine
-       ctx.clearRect(
-         chart.chartArea.left,
-         chart.chartArea.top,
-         chart.chartArea.right - chart.chartArea.left,
-         chart.chartArea.bottom - chart.chartArea.top
-       );
-   
-       // Draw static bars
-       chart.draw();
-   
-       // Calculate shine position using circular motion
-       const shineX = centerX + radius * Math.cos(angle);
-       const shineY = centerY + radius * Math.sin(angle);
-   
-       // Create radial gradient for circular shine effect
-       const gradient = ctx.createRadialGradient(shineX, shineY, 5, shineX, shineY, 50);
-       gradient.addColorStop(0, "rgba(255, 255, 255, 0.6)");
-       gradient.addColorStop(0.5, "rgba(255, 255, 255, 0.3)");
-       gradient.addColorStop(1, "rgba(255, 255, 255, 0)");
-   
-       // Apply shine effect
-       ctx.fillStyle = gradient;
-       ctx.beginPath();
-       ctx.arc(shineX, shineY, 50, 0, Math.PI * 2);
-       ctx.fill();
-   
-       ctx.restore();
-   
-       // Update angle for circular motion
-       angle += 0.02; // Adjust speed of rotation
-       if (angle > Math.PI * 2) {
-         angle = 0; // Reset after full circle
-       }
-   
-       requestAnimationFrame(animateShine);
-     };
-   
-     animateShine();
-   }, []);
+      const chart = chartRef.current;
+      if (!chart) return;
+  
+      const ctx = chart.ctx;
+      const centerX = (chart.chartArea.left + chart.chartArea.right) / 2;
+      const centerY = (chart.chartArea.top + chart.chartArea.bottom) / 2;
+      let angle = 0;
+      const radius = Math.min(chart.chartArea.right - chart.chartArea.left, chart.chartArea.bottom - chart.chartArea.top) / 2;
+  
+      const animateShine = () => {
+        ctx.save();
+  
+        // Clear previous shine
+        ctx.clearRect(
+          chart.chartArea.left,
+          chart.chartArea.top,
+          chart.chartArea.right - chart.chartArea.left,
+          chart.chartArea.bottom - chart.chartArea.top
+        );
+  
+        // Draw static bars
+        chart.draw();
+  
+        // Calculate shine position using circular motion
+        const shineX = centerX + radius * Math.cos(angle);
+        const shineY = centerY + radius * Math.sin(angle);
+  
+        // Create radial gradient for circular shine effect
+        const gradient = ctx.createRadialGradient(shineX, shineY, 5, shineX, shineY, 60);
+        gradient.addColorStop(0, "rgba(255, 255, 255, 0.6)");
+        gradient.addColorStop(0.5, "rgba(255, 255, 255, 0.3)");
+        gradient.addColorStop(1, "rgba(255, 255, 255, 0)");
+  
+        // Apply shine effect
+        ctx.fillStyle = gradient;
+        ctx.beginPath();
+        ctx.arc(shineX, shineY, 200, 0, Math.PI * 3);
+        ctx.fill();
+  
+        ctx.restore();
+  
+        // Update angle for circular motion
+        angle += 0.02; // Adjust speed of rotation
+        if (angle > Math.PI * 3) {
+          angle = 0; // Reset after full circle
+        }
+  
+        requestAnimationFrame(animateShine);
+      };
+  
+      animateShine();
+    }, []);
  
 
 

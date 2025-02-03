@@ -15,7 +15,7 @@ const PulseRateAndBloodPresureComp = ({ data }) => {
     "mobile:text-[0.7rem] tablet:text-[0.7rem]",
     "large-desktop:text-[1.5rem]",
     "desktop:text-[1rem]",
-    "laptop:text-[0.8rem]"
+    "laptop:text-[0.7rem]"
   );
 
   const speedometerContainerClass = clsx(

@@ -19,9 +19,9 @@ const AgeWiseDistributionHeartRateComp = ({ data }) => {
     }, [data]);
 
     // Tailwind class variables
-    const containerClass = 'w-full h-[32.5%] bg-[#FAFAFA] laptop:pt-2 flex flex-col justify-center items-center border border-[#CC0001] rounded-[15px]';
+    const containerClass = 'w-full h-[32.5%] bg-[#FAFAFA]  laptop:pt-2 flex flex-col justify-center items-center border border-[#CC0001] rounded-[15px]';
     const headerClass = 'desktop:text-[1rem] mobile:py-2 tablet:py-2 laptop:text-[0.7rem] tablet:text-[0.7rem] mobile:text-[0.7rem] font-bold large-desktop:text-[1.5rem] border-blue-900 text-black';
-    const chartContainerClass = 'w-full h-[85%]';
+    const chartContainerClass = 'w-full px-2  h-[85%]';
 
     return (
         <div className={clsx(containerClass)}>

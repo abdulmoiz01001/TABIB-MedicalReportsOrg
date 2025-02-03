@@ -32,15 +32,7 @@ const LineChartComp = ({ ageData, heartRateData }) => {
   const isMobile = useMediaQuery({ maxWidth: 639 });             // sm and below
 
   // 🎨 Dynamic Styles Based on Screen Size
-  const mainTitleSize = isLargeDesktop
-    ? 30
-    : isDesktop
-    ? 20  
-    : isLaptop
-    ? 20
-    : isTablet
-    ? 10
-    : 16;
+
 
   const axisTitleSize = isLargeDesktop
     ? 20
@@ -102,8 +94,8 @@ const LineChartComp = ({ ageData, heartRateData }) => {
     responsive: true,
     layout: {
       padding: {
-        right: 20,
-        left: 10,
+        right: 0,
+        left: 0,
       },
     },
     plugins: {

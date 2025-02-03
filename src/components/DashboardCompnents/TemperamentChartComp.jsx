@@ -7,10 +7,10 @@ const TemperamentChartComp = ({ data }) => {
   const [isFemaleSelected, setIsFemaleSelected] = useState(true); // Track female selection
 
   // Tailwind class variables
-  const containerClass = 'w-full flex h-[32.5%] flex-col justify-end items-center bg-[#FAFAFA] border border-[#CC0001] rounded-[15px]';
-  const headerContainerClass = 'desktop:w-[90%] large-desktop:w-[95%] h-[15%] laptop:px-0 laptop:gap-2 px-2 flex justify-between items-center';
-  const labelClass = 'desktop:w-4 large-desktop:w-4 mobile:w-3 tablet:w-3 desktop:h-4 large-desktop:h-8';
-  const textClass = 'desktop:text-[1rem] large-desktop:text-[19.9px] laptop:text-[0.6rem] tablet:text-[0.8rem] mobile:text-[0.8rem] large-desktop:text-[2rem] text-black';
+  const containerClass = 'w-full flex h-[32.5%] flex-col  justify-end items-center bg-[#FAFAFA] border border-[#CC0001] rounded-[15px]';
+  const headerContainerClass = 'desktop:w-[90%] laptop:w-[90%]  large-desktop:w-[95%] h-[15%] laptop:px-0 laptop:gap-2 px-2 flex justify-between items-center';
+  const labelClass = 'desktop:w-4 large-desktop:w-4  mobile:w-3 tablet:w-3 desktop:h-4 large-desktop:h-8';
+  const textClass = 'desktop:text-[1rem] large-desktop:text-[19.9px] laptop:text-[0.7rem] tablet:text-[0.8rem] mobile:text-[0.8rem] large-desktop:text-[2rem] text-black';
   const titleClass = 'desktop:text-[1rem] laptop:text-[0.7rem] tablet:px-2 mobile:px-2 tablet:text-[0.7rem] mobile:text-[0.7rem] large-desktop:text-[1.5rem] text-center font-bold text-black';
   const checkBoxClass = 'flex justify-end gap-1 mobile:py-2 tablet:py-2 items-center cursor-pointer';
   const chartContainerClass = 'h-[85%] w-[90%] flex flex-col justify-end items-center';

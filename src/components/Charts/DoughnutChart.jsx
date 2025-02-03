@@ -12,6 +12,7 @@ const DoughnutChart = ({ details }) => {
 
   const isLargeDesktop = useMediaQuery({ minWidth: 2560 });
   const isDesktop = useMediaQuery({ minWidth: 1480, maxWidth: 2559 });
+    const isLaptop = useMediaQuery({ minWidth: 824, maxWidth: 1479 });
 
   const data = {
     labels: ['Overweight', 'Obese', 'Normal', 'Underweight'],
@@ -56,7 +57,7 @@ const DoughnutChart = ({ details }) => {
         ctx.lineWidth = 2;
         ctx.stroke();
 
-        ctx.font = !isLargeDesktop ? '18px Arial' : '40px Arial';
+        ctx.font = isLargeDesktop ? '40px Arial' :  isLaptop ? '15px Arial' : '18px Arial'  ;
         ctx.fillStyle = '#000';
         ctx.textAlign = angle > Math.PI ? 'right' : 'left';
         ctx.fillText(`${data.datasets[0].data[index]}`, endX + (angle > Math.PI ? -5 : 5), endY - 2);
@@ -120,7 +121,7 @@ const DoughnutChart = ({ details }) => {
       const shineY = centerY + radius * Math.sin(angle);
 
       // Create radial gradient for circular shine effect
-      const gradient = ctx.createRadialGradient(shineX, shineY, 5, shineX, shineY, 50);
+      const gradient = ctx.createRadialGradient(shineX, shineY, 5, shineX, shineY, 60);
       gradient.addColorStop(0, "rgba(255, 255, 255, 0.6)");
       gradient.addColorStop(0.5, "rgba(255, 255, 255, 0.3)");
       gradient.addColorStop(1, "rgba(255, 255, 255, 0)");
@@ -128,14 +129,14 @@ const DoughnutChart = ({ details }) => {
       // Apply shine effect
       ctx.fillStyle = gradient;
       ctx.beginPath();
-      ctx.arc(shineX, shineY, 50, 0, Math.PI * 2);
+      ctx.arc(shineX, shineY, 200, 0, Math.PI * 3);
       ctx.fill();
 
       ctx.restore();
 
       // Update angle for circular motion
       angle += 0.02; // Adjust speed of rotation
-      if (angle > Math.PI * 2) {
+      if (angle > Math.PI * 3) {
         angle = 0; // Reset after full circle
       }
 

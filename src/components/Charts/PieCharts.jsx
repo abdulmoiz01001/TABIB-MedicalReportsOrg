@@ -63,7 +63,7 @@ const PieCharts = ({ firstValue = 60.3, firstColor = "#FF0000", secondColor = "#
         color: "#fff",  // Color of the text
         font: {
           weight: "bold",
-          size: isTablet ? 8 : isMobile ? 8 : isLaptop ? 14 : isDesktop ? 14 : 16,
+          size: isTablet ? 8 : isMobile ? 8 : isLaptop ? 9 : isDesktop ? 14 : 16,
         },
         formatter: (value) => `${value}%`,  // Format the value as percentage
         anchor: "center",  // Position the label in the center of the segment
@@ -76,7 +76,7 @@ const PieCharts = ({ firstValue = 60.3, firstColor = "#FF0000", secondColor = "#
     },
   };
 
-  useEffect(() => {
+ useEffect(() => {
     const chart = chartRef.current;
     if (!chart) return;
 
@@ -105,7 +105,7 @@ const PieCharts = ({ firstValue = 60.3, firstColor = "#FF0000", secondColor = "#
       const shineY = centerY + radius * Math.sin(angle);
 
       // Create radial gradient for circular shine effect
-      const gradient = ctx.createRadialGradient(shineX, shineY, 5, shineX, shineY, 50);
+      const gradient = ctx.createRadialGradient(shineX, shineY, 5, shineX, shineY, 60);
       gradient.addColorStop(0, "rgba(255, 255, 255, 0.6)");
       gradient.addColorStop(0.5, "rgba(255, 255, 255, 0.3)");
       gradient.addColorStop(1, "rgba(255, 255, 255, 0)");
@@ -113,14 +113,14 @@ const PieCharts = ({ firstValue = 60.3, firstColor = "#FF0000", secondColor = "#
       // Apply shine effect
       ctx.fillStyle = gradient;
       ctx.beginPath();
-      ctx.arc(shineX, shineY, 50, 0, Math.PI * 2);
+      ctx.arc(shineX, shineY, 200, 0, Math.PI * 3);
       ctx.fill();
 
       ctx.restore();
 
       // Update angle for circular motion
       angle += 0.02; // Adjust speed of rotation
-      if (angle > Math.PI * 2) {
+      if (angle > Math.PI * 3) {
         angle = 0; // Reset after full circle
       }
 
@@ -133,7 +133,7 @@ const PieCharts = ({ firstValue = 60.3, firstColor = "#FF0000", secondColor = "#
   // Tailwind classes as variables
   const containerClasses = clsx(
     'flex flex-col justify-center items-center',
-    'desktop:w-[80px] text-center laptop:w-[80px] tablet:h-[40%] tablet:w-[60px] mobile:w-[70px] mobile:h-[90px] laptop:h-[42%] desktop:h-[45%] large-desktop:w-[140px] large-desktop:h-[40%]'
+    'desktop:w-[80px] text-center laptop:w-[60px] tablet:h-[40%] tablet:w-[60px] mobile:w-[70px] mobile:h-[90px] laptop:h-[40%] desktop:h-[45%] large-desktop:w-[140px] large-desktop:h-[40%]'
   );
 
   const titleClasses = clsx(
