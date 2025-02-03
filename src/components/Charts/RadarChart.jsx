@@ -11,6 +11,21 @@ const RadarChart = ({ details }) => {
   const isLaptop = useMediaQuery({ minWidth: 824, maxWidth: 1479 });
 
   const [chartData, setChartData] = useState(null);
+  const [opacity, setOpacity] = useState(0.2);
+
+  useEffect(() => {
+    let increasing = true;
+
+    const animateShine = setInterval(() => {
+      setOpacity((prevOpacity) => {
+        if (prevOpacity >= 0.7) increasing = false;
+        if (prevOpacity <= 0.2) increasing = true;
+        return increasing ? prevOpacity + 0.05 : prevOpacity - 0.05;
+      });
+    }, 100); // Adjust speed
+
+    return () => clearInterval(animateShine);
+  }, []);
 
   useEffect(() => {
     if (details) {
@@ -25,7 +40,7 @@ const RadarChart = ({ details }) => {
           {
             label: 'Temperament Levels',
             data: data,
-            backgroundColor: 'rgba(255, 99, 132, 0.2)', // Light red
+            backgroundColor: `rgba(255, 99, 132, ${opacity})`, // Dynamic opacity
             borderColor: '#CC0001', // Dark red
             borderWidth: 1,
             pointBackgroundColor: 'rgba(255, 99, 132, 1)',
@@ -38,7 +53,7 @@ const RadarChart = ({ details }) => {
 
       setChartData(temperamentData);
     }
-  }, [details]);
+  }, [details, opacity]);
 
   const chartOptions = {
     responsive: true,
@@ -71,6 +86,7 @@ const RadarChart = ({ details }) => {
       },
     },
   };
+  
   // Class variables
   const headingClasses = clsx(
     'text-center font-semibold text-black',
@@ -87,17 +103,15 @@ const RadarChart = ({ details }) => {
 
   return (
     <>
-    <h1 className={headingClasses}>
-      Temperament Graph
-    </h1>
-    {chartData ? (
-      <div className={chartContainerClasses}>
-        <Radar data={chartData} options={chartOptions} />
-      </div>
-    ) : (
-      <p>Loading chart...</p>
-    )}
-  </>
+      <h1 className={headingClasses}>Temperament Graph</h1>
+      {chartData ? (
+        <div className={chartContainerClasses}>
+          <Radar data={chartData} options={chartOptions} />
+        </div>
+      ) : (
+        <p>Loading chart...</p>
+      )}
+    </>
   );
 };
 
