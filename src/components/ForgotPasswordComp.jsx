@@ -190,7 +190,7 @@ const ForgotPasswordComp = () => {
   );
 
   const forgotPasswordContainerClass = clsx("w-[40%] tablet:h-[60%] mobile:h-[60%] tablet:w-full mobile:w-full flex flex-col justify-center items-center laptop:gap-2 desktop:gap-2 mobile:gap-2 large-desktop:gap-2 h-full")
-  const logoImageClass = clsx("desktop:w-[161px] desktop:h-[80px] large-desktop:w-[350px] large-desktop:h-[200px]")
+  const logoImageClass = clsx("desktop:w-[161px] laptop:w-[120px] large-desktop:w-[350px] mobile:w-[120px] tablet:w-[120px]")
   const logoContainerClass = clsx("w-[35%] mobile:px-4 tablet:px-4 tablet:w-full tablet:h-[40%] mobile:h-[40%] mobile:w-full flex flex-col justify-center tablet:gap-2 mobile:gap-2 gap-8 tablet:items-center mobile:items-center items-start h-full")
   return (
     <Formik

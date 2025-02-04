@@ -107,7 +107,7 @@ const AverageTABIATScoreMalesvsFemalesComp = ({ data }) => {
   );
 
   const graphLinesClasses = clsx("w-[95%] h-full  mb-1 desktop:mb-0 flex mobile:gap-[14px] desktop:gap-[18.5px] large-desktop:gap-[28px] desktop:h-[100%] laptop:gap-[12px] laptop:h-[95%] large-desktop:h-[90%] desktop:gap-[18.2px] flex-col justify-center items-center")
-  const graphEachLineClasses = clsx("w-full h-[1px] z-0 bg-gray-900")
+  const graphEachLineClasses = clsx("w-full h-[1px] z-0 bg-gray-300")
   const subContainerClasses = clsx("flex relative  border-red-900 h-[70%] desktop:h-[75%] large-desktop:h-full w-[90%] grid-background justify-center mobile:justify-start mobile:items-end items-end")
   const maleAndFemaleContainerClasses = clsx("flex border-red-900 absolute h-[100%] w-[90%] desktop:h-[100%] ml-6 large-desktop:ml-[70px] large-desktop:h-[90%] large-desktop:mb-2 grid-background justify-between mobile:justify-start mobile:gap-8 mobile:items-end items-end")
   return (

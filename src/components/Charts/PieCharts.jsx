@@ -76,59 +76,60 @@ const PieCharts = ({ firstValue = 60.3, firstColor = "#FF0000", secondColor = "#
     },
   };
 
- useEffect(() => {
+  useEffect(() => {
     const chart = chartRef.current;
     if (!chart) return;
-
+  
     const ctx = chart.ctx;
     const centerX = (chart.chartArea.left + chart.chartArea.right) / 2;
     const centerY = (chart.chartArea.top + chart.chartArea.bottom) / 2;
     let angle = 0;
     const radius = Math.min(chart.chartArea.right - chart.chartArea.left, chart.chartArea.bottom - chart.chartArea.top) / 2;
-
+  
+    let animationFrameId; // Store requestAnimationFrame ID for cleanup
+  
     const animateShine = () => {
-      ctx.save();
-
-      // Clear previous shine
       ctx.clearRect(
         chart.chartArea.left,
         chart.chartArea.top,
         chart.chartArea.right - chart.chartArea.left,
         chart.chartArea.bottom - chart.chartArea.top
       );
-
-      // Draw static bars
-      chart.draw();
-
+  
+      chart.draw(); // Redraw the chart
+  
       // Calculate shine position using circular motion
       const shineX = centerX + radius * Math.cos(angle);
       const shineY = centerY + radius * Math.sin(angle);
-
+  
       // Create radial gradient for circular shine effect
       const gradient = ctx.createRadialGradient(shineX, shineY, 5, shineX, shineY, 60);
       gradient.addColorStop(0, "rgba(255, 255, 255, 0.6)");
       gradient.addColorStop(0.5, "rgba(255, 255, 255, 0.3)");
       gradient.addColorStop(1, "rgba(255, 255, 255, 0)");
-
+  
       // Apply shine effect
       ctx.fillStyle = gradient;
       ctx.beginPath();
-      ctx.arc(shineX, shineY, 200, 0, Math.PI * 3);
+      ctx.arc(shineX, shineY, 100, 0, Math.PI * 2); // Adjust radius for a smoother look
       ctx.fill();
-
-      ctx.restore();
-
-      // Update angle for circular motion
-      angle += 0.02; // Adjust speed of rotation
-      if (angle > Math.PI * 3) {
-        angle = 0; // Reset after full circle
+  
+      // Update angle smoothly
+      angle += 0.01; // Slower speed for smooth motion
+      if (angle > Math.PI * 2) {
+        angle = 0; // Reset after a full cycle
       }
-
-      requestAnimationFrame(animateShine);
+  
+      animationFrameId = requestAnimationFrame(animateShine);
     };
-
-    animateShine();
+  
+    animateShine(); // Start animation
+  
+    return () => {
+      cancelAnimationFrame(animationFrameId); // Cleanup on unmount
+    };
   }, []);
+  
 
   // Tailwind classes as variables
   const containerClasses = clsx(

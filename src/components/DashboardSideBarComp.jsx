@@ -23,7 +23,7 @@ const DashboardSideBarComp = () => {
   const sidebarPanelClasses = clsx(
     "py-4 rounded-[15px] absolute top-1/2 -translate-y-1/2 transition-transform duration-300",
     "bg-[#313131] flex flex-col justify-between gap-8 items-center shadow-lg",
-    "desktop:h-[50%] large-desktop:h-[50%] laptop:h-[70%] laptop:w-[100px]",
+    "desktop:h-[60%]  large-desktop:h-[50%] laptop:h-[70%] laptop:w-[100px]",
     "tablet:w-[80px] tablet:h-[50%] mobile:w-[60px] mobile:h-[50%] large-desktop:w-[220px] desktop:w-[81px]",
     hide ? "-translate-x-[91%] mobile:-translate-x-[88%]" : "translate-x-0"
   );

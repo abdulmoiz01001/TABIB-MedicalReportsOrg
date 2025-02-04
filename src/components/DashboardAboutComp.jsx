@@ -14,7 +14,7 @@ const DashboardAboutComp = () => {
     <div className={containerClass}>
       {/* Header Section */}
       <div className="text-center mb-12">
-        <img src='logo.png' alt="tabbib logo" className='mx-auto' />
+        <img src='logo.png' alt="tabbib logo" className='mx-auto w-[150px] ' />
         <h1 className="text-4xl font-bold text-red-600">TABIAT.LIVE</h1>
         <p className="text-lg mt-2">A Predictive, Preventive, Personalized Approach to Hypertension</p>
         <p className="text-gray-600">Powered by AI Integrated TABIB Kiosk</p>
@@ -39,8 +39,7 @@ const DashboardAboutComp = () => {
         <p className={textClass}>
           Cardiovascular diseases (CVDs) remain the leading cause of death worldwide, claiming approximately 20.5 million lives in 2023.
           Hypertension affects 48% of the population in Pakistan, posing serious health risks such as heart attacks, strokes, kidney failure, and blindness.
-        </p>
-        <p className={textClass}>
+       
           TABIB is the world’s first AI-integrated smart health kiosk, collecting three-dimensional data (psychological, anthropometric, physiological) to analyze cardiovascular risks.
           The results are presented in an AI-generated TABIAT report, aiding in algorithm-based clinical decision-making (ABCD).
         </p>
@@ -108,7 +107,7 @@ const DashboardAboutComp = () => {
       </div>
 
       {/* Image Sections */}
-      {["machine.png", "infograph.png", "desktop.png"].map((src, index) => (
+      {["machine.png", "infograph.png", "panel.png"].map((src, index) => (
         <div key={index} className={centeredImageContainer}>
           <img src={src} alt="Illustration" />
           <p className="text-gray-700 text-center mt-2">

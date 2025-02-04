@@ -10,7 +10,7 @@ const TABIATScoreComp = ({ data }) => {
   );
 
   const leftSectionClasses = clsx(
-    'w-[50%] large-desktop:pl-8 mobile:pr-6 h-full flex-col flex justify-center mobile:items-end desktop:gap-4 desktop:items-end large-desktop:items-start border-blue-900'
+    'w-[50%] large-desktop:pl-8 laptop:pl-4  mobile:pr-6 h-full flex-col flex justify-center mobile:items-end desktop:gap-4 desktop:items-end large-desktop:items-start border-blue-900'
   );
 
   const headingClasses = clsx(
@@ -30,7 +30,7 @@ const TABIATScoreComp = ({ data }) => {
   );
 
   const liveTextClasses = clsx(
-    'desktop:text-[1rem] large-desktop:text-[2rem]'
+    'desktop:text-[1rem] laptop:text-[0.8rem] large-desktop:text-[2rem]'
   );
 
   const universityHeadingClasses = clsx(

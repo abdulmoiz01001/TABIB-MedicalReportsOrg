@@ -65,6 +65,7 @@ const FilterbyTimeRange = ({
                 value={startTime}
                 onChange={(e) => handleTimeChange(e, setStartTime, "start")}
                 className={inputClass}
+                onClick={(e) => e.target.showPicker()}
               />
               <img
                 src="white-clock.svg"
@@ -79,6 +80,7 @@ const FilterbyTimeRange = ({
                 value={endTime}
                 onChange={(e) => handleTimeChange(e, setEndTime, "end")}
                 className={inputClass}
+                onClick={(e) => e.target.showPicker()}
               />
               <img
                 src="white-clock.svg"

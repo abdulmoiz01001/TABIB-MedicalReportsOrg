@@ -50,7 +50,7 @@ const DashboardLoginComp = () => {
   // Tailwind CSS class variables
   const containerClasses = 'w-full h-screen flex mobile:py-2 justify-center items-center';
   const formContainerClasses = 'w-[80%] tablet:h-[80%] mobile:h-[80%] mobile:w-[90%] tablet:w-[90%] h-[70%] mobile:flex-col-reverse tablet:flex-col-reverse flex justify-evenly items-center rounded-[16px] bg-[#FFFEFE] bg-opacity-75';
-  const logoClasses = 'desktop:w-[161px] desktop:h-[80px] large-desktop:w-[350px] large-desktop:h-[200px]';
+  const logoClasses = 'desktop:w-[161px] mobile:w-[120px] laptop:w-[120px] large-desktop:w-[350px]';
   const headingClasses = 'text-[#CC0001] tablet:text-center mobile:text-center mobile:text-[12px] tablet:text-[15px] items-start desktop:text-[22px] large-desktop:text-[46px] font-bold';
   const descriptionClasses = 'text-[#313131] tablet:text-center mobile:text-center mobile:text-[10px] desktop:text-[15px] tablet:text-[12px] laptop:text-[0.8rem] large-desktop:text-[30px] font-normal';
   const inputFieldClasses = 'w-[80%] pr-5 desktop:pl-6 mobile:placeholder:text-[10px] tablet:placeholder:text-[12px] tablet:h-[40px] mobile:mb-2 mobile:h-[40px] mobile:pl-4 tablet:pl-4 laptop:h-[50px] laptop:pl-4 large-desktop:pl-10 desktop:text-[20px] large-desktop:text-[50px] desktop:h-[80px] large-desktop:h-[90px] border-2 bg-transparent desktop:placeholder:text-[20px] large-desktop:placeholder:text-[40px] border-red-900 rounded-[15px] font-normal';

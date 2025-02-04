@@ -153,9 +153,10 @@ const ReportListPaginationComp = ({ reports }) => {
     "flex",
     "tablet:sticky",
     "bg-[#FAFAFA]",
-    "tablet:left-2",
+    "tablet:bottom-2",
     "mobile:fixed",
-    "mobile:left-12",
+    "tablet:left-1/2 tablet:translate-x-[-50%]",
+    "mobile:left-1/2 mobile:translate-x-[-50%]",
     "mobile:bottom-2",
     "desktop:mb-4",
     "justify-center",
@@ -163,7 +164,7 @@ const ReportListPaginationComp = ({ reports }) => {
     "gap-2",
     "mt-4"
   );
-
+  
   const paginationButtonClasses = (disabled) => clsx(
     "w-10",
     "h-10",
@@ -183,11 +184,11 @@ const ReportListPaginationComp = ({ reports }) => {
     "items-center",
     "rounded-md",
     "border",
-    isCurrent ? "bg-red-400 text-white" : "bg-white hover:bg-gray-200"
+    isCurrent ? "bg-[#CC0001] text-white" : "bg-white hover:bg-gray-200"
   );
 
   const tableClass = clsx("w-full p-3 text-left")
-  const statictableRowClasses = clsx("large-desktop:h-[120px] mobile:h-[40px] tablet:h-[40px]")
+  const staticTableRowClasses = clsx("large-desktop:h-[120px] mobile:h-[40px] tablet:h-[40px]")
   const tbodyClasses = "h-full relative";
   const noReportsRowClasses = clsx(
     "bg-[#FFEFEF] flex flex-col justify-center items-start absolute w-full top-1",
@@ -210,7 +211,7 @@ const ReportListPaginationComp = ({ reports }) => {
       <div className={tableClasses}>
         <table className={tableClass}>
           <thead className={tableHeaderClasses}>
-            <tr className={statictableRowClasses}>
+            <tr className={staticTableRowClasses}>
               <th className={staticTableNameDataClasses}>
                 Patient Names
               </th>
