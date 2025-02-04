@@ -5,7 +5,7 @@ import { useMediaQuery } from 'react-responsive';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-const DynamicDoughnutChart = ({ value, showCenterValue = true, showSegmentLines = true , lay , transalte = false }) => {
+const DynamicDoughnutChart = ({ value, Hypertensive="" , Normotensive="" , showCenterValue = true, showSegmentLines = true , lay , transalte = false }) => {
   const isLargeDesktop = useMediaQuery({ minWidth: 2560 });      // 2xl
   const isDesktop = useMediaQuery({ minWidth: 1480, maxWidth: 2559 }); // xl
   const isLaptop = useMediaQuery({ minWidth: 824, maxWidth: 1479 });   // lg
@@ -15,7 +15,7 @@ const DynamicDoughnutChart = ({ value, showCenterValue = true, showSegmentLines 
   const chartRef = useRef()
 
   const data = {
-    labels: ['Hypertensive', 'Normotensive'],
+    labels: [Hypertensive, Normotensive],
     datasets: [
       {
         data: [value, remaining],

@@ -49,7 +49,7 @@ const BodyTypeLayout = ({ details }) => {
     }, [details]);
 
      const containerClasses = clsx("desktop:px-2 large-desktop:px-4 laptop:px-2 laptop:pb-2 border-red-900")
-     const subContainerClasses = clsx(`flex flex-col cursor-default justify-center items-center`)
+     const subContainerClasses = clsx(`flex flex-col px-1 cursor-default justify-center items-center`)
      const textContainerClasses = clsx(`mobile:text-[0.6rem] tablet:text-[0.6rem] desktop:text-[12px] laptop:text-[0.5rem]  text-center large-desktop:leading-6 large-desktop:text-[1.4rem] font-bold`)
      const textPageContainerClasses = clsx(`mobile:text-[0.6rem] tablet:text-[0.6rem] laptop:text-[0.5rem] desktop:text-[10px] large-desktop:text-[1.5rem] font-bold`)
      return (

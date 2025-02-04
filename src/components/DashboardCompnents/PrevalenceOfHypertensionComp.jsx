@@ -30,6 +30,8 @@ const PrevalenceOfHypertensionComp = ({ data }) => {
         <div className={clsx(chartContainerClass)}>
           <DynamicDoughnutChart
             value={data.total}
+            Hypertensive={'Hypertensive'}
+            Normotensive={'Normotensive'}
             showCenterValue={false}
             showSegmentLines={true}
             lay={lay}

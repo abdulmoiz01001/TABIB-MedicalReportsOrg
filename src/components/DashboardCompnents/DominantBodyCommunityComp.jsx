@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import BodyTypeLayout from '../Charts/BodyTypeLayout';
 import clsx from 'clsx';
 
 const DominantBodyCommunityComp = ({ data }) => {
+
   // Class variables
   const containerClasses = clsx(
     'w-full pb-4 bg-[#FAFAFA] px-2 border border-[#CC0001] rounded-[15px]',

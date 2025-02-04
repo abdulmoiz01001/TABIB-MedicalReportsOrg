@@ -14,7 +14,9 @@ const DashboardLoginComp = () => {
   const [showPassword, setShowPassword] = useState(false);
 
   useEffect(() => {
-    localStorage.getItem("token") !== undefined && localStorage.getItem("token") != null && navigate("/") 
+    
+    console.log(localStorage.getItem("token") !== null)
+    localStorage.getItem("token") !== null  ? navigate("/") : null;
   }, []);
 
   const validationSchema = Yup.object({
