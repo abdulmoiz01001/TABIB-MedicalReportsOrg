@@ -10,7 +10,7 @@ const DynamicDoughnutChart = ({ value, Hypertensive="" , Normotensive="" , showC
   const isDesktop = useMediaQuery({ minWidth: 1480, maxWidth: 2559 }); // xl
   const isLaptop = useMediaQuery({ minWidth: 824, maxWidth: 1479 });   // lg
   const isTablet = useMediaQuery({ minWidth: 640, maxWidth: 823 });    // md
-  const remaining = 100 - value;
+  const remaining = (100 - value).toFixed(1);
 
   const chartRef = useRef()
 
@@ -18,7 +18,7 @@ const DynamicDoughnutChart = ({ value, Hypertensive="" , Normotensive="" , showC
     labels: [Hypertensive, Normotensive],
     datasets: [
       {
-        data: [value, remaining],
+        data: [value.toFixed(1), remaining],
         backgroundColor: ['#CC0001', '#E0E0E0'],
         hoverBackgroundColor: ['#FF3333', '#B0B0B0'],
         borderColor: '#FFFFFF',

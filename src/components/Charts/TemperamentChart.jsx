@@ -255,7 +255,25 @@ const TemperamentChart = ({ details }) => {
       //   animateShine();
       // }, []);
 
-  return <Bar ref={chartRef} data={data} options={options} plugins={[ChartDataLabels]} />;
+  return(
+<>
+    <Bar ref={chartRef} data={data} options={options} plugins={[ChartDataLabels]} />;
+    {/* <div className="w-full h-[50px] flex justify-evenly border-2 border-red-900 absolute bottom-16" >
+    <div className="w-[22%] border-2 border-blue-900 h-full" >
+
+    </div>
+    <div className="w-[22%] border-2 border-blue-900 h-full" >
+
+    </div>
+    <div className="w-[22%] border-2 border-blue-900 h-full" >
+
+    </div>
+    <div className="w-[22%] border-2 border-blue-900 h-full" >
+
+    </div>
+    </div> */}
+</>
+  ) 
 };
 
 export default TemperamentChart;

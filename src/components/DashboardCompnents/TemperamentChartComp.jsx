@@ -13,7 +13,7 @@ const TemperamentChartComp = ({ data }) => {
   const textClass = 'desktop:text-[1rem] large-desktop:text-[19.9px] laptop:text-[0.7rem] tablet:text-[0.8rem] mobile:text-[0.8rem] large-desktop:text-[2rem] text-black';
   const titleClass = 'desktop:text-[1rem] laptop:text-[0.7rem] tablet:px-2 mobile:px-2 tablet:text-[0.7rem] mobile:text-[0.7rem] large-desktop:text-[1.5rem] text-center font-bold text-black';
   const checkBoxClass = 'flex justify-end gap-1 mobile:py-2 tablet:py-2 items-center cursor-pointer';
-  const chartContainerClass = 'h-[85%] w-[90%] flex flex-col justify-end items-center';
+  const chartContainerClass = 'h-[85%] w-[90%] relative flex flex-col justify-end items-center';
 
   const handleMaleClick = () => {
     setIsMaleSelected((prev) => !prev); // Toggle male selection
