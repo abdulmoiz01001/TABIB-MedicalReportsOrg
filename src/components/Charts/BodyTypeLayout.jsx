@@ -70,7 +70,7 @@ const BodyTypeLayout = ({ details }) => {
                             {bodyTypeNames[index]}
                         </h1>
                         <p
-                            className={textPageContainerClasses + " "+ textColor}
+                            className={textPageContainerClasses + " " + `${value == "The Ectomorph Melancholic" ? "px-4" : ""}` + textColor}
                         >
                             {value}
                         </p>

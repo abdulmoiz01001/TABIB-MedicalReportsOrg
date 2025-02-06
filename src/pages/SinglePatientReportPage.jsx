@@ -1,8 +1,10 @@
 import React from 'react'
+import { useParams } from 'react-router-dom'
 
 const SinglePatientReportPage = () => {
+  const { patientID } = useParams()
   return (
-    <div>SinglePatientReportPage</div>
+    <div>Patient ID : {patientID}</div>
   )
 }
 

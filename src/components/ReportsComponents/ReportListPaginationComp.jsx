@@ -4,8 +4,10 @@ import { FaEye } from "react-icons/fa";
 import useStore from "../../zustandStore/useStore";
 import clsx from "clsx";
 import { useMediaQuery } from "react-responsive";
+import { useNavigate } from "react-router-dom";
 
 const ReportListPaginationComp = ({ reports }) => {
+  const navigate = useNavigate();
   const isLargeDesktop = useMediaQuery({ minWidth: 2560 });
   const [currentPage, setCurrentPage] = useState(1);
   const [recordsPerPage] = useState(10);
@@ -263,7 +265,7 @@ const ReportListPaginationComp = ({ reports }) => {
                   <td className={dynamicTableDataClasses}>
                     {report?.measureDate} - {report?.measureTime}
                   </td>
-                  <td className={actionButtonClasses}>
+                  <td onClick={() => navigate(`/patient-report/${report.sk}`) } className={actionButtonClasses}>
                     <FaEye size={isLargeDesktop ? 30 :20} color={"#CC0001"} />
                   </td>
                 </tr>
