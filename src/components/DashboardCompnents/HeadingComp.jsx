@@ -22,10 +22,7 @@ const HeadingComp = () => {
     'mobile:w-[60px]', 
     'tablet:w-[60px]', 
     'laptop:w-[50px]', 
-    // 'laptop:h-[50px]', 
-    // 'desktop:h-[50px]', 
     'large-desktop:w-[200px]', 
-    // 'large-desktop:h-[120px]'
   )
 
   const headingClasses = clsx(

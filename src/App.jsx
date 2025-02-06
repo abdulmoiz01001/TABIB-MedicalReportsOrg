@@ -27,14 +27,7 @@ function App() {
         <Route path="/forget-password" element={<ForgotPasswordPage />} />
 
         {/* Protected routes */}
-        <Route
-          path="/"
-          element={
-            // <PrivateRoute>
-              <Layout />
-            // {/* </PrivateRoute> */}
-          }
-        >
+        <Route path="/" element={<Layout />} >
           <Route index element={<DashboardPage />} />
           <Route path="report" element={<DashboardReportPage />} />
           <Route path="patient-report/:patientID" element={<SinglePatientReportPage />} />

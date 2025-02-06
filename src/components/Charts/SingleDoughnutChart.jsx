@@ -180,9 +180,7 @@ const DynamicDoughnutChart = ({ value, Hypertensive="" , Normotensive="" , showC
       data={data}
       options={options}
       plugins={[centerTextPlugin, segmentLinePlugin]}
-      // width={100}
       className={` ${transalte ? "translate-y-1" : ""} `}
-      // height={100}
       />
       </>
   );

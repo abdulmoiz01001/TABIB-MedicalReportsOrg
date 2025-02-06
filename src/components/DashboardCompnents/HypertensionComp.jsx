@@ -10,7 +10,6 @@ const HypertensionComp = ({ data }) => {
 
   return (
     <div className={containerClass}>
-      {/* <h1 className="text-[#000000] text-[10px] text-center font-bold">Hypertension By BMI Classification</h1> */}
       <DoughnutChart details={data} />
     </div>
   );
