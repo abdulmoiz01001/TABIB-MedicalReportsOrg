@@ -22,7 +22,7 @@ ChartJS.register(
 );
 
 const TemperamentChart = ({ details }) => {
-    const chartRef = useRef(null);
+    const chartRef = useRef();
   
   // 📱 Tailwind Custom Breakpoints
   const isLargeDesktop = useMediaQuery({ minWidth: 2560 });      // 2xl

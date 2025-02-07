@@ -16,17 +16,32 @@ const ReportListPaginationComp = ({ reports }) => {
   );
   const customFunction = useStore((state) => state.customFunction);
 
+  // const data = useMemo(() => {
+  //   if (filteredReports?.length > 0) {
+  //     setCurrentPage(1);
+  //     return filteredReports;
+  //   }
+  //   if (filteredReports?.Items?.length > 0) {
+  //     setCurrentPage(1);
+  //     return filteredReports.Items;
+  //   }
+  //   return reports;
+  // }, [reports, filteredReports]);
+
   const data = useMemo(() => {
     if (filteredReports?.length > 0) {
-      setCurrentPage(1);
       return filteredReports;
     }
     if (filteredReports?.Items?.length > 0) {
-      setCurrentPage(1);
       return filteredReports.Items;
     }
     return reports;
   }, [reports, filteredReports]);
+  
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [filteredReports]);
+  
 
   const lengthReports = useMemo(() => data.length, [data]);
 

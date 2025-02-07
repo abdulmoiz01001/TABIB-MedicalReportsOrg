@@ -8,7 +8,6 @@ const DashboardComp = () => {
   const navigate = useNavigate()
   const containerClasses = clsx("w-full min-h-screen large-desktop:min-h-screen flex flex-col justify-start items-center")
   useEffect(() => {
-    console.log(localStorage.getItem("token") == null)
   localStorage.getItem("token") == null ? navigate("/login") : null;
   },[])
   return (

@@ -98,7 +98,12 @@ const ReportFiltersBarComp = ({ reports }) => {
         setSortDropdownOpen(false)
     }
 
-    setCustomFunction(offAll)
+    // setCustomFunction(offAll)
+
+    useEffect(() => {
+        setCustomFunction(offAll);
+    }, []); // Empty dependency array ensures it runs only on mount
+    
 
     const formatDateRange = (start, end) => {
         return (

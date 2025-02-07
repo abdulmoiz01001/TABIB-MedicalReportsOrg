@@ -4,10 +4,11 @@ import SpeedoMeter from "../Charts/Speedometer";
 
 const PulseRateAndBloodPresureComp = ({ data }) => {
   const containerClass = clsx(
-    "w-full h-full border border-[#CC0001] bg-[#FAFAFA] rounded-[15px] flex flex-col items-center justify-center",
+    "w-full min-h-full border border-[#CC0001] bg-[#FAFAFA] rounded-[15px] flex flex-col items-center justify-center",
     "mobile:py-2 tablet:py-2",
     "large-desktop:w-[45%] large-desktop:py-[5px]",
-    "desktop:w-[45%] desktop:py-[5px]"
+    "desktop:w-[45%] desktop:py-[5px]",
+    "laptop:py-[5px] laptop:w-[45%]"
   );
 
   const titleClass = clsx(
