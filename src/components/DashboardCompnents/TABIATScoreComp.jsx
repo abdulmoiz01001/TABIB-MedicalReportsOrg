@@ -18,7 +18,7 @@ const TABIATScoreComp = ({ data }) => {
   );
 
   const imageContainerClasses = clsx(
-    'desktop:w-[80%] mobile:w-[60%] mobile:gap-[4px] large-desktop:w-full mobile:py-4 flex mobile:justify-end justify-start laptop:gap-4 desktop:gap-5 items-center'
+    'desktop:w-[80%] mobile:w-[60%] mobile:gap-[4px] desktop:justify-end tablet:justify-end large-desktop:w-full mobile:py-4 flex mobile:justify-end justify-start laptop:gap-4 desktop:gap-5 items-center'
   );
 
   const logoImageClasses = clsx(
