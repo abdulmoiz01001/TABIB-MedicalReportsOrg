@@ -1,7 +1,10 @@
 import React from 'react'
 import clsx from 'clsx'
+import { useMediaQuery } from 'react-responsive';
 
 const HeadingComp = () => {
+  const isTablet = useMediaQuery({ minWidth: 640, maxWidth: 823 });
+  const isMobile = useMediaQuery({ maxWidth: 639 });
   const containerClasses = clsx(
     'mx-auto', 
     'flex', 
@@ -36,13 +39,29 @@ const HeadingComp = () => {
     'font-bold'
   )
 
+  const mobileHeadingClasses = clsx(
+    'mobile:text-[0.75rem]',
+    'tablet:text-[0.7rem]',
+    'desktop:text-[1rem]',
+    'laptop:text-[0.7rem]',
+    'large-desktop:text-[1.5rem]',
+    'text-center',
+    'font-bold',
+    'text-[#CC0001]'
+  )
+
   return (
     <div className={containerClasses}>
       <img src="logo.png" alt="logo" className={logoClasses} />
-      <h1 className={headingClasses}>
+      {
+        isTablet  || isMobile ?
+        <h1 className={mobileHeadingClasses}>
+        TABIAT.LIVE Data Dashboard (powered by TABIB)
+      </h1> :  <h1 className={headingClasses}>
         TABIAT: Temperament and Blood-Pressure Indication and Tracking (powered by TABIB)
-      </h1>
-      <img src="logo.png" alt="logo" className={logoClasses} />
+      </h1> 
+      } 
+      <img src="logo.svg" alt="logo" className={logoClasses} />
     </div>
   )
 }

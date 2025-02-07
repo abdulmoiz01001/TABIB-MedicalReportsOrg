@@ -37,7 +37,7 @@ const DynamicDoughnutChart = ({ value, Hypertensive="" , Normotensive="" , showC
       ctx.fillStyle = '#000000';
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
-      ctx.fillText(`${value}`, width / 2, height / 2);
+      ctx.fillText(`${value.toFixed(2)}`, width / 2, height / 2);
       ctx.restore();
     },
   };
@@ -158,7 +158,7 @@ const DynamicDoughnutChart = ({ value, Hypertensive="" , Normotensive="" , showC
       tooltip: {
         callbacks: {
           label: (context) => {
-            const total = context.dataset.data.reduce((a, b) => a + b, 0);
+            const total = 100
             const value = context.raw;
             const percentage = ((value / total) * 100).toFixed(2);
             return `${value} (${percentage}%)`;
