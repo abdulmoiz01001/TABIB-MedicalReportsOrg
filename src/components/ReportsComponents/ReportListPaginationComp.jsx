@@ -87,7 +87,6 @@ const ReportListPaginationComp = ({ reports }) => {
     "w-full",
     "flex",
     "mobile:h-[70px]",
-    // "mobile:relative",
     "large-desktop:w-[98%]",
     "justify-between",
     "items-center"
