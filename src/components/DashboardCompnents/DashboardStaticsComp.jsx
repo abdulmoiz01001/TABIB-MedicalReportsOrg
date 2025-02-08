@@ -58,7 +58,7 @@ const DashboardStaticsComp = () => {
   )
 
   const skeletonBoxClasses = clsx(
-    'w-[18%]', 
+    'w-[18%] mobile:w-full', 
     'h-full'
   )
 

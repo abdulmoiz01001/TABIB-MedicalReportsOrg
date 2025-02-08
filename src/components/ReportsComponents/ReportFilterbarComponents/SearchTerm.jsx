@@ -1,4 +1,4 @@
-import clsx from 'clsx';
+
 
 const SearchTerm = ({ searchTerm, onInputChange }) => {
   // Class variables for better manageability
