@@ -19,12 +19,12 @@ const PieCharts = ({ firstValue = 60.3, firstColor = "#FF0000", secondColor = "#
   const isLaptop = useMediaQuery({ minWidth: 824, maxWidth: 1479 });
   const isTablet = useMediaQuery({ minWidth: 640, maxWidth: 823 });    // md
   const isMobile = useMediaQuery({ maxWidth: 639 });       
-  const secondValue = 100 - firstValue;
+  const secondValue = 100 - firstValue.toFixed(2);
 
   const chartRef = useRef();
 
   const data = {
-    labels: [`${firstValue}%`, `${secondValue}%`],
+    labels: [`${firstValue.toFixed(2)}%`, `${secondValue.toFixed(2)}%`],
     datasets: [
       {
         data: [firstValue, secondValue],
