@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useMemo } from "react";
 import { CSVLink} from "react-csv";
-import { useSelector } from "react-redux";
+import { useSelector , useDispatch } from "react-redux";
 import { FaEye } from "react-icons/fa";
 import { FaFileDownload } from "react-icons/fa";
-import useStore from "../../zustandStore/useStore";
 import { LuFileStack } from "react-icons/lu";
 import clsx from "clsx";
+import { setOffReports } from '../../store/features/FiltersSlice.js';
 import { useMediaQuery } from "react-responsive";
 
 const ReportListPaginationComp = ({ reports }) => {
@@ -15,19 +15,7 @@ const ReportListPaginationComp = ({ reports }) => {
   const { filteredReports, noReportsFound } = useSelector(
     (state) => state.PatientReportFilters
   );
-  const customFunction = useStore((state) => state.customFunction);
-
-  // const data = useMemo(() => {
-  //   if (filteredReports?.length > 0) {
-  //     setCurrentPage(1);
-  //     return filteredReports;
-  //   }
-  //   if (filteredReports?.Items?.length > 0) {
-  //     setCurrentPage(1);
-  //     return filteredReports.Items;
-  //   }
-  //   return reports;
-  // }, [reports, filteredReports]);
+  const dispatch = useDispatch();
 
   const data = useMemo(() => {
     if (filteredReports?.length > 0) {
@@ -318,7 +306,7 @@ const ReportListPaginationComp = ({ reports }) => {
   }, [filteredReports, reports]); // Ensure the effect re-runs when filteredReports or reports change
 
   return (
-    <div onClick={() => customFunction()} className={containerClasses}>
+    <div onClick={() => dispatch(setOffReports())} className={containerClasses}>
       <div className={headerClasses}>
         <p className={textClasses}>
           Total Reports : {noReportsFound ? 0 : lengthReports}

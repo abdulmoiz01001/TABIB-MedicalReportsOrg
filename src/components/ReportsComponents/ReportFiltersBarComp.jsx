@@ -5,7 +5,6 @@ import 'react-datepicker/dist/react-datepicker.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { setFilteredReports, clearFilteredReports } from '../../store/features/FiltersSlice';
 import { format } from 'date-fns';
-import useStore from '../../zustandStore/useStore';
 import SearchTerm from './ReportFilterbarComponents/SearchTerm';
 import FilterbyDateRange from './ReportFilterbarComponents/FilterbyDateRange';
 import FilterbyTimeRange from './ReportFilterbarComponents/FilterbyTimeRange';
@@ -20,7 +19,7 @@ const ReportFiltersBarComp = ({ reports }) => {
     const isTablet = useMediaQuery({ minWidth: 640, maxWidth: 823 });    // md
     const isMobile = useMediaQuery({ maxWidth: 639 });
     const dispatch = useDispatch();
-    const setCustomFunction = useStore((state) => state.setCustomFunction);
+    const {reportShow} = useSelector((state) => state.PatientReportFilters);
     const [sortOption, setSortOption] = useState("");
     const [bPOption, setBPOption] = useState("")
     const [startTime, setStartTime] = useState("");
@@ -101,8 +100,9 @@ const ReportFiltersBarComp = ({ reports }) => {
     // setCustomFunction(offAll)
 
     useEffect(() => {
-        setCustomFunction(offAll);
-    }, []); // Empty dependency array ensures it runs only on mount
+        offAll();
+        // console.log("Report Show", reportShow)
+    }, [reportShow]); // Empty dependency array ensures it runs only on mount
     
 
     const formatDateRange = (start, end) => {

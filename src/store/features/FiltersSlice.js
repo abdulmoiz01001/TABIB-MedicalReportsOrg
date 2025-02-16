@@ -4,6 +4,7 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
   filteredReports: [],
   noReportsFound: false,
+  reportShow: true,
 };
 
 const FiltersSlice = createSlice({
@@ -18,8 +19,11 @@ const FiltersSlice = createSlice({
       state.filteredReports = [];
       state.noReportsFound = true;
     },
+    setOffReports: (state) => {
+      state.reportShow = !state.reportShow;
+    }
   },
 });
 
-export const { setFilteredReports, clearFilteredReports } = FiltersSlice.actions;
+export const { setFilteredReports, clearFilteredReports , setOffReports } = FiltersSlice.actions;
 export default FiltersSlice.reducer;
